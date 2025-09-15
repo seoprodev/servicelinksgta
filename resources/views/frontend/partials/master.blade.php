@@ -8,7 +8,7 @@
           content="TruelySell offers reliable construction, removals, and electrical services for homes and businesses. Get expert solutions at competitive prices. Contact us today!">
     <meta name="keywords"
           content="Your Trusted Partner for Construction, Removals, and Electrical Services - TruelySell">
-    <title>Service Link GTA | @yield('title', 'Service Link GTA')</title>
+    <title>ssService Link GTA | @yield('title', 'Service Link GTA')</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('frontend-assets/img/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('frontend-assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend-assets/plugins/toastr/toatr.css') }}">
