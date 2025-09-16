@@ -158,6 +158,7 @@
                                 Post A Job
                             </a>
                         </li>
+                        {{--
                         <li class="d-none d-lg-block">
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle d-flex align-items-center language-selects"
@@ -185,6 +186,7 @@
                                 </ul>
                             </div>
                         </li>
+                        --}}
                     </ul>
                     <ul>
                         <li class="nav-item px-3 py-1 w-100 d-lg-none d-block">

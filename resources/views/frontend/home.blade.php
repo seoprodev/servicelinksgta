@@ -44,7 +44,7 @@
 
                             <div class="d-flex align-items-center flex-wrap">
                                 <h6 class="mb-2 me-2 fw-medium">Popular Searches</h6>
-                                <a href="services/kitchen-plumbing.html"
+                                <a href="javascript:void(0)"
                                    class="badge badge-dark-transparent fs-14 fw-normal mb-2 me-2">
                                     Kitchen Plumbing
                                 </a>
@@ -98,7 +98,7 @@
                 <div class="modal-content" id="modalBody">
                     <div class="modal-header d-flex align-items-center justify-content-between border-0">
                         <h5>Find the Best Professionals</h5>
-                        <a href="#!" data-bs-dismiss="modal" aria-label="Close"><i
+                        <a href="javascript:void(0)" data-bs-dismiss="modal" aria-label="Close"><i
                                     class="ti ti-circle-x-filled fs-24"></i></a>
                     </div>
                     <form action="https://servicelinksgta.globalhostpros.com/provider-offers.html">
@@ -219,7 +219,7 @@
                         <div class="img-slider owl-carousel nav-center">
 
                             <div class="slide-images">
-                                <a href="services/general-plumbing.html">
+                                <a href="javascript:void(0)">
                                     <img src="{{ asset('frontend-assets/img') }}/categories/pJiez0e1rP671reeFJeWTQq4DxVJH5h127TdjiNo.jpg"
                                          class="img-fluid" alt="default img" loading="lazy">
                                 </a>
@@ -232,14 +232,14 @@
                         </span>
                         </div>
                         <div class="fav-item">
-                            <a href="#!" class="fav-icon">
+                            <a href="javascript:void(0)" class="fav-icon">
                                 <i class="ti ti-heart"></i>
                             </a>
                         </div>
                     </div>
                     <div class="service-content">
                         <h6 class="text-truncate mb-1"><a
-                                    href="services/general-plumbing.html">General Plumbing</a>
+                                    href="javascript:void(0)">General Plumbing</a>
                         </h6>
                         <div class="d-flex align-items-center justify-content-between">
                             <p class="fw-medium fs-14 mb-0"> 1 Service
@@ -252,7 +252,7 @@
                         <div class="img-slider owl-carousel nav-center">
 
                             <div class="slide-images">
-                                <a href="services/bathroom-plumbing.html">
+                                <a href="javascript:void(0)">
                                     <img src="{{ asset('frontend-assets/img') }}/categories/9ORTLdOOfZYKf9aDWF3GYdFOlHCcmsxzrgiDIZDZ.webp"
                                          class="img-fluid" alt="default img" loading="lazy">
                                 </a>
@@ -265,14 +265,14 @@
                         </span>
                         </div>
                         <div class="fav-item">
-                            <a href="#!" class="fav-icon">
+                            <a href="javascript:void(0)" class="fav-icon">
                                 <i class="ti ti-heart"></i>
                             </a>
                         </div>
                     </div>
                     <div class="service-content">
                         <h6 class="text-truncate mb-1"><a
-                                    href="services/bathroom-plumbing.html">Bathroom Plumbing</a>
+                                    href="javascript:void(0)">Bathroom Plumbing</a>
                         </h6>
                         <div class="d-flex align-items-center justify-content-between">
                             <p class="fw-medium fs-14 mb-0"> 0 Service
@@ -285,7 +285,7 @@
                         <div class="img-slider owl-carousel nav-center">
 
                             <div class="slide-images">
-                                <a href="services/kitchen-plumbing.html">
+                                <a href="javascript:void(0)">
                                     <img src="{{ asset('frontend-assets/img') }}/categories/4VNrWpjz6wARIn2JgDKRrlLS638FHXZyef21ZoOW.jpg"
                                          class="img-fluid" alt="default img" loading="lazy">
                                 </a>
@@ -298,14 +298,14 @@
                         </span>
                         </div>
                         <div class="fav-item">
-                            <a href="#!" class="fav-icon">
+                            <a href="javascript:void(0)" class="fav-icon">
                                 <i class="ti ti-heart"></i>
                             </a>
                         </div>
                     </div>
                     <div class="service-content">
                         <h6 class="text-truncate mb-1"><a
-                                    href="services/kitchen-plumbing.html">Kitchen Plumbing</a>
+                                    href="javascript:void(0)">Kitchen Plumbing</a>
                         </h6>
                         <div class="d-flex align-items-center justify-content-between">
                             <p class="fw-medium fs-14 mb-0"> 1 Service
@@ -318,7 +318,7 @@
                         <div class="img-slider owl-carousel nav-center">
 
                             <div class="slide-images">
-                                <a href="services/emergency-plumbing.html">
+                                <a href="javascript:void(0)">
                                     <img src="{{ asset('frontend-assets/img') }}/categories/mhkxfpgLvQmj66PmimA0ypHYZ67kyzOJ3lFKbh7i.webp"
                                          class="img-fluid" alt="default img" loading="lazy">
                                 </a>
@@ -331,14 +331,14 @@
                         </span>
                         </div>
                         <div class="fav-item">
-                            <a href="#!" class="fav-icon">
+                            <a href="javascript:void(0)" class="fav-icon">
                                 <i class="ti ti-heart"></i>
                             </a>
                         </div>
                     </div>
                     <div class="service-content">
                         <h6 class="text-truncate mb-1"><a
-                                    href="services/emergency-plumbing.html">Emergency Plumbing</a>
+                                    href="javascript:void(0)">Emergency Plumbing</a>
                         </h6>
                         <div class="d-flex align-items-center justify-content-between">
                             <p class="fw-medium fs-14 mb-0"> 0 Service
@@ -351,7 +351,7 @@
                         <div class="img-slider owl-carousel nav-center">
 
                             <div class="slide-images">
-                                <a href="services/drain-sewer.html">
+                                <a href="javascript:void(0)">
                                     <img src="{{ asset('frontend-assets/img') }}/categories/xpv2rRXh49hGc506hiWv4PNKvsVL2fMENYXtU6Ld.webp"
                                          class="img-fluid" alt="default img" loading="lazy">
                                 </a>
@@ -364,14 +364,14 @@
                         </span>
                         </div>
                         <div class="fav-item">
-                            <a href="#!" class="fav-icon">
+                            <a href="javascript:void(0)" class="fav-icon">
                                 <i class="ti ti-heart"></i>
                             </a>
                         </div>
                     </div>
                     <div class="service-content">
                         <h6 class="text-truncate mb-1"><a
-                                    href="services/drain-sewer.html">Drain &amp; Sewer</a>
+                                    href="javascript:void(0)">Drain &amp; Sewer</a>
                         </h6>
                         <div class="d-flex align-items-center justify-content-between">
                             <p class="fw-medium fs-14 mb-0"> 0 Service
@@ -383,7 +383,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-center view-all wow fadeInUp" data-wow-delay="0.2s">
-                        <a href="categories.html" class="btn btn-dark">View All<i
+                        <a href="javascript:void(0)" class="btn btn-dark">View All<i
                                     class="ti ti-arrow-right ms-2"></i></a>
                     </div>
                 </div>
@@ -463,7 +463,7 @@
                             Promoting community growth by keeping business local and service personal. Whether it's
                             plumbing, cleaning, electrical work, or any other essential service, our goal is to make finding
                             help as easy and dependable as ordering a cup of coffee.</p>
-                        <a href="#!" data-bs-toggle="modal" data-bs-target="#provider"
+                        <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#provider"
                            class="btn btn-linear-primary"><i class="ti ti-user-filled me-2"></i>Join Us</a>
                     </div>
                 </div>
