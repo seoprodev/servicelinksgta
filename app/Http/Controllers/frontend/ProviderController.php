@@ -98,6 +98,7 @@ class ProviderController extends Controller
 
             ProviderLead::create([
                 'provider_id' => $provider->id,
+                'client_id' => $job->user_id,
                 'job_id' => $job->id,
                 'purchase_type' => 'subscription',
                 'purchase_at' => now(),
@@ -105,6 +106,8 @@ class ProviderController extends Controller
                 'job_status' => 'bought',
             ]);
 
+            $client = $job->user;
+            $client->providers()->syncWithoutDetaching([$provider->id]);
         } else {
 
             return response()->json([
@@ -216,6 +219,7 @@ class ProviderController extends Controller
         ProviderLead::create([
             'provider_id' => $provider->id,
             'job_id' => $job->id,
+            'client_id' => $job->user_id,
             'purchase_type' => 'pay_per_lead',
             'purchase_at' => now(),
             'purchase_price' => $job->category->lead_price ?? 0,

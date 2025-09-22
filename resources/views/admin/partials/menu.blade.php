@@ -191,6 +191,7 @@
             <li><a href="{{ route('admin.manage.property') }}" class="nav-link"><i data-feather="home"></i><span>Property Type</span></a></li>
             <li><a href="{{ route('admin.manage.priority') }}" class="nav-link "><i data-feather="shuffle"></i><span>Job Priority</span></a></li>
             <li><a href="{{ route('admin.manage.linedistance') }}" class="nav-link "><i data-feather="git-commit"></i><span>Line Distance</span></a></li>
+            <li><a href="{{ route('admin.manage.ticket') }}" class="nav-link "><i data-feather="git-commit"></i><span>Ticket Management</span></a></li>
 
         </ul>
     </aside>

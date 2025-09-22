@@ -185,7 +185,7 @@
                     <a href="{{ route('provider.packages') }}" class=""><i class="ti ti-bell-plus"></i><span>Subscription</span></a>
                 </li>
                 <li class="">
-                    <a href="" class=""><i class="ti ti-message"></i><span>Chat</span></a>
+                    <a href="{{ route('provider.chat.index') }}" class=""><i class="ti ti-message"></i><span>Chat</span></a>
                 </li>
                 <li class="">
                     <a href="" class="d-flex align-items-center ">
@@ -199,7 +199,7 @@
 
 
                 <li class="">
-                    <a href="" class=""><i class="ti ti-ticket"></i><span>Tickets</span></a>
+                    <a href="{{ route('provider.tickets.index') }}" class=""><i class="ti ti-ticket"></i><span>Tickets</span></a>
                 </li>
 
                 <li class="submenu">

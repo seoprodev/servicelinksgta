@@ -1,9 +1,8 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="csrf-token" content="cXPzE4SORBCkhln6AtlYfl5xuA4UeqmB5sfh31f8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description"
           content="TruelySell offers reliable construction, removals, and electrical services for homes and businesses. Get expert solutions at competitive prices. Contact us today!">
     <meta name="keywords"

@@ -29,13 +29,19 @@
                         </a>
                     </li>
                     <li class="mb-4">
+                        <a href="{{ route('client.create.job') }}" class="d-flex align-items-center {{ request()->routeIs('client.create.job') ? 'active' : '' }}">
+                            <i class="ti ti-world me-2"></i>
+                            Post A Job
+                        </a>
+                    </li>
+                    <li class="mb-4">
                         <a href="{{ route('client.jobs') }}" class="d-flex align-items-center {{ request()->routeIs('client.jobs') ? 'active' : '' }}">
                             <i class="ti ti-world me-2"></i>
                             My Jobs
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="" class="d-flex align-items-center ">
+                        <a href="{{ route('chat.index') }}" class="d-flex align-items-center {{ request()->routeIs('client.tickets.index') ? 'active' : '' }}">
                             <i class="ti ti-message-circle me-2"></i>
                             Chat
                         </a>
@@ -47,7 +53,7 @@
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="" class="d-flex align-items-center ">
+                        <a href="{{ route('user.tickets.index') }}" class="d-flex align-items-center {{ request()->routeIs('client.tickets.index') ? 'active' : '' }}">
                             <i class="ti ti-ticket me-2"></i>
                             Tickets
                         </a>
@@ -91,15 +97,17 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="mb-0">
-                        <form action="{{ route('user.logout.process') }}" method="POST" id="logout-form">
+                    <li class="nav-item">
+                        <a href="#" class="d-flex align-items-center text-decoration-none text-danger"
+                           onclick="event.preventDefault(); document.getElementsByClassName('logout-form')[0].submit();">
+                            <i class="ti ti-logout me-2"></i> Logout
+                        </a>
+
+                        <form class="logout-form d-none" action="{{ route('user.logout.process') }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-link d-flex align-items-center p-0 text-decoration-none">
-                                <i class="ti ti-logout me-2"></i>
-                                Logout
-                            </button>
                         </form>
                     </li>
+
                 </ul>
             </div>
         </div><div class="resize-sensor" style="position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden;"><div class="resize-sensor-expand" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0px; top: 0px; transition: all; width: 340px; height: 714px;"></div></div><div class="resize-sensor-shrink" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%"></div></div></div></div></div>

@@ -15,10 +15,29 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Crypt;
+use Pusher\Pusher;
 
 
 class FrontAuthController extends Controller
 {
+    public function PusherAuth(Request $request)
+    {
+        $pusher = new Pusher(
+            env('PUSHER_APP_KEY'),
+            env('PUSHER_APP_SECRET'),
+            env('PUSHER_APP_ID'),
+            [
+                'cluster' => env('PUSHER_APP_CLUSTER'),
+                'useTLS' => true
+            ]
+        );
+
+        return $pusher->socket_auth(
+            $request->channel_name,
+            $request->socket_id
+        );
+    }
+    
     public function registerProvider(Request $request)
     {
         $request->validate([

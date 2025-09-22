@@ -12,6 +12,7 @@ class ProviderLead extends Model
     protected $fillable = [
         'provider_id',
         'job_id',
+        'client_id',
         'purchase_type',
         'purchase_at',
         'purchase_price',

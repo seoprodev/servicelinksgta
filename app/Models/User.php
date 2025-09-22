@@ -58,4 +58,25 @@ class User extends Authenticatable
     {
         return FakerURL::id_e($this->id);
     }
+
+
+    public function conversations()
+    {
+        return $this->belongsToMany(Conversation::class, 'conversation_user');
+    }
+
+
+    public function clients()
+    {
+        return $this->belongsToMany(User::class, 'provider_client', 'provider_id', 'client_id');
+    }
+
+
+    public function providers()
+    {
+        return $this->belongsToMany(User::class, 'provider_client', 'client_id', 'provider_id');
+    }
+
+
+
 }

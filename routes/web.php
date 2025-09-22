@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\MessageSent;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\LineDistanceController;
@@ -7,13 +8,18 @@ use App\Http\Controllers\admin\PackageController;
 use App\Http\Controllers\admin\PriorityController;
 use App\Http\Controllers\admin\PropertyController;
 use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\frontend\ChatController;
 use App\Http\Controllers\frontend\ClientJobController;
 use App\Http\Controllers\frontend\FrontAuthController;
 use App\Http\Controllers\frontend\FrontJobController;
 use App\Http\Controllers\frontend\JobStepsController;
 use App\Http\Controllers\frontend\ProviderController;
 use App\Http\Controllers\frontend\SubscriptionController;
+use App\Http\Controllers\frontend\TicketController;
+use App\Models\Message;
+use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\Facades\Route;
+use Pusher\Pusher;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +35,41 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect()->route('front.home');
 });
+
+
+Route::post('/pusher/auth', [FrontAuthController::class, 'PusherAuth'])
+    ->middleware('auth');
+
+Route::get('/test-pusher', function () {
+    $options = [
+        'cluster' => config('broadcasting.connections.pusher.options.cluster'),
+        'useTLS' => true,
+    ];
+
+    $pusher = new Pusher(
+        config('broadcasting.connections.pusher.key'),
+        config('broadcasting.connections.pusher.secret'),
+        config('broadcasting.connections.pusher.app_id'),
+        $options
+    );
+
+    dd($pusher);
+});
+
+Route::get('/fire-event', function () {
+    $message = Message::create([
+        'user_id' => auth()->id() ?? 1,
+        'conversation_id' => 1,
+        'body' => "Test message from Laravel"
+    ]);
+
+    event(new MessageSent($message));
+
+    return "Event fired with real Message model!";
+});
+
+
+Broadcast::routes();
 
 
 Route::view('/', 'frontend.home')->name('front.home');
@@ -77,6 +118,8 @@ Route::prefix('job')->group(function () {
 
 
 
+
+
 Route::get('verify/{token}', [FrontAuthController::class, 'showVerifyPage'])->name('verify.email');
 Route::post('verify', [FrontAuthController::class, 'verifyCode'])->name('verify.email.submit');
 Route::get('resend-code/{token}', [FrontAuthController::class, 'resendCode'])->name('resend.code');
@@ -92,9 +135,25 @@ Route::prefix('user')->group(function () {
     Route::get('/profile', [FrontAuthController::class, 'profileShow'])->name('user.profile');
     Route::post('/update-profile', [FrontAuthController::class, 'userUpdateProfile'])->name('user.update.profile');
 
+        Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
+
+        Route::get('/chat/{conversationId}/messages', [ChatController::class, 'messages'])->name('chat.messages');
+        Route::post('/chat/send', [ChatController::class, 'send'])->name('chat.send');
+
+        Route::get('/chat-search-users', [ChatController::class, 'searchProvider'])->name('chat.search.users');
+        Route::post('/chat/start', [ChatController::class, 'startConversation'])->name('chat.start');
+
+
+
 
     Route::middleware(['auth.user:client'])->group(function () {
         Route::view('dashboard', 'frontend.user.dashboard')->name('user.dashboard');
+
+
+        Route::get('post-jobs', [ClientJobController::class, 'createJob'])->name('client.create.job');
+        Route::get('/post-jobs/get-subcategories/{id}', [ClientJobController::class, 'getSubcategories'])->name('get.subcategories');
+        Route::post('/job/store', [ClientJobController::class, 'storeJob'])->name('user.job.store');
+
 
         Route::get('my-jobs', [ClientJobController::class, 'myJobs'])->name('client.jobs');
         Route::get('my-jobs-detail/{id}', [ClientJobController::class, 'myJobShow'])->name('user.job.detail');
@@ -114,14 +173,6 @@ Route::prefix('provider')->group(function () {
         Route::get('my-leads', [ProviderController::class, 'providerLeadIndex'])->name('provider.my.lead');
         Route::get('my-lead-show/{id}', [ProviderController::class, 'providerLeadShow'])->name('provider.my.lead.show');
 
-
-
-
-
-
-
-
-
         // Stripe Routes Start
         Route::post('/subscriptions/checkout', [SubscriptionController::class, 'checkout'])->name('subscriptions.checkout');
         Route::get('/subscriptions/success', [SubscriptionController::class, 'success'])->name('subscriptions.success');
@@ -131,10 +182,14 @@ Route::prefix('provider')->group(function () {
         Route::post('pay-lead', [ProviderController::class, 'checkout'])->name('provider.pay-lead');
         Route::get('pay-lead/success', [ProviderController::class, 'success'])->name('provider.pay-lead.success');
         Route::get('pay-lead/cancel', [ProviderController::class, 'cancel'])->name('provider.pay-lead.cancel');
-
         // Stripe Routes End
-    });
 
+        // Chat Routes Start
+        Route::get('/chat', [ChatController::class, 'index'])->name('provider.chat.index');
+        Route::get('/chat-search-provider', [ChatController::class, 'searchClient'])->name('chat.search.provider');
+        // Chat Routes Start
+
+    });
 
     Route::post('/register', [FrontAuthController::class, 'registerProvider'])->name('provider.register');
 
@@ -144,6 +199,33 @@ Route::prefix('provider')->group(function () {
 
 
 });
+
+
+
+
+
+
+
+
+foreach (['user', 'provider'] as $role) {
+    Route::prefix($role)->middleware(["auth.user"])->group(function () use ($role) {
+
+
+        // Ticket Routes
+        Route::get('tickets', [TicketController::class, 'index'])->name("$role.tickets.index");
+        Route::get('create-ticket', [TicketController::class, 'create'])->name("$role.create.ticket");
+        Route::post('create-ticket', [TicketController::class, 'store'])->name("$role.store.ticket");
+        Route::delete('tickets/{ticket}', [TicketController::class, 'destroy'])->name("$role.tickets.destroy");
+
+
+    });
+}
+
+
+
+
+
+
 
 Route::get('make-hash', function (){
     dd(\Illuminate\Support\Facades\Hash::make('12345678'));
@@ -212,6 +294,13 @@ Route::prefix('admin')->group(function () {
         Route::get('edit-package/{id}', [PackageController::class, 'edit'])->name('admin.edit.package');
         Route::patch('update-package/{id}', [PackageController::class, 'update'])->name('admin.update.package');
         Route::get('delete-package/{id}', [PackageController::class, 'destroy'])->name('admin.delete.package');
+
+        //Ticket Management
+        Route::get('ticket-management', [App\Http\Controllers\admin\TicketController::class, 'index'])->name('admin.manage.ticket');
+        Route::get('ticket-detail/{id}', [App\Http\Controllers\admin\TicketController::class, 'show'])->name('admin.show.ticket');
+        Route::get('edit-ticket/{id}', [App\Http\Controllers\admin\TicketController::class, 'edit'])->name('admin.edit.ticket');
+        Route::patch('update-ticket/{id}', [App\Http\Controllers\admin\TicketController::class, 'update'])->name('admin.update.ticket');
+        Route::delete('delete-ticket/{id}', [App\Http\Controllers\admin\TicketController::class, 'destroy'])->name('admin.delete.ticket');
 
     });
 
