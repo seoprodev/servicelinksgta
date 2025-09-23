@@ -242,8 +242,8 @@
                                     href="javascript:void(0)">General Plumbing</a>
                         </h6>
                         <div class="d-flex align-items-center justify-content-between">
-                            <p class="fw-medium fs-14 mb-0"> 1 Service
-                            </p>
+{{--                            <p class="fw-medium fs-14 mb-0"> 1 Service--}}
+{{--                            </p>--}}
                         </div>
                     </div>
                 </div>
@@ -275,8 +275,8 @@
                                     href="javascript:void(0)">Bathroom Plumbing</a>
                         </h6>
                         <div class="d-flex align-items-center justify-content-between">
-                            <p class="fw-medium fs-14 mb-0"> 0 Service
-                            </p>
+{{--                            <p class="fw-medium fs-14 mb-0"> 0 Service--}}
+{{--                            </p>--}}
                         </div>
                     </div>
                 </div>
@@ -308,8 +308,8 @@
                                     href="javascript:void(0)">Kitchen Plumbing</a>
                         </h6>
                         <div class="d-flex align-items-center justify-content-between">
-                            <p class="fw-medium fs-14 mb-0"> 1 Service
-                            </p>
+{{--                            <p class="fw-medium fs-14 mb-0"> 1 Service--}}
+{{--                            </p>--}}
                         </div>
                     </div>
                 </div>
@@ -341,8 +341,8 @@
                                     href="javascript:void(0)">Emergency Plumbing</a>
                         </h6>
                         <div class="d-flex align-items-center justify-content-between">
-                            <p class="fw-medium fs-14 mb-0"> 0 Service
-                            </p>
+{{--                            <p class="fw-medium fs-14 mb-0"> 0 Service--}}
+{{--                            </p>--}}
                         </div>
                     </div>
                 </div>
@@ -374,20 +374,20 @@
                                     href="javascript:void(0)">Drain &amp; Sewer</a>
                         </h6>
                         <div class="d-flex align-items-center justify-content-between">
-                            <p class="fw-medium fs-14 mb-0"> 0 Service
-                            </p>
+{{--                            <p class="fw-medium fs-14 mb-0"> 0 Service--}}
+{{--                            </p>--}}
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="text-center view-all wow fadeInUp" data-wow-delay="0.2s">
-                        <a href="javascript:void(0)" class="btn btn-dark">View All<i
-                                    class="ti ti-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
+{{--            <div class="row">--}}
+{{--                <div class="col-md-12">--}}
+{{--                    <div class="text-center view-all wow fadeInUp" data-wow-delay="0.2s">--}}
+{{--                        <a href="javascript:void(0)" class="btn btn-dark">View All<i--}}
+{{--                                    class="ti ti-arrow-right ms-2"></i></a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
         </div>
     </section>
     <section class="section testimonial-section bg-white">
