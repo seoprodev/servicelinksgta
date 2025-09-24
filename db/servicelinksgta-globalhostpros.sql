@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 22, 2025 at 11:03 PM
+-- Generation Time: Sep 24, 2025 at 10:46 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.2.29
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `servicelinksgta-globalhostpros`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blogs`
+--
+
+CREATE TABLE `blogs` (
+  `id` int NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `content` longtext NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `is_active` tinyint DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `blogs`
+--
+
+INSERT INTO `blogs` (`id`, `title`, `slug`, `content`, `image`, `is_active`, `created_at`, `updated_at`) VALUES
+(2, '5 Common Plumbing Problems You Should Never Ignore', '5-common-plumbing-problems-you-should-never-ignore', '<p data-start=\"296\" data-end=\"482\" style=\"outline: none; margin-bottom: 20px; color: rgb(101, 107, 118); font-family: Archivo, sans-serif;\">Plumbing issues may seem minor at first, but they can quickly escalate into costly repairs if left unattended. Here are five common plumbing problems that homeowners should never ignore:</p><h3 data-start=\"484\" data-end=\"511\" style=\"outline: none; margin-bottom: 0px; font-weight: 700; color: rgb(36, 43, 58); font-size: 28px; font-family: Archivo, sans-serif;\">1.&nbsp;<span data-start=\"491\" data-end=\"511\" style=\"outline: none;\">Dripping Faucets</span></h3><p data-start=\"512\" data-end=\"620\" style=\"outline: none; margin-bottom: 20px; color: rgb(101, 107, 118); font-family: Archivo, sans-serif;\">That constant drip isn\'t just annoying—it can waste gallons of water over time and increase your water bill.</p><h3 data-start=\"622\" data-end=\"644\" style=\"outline: none; margin-bottom: 0px; font-weight: 700; color: rgb(36, 43, 58); font-size: 28px; font-family: Archivo, sans-serif;\">2.&nbsp;<span data-start=\"629\" data-end=\"644\" style=\"outline: none;\">Slow Drains</span></h3><p data-start=\"645\" data-end=\"764\" style=\"outline: none; margin-bottom: 20px; color: rgb(101, 107, 118); font-family: Archivo, sans-serif;\">A slow drain often signals a clog forming deep inside your pipes. Ignoring it can lead to full blockage or pipe damage.</p><h3 data-start=\"766\" data-end=\"795\" style=\"outline: none; margin-bottom: 0px; font-weight: 700; color: rgb(36, 43, 58); font-size: 28px; font-family: Archivo, sans-serif;\">3.&nbsp;<span data-start=\"773\" data-end=\"795\" style=\"outline: none;\">Low Water Pressure</span></h3><p data-start=\"796\" data-end=\"903\" style=\"outline: none; margin-bottom: 20px; color: rgb(101, 107, 118); font-family: Archivo, sans-serif;\">Inconsistent water pressure may indicate hidden leaks, corroded pipes, or mineral buildup in your fixtures.</p><h3 data-start=\"905\" data-end=\"931\" style=\"outline: none; margin-bottom: 0px; font-weight: 700; color: rgb(36, 43, 58); font-size: 28px; font-family: Archivo, sans-serif;\">4.&nbsp;<span data-start=\"912\" data-end=\"931\" style=\"outline: none;\">Running Toilets</span></h3><p data-start=\"932\" data-end=\"1044\" style=\"outline: none; margin-bottom: 20px; color: rgb(101, 107, 118); font-family: Archivo, sans-serif;\">A running toilet can waste up to 200 gallons of water per day. It\'s usually an easy fix, so don’t delay repairs.</p><h3 data-start=\"1046\" data-end=\"1076\" style=\"outline: none; margin-bottom: 0px; font-weight: 700; color: rgb(36, 43, 58); font-size: 28px; font-family: Archivo, sans-serif;\">5.&nbsp;<span data-start=\"1053\" data-end=\"1076\" style=\"outline: none;\">Water Heater Issues</span></h3><p data-start=\"1077\" data-end=\"1185\" style=\"outline: none; margin-bottom: 20px; color: rgb(101, 107, 118); font-family: Archivo, sans-serif;\">If your shower suddenly runs cold or the water smells metallic, your heater may need service or replacement.</p><p data-start=\"1187\" data-end=\"1285\" style=\"outline: none; margin-bottom: 20px; color: rgb(101, 107, 118); font-family: Archivo, sans-serif;\">👉&nbsp;<em data-start=\"1190\" data-end=\"1285\" style=\"outline: none;\">Need quick plumbing help? Book a certified plumber through our platform in just a few clicks.</em></p>', 'uploads/blog/1758740570-68d4405ace3e9.jpg', 1, '2025-09-24 13:55:59', '2025-09-24 14:02:50'),
+(3, 'What is Lorem Ipsum?', 'what-is-lorem-ipsum', '<p><strong style=\"margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br><br></span></p><ul style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\"><ul><li style=\"margin: 0px; padding: 0px;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li><li style=\"margin: 0px; padding: 0px;\">Donec quis orci efficitur, suscipit odio sit amet, laoreet massa.</li><li style=\"margin: 0px; padding: 0px;\">Phasellus id augue auctor, maximus felis eget, accumsan nibh.</li><li style=\"margin: 0px; padding: 0px;\">Nam quis tortor porta, porta diam aliquam, egestas lorem.</li><li style=\"margin: 0px; padding: 0px;\">Maecenas sit amet justo ut est bibendum feugiat.</li><li style=\"margin: 0px; padding: 0px;\">Nam luctus purus id finibus hendrerit.</li></ul><ul><li style=\"margin: 0px; padding: 0px;\">Phasellus feugiat lectus a arcu mollis efficitur.</li><li style=\"margin: 0px; padding: 0px;\">In ut ex semper nulla varius placerat ut sed tellus.</li><li style=\"margin: 0px; padding: 0px;\">In nec quam nec ipsum condimentum sodales.</li></ul><ul><li style=\"margin: 0px; padding: 0px;\">Suspendisse nec massa vitae eros vehicula euismod vel et risus.</li><li style=\"margin: 0px; padding: 0px;\">Sed posuere turpis vel malesuada viverra.</li></ul></ul>', 'uploads/blog/1758741802_5ed9911a-6ac5-486c-9ecd-16c75fb10f76_1754009178.jpg', 1, '2025-09-24 14:23:22', '2025-09-24 14:23:22'),
+(4, 'What is Lorem Ipsum?????', 'what-is-lorem-ipsum', '<p><span style=\"font-weight: bolder; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</span><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br><br></span></p><ul style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\"><ul><li style=\"margin: 0px; padding: 0px;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li><li style=\"margin: 0px; padding: 0px;\">Donec quis orci efficitur, suscipit odio sit amet, laoreet massa.</li><li style=\"margin: 0px; padding: 0px;\">Phasellus id augue auctor, maximus felis eget, accumsan nibh.</li><li style=\"margin: 0px; padding: 0px;\">Nam quis tortor porta, porta diam aliquam, egestas lorem.</li><li style=\"margin: 0px; padding: 0px;\">Maecenas sit amet justo ut est bibendum feugiat.</li><li style=\"margin: 0px; padding: 0px;\">Nam luctus purus id finibus hendrerit.</li></ul><ul><li style=\"margin: 0px; padding: 0px;\">Phasellus feugiat lectus a arcu mollis efficitur.</li><li style=\"margin: 0px; padding: 0px;\">In ut ex semper nulla varius placerat ut sed tellus.</li><li style=\"margin: 0px; padding: 0px;\">In nec quam nec ipsum condimentum sodales.</li></ul><ul><li style=\"margin: 0px; padding: 0px;\">Suspendisse nec massa vitae eros vehicula euismod vel et risus.</li><li style=\"margin: 0px; padding: 0px;\">Sed posuere turpis vel malesuada viverra.</li></ul></ul>', 'uploads/blog/1758741870_754eec98-c816-4e56-b55e-45a074d2e6cd_1754009153.jpg', 1, '2025-09-24 14:24:30', '2025-09-24 14:36:58');
 
 -- --------------------------------------------------------
 
@@ -69,6 +95,31 @@ INSERT INTO `categories` (`id`, `name`, `slug`, `description`, `lead_price`, `is
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `contact_us`
+--
+
+CREATE TABLE `contact_us` (
+  `id` int NOT NULL,
+  `name` varchar(155) NOT NULL,
+  `email` varchar(155) NOT NULL,
+  `phone_number` varchar(155) NOT NULL,
+  `message` text NOT NULL,
+  `is_view` tinyint DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `contact_us`
+--
+
+INSERT INTO `contact_us` (`id`, `name`, `email`, `phone_number`, `message`, `is_view`, `created_at`, `updated_at`) VALUES
+(1, 'Indigo Cole', 'sacikari@mailinator.com', '+1 (334) 535-6871', 'Quo expedita sint eda', 0, '2025-09-24 12:32:24', '2025-09-24 12:32:24'),
+(3, 'Keith Roy', 'wogur@mailinator.com', '+1 (259) 683-5241', 'Tempora repudiandae', 1, '2025-09-24 12:33:21', '2025-09-24 12:58:23');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `failed_jobs`
 --
 
@@ -103,6 +154,7 @@ CREATE TABLE `jobs` (
   `country` varchar(255) NOT NULL,
   `status` enum('pending','active','completed','cancelled') NOT NULL DEFAULT 'pending',
   `is_active` tinyint NOT NULL DEFAULT '0',
+  `is_deleted` tinyint NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -111,14 +163,12 @@ CREATE TABLE `jobs` (
 -- Dumping data for table `jobs`
 --
 
-INSERT INTO `jobs` (`id`, `user_id`, `category_id`, `sub_category_id`, `title`, `property_type`, `priority`, `job_files`, `description`, `postal_code`, `city`, `country`, `status`, `is_active`, `created_at`, `updated_at`) VALUES
-(1, 2, 6, NULL, 'Looking for General Plumbing services for my Office in Toronto', 'Office', 'To be discussed', '[\"uploads\\/job\\/files\\/1757700173_68c4604d1e76c.jpg\"]', 'We are looking for a reliable General Plumber for our office. The job includes installation, repair, and maintenance of plumbing systems, fixing leaks, pipes, and fixtures, and handling emergency plumbing issues when needed. Candidate should have basic plumbing experience, good problem-solving skills, and be physically fit to handle the work. Interested persons can contact us at [Your Phone/Email].', 'M5V3L9', 'Toronto', 'Canada', 'pending', 1, '2025-09-12 22:06:14', '2025-09-12 22:06:14'),
-(2, 2, 7, NULL, 'Looking for Bathroom Plumbing services for my Apartment building in Edmonton', 'Apartment building', 'Urgent', '[]', 'We are looking for a reliable General Plumber for our office. The job includes installation, repair, and maintenance of plumbing systems, fixing leaks, pipes, and fixtures, and handling emergency plumbing issues when needed. Candidate should have basic plumbing experience, good problem-solving skills, and be physically fit to handle the work', 'T5J3N5', 'Edmonton', 'Canada', 'pending', 1, '2025-09-12 22:14:00', '2025-09-12 22:14:00'),
-(3, 41, 7, NULL, 'Looking for Bathroom Plumbing services for my Apartment building in Edmonton', 'Apartment building', 'Urgent', '[]', 'We are looking for a reliable General Plumber for our office. The job includes installation, repair, and maintenance of plumbing systems, fixing leaks, pipes, and fixtures, and handling emergency plumbing issues when needed. Candidate should have basic plumbing experience, good problem-solving skills, and be physically fit to handle the work', 'T5J3N5', 'Edmonton', 'Canada', 'pending', 1, '2025-09-12 22:14:07', '2025-09-12 22:14:07'),
-(4, 2, 7, NULL, 'Looking for Bathroom Plumbing services for my Apartment building in Edmonton', 'Apartment building', 'Urgent', '[]', 'We are looking for a reliable General Plumber for our office. The job includes installation, repair, and maintenance of plumbing systems, fixing leaks, pipes, and fixtures, and handling emergency plumbing issues when needed. Candidate should have basic plumbing experience, good problem-solving skills, and be physically fit to handle the work', 'T5J3N5', 'Edmonton', 'Canada', 'pending', 1, '2025-09-12 22:14:37', '2025-09-12 22:14:37'),
-(5, 2, 23, NULL, 'Quam incididunt odit', 'Semi-detached house', 'Within a couple of months', '[\"uploads\\/job\\/files\\/1757709675_68c4856bce2ec.jpg\"]', 'Dolorem expedita del', 'M5V3L9', 'Toronto', 'Canada', 'pending', 1, '2025-09-13 00:41:15', '2025-09-13 00:41:15'),
-(6, 2, 9, 10, 'this is test first job', 'Condo', 'Within 2 weeks', '[\"uploads\\/job\\/files\\/1758559568_68d17d5012acc.jpg\"]', 'tinaskldnaskd msa das tajksbdsa', 'M5V3L9', 'Toronto', 'Canada', 'pending', 1, '2025-09-22 11:46:08', '2025-09-22 11:46:08'),
-(7, 2, 21, NULL, 'test tst tes', 'Semi-detached house', 'Within 1 month', '[\"uploads\\/job\\/files\\/1758559682_68d17dc2b4187.jpg\"]', 'Dolor cum voluptatem', 'M5V3L9', 'Toronto', 'Canada', 'pending', 1, '2025-09-22 11:48:02', '2025-09-22 11:48:02');
+INSERT INTO `jobs` (`id`, `user_id`, `category_id`, `sub_category_id`, `title`, `property_type`, `priority`, `job_files`, `description`, `postal_code`, `city`, `country`, `status`, `is_active`, `is_deleted`, `created_at`, `updated_at`) VALUES
+(1, 2, 6, NULL, 'Looking for General Plumbing services for my Office in Toronto', 'Office', 'To be discussed', '[\"uploads\\/job\\/files\\/1757700173_68c4604d1e76c.jpg\"]', 'We are looking for a reliable General Plumber for our office. The job includes installation, repair, and maintenance of plumbing systems, fixing leaks, pipes, and fixtures, and handling emergency plumbing issues when needed. Candidate should have basic plumbing experience, good problem-solving skills, and be physically fit to handle the work. Interested persons can contact us at [Your Phone/Email].', 'M5V3L9', 'Toronto', 'Canada', 'pending', 1, 0, '2025-09-12 22:06:14', '2025-09-12 22:06:14'),
+(2, 2, 7, NULL, 'Looking for Bathroom Plumbing services for my Apartment building in Edmonton', 'Apartment building', 'Urgent', '[]', 'We are looking for a reliable General Plumber for our office. The job includes installation, repair, and maintenance of plumbing systems, fixing leaks, pipes, and fixtures, and handling emergency plumbing issues when needed. Candidate should have basic plumbing experience, good problem-solving skills, and be physically fit to handle the work', 'T5J3N5', 'Edmonton', 'Canada', 'pending', 1, 0, '2025-09-12 22:14:00', '2025-09-12 22:14:00'),
+(3, 41, 7, NULL, 'Looking for Bathroom Plumbing services for my Apartment building in Edmonton', 'Apartment building', 'Urgent', '[]', 'We are looking for a reliable General Plumber for our office. The job includes installation, repair, and maintenance of plumbing systems, fixing leaks, pipes, and fixtures, and handling emergency plumbing issues when needed. Candidate should have basic plumbing experience, good problem-solving skills, and be physically fit to handle the work', 'T5J3N5', 'Edmonton', 'Canada', 'pending', 1, 0, '2025-09-12 22:14:07', '2025-09-12 22:14:07'),
+(4, 2, 7, NULL, 'Looking for Bathroom Plumbing services for my Apartment building in Edmonton', 'Apartment building', 'Urgent', '[]', 'We are looking for a reliable General Plumber for our office. The job includes installation, repair, and maintenance of plumbing systems, fixing leaks, pipes, and fixtures, and handling emergency plumbing issues when needed. Candidate should have basic plumbing experience, good problem-solving skills, and be physically fit to handle the work', 'T5J3N5', 'Edmonton', 'Canada', 'pending', 1, 0, '2025-09-12 22:14:37', '2025-09-12 22:14:37'),
+(10, 42, 9, 11, 'Looking for Kitchen Plumbing services for my Apartment building in Toronto', 'Apartment building', 'Urgent', '[]', 'bjkkjbnk', 'M5V3L9', 'Toronto', 'Canada', 'pending', 1, 0, '2025-09-24 17:22:17', '2025-09-24 17:22:17');
 
 -- --------------------------------------------------------
 
@@ -284,13 +334,102 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `postal_codes` (
   `id` int NOT NULL,
-  `code` varchar(7) NOT NULL,
-  `city` varchar(100) DEFAULT NULL,
-  `province` varchar(50) DEFAULT NULL,
-  `latitude` decimal(9,6) DEFAULT NULL,
-  `longitude` decimal(9,6) DEFAULT NULL,
-  `timezone` varchar(50) DEFAULT NULL
+  `postal_code` varchar(100) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `state` varchar(100) NOT NULL,
+  `country` varchar(100) NOT NULL,
+  `is_active` tinyint DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `postal_codes`
+--
+
+INSERT INTO `postal_codes` (`id`, `postal_code`, `city`, `state`, `country`, `is_active`, `created_at`, `updated_at`) VALUES
+(1, 'A0A 0A0', 'St. John\'s', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:05:57', '2025-09-24 00:05:57'),
+(2, 'A1A 1A1', 'St. John\'s', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:05:57', '2025-09-24 00:05:57'),
+(3, 'A2A 2A2', 'Gander', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:05:57', '2025-09-24 00:05:57'),
+(4, 'A3A 3A3', 'Corner Brook', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:05:57', '2025-09-24 00:05:57'),
+(5, 'A4A 4A4', 'Grand Falls-Windsor', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:05:57', '2025-09-24 00:05:57'),
+(6, 'A5A 5A5', 'Stephenville', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:05:57', '2025-09-24 00:05:57'),
+(7, 'A6A 6A6', 'Bay Roberts', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:05:57', '2025-09-24 00:05:57'),
+(8, 'A7A 7A7', 'Clarenville', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:05:57', '2025-09-24 00:05:57'),
+(9, 'A8A 8A8', 'Deer Lake', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:05:57', '2025-09-24 00:05:57'),
+(10, 'A9A 9A9', 'Happy Valley-Goose Bay', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:05:57', '2025-09-24 00:05:57'),
+(11, 'A0A 0A0', 'St. John\'s', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(12, 'A1A 1A1', 'St. John\'s', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(13, 'A2A 2A2', 'Gander', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(14, 'A3A 3A3', 'Corner Brook', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(15, 'A4A 4A4', 'Grand Falls-Windsor', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(16, 'A5A 5A5', 'Stephenville', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(17, 'A6A 6A6', 'Bay Roberts', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(18, 'A7A 7A7', 'Clarenville', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(19, 'A8A 8A8', 'Deer Lake', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(20, 'A9A 9A9', 'Happy Valley-Goose Bay', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(21, 'B0A 0A0', 'Antigonish', 'Nova Scotia', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(22, 'B1A 1A1', 'Sydney', 'Nova Scotia', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(23, 'B2A 2A2', 'New Glasgow', 'Nova Scotia', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(24, 'B3A 3A3', 'Truro', 'Nova Scotia', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(25, 'B4A 4A4', 'Bridgewater', 'Nova Scotia', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(26, 'B5A 5A5', 'Yarmouth', 'Nova Scotia', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(27, 'B6A 6A6', 'Amherst', 'Nova Scotia', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(28, 'B7A 7A7', 'Stellarton', 'Nova Scotia', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(29, 'B8A 8A8', 'Glace Bay', 'Nova Scotia', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(30, 'B9A 9A9', 'North Sydney', 'Nova Scotia', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(31, 'C0A 0A0', 'Charlottetown', 'Prince Edward Island', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(32, 'C1A 1A1', 'Charlottetown', 'Prince Edward Island', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(33, 'C2A 2A2', 'Summerside', 'Prince Edward Island', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(34, 'C3A 3A3', 'Montague', 'Prince Edward Island', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(35, 'C4A 4A4', 'Souris', 'Prince Edward Island', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(36, 'C5A 5A5', 'Georgetown', 'Prince Edward Island', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(37, 'C6A 6A6', 'Kensington', 'Prince Edward Island', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(38, 'C7A 7A7', 'Cornwall', 'Prince Edward Island', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(39, 'C8A 8A8', 'Alberton', 'Prince Edward Island', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(40, 'C9A 9A9', 'Borden-Carleton', 'Prince Edward Island', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(41, 'E0A 0A0', 'Bathurst', 'New Brunswick', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(42, 'E1A 1A1', 'Moncton', 'New Brunswick', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(43, 'E2A 2A2', 'Saint John', 'New Brunswick', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(44, 'E3A 3A3', 'Fredericton', 'New Brunswick', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(45, 'E4A 4A4', 'Oromocto', 'New Brunswick', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(46, 'E5A 5A5', 'Sussex', 'New Brunswick', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(47, 'E6A 6A6', 'Woodstock', 'New Brunswick', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(48, 'E7A 7A7', 'Perth-Andover', 'New Brunswick', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(49, 'E8A 8A8', 'Campbellton', 'New Brunswick', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(50, 'E9A 9A9', 'Dalhousie', 'New Brunswick', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(51, 'G0A 0A0', 'Quebec City', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(52, 'G1A 0A0', 'Quebec City', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(53, 'G2A 0A0', 'Quebec City', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(54, 'G3A 0A0', 'Quebec City', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(55, 'G4A 0A0', 'Quebec City', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(56, 'G5A 0A0', 'Quebec City', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(57, 'G6A 0A0', 'Quebec City', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(58, 'G7A 0A0', 'Quebec City', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(59, 'G8A 0A0', 'Quebec City', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(60, 'G9A 0A0', 'Quebec City', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(61, 'H0A 0A0', 'Montreal', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(62, 'H1A 0A0', 'Montreal', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(63, 'H2A 0A0', 'Montreal', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(64, 'H3A 0A0', 'Montreal', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(65, 'H4A 0A0', 'Montreal', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(66, 'H5A 0A0', 'Montreal', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(67, 'H6A 0A0', 'Montreal', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(68, 'H7A 0A0', 'Montreal', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(69, 'H8A 0A0', 'Montreal', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(70, 'H9A 0A0', 'Montreal', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(71, 'M5V3L9', 'Quebec City', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(72, 'J1A 0A0', 'Sherbrooke', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(73, 'J2A 0A0', 'Sherbrooke', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(74, 'J3A 0A0', 'Sherbrooke', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(75, 'J4A 0A0', 'Sherbrooke', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(76, 'J5A 0A0', 'Sherbrooke', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(77, 'J6A 0A0', 'Sherbrooke', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(78, 'J7A 0A0', 'Sherbrooke', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(79, 'J8A 0A0', 'Sherbrooke', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(80, 'J9A 0A0', 'Sherbrooke', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(81, 'K0A 0A0', 'Ottawa', 'Ontario', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
+(82, 'K1A 0A0', 'Ottawa', 'Ontario', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48');
 
 -- --------------------------------------------------------
 
@@ -401,6 +540,26 @@ INSERT INTO `provider_leads` (`id`, `provider_id`, `job_id`, `client_id`, `purch
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `subscribers`
+--
+
+CREATE TABLE `subscribers` (
+  `id` int NOT NULL,
+  `email` varchar(155) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `subscribers`
+--
+
+INSERT INTO `subscribers` (`id`, `email`, `created_at`, `updated_at`) VALUES
+(3, 'test@test.com', '2025-09-24 17:43:14', '2025-09-24 17:43:14');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `subscription_packages`
 --
 
@@ -479,7 +638,7 @@ CREATE TABLE `tickets` (
 --
 
 INSERT INTO `tickets` (`id`, `user_id`, `subject`, `priority`, `message`, `attachments`, `status`, `created_at`, `updated_at`) VALUES
-(17, 2, 'Test First Ticket', 'medium', 'Test First Ticket Message', '\"[\\\"uploads\\\\\\/tickets\\\\\\/1758563765_68d18db516a5a.jpg\\\"]\"', 'complete', '2025-09-22 12:56:05', '2025-09-22 17:53:38');
+(21, 34, 'Test First Ticket', 'medium', 'this is ticket message', '\"[\\\"uploads\\\\\\/tickets\\\\\\/1758748653_68d45fed2253f.jpg\\\"]\"', 'complete', '2025-09-24 16:17:33', '2025-09-24 16:25:54');
 
 -- --------------------------------------------------------
 
@@ -510,7 +669,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `user_type`, `email_verified_at`, `p
 (2, 'Russell Gomez', 'client@client.com', 'client', NULL, '$2y$12$crdqYF8i86D7Qr.C.5TFLOS5olpZu.Iz1jRM0XX9zrSOKjNZlszlG', NULL, 1, 0, '2025-09-02 12:58:05', '2025-09-05 19:10:12'),
 (34, 'duhuw', 'provider@provider.com', 'provider', NULL, '$2y$12$crdqYF8i86D7Qr.C.5TFLOS5olpZu.Iz1jRM0XX9zrSOKjNZlszlG', NULL, 1, 0, '2025-09-10 12:55:52', '2025-09-10 15:11:26'),
 (37, 'Roof Traders', 'provider@free.com', 'provider', NULL, '$2y$12$crdqYF8i86D7Qr.C.5TFLOS5olpZu.Iz1jRM0XX9zrSOKjNZlszlG', NULL, 1, 0, '2025-09-11 23:45:56', '2025-09-11 23:46:28'),
-(41, 'Zorita Leblanc', 'nasaxaje@mailinator.com', 'client', NULL, '$2y$12$aJG2SR.XCoy31c9oAXnfl.fK4igZco2lBugp1J6J3IefOCyfVFrOS', NULL, 1, 0, '2025-09-12 22:06:14', '2025-09-12 22:06:14');
+(41, 'Zorita Leblanc', 'nasaxaje@mailinator.com', 'client', NULL, '$2y$12$aJG2SR.XCoy31c9oAXnfl.fK4igZco2lBugp1J6J3IefOCyfVFrOS', NULL, 1, 0, '2025-09-12 22:06:14', '2025-09-12 22:06:14'),
+(42, 'Adele Bean', 'zixybud@mailinator.com', 'client', NULL, '$2y$12$3BXjbsY9RUTbKvAdaDQh1OzAyOWcUqwmT03oU.//Vov9/H3JMNTs2', NULL, 0, 0, '2025-09-24 17:22:17', '2025-09-24 17:22:17');
 
 -- --------------------------------------------------------
 
@@ -549,10 +709,11 @@ CREATE TABLE `user_profiles` (
 --
 
 INSERT INTO `user_profiles` (`id`, `user_id`, `first_name`, `last_name`, `username`, `avatar`, `bio`, `gender`, `dob`, `phone`, `address`, `country`, `state`, `city`, `postal_code`, `company_name`, `business_license`, `government_doc`, `accept_terms`, `is_verified`, `verification_code`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Russell', 'Gomez', NULL, 'uploads/user/profile/1757112582_68bb690622b71.jpg', 'Sed sint sint modi o', 'female', '1994-11-09', '+1 (528) 485-5578', 'Deserunt ducimus qu', 'In officia consequat', 'Dolorem voluptas deb', 'Id voluptatibus comm', 'Ullamco enim iste qu', NULL, 'uploads/user/doc/1757112591_68bb690f3b909.jpg', 'uploads/user/doc/1757112701_68bb697da749f.jpg', NULL, 0, NULL, '2025-09-02 12:58:05', '2025-09-05 19:10:12'),
-(30, 34, 'duhuw', 'Ayala', NULL, NULL, NULL, NULL, NULL, '0300000000', NULL, NULL, NULL, NULL, NULL, 'Franklin Mcbride Inc', 'uploads/user/doc/1757526951_68c1bba7c43f2.jpg', 'uploads/user/doc/1757526951_68c1bba7c4f86.jpg', 1, 0, 'email-verified', '2025-09-10 12:55:52', '2025-09-10 12:59:16'),
+(1, 2, 'Russell', 'Gomez', NULL, 'uploads/user/profile/1758753015_68d470f7ccca0.jpg', 'Sed sint sint modi o', 'female', '1994-11-09', '+1 (528) 485-5578', 'Deserunt ducimus qu', 'In officia consequat', 'Dolorem voluptas deb', 'Id voluptatibus comm', 'Ullamco enim iste qu', NULL, 'uploads/user/doc/1757112591_68bb690f3b909.jpg', 'uploads/user/doc/1757112701_68bb697da749f.jpg', NULL, 0, NULL, '2025-09-02 12:58:05', '2025-09-24 17:30:15'),
+(30, 34, 'duhuw', 'Ayala', NULL, NULL, 'This is my bio', 'male', '2016-02-09', '0300000000', 'test Address', 'us', 'alaska', 'hanes', '151515', 'Franklin Mcbride Inc', 'uploads/user/doc/1758752020_68d46d1493569.jpg', 'uploads/user/doc/1758752020_68d46d14939f9.jpg', 1, 0, 'email-verified', '2025-09-10 12:55:52', '2025-09-24 17:13:40'),
 (33, 37, 'Roof', 'Traders', NULL, NULL, NULL, NULL, NULL, '981465065198', NULL, NULL, NULL, NULL, NULL, 'Roof Traders', 'uploads/user/doc/1757619956_68c326f484295.jpg', 'uploads/user/doc/1757619956_68c326f488324.jpg', 1, 0, 'email-verified', '2025-09-11 23:45:56', '2025-09-11 23:46:28'),
-(37, 41, 'Zorita', 'Leblanc', NULL, NULL, NULL, NULL, NULL, '8751984965', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2025-09-12 22:06:14', '2025-09-12 22:14:00');
+(37, 41, 'Zorita', 'Leblanc', NULL, NULL, NULL, NULL, NULL, '8751984965', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2025-09-12 22:06:14', '2025-09-12 22:14:00'),
+(38, 42, 'Adele', 'Bean', NULL, NULL, NULL, NULL, NULL, '464614894', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2025-09-24 17:22:17', '2025-09-24 17:22:17');
 
 -- --------------------------------------------------------
 
@@ -594,11 +755,23 @@ INSERT INTO `user_subscriptions` (`id`, `user_id`, `subscription_package_id`, `s
 --
 
 --
+-- Indexes for table `blogs`
+--
+ALTER TABLE `blogs`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `slug` (`slug`);
+
+--
+-- Indexes for table `contact_us`
+--
+ALTER TABLE `contact_us`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -649,8 +822,7 @@ ALTER TABLE `personal_access_tokens`
 -- Indexes for table `postal_codes`
 --
 ALTER TABLE `postal_codes`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `code` (`code`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `priorities`
@@ -674,6 +846,12 @@ ALTER TABLE `provider_client`
 -- Indexes for table `provider_leads`
 --
 ALTER TABLE `provider_leads`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `subscribers`
+--
+ALTER TABLE `subscribers`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -721,10 +899,22 @@ ALTER TABLE `user_subscriptions`
 --
 
 --
+-- AUTO_INCREMENT for table `blogs`
+--
+ALTER TABLE `blogs`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `contact_us`
+--
+ALTER TABLE `contact_us`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -736,7 +926,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `line_distances`
@@ -766,7 +956,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `postal_codes`
 --
 ALTER TABLE `postal_codes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT for table `priorities`
@@ -793,6 +983,12 @@ ALTER TABLE `provider_leads`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `subscribers`
+--
+ALTER TABLE `subscribers`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `subscription_packages`
 --
 ALTER TABLE `subscription_packages`
@@ -808,19 +1004,19 @@ ALTER TABLE `sub_categories`
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `user_profiles`
 --
 ALTER TABLE `user_profiles`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `user_subscriptions`
