@@ -37,7 +37,8 @@
                                         <select name="status" class="form-control" required>
                                             <option value="open" {{ $ticket->status == 'open' ? 'selected' : '' }}>Open</option>
                                             <option value="pending" {{ $ticket->status == 'pending' ? 'selected' : '' }}>Pending</option>
-                                            <option value="complete" {{ $ticket->status == 'closed' ? 'selected' : '' }}>Complete</option>
+                                            <option value="complete" {{ $ticket->status == 'complete' ? 'selected' : '' }}>Complete</option>
+                                            <option value="hold" {{ $ticket->status == 'hold' ? 'selected' : '' }}>Hold</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">

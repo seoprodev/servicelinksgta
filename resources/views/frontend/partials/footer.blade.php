@@ -47,14 +47,13 @@
                         <div class="card bg-light-200 border-0 mb-3">
                             <div class="card-body">
                                 <h5 class="mb-3">Sign Up For Subscription</h5>
-                                <form id="subscriberForm" autocomplete="off">
+                                <form id="subscriber-form" autocomplete="off">
                                     <div class="mb-3">
                                         <input type="text" class="form-control" name="subscriber_email"
                                                id="subscriber_email" placeholder="Enter Email">
                                         <span class="text-danger error-text" id="subscriber_email_error"></span>
                                     </div>
-                                    <button type="submit" class="btn btn-lg btn-linear-primary w-100"
-                                            id="subscriberBtn">Subscribe</button>
+                                    <button type="submit" class="btn btn-lg btn-linear-primary w-100">Subscribe</button>
                                 </form>
                             </div>
                         </div>
@@ -201,4 +200,39 @@
     alertify.error("{{ $error }}");
     @endforeach
     @endif
+</script>
+
+<script>
+    $("#subscriber-form").on("submit", function(e) {
+        e.preventDefault();
+
+        let email = $("#subscriber_email").val();
+        let $error = $("#subscriber_email_error");
+
+        $error.text(""); // clear old error
+
+        $.ajax({
+            url: "{{ route('subscriber.store') }}",
+            method: "POST",
+            data: {
+                subscriber_email: email,
+                _token: "{{ csrf_token() }}"
+            },
+            success: function(response) {
+                if (response.status === 0) {
+                    // Show validation errors
+                    if (response.errors.subscriber_email) {
+                        $error.text(response.errors.subscriber_email[0]);
+                    }
+                } else {
+                    // Success
+                    $("#subscriber_email").val("");
+                    alert(response.message);
+                }
+            },
+            error: function() {
+                alert("Something went wrong. Please try again.");
+            }
+        });
+    });
 </script>

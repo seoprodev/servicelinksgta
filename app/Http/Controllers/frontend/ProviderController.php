@@ -8,9 +8,12 @@ use App\Helpers\FakerURL;
 use App\Http\Controllers\Controller;
 use App\Models\Job;
 use App\Models\ProviderLead;
+use App\Models\User;
+use App\Models\UserProfile;
 use App\Models\UserSubscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
 
@@ -237,6 +240,87 @@ class ProviderController extends Controller
     public function cancel()
     {
         return redirect()->route('provider.leads')->with('error', 'Payment was cancelled.');
+    }
+
+
+
+    public function ProviderProfileShow()
+    {
+        $user = Auth::user();
+        return view('frontend.provider.profile', compact('user'));
+    }
+
+    public function ProviderUpdateProfile(Request $request)
+    {
+//        dd($request->all());
+        $request->validate([
+            'first_name'   => 'required|string|max:255',
+            'last_name'    => 'required|string|max:255',
+            'name'         => 'required|string|max:255',
+            'phone'        => 'required|string|max:20',
+            'gender'       => 'required|in:male,female',
+            'dob'          => 'required|date',
+            'address'      => 'required|string|max:255',
+            'country'      => 'required|string|max:100',
+            'state'        => 'required|string|max:100',
+            'city'         => 'required|string|max:100',
+            'postal_code'  => 'required|string|max:20',
+        ]);
+
+        DB::beginTransaction();
+
+        try {
+            $user = User::findOrFail($request->id);
+
+            // update user table
+            $user->update([
+                'name'  => $request->name,
+                'email' => $user->email, // readonly
+            ]);
+
+            // profile fetch or create
+            $profile = $user->profile ?? new UserProfile(['user_id' => $user->id]);
+
+            $profile->first_name  = $request->first_name;
+            $profile->last_name   = $request->last_name;
+            $profile->phone       = $request->phone;
+            $profile->gender      = $request->gender;
+            $profile->dob         = $request->dob;
+            $profile->bio         = $request->bio;
+            $profile->address     = $request->address;
+            $profile->country     = $request->country;
+            $profile->state       = $request->state;
+            $profile->city        = $request->city;
+            $profile->postal_code = $request->postal_code;
+
+            // file uploads in public/
+            if ($request->hasFile('avatar')) {
+                $avatarName = time() . '_' . uniqid() . '.' . $request->file('avatar')->getClientOriginalExtension();
+                $request->file('avatar')->move(public_path('uploads/user/profile/'), $avatarName);
+                $profile->avatar = 'uploads/user/profile/' . $avatarName;
+            }
+
+            if ($request->hasFile('business_license_file')) {
+                $blName = time() . '_' . uniqid() . '.' . $request->file('business_license_file')->getClientOriginalExtension();
+                $request->file('business_license_file')->move(public_path('uploads/user/doc/'), $blName);
+                $profile->business_license = 'uploads/user/doc/' . $blName;
+            }
+
+            if ($request->hasFile('government_doc')) {
+                $idName = time() . '_' . uniqid() . '.' . $request->file('government_doc')->getClientOriginalExtension();
+                $request->file('government_doc')->move(public_path('uploads/user/doc/'), $idName);
+                $profile->government_doc = 'uploads/user/doc/' . $idName;
+            }
+
+            $profile->save();
+
+            DB::commit();
+
+            return redirect()->back()->with('success', 'Profile updated successfully.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'Something went wrong: ' . $e->getMessage());
+        }
     }
 
 

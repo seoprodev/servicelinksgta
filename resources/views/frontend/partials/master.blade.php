@@ -30,6 +30,9 @@
         font-weight: 600;
         border-radius: 25px;
     }
+    form#post-a-job {
+        margin: 0px;
+    }
 </style>
     @stack('styles')
 
@@ -250,19 +253,19 @@
                                 <button class="btn dropdown-toggle d-flex align-items-center language-selects" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 
 
-                                    <img src="https://servicelinksgta.globalhostpros.com/public/front/img/flags/en.png" alt="Flag">
+                                    <img src="{{ asset('frontend-assets/img/flags/en.png') }}" alt="Flag">
                                 </button>
 
                                 <ul class="dropdown-menu" aria-labelledby="languageDropdown">
                                     <li>
                                         <a class="dropdown-item d-flex align-items-center language-select languageImg" data-id="1" href="#!">
-                                            <img src="https://servicelinksgta.globalhostpros.com/public/front/img/flags/en.png" alt="Flag">
+                                            <img src="{{ asset('frontend-assets/img/flags/en.png') }}" alt="Flag">
                                             English
                                         </a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item d-flex align-items-center language-select languageImg" data-id="46" href="#!">
-                                            <img src="https://servicelinksgta.globalhostpros.com/public/front/img/flags/fr.png" alt="Flag">
+                                            <img src="{{ asset('frontend-assets/img/flags/fr.png') }}" alt="Flag">
                                             French
                                         </a>
                                     </li>
@@ -376,5 +379,20 @@
 @yield('main-content')
 @include('frontend.partials.footer')
 @stack('scripts')
+<script>
+    $('.toggle--password').click(function() {
+        var $button = $(this);
+        var $input = $button.siblings('.password--input'); // find input in the same group
+        var $icon = $button.find('.toggle--icon');
+
+        if ($input.attr('type') === 'password') {
+            $input.attr('type', 'text'); // show password
+            $icon.removeClass('fa-eye').addClass('fa-eye-slash');
+        } else {
+            $input.attr('type', 'password'); // hide password
+            $icon.removeClass('fa-eye-slash').addClass('fa-eye');
+        }
+    });
+</script>
 </body>
 </html>

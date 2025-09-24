@@ -24,8 +24,6 @@ class TicketController extends Controller
         return view('frontend.user.tickets.index', compact('tickets'));
     }
 
-
-
     public function create()
     {
         if (auth()->user()->user_type == 'provider'){
@@ -68,7 +66,6 @@ class TicketController extends Controller
     {
         $ticket = Ticket::where('user_id', auth()->id())->findOrFail(FakerURL::id_d($id));
 
-        // delete files if exist
         if ($ticket->attachments) {
             foreach (json_decode($ticket->attachments, true) as $file) {
                 $path = public_path($file);

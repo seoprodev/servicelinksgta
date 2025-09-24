@@ -2,10 +2,10 @@
 
     <!-- Logo -->
     <div class="header-left active">
-        <a href="https://servicelinksgta.globalhostpros.com/provider/dashboard" class="logo logo-normal">
+        <a href="javascript:" class="logo logo-normal">
             <img src="{{ asset('frontend-assets') }}/img/logo.png" alt="Logo" style="height:fit-content;width:fit-content">
         </a>
-        <a href="https://servicelinksgta.globalhostpros.com/provider/dashboard" class="logo-small">
+        <a href="javascript:" class="logo-small">
             <img src="{{ asset('frontend-assets') }}/img/favicon.png" alt="Logo">
         </a>
         <a id="toggle_btn" href="javascript:void(0);">
@@ -85,7 +85,7 @@
                         </div>
                         <div class="d-flex p-0 notification-footer-btn">
                             <a href="#" class="btn btn-light rounded  me-2 cancel cancelnotify">Cancel</a>
-                            <a href="https://servicelinksgta.globalhostpros.com/provider/notifications" class="btn btn-dark rounded viewall">View All</a>
+                            <a href="javascript:" class="btn btn-dark rounded viewall">View All</a>
                         </div>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                     </a>
                     <ul class="dropdown-menu p-2 dropdown-profile">
                         <li><a class="dropdown-item d-flex align-items-center" href="{{ route('provider.dashboard') }}"><i class="ti ti-layout-grid me-1"></i>Dashboard</a></li>
-                        <li><a class="dropdown-item d-flex align-items-center" href="javascript:"><i class="ti ti-user me-1"></i>My Profile</a></li>
+                        <li><a class="dropdown-item d-flex align-items-center" href="{{ route('provider.profile')}}"><i class="ti ti-user me-1"></i>My Profile</a></li>
                         <li class="mb-0">
                             <a href="#" class="d-flex align-items-center text-decoration-none"
                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -207,20 +207,19 @@
                                 class="menu-arrow"></span></a>
                     <ul>
                         <li class="">
-                            <a href="" class=""><i
-                                        class="ti ti-chevrons-right me-2"></i>Profile Settings</a>
+                            <a href="{{ route('provider.profile') }}" class=""><i class="ti ti-chevrons-right me-2"></i>Profile Settings</a>
                         </li>
-                        <li class="">
-                            <a href="" class=""><i
-                                        class="ti ti-chevrons-right me-2"></i>Security Settings</a>
-                        </li>
+{{--                        <li class="">--}}
+{{--                            <a href="" class=""><i--}}
+{{--                                        class="ti ti-chevrons-right me-2"></i>Security Settings</a>--}}
+{{--                        </li>--}}
 {{--                        <li class="">--}}
 {{--                            <a href="" class=""><i--}}
 {{--                                        class="ti ti-chevrons-right me-2"></i>Plan &amp; Billings</a>--}}
 {{--                        </li>--}}
-                        <li>
-                            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#del-account" id="del_account_btn"><i class="ti ti-chevrons-right me-2"></i>Delete Account</a>
-                        </li>
+{{--                        <li>--}}
+{{--                            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#del-account" id="del_account_btn"><i class="ti ti-chevrons-right me-2"></i>Delete Account</a>--}}
+{{--                        </li>--}}
                     </ul>
                 </li>
                 <li class="mb-0">

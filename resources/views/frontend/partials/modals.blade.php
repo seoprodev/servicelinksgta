@@ -42,9 +42,9 @@
                     <div class="mb-3">
                         <label class="form-label">Password</label>
                         <div class="input-group">
-                            <input type="password" name="password" id="password" class="form-control" maxlength="100" placeholder="Enter Password" autocomplete="current-password">
-                            <button class="btn btn-outline-dark" type="button" id="togglePassword" tabindex="-1">
-                                <i class="fas fa-eye" id="toggleIcon"></i>
+                            <input type="password" name="password" id="password" class="password--input form-control" maxlength="100" placeholder="Enter Password" autocomplete="current-password">
+                            <button class="btn btn-outline-dark toggle--password" type="button" id="togglePassword" tabindex="-1">
+                                <i class="fas fa-eye toggle--icon"></i>
                             </button>
                         </div>
                         <div class="invalid-feedback" id="password_error"></div>
@@ -163,11 +163,11 @@
                                             </div>
                                             <div class="input-group">
                                                 <input type="password" name="client_password" id="client_password"
-                                                       class="form-control" placeholder="Enter Password"
+                                                       class="password--input form-control" placeholder="Enter Password"
                                                        autocomplete="current-password">
-                                                <button class="btn btn-outline-dark" type="button"
-                                                        id="providerTogglePassword" tabindex="-1">
-                                                    <i class="fas fa-eye" id="toggleIcon"></i>
+                                                <button class="btn btn-outline-dark toggle--password" type="button"
+                                                        tabindex="-1">
+                                                    <i class="fas fa-eye toggle--icon"></i>
                                                 </button>
                                             </div>
                                             <div class="invalid-feedback" id="provider_password_error"></div>
@@ -217,11 +217,11 @@
                                data-bs-toggle="modal" data-bs-target="#forgot-password-modal">Forgot Password??</a>
                         </div>
                         <div class="input-group">
-                            <input type="password" name="password" id="login_password" class="form-control"
+                            <input type="password" name="password" id="login_password" class="password--input form-control"
                                    maxlength="100" placeholder="Enter Password"
                                    autocomplete="current-password">
-                            <button class="btn btn-outline-dark" type="button" id="loginTogglePassword" tabindex="-1">
-                                <i class="fas fa-eye" id="toggleIcon"></i>
+                            <button class="btn btn-outline-dark toggle--password" type="button" id="" tabindex="-1">
+                                <i class="fas fa-eye toggle--icon"></i>
                             </button>
                         </div>
                         <div class="invalid-feedback"></div>

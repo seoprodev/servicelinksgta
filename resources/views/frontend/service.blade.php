@@ -57,10 +57,10 @@
 
                         <div class="theiaStickySidebar" style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none;"><div class="card mb-4 mb-lg-0">
                                 <div class="card-body ">
-                                    <form action="https://servicelinksgta.globalhostpros.com/services" method="GET" id="filterForm">
+                                    <form action="javascript:" method="GET" id="filterForm">
                                         <div class="d-flex align-items-center justify-content-between mb-3 pb-3 border-bottom">
                                             <h5><i class="ti ti-filter-check me-2"></i>Filters</h5>
-                                            <a href="https://servicelinksgta.globalhostpros.com/services">Reset Filter</a>
+                                            <a href="javascript:">Reset Filter</a>
                                         </div>
                                         <div class="mb-3 pb-3 border-bottom">
                                             <label class="form-label">Search By Keyword</label>
@@ -217,7 +217,7 @@
                     <div class="col-xl-9 col-lg-8">
                         <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
                             <h4>Found <span class="text-primary">{{ $jobs->count() }} Leads</span></h4>
-                            <form action="https://servicelinksgta.globalhostpros.com/services" method="GET" id="sortform">
+                            <form action="javascript:" method="GET" id="sortform">
                                 <div class="d-flex align-items-center">
                                     <span class="text-dark me-2">Sort</span>
                                     <select class="select select2-hidden-accessible" name="sortprice" id="sortprice" onchange="this.form.submit()" data-select2-id="sortprice" tabindex="-1" aria-hidden="true">

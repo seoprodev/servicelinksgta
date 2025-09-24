@@ -23,6 +23,7 @@ class Job extends Model
         'country',
         'status',
         'is_active',
+        'is_deleted'
     ];
 
 

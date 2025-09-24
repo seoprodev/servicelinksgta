@@ -82,7 +82,7 @@
 
                             <tr>
                                 <td colspan="2" class="text-center">
-                                    <a href="/user/transaction" id="view-transaction-btn" class="btn border d-block view-transaction-btn">View All</a>
+                                    <a href="javascript:" id="view-transaction-btn" class="btn border d-block view-transaction-btn">View All</a>
                                 </td>
                             </tr>
                             </tbody>
@@ -132,7 +132,7 @@
 
                             <tr>
                                 <td colspan="2" class="text-center">
-                                    <a href="/user/bookinglist" id="view-transaction-btn" class="btn border d-block view-transaction-btn">View All</a>
+                                    <a href="javascript:" id="view-transaction-btn" class="btn border d-block view-transaction-btn">View All</a>
                                 </td>
                             </tr>
                             </tbody>

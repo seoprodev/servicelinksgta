@@ -46,7 +46,7 @@
                                                     @elseif($ticket->status === 'pending')
                                                         <div class="badge badge-warning">Pending</div>
                                                     @else
-                                                        <div class="badge badge-danger">Closed</div>
+                                                        <div class="badge badge-danger text-capitalize">{{ $ticket->status }}</div>
                                                     @endif
                                                 </td>
                                                 <td>

@@ -80,8 +80,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     <div class="row">
                         <div class="col-md-6 d-flex align-items-center">
                             <div class="contact-img flex-fill">
@@ -91,7 +89,7 @@
                         <div class="col-md-6 d-flex align-items-center justify-content-center">
                             <div class="contact-queries flex-fill">
                                 <h2>Get In Touch</h2>
-                                <form id="contactForm">
+                                <form id="contact-form">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="mb-3">
@@ -133,20 +131,18 @@
                                                     <textarea class="form-control" name="message" id="message"
                                                               placeholder="Type your message here"
                                                               rows="4"></textarea>
-                                                    <span class="error-text text-danger" id="message_error"></span>
+                                                    <span class="error-text text-danger" id="contact_message_error"></span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-12 submit-btn">
-                                            <button type="submit" class="btn btn-dark d-flex align-items-center"
-                                                    id="contactSaveBtn">
+                                            <button type="submit" class="btn btn-dark d-flex align-items-center">
                                                 Send Message<i class="feather-arrow-right-circle ms-2"></i>
                                             </button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -158,4 +154,39 @@
 @endsection
 
 @push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#contact-form').on('submit', function(e) {
+                e.preventDefault();
+
+                // Clear previous errors
+                $('.error-text').text('');
+
+                $.ajax({
+                    url: "{{ route('contact.submit') }}",
+                    method: "POST",
+                    data: $(this).serialize(),
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        // Show success message (you can replace alert with a div)
+                        alert(response.success);
+                        $('#contact-form')[0].reset();
+                    },
+                    error: function(xhr) {
+                        if (xhr.status === 422) {
+                            let errors = xhr.responseJSON.errors;
+                            $.each(errors, function(key, value) {
+                                // Populate error messages under each field
+                                $('#contact_' + key + '_error').text(value[0]);
+                            });
+                        } else {
+                            alert('Something went wrong. Please try again.');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 @endpush

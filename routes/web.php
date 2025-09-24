@@ -2,6 +2,7 @@
 
 use App\Events\MessageSent;
 use App\Http\Controllers\admin\AuthController;
+use App\Http\Controllers\admin\BlogController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\LineDistanceController;
 use App\Http\Controllers\admin\PackageController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\frontend\ClientJobController;
 use App\Http\Controllers\frontend\FrontAuthController;
 use App\Http\Controllers\frontend\FrontJobController;
 use App\Http\Controllers\frontend\JobStepsController;
+use App\Http\Controllers\frontend\MiscellaneousController;
 use App\Http\Controllers\frontend\ProviderController;
 use App\Http\Controllers\frontend\SubscriptionController;
 use App\Http\Controllers\frontend\TicketController;
@@ -75,8 +77,7 @@ Broadcast::routes();
 Route::view('/', 'frontend.home')->name('front.home');
 Route::view('service-detail', 'frontend.service-detail')->name('front.service.detail');
 Route::view('about-us', 'frontend.about')->name('front.about');
-Route::view('blogs', 'frontend.blog')->name('front.blog');
-Route::view('blog-detail', 'frontend.blog-detail')->name('front.blog.detail');
+
 Route::view('contact-us', 'frontend.contact')->name('front.contact');
 Route::view('categories', 'frontend.service-categories')->name('front.categories');
 Route::view('privacy-policy', 'frontend.policy')->name('front.policy');
@@ -105,9 +106,16 @@ Route::prefix('job')->group(function () {
     Route::get('/get-priorities', [JobStepsController::class, 'getPriorities'])->name('front.get.priorities');
     Route::post('/job/upload-temp', [JobStepsController::class, 'uploadTemp'])->name('front.upload.temp');
     Route::post('/submit-job-form', [JobStepsController::class, 'submitJobFormData'])->name('submit.job.form.data');
+
 });
 
 
+Route::post('/contact-submit', [MiscellaneousController::class, 'contactSubmit'])->name('contact.submit');
+
+Route::post('/subscribe', [MiscellaneousController::class, 'storeSubscriber'])->name('subscriber.store');
+
+Route::get('blogs', [MiscellaneousController::class, 'frontendBlogIndex'])->name('front.blog');
+Route::get('blog-detail/{slug}', [MiscellaneousController::class, 'frontendBlogDetail'])->name('front.blog.detail');
 
 
 
@@ -132,8 +140,7 @@ Route::post('/forgot-password', [FrontAuthController::class, 'sendResetOtp'])->n
 
 Route::prefix('user')->group(function () {
     Route::post('/register', [FrontAuthController::class, 'registerUser'])->name('user.register');
-    Route::get('/profile', [FrontAuthController::class, 'profileShow'])->name('user.profile');
-    Route::post('/update-profile', [FrontAuthController::class, 'userUpdateProfile'])->name('user.update.profile');
+
 
         Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
 
@@ -148,7 +155,8 @@ Route::prefix('user')->group(function () {
 
     Route::middleware(['auth.user:client'])->group(function () {
         Route::view('dashboard', 'frontend.user.dashboard')->name('user.dashboard');
-
+        Route::get('/profile', [FrontAuthController::class, 'profileShow'])->name('user.profile');
+        Route::post('/update-profile', [FrontAuthController::class, 'userUpdateProfile'])->name('user.update.profile');
 
         Route::get('post-jobs', [ClientJobController::class, 'createJob'])->name('client.create.job');
         Route::get('/post-jobs/get-subcategories/{id}', [ClientJobController::class, 'getSubcategories'])->name('get.subcategories');
@@ -165,6 +173,8 @@ Route::prefix('provider')->group(function () {
     Route::middleware(['auth.user:provider'])->group(function () {
         Route::view('dashboard', 'frontend.provider.dashboard')->name('provider.dashboard');
         Route::get('subscription', [SubscriptionController::class, 'packageIndex'])->name('provider.packages');
+        Route::get('/profile', [ProviderController::class, 'ProviderProfileShow'])->name('provider.profile');
+        Route::post('/update-profile', [ProviderController::class, 'ProviderUpdateProfile'])->name('provider.update.profile');
 
         Route::get('leads', [ProviderController::class, 'leadIndex'])->name('provider.leads');
         Route::get('lead-show/{id}', [ProviderController::class, 'leadShow'])->name('provider.lead.show');
@@ -301,6 +311,39 @@ Route::prefix('admin')->group(function () {
         Route::get('edit-ticket/{id}', [App\Http\Controllers\admin\TicketController::class, 'edit'])->name('admin.edit.ticket');
         Route::patch('update-ticket/{id}', [App\Http\Controllers\admin\TicketController::class, 'update'])->name('admin.update.ticket');
         Route::delete('delete-ticket/{id}', [App\Http\Controllers\admin\TicketController::class, 'destroy'])->name('admin.delete.ticket');
+
+
+        //Job Management
+        Route::get('job-management', [App\Http\Controllers\admin\JobController::class, 'index'])->name('admin.manage.job');
+        Route::get('jobs/create', [App\Http\Controllers\admin\JobController::class, 'create'])->name('admin.create.job');
+        Route::post('jobs', [App\Http\Controllers\admin\JobController::class, 'store'])->name('admin.store.job');
+        Route::get('jobs/edit/{id}', [App\Http\Controllers\admin\JobController::class, 'edit'])->name('admin.edit.job');
+        Route::get('jobs/show/{id}', [App\Http\Controllers\admin\JobController::class, 'show'])->name('admin.show.job');
+        Route::patch('jobs/{id}', [App\Http\Controllers\admin\JobController::class, 'update'])->name('admin.update.job');
+        Route::get('delete-jobs/{id}', [App\Http\Controllers\admin\JobController::class, 'destroy'])->name('admin.delete.job');
+        Route::get('get-subcategories', [App\Http\Controllers\admin\JobController::class, 'getSubcategories'])->name('admin.get.subcategories');
+        Route::get('/get-postal-code', [App\Http\Controllers\admin\JobController::class, 'getPostalCode'])->name('admin.get.postal_code');
+
+        //Contact Management
+        Route::get('contacts', [MiscellaneousController::class, 'contactIndex'])->name('admin.contact.index');
+        Route::get('contacts/{id}', [MiscellaneousController::class, 'contactShow'])->name('admin.contact.show');
+        Route::get('contacts/{id}/delete', [MiscellaneousController::class, 'contactDestroy'])->name('admin.contact.delete');
+
+        Route::get('subscribers', [MiscellaneousController::class, 'indexSubscriber'])->name('admin.subscriber.index');
+        Route::get('subscribers/{id}/delete', [MiscellaneousController::class, 'destroySubscriber'])->name('admin.subscriber.delete');
+
+        // Blog Management
+        Route::get('blog-management', [BlogController::class, 'index'])->name('admin.manage.blog');
+        Route::get('create-blog', [BlogController::class, 'create'])->name('admin.create.blog');
+        Route::post('create-blog', [BlogController::class, 'store'])->name('admin.store.blog');
+        Route::get('blog-detail/{id}', [BlogController::class, 'show'])->name('admin.show.blog');
+        Route::get('edit-blog/{id}', [BlogController::class, 'edit'])->name('admin.edit.blog');
+        Route::patch('update-blog/{id}', [BlogController::class, 'update'])->name('admin.update.blog');
+        Route::get('delete-blog/{id}', [BlogController::class, 'destroy'])->name('admin.delete.blog');
+
+
+
+
 
     });
 

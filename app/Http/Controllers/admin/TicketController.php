@@ -35,7 +35,7 @@ class TicketController extends Controller
 
         $request->validate([
             'subject' => 'required|string|max:255',
-            'status'  => 'required|in:open,complete,pending',
+            'status'  => 'required|in:open,complete,pending,hold',
             'message' => 'nullable|string',
         ]);
 

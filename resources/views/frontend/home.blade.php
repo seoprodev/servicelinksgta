@@ -101,7 +101,7 @@
                         <a href="javascript:void(0)" data-bs-dismiss="modal" aria-label="Close"><i
                                     class="ti ti-circle-x-filled fs-24"></i></a>
                     </div>
-                    <form action="https://servicelinksgta.globalhostpros.com/provider-offers.html">
+                    <form action="javascript:">
                         <div class="modal-body " id="modal-body-content">
                         </div>
                     </form>
@@ -393,7 +393,7 @@
     <section class="section testimonial-section bg-white">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-6 text-center wow fadeInUp" data-wow-delay="0.2s">
+                <div class="col-lg-6 text-center wow fadeInUp" data-wow-delay="0.2s">add-to-cart-form
                     <div class="section-header text-center">
                         <h2 class="mb-1">
                             Genuine reviews from<span class="text-linear-primary">
