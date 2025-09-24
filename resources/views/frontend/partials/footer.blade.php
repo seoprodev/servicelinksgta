@@ -180,6 +180,7 @@
 {{--<script src="{{ asset('frontend-assets/js/provider-register.js') }}"></script>--}}
 <script src="{{ asset('frontend-assets/js/custom.js') }}"></script>
 {{--<script src="{{ asset('frontend-assets/js/booking.js') }}"></script>--}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 {{-- Alertify JS --}}
@@ -201,7 +202,6 @@
     @endforeach
     @endif
 </script>
-
 <script>
     $("#subscriber-form").on("submit", function(e) {
         e.preventDefault();
@@ -223,16 +223,36 @@
                     // Show validation errors
                     if (response.errors.subscriber_email) {
                         $error.text(response.errors.subscriber_email[0]);
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Invalid Email',
+                            text: response.errors.subscriber_email[0],
+                            confirmButtonColor: '#d33'
+                        });
                     }
                 } else {
                     // Success
                     $("#subscriber_email").val("");
-                    alert(response.message);
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Subscribed!',
+                        text: response.message,
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
                 }
             },
             error: function() {
-                alert("Something went wrong. Please try again.");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong. Please try again later.',
+                    confirmButtonColor: '#d33'
+                });
             }
         });
     });
+
 </script>

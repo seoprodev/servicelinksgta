@@ -170,23 +170,40 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     success: function(response) {
-                        // Show success message (you can replace alert with a div)
-                        alert(response.success);
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success!',
+                            text: response.success,
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
                         $('#contact-form')[0].reset();
                     },
                     error: function(xhr) {
                         if (xhr.status === 422) {
                             let errors = xhr.responseJSON.errors;
                             $.each(errors, function(key, value) {
-                                // Populate error messages under each field
                                 $('#contact_' + key + '_error').text(value[0]);
                             });
+
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Validation Error',
+                                text: 'Please fix the highlighted fields.',
+                                confirmButtonColor: '#d33'
+                            });
                         } else {
-                            alert('Something went wrong. Please try again.');
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong. Please try again later.',
+                                confirmButtonColor: '#d33'
+                            });
                         }
                     }
                 });
             });
         });
+
     </script>
 @endpush
