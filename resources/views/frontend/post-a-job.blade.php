@@ -211,6 +211,7 @@
         }
 
         function goToPrevStep(currentStep) {
+            // alert(currentStep)
             stepCount--;
             const container = document.getElementById("formContainer");
             container.removeChild(document.getElementById(`step${currentStep}`));
@@ -378,7 +379,6 @@
                     <span>No, maybe later</span>
                 </label>
             </div>
-
 
             <div class="btn-group">
                 <button type="button" class="next-btn" onclick="goToPrevStep(5)">Back</button>

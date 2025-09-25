@@ -131,6 +131,7 @@ class ProviderController extends Controller
 
         // Get all leads purchased by the provider
         $leads = ProviderLead::where('provider_id', $provider->id)
+            ->whereHas('job')
             ->with(['job', 'job.user'])
             ->latest()
             ->get();

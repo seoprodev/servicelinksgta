@@ -37,10 +37,10 @@
                                    data-booking-details-id="{{ $lead->id }}">
                                     <span>{{ $lead->job->title ?? 'Untitled Job' }}</span>
                                 </a>
-                                @if($lead->job->priority)
+                                @if($lead->job && $lead->job->priority)
                                     <span class="booking-status badge badge-primary-transparent ms-2">
-                                                            {{ $lead->job->priority }}
-                                                        </span>
+                                        {{ $lead->job->priority }}
+                                    </span>
                                 @endif
                             </h6>
                             <ul class="booking-details">

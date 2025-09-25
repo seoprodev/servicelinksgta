@@ -331,7 +331,7 @@
                             </li>
                             <li>
                                 @if(auth()->user()->user_type === 'provider')
-                                    <a class="dropdown-item d-flex align-items-center" href="">
+                                    <a class="dropdown-item d-flex align-items-center" href="{{ route('provider.profile') }}">
                                         <i class="ti ti-user me-1"></i>My Profile
                                     </a>
                                 @elseif(auth()->user()->user_type === 'client')

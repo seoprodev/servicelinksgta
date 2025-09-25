@@ -19,6 +19,7 @@ use App\Http\Controllers\frontend\ProviderController;
 use App\Http\Controllers\frontend\SubscriptionController;
 use App\Http\Controllers\frontend\TicketController;
 use App\Models\Message;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\Facades\Route;
 use Pusher\Pusher;
@@ -234,7 +235,10 @@ foreach (['user', 'provider'] as $role) {
 
 
 
-
+Route::get('/clear-optimize', function () {
+    Artisan::call('optimize:clear');
+    return "Optimize clear command executed!";
+});
 
 
 Route::get('make-hash', function (){
