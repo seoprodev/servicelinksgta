@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 
 
 use App\Helpers\FakerURL;
+use App\Helpers\NotificationHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
@@ -50,7 +51,7 @@ class TicketController extends Controller
             }
         }
 
-        Ticket::create([
+        $ticket = Ticket::create([
             'user_id'     => auth()->id(),
             'subject'     => $request->subject,
             'priority'    => $request->priority,
@@ -58,6 +59,14 @@ class TicketController extends Controller
             'attachments' => json_encode($files),
             'status'      => 'pending',
         ]);
+
+        NotificationHelper::create(
+            1,
+            'ticket_created',
+            "New ticket submitted: {$ticket->subject}",
+            route('admin.show.ticket', $ticket->faker_id),
+            "Ticket #{$ticket->id} Created"
+        );
 
         return redirect()->back()->with('success', 'Ticket created successfully!');
     }

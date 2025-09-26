@@ -4,6 +4,7 @@
     <div class="theiaStickySidebar" style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none;">
         <div class="card user-sidebar mb-4 mb-lg-0">
             <div class="card-header user-sidebar-header mb-4">
+
                 @if(isset($authUser))
                     <div class="d-flex justify-content-center align-items-center flex-column">
                             <span class="user rounded-circle avatar avatar-xxl mb-2">
@@ -17,7 +18,21 @@
                         <h6 class="mb-2 headerName">{{ $authUser->profile->first_name . ' ' . $authUser->profile->last_name }} </h6>
                         <p class="fs-14">Member Since {{ $authUser->created_at->format('M, Y') }}</p>
                     </div>
-                @endif
+                @else
+                    <div class="d-flex justify-content-center align-items-center flex-column">
+                            <span class="user rounded-circle avatar avatar-xxl mb-2">
+                               <img
+                                       src="{{ auth()->user()->profile && auth()->user()->profile->avatar
+                                        ? asset(auth()->user()->profile->avatar)
+                                        : asset('frontend-assets/img/profile-default.png') }}"
+                                       alt="Profile Image"
+                                       class="img-fluid rounded-circle headerProfileImg">
+                            </span>
+                        <h6 class="mb-2 headerName">{{ auth()->user()->profile->first_name . ' ' . auth()->user()->profile->last_name }} </h6>
+                        <p class="fs-14">Member Since {{ auth()->user()->created_at->format('M, Y') }}</p>
+                    </div>
+                    @endif
+
 
 
             </div>
@@ -52,7 +67,7 @@
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="" class="d-flex align-items-center ">
+                        <a href="{{ route('client.notifications.index') }}" class="d-flex align-items-center {{ request()->routeIs('client.notifications.index') ? 'active' : '' }}">
                             <i class="ti ti-bell me-2"></i>
                             Notification
                         </a>

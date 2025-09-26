@@ -12255,7 +12255,7 @@ html.menu-opened body {
 
 .provider-header {
     height: 48px;
-    z-index: 999;
+    z-index: 999999;
     background: #FFF;
     position: fixed;
     top: 0;
@@ -13404,9 +13404,11 @@ html.menu-opened body {
 }
 
 .provider-head-links a {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+    /*width: 32px;*/
+    /*height: 32px;*/
+    /*border-radius: 50%;*/
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
     background: #F4F5F5;
 }
 
@@ -13732,7 +13734,7 @@ footer .form-control {
     border-right: 1px solid #EBECED;
     margin-top: 0;
     z-index: 1001;
-    position: fixed;
+    /*position: fixed;*/
     top: 48px;
     bottom: 0;
     left: 0;
@@ -17279,7 +17281,7 @@ input[type=password]::-ms-clear {
 
 #fill-more {
     height: 150px;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .img-sec {

@@ -1,6 +1,5 @@
 <?php
 
-// app/Events/MessageSent.php
 
 namespace App\Events;
 
@@ -17,15 +16,11 @@ class MessageSent implements ShouldBroadcast
     public function __construct($message)
     {
         $this->message = $message;
-
-
     }
 
-    // Broadcasting on a private channel
     public function broadcastOn()
     {
         return new Channel('chat.' . $this->message->receiver_id);
-
     }
 
     public function broadcastAs()

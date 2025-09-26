@@ -233,7 +233,7 @@
                     </div>
                     <div class="d-flex justify-content-center">
                         <p>Don&#039;t have an account? <a href="#!" class="text-primary"
-                                                          data-bs-toggle="modal" data-bs-target="#register-modal"> Join us Today</a>
+                                                          data-bs-toggle="modal" data-bs-target="#cleint-sign-up"> Join us Today</a>
                         </p>
                     </div>
                 </form>

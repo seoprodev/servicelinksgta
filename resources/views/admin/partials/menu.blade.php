@@ -20,116 +20,160 @@
         </ul>
     </div>
     <ul class="navbar-nav navbar-right">
-        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-                                                     class="nav-link nav-link-lg message-toggle"><i data-feather="mail"></i>
-                <span class="badge headerBadge1">
-                6 </span> </a>
-            <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
-                <div class="dropdown-header">
-                    Messages
-                    <div class="float-right">
-                        <a href="#">Mark All As Read</a>
-                    </div>
-                </div>
-                <div class="dropdown-list-content dropdown-list-message">
-                    <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar
-											text-white"> <img alt="image" src="{{ asset('admin-assets') }}/img/users/user-1.png" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">John
-                      Deo</span>
-                    <span class="time messege-text">Please check your mail !!</span>
-                    <span class="time">2 Min Ago</span>
-                  </span>
-                    </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="{{ asset('admin-assets') }}/img/users/user-2.png" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">Sarah
-                      Smith</span> <span class="time messege-text">Request for leave
-                      application</span>
-                    <span class="time">5 Min Ago</span>
-                  </span>
-                    </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="{{ asset('admin-assets') }}/img/users/user-5.png" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">Jacob
-                      Ryan</span> <span class="time messege-text">Your payment invoice is
-                      generated.</span> <span class="time">12 Min Ago</span>
-                  </span>
-                    </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="{{ asset('admin-assets') }}/img/users/user-4.png" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">Lina
-                      Smith</span> <span class="time messege-text">hii John, I have upload
-                      doc
-                      related to task.</span> <span class="time">30
-                      Min Ago</span>
-                  </span>
-                    </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="{{ asset('admin-assets') }}/img/users/user-3.png" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">Jalpa
-                      Joshi</span> <span class="time messege-text">Please do as specify.
-                      Let me
-                      know if you have any query.</span> <span class="time">1
-                      Days Ago</span>
-                  </span>
-                    </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="{{ asset('admin-assets') }}/img/users/user-2.png" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">Sarah
-                      Smith</span> <span class="time messege-text">Client Requirements</span>
-                    <span class="time">2 Days Ago</span>
-                  </span>
-                    </a>
-                </div>
-                <div class="dropdown-footer text-center">
-                    <a href="#">View All <i class="fas fa-chevron-right"></i></a>
-                </div>
-            </div>
-        </li>
-        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-                                                     class="nav-link notification-toggle nav-link-lg"><i data-feather="bell" class="bell"></i>
+{{--        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"--}}
+{{--                                                     class="nav-link nav-link-lg message-toggle"><i data-feather="mail"></i>--}}
+{{--                <span class="badge headerBadge1">--}}
+{{--                6 </span> </a>--}}
+{{--            <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">--}}
+{{--                <div class="dropdown-header">--}}
+{{--                    Messages--}}
+{{--                    <div class="float-right">--}}
+{{--                        <a href="#">Mark All As Read</a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="dropdown-list-content dropdown-list-message">--}}
+{{--                    <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar--}}
+{{--											text-white"> <img alt="image" src="{{ asset('admin-assets') }}/img/users/user-1.png" class="rounded-circle">--}}
+{{--                  </span> <span class="dropdown-item-desc"> <span class="message-user">John--}}
+{{--                      Deo</span>--}}
+{{--                    <span class="time messege-text">Please check your mail !!</span>--}}
+{{--                    <span class="time">2 Min Ago</span>--}}
+{{--                  </span>--}}
+{{--                    </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">--}}
+{{--                    <img alt="image" src="{{ asset('admin-assets') }}/img/users/user-2.png" class="rounded-circle">--}}
+{{--                  </span> <span class="dropdown-item-desc"> <span class="message-user">Sarah--}}
+{{--                      Smith</span> <span class="time messege-text">Request for leave--}}
+{{--                      application</span>--}}
+{{--                    <span class="time">5 Min Ago</span>--}}
+{{--                  </span>--}}
+{{--                    </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">--}}
+{{--                    <img alt="image" src="{{ asset('admin-assets') }}/img/users/user-5.png" class="rounded-circle">--}}
+{{--                  </span> <span class="dropdown-item-desc"> <span class="message-user">Jacob--}}
+{{--                      Ryan</span> <span class="time messege-text">Your payment invoice is--}}
+{{--                      generated.</span> <span class="time">12 Min Ago</span>--}}
+{{--                  </span>--}}
+{{--                    </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">--}}
+{{--                    <img alt="image" src="{{ asset('admin-assets') }}/img/users/user-4.png" class="rounded-circle">--}}
+{{--                  </span> <span class="dropdown-item-desc"> <span class="message-user">Lina--}}
+{{--                      Smith</span> <span class="time messege-text">hii John, I have upload--}}
+{{--                      doc--}}
+{{--                      related to task.</span> <span class="time">30--}}
+{{--                      Min Ago</span>--}}
+{{--                  </span>--}}
+{{--                    </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">--}}
+{{--                    <img alt="image" src="{{ asset('admin-assets') }}/img/users/user-3.png" class="rounded-circle">--}}
+{{--                  </span> <span class="dropdown-item-desc"> <span class="message-user">Jalpa--}}
+{{--                      Joshi</span> <span class="time messege-text">Please do as specify.--}}
+{{--                      Let me--}}
+{{--                      know if you have any query.</span> <span class="time">1--}}
+{{--                      Days Ago</span>--}}
+{{--                  </span>--}}
+{{--                    </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">--}}
+{{--                    <img alt="image" src="{{ asset('admin-assets') }}/img/users/user-2.png" class="rounded-circle">--}}
+{{--                  </span> <span class="dropdown-item-desc"> <span class="message-user">Sarah--}}
+{{--                      Smith</span> <span class="time messege-text">Client Requirements</span>--}}
+{{--                    <span class="time">2 Days Ago</span>--}}
+{{--                  </span>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--                <div class="dropdown-footer text-center">--}}
+{{--                    <a href="#">View All <i class="fas fa-chevron-right"></i></a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </li>--}}
+{{--        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"--}}
+{{--                                                     class="nav-link notification-toggle nav-link-lg"><i data-feather="bell" class="bell"></i>--}}
+{{--            </a>--}}
+{{--            <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">--}}
+{{--                <div class="dropdown-header">--}}
+{{--                    Notifications--}}
+{{--                    <div class="float-right">--}}
+{{--                        <a href="#">Mark All As Read</a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="dropdown-list-content dropdown-list-icons">--}}
+{{--                    <a href="#" class="dropdown-item dropdown-item-unread"> <span--}}
+{{--                                class="dropdown-item-icon bg-primary text-white"> <i class="fas--}}
+{{--												fa-code"></i>--}}
+{{--                  </span> <span class="dropdown-item-desc"> Template update is--}}
+{{--                    available now! <span class="time">2 Min--}}
+{{--                      Ago</span>--}}
+{{--                  </span>--}}
+{{--                    </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-info text-white"> <i class="far--}}
+{{--												fa-user"></i>--}}
+{{--                  </span> <span class="dropdown-item-desc"> <b>You</b> and <b>Dedik--}}
+{{--                      Sugiharto</b> are now friends <span class="time">10 Hours--}}
+{{--                      Ago</span>--}}
+{{--                  </span>--}}
+{{--                    </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-success text-white"> <i--}}
+{{--                                    class="fas--}}
+{{--												fa-check"></i>--}}
+{{--                  </span> <span class="dropdown-item-desc"> <b>Kusnaedi</b> has--}}
+{{--                    moved task <b>Fix bug header</b> to <b>Done</b> <span class="time">12--}}
+{{--                      Hours--}}
+{{--                      Ago</span>--}}
+{{--                  </span>--}}
+{{--                    </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-danger text-white"> <i--}}
+{{--                                    class="fas fa-exclamation-triangle"></i>--}}
+{{--                  </span> <span class="dropdown-item-desc"> Low disk space. Let's--}}
+{{--                    clean it! <span class="time">17 Hours Ago</span>--}}
+{{--                  </span>--}}
+{{--                    </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-info text-white"> <i class="fas--}}
+{{--												fa-bell"></i>--}}
+{{--                  </span> <span class="dropdown-item-desc"> Welcome to Otika--}}
+{{--                    template! <span class="time">Yesterday</span>--}}
+{{--                  </span>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--                <div class="dropdown-footer text-center">--}}
+{{--                    <a href="#">View All <i class="fas fa-chevron-right"></i></a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </li>--}}
+@php
+use App\Helpers\NotificationHelper;
+$notifications = NotificationHelper::unread(1);
+@endphp
+        <li class="dropdown dropdown-list-toggle">
+
+            <a href="#" data-toggle="dropdown" class="message-toggle nav-link notification-toggle nav-link-lg">
+                <i data-feather="bell" class="bell"></i>
+                <span class="badge headerBadge1 notification-count">
+                {{ $notifications->count() }} </span>
+{{--                <span class="badge badge-danger notification-count"></span>--}}
             </a>
+
             <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
                 <div class="dropdown-header">
                     Notifications
                     <div class="float-right">
-                        <a href="#">Mark All As Read</a>
+                        <a href="{{ route('admin.notifications.markAll') }}">Mark All As Read</a>
                     </div>
                 </div>
                 <div class="dropdown-list-content dropdown-list-icons">
-                    <a href="#" class="dropdown-item dropdown-item-unread"> <span
-                                class="dropdown-item-icon bg-primary text-white"> <i class="fas
-												fa-code"></i>
-                  </span> <span class="dropdown-item-desc"> Template update is
-                    available now! <span class="time">2 Min
-                      Ago</span>
-                  </span>
-                    </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-info text-white"> <i class="far
-												fa-user"></i>
-                  </span> <span class="dropdown-item-desc"> <b>You</b> and <b>Dedik
-                      Sugiharto</b> are now friends <span class="time">10 Hours
-                      Ago</span>
-                  </span>
-                    </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-success text-white"> <i
-                                    class="fas
-												fa-check"></i>
-                  </span> <span class="dropdown-item-desc"> <b>Kusnaedi</b> has
-                    moved task <b>Fix bug header</b> to <b>Done</b> <span class="time">12
-                      Hours
-                      Ago</span>
-                  </span>
-                    </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-danger text-white"> <i
-                                    class="fas fa-exclamation-triangle"></i>
-                  </span> <span class="dropdown-item-desc"> Low disk space. Let's
-                    clean it! <span class="time">17 Hours Ago</span>
-                  </span>
-                    </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-info text-white"> <i class="fas
-												fa-bell"></i>
-                  </span> <span class="dropdown-item-desc"> Welcome to Otika
-                    template! <span class="time">Yesterday</span>
-                  </span>
-                    </a>
+                    @forelse($notifications as $notification)
+                        <a href="{{ route('admin.notifications.read', $notification->id) }}" class="dropdown-item {{ $notification->is_read ? '' : 'dropdown-item-unread' }}">
+                <span class="dropdown-item-icon bg-primary text-white">
+                    <i class="fas fa-bell"></i>
+                </span>
+                            <span class="dropdown-item-desc">
+                    {{ $notification->title }} <br>
+                    <small>{{ $notification->message }}</small>
+                    <span class="time">{{ $notification->created_at->diffForHumans() }}</span>
+                </span>
+                        </a>
+                    @empty
+                        <p class="dropdown-item" >No Notification Found!</p>
+                    @endforelse
                 </div>
                 <div class="dropdown-footer text-center">
-                    <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+                    <a href="{{ route('admin.notifications.index') }}">
+                        View All <i class="fas fa-chevron-right"></i>
+                    </a>
                 </div>
             </div>
         </li>
+
         <li class="dropdown"><a href="#" data-toggle="dropdown"
                                 class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image" src="{{ asset('admin-assets') }}/img/user.png"
                                                                                                  class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
@@ -219,7 +263,11 @@
                     <li><a class="nav-link {{ request()->routeIs('admin.create.blog') ? 'active' : '' }}" href="{{ route('admin.create.blog') }}">Create New Blog</a></li>
                 </ul>
             </li>
-
+            <li class="{{ request()->routeIs('admin.notifications.index') ? 'active' : '' }}">
+                <a href="{{ route('admin.notifications.index') }}" class="nav-link">
+                    <i data-feather="bell"></i><span>Notifications</span>
+                </a>
+            </li>
             {{-- Property Type --}}
             <li class="{{ request()->routeIs('admin.manage.property') ? 'active' : '' }}">
                 <a href="{{ route('admin.manage.property') }}" class="nav-link">
@@ -240,7 +288,6 @@
                     <i data-feather="git-commit"></i><span>Line Distance</span>
                 </a>
             </li>
-
             {{-- Ticket Management --}}
             <li class="{{ request()->routeIs('admin.manage.ticket') ? 'active' : '' }}">
                 <a href="{{ route('admin.manage.ticket') }}" class="nav-link">
@@ -265,6 +312,7 @@
                     <i data-feather="mail"></i><span>Newsletters</span>
                 </a>
             </li>
+
         </ul>
     </aside>
 

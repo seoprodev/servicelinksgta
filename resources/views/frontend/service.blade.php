@@ -57,154 +57,87 @@
 
                         <div class="theiaStickySidebar" style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none;"><div class="card mb-4 mb-lg-0">
                                 <div class="card-body ">
-                                    <form action="javascript:" method="GET" id="filterForm">
+                                    <form action="{{ route('front.service') }}" method="GET" id="filterForm">
                                         <div class="d-flex align-items-center justify-content-between mb-3 pb-3 border-bottom">
                                             <h5><i class="ti ti-filter-check me-2"></i>Filters</h5>
-                                            <a href="javascript:">Reset Filter</a>
+                                            <a href="{{ route('front.service') }}">Reset Filter</a>
                                         </div>
+
+                                        {{-- 🔹 Search --}}
                                         <div class="mb-3 pb-3 border-bottom">
                                             <label class="form-label">Search By Keyword</label>
-                                            <input type="text" name="keywords" id="keywords" class="form-control" maxlength="50" placeholder="What are you looking for?">
+                                            <input type="text"
+                                                   name="keywords"
+                                                   id="keywords"
+                                                   class="form-control"
+                                                   maxlength="50"
+                                                   value="{{ request('keywords') }}"
+                                                   placeholder="What are you looking for?">
                                         </div>
+
+                                        {{-- 🔹 Categories --}}
                                         <div class="accordion border-bottom mb-3">
                                             <div class="accordion-item mb-3">
                                                 <div class="accordion-header" id="accordion-headingThree">
-                                                    <div class="accordion-button p-0 mb-3" data-bs-toggle="collapse" data-bs-target="#accordion-collapseThree" aria-expanded="true" aria-controls="accordion-collapseThree" role="button">
+                                                    <div class="accordion-button p-0 mb-3" data-bs-toggle="collapse"
+                                                         data-bs-target="#accordion-collapseThree"
+                                                         aria-expanded="true" aria-controls="accordion-collapseThree" role="button">
                                                         Categories
                                                     </div>
                                                 </div>
-                                                <div id="accordion-collapseThree" class="accordion-collapse collapse show" aria-labelledby="accordion-headingThree">
+                                                <div id="accordion-collapseThree" class="accordion-collapse collapse show">
                                                     <div class="content-list mb-3" id="fill-more">
+                                                        {{-- All Category --}}
                                                         <div class="form-check mb-2">
                                                             <label class="form-check-label">
-                                                                <input class="form-check-input" id="all_categories" type="checkbox">
+                                                                <input class="form-check-input" id="all_categories" type="checkbox"
+                                                                        {{ request()->has('cate') ? '' : 'checked' }}>
                                                                 All Category
                                                             </label>
                                                         </div>
-                                                        <div class="form-check mb-2">
-                                                            <label class="form-check-label">
-                                                                <input name="cate[]" value="17" class="form-check-input filter_category" data-slug="general-plumbing" type="checkbox">
-                                                                General Plumbing                                                    </label>
-                                                        </div>
-                                                        <div class="form-check mb-2">
-                                                            <label class="form-check-label">
-                                                                <input name="cate[]" value="18" class="form-check-input filter_category" data-slug="bathroom-plumbing" type="checkbox">
-                                                                Bathroom Plumbing                                                    </label>
-                                                        </div>
-                                                        <div class="form-check mb-2">
-                                                            <label class="form-check-label">
-                                                                <input name="cate[]" value="19" class="form-check-input filter_category" data-slug="kitchen-plumbing" type="checkbox">
-                                                                Kitchen Plumbing                                                    </label>
-                                                        </div>
-                                                        <div class="form-check mb-2">
-                                                            <label class="form-check-label">
-                                                                <input name="cate[]" value="20" class="form-check-input filter_category" data-slug="emergency-plumbing" type="checkbox">
-                                                                Emergency Plumbing                                                    </label>
-                                                        </div>
-                                                        <div class="form-check mb-2">
-                                                            <label class="form-check-label">
-                                                                <input name="cate[]" value="21" class="form-check-input filter_category" data-slug="drain-sewer" type="checkbox">
-                                                                Drain &amp; Sewer                                                    </label>
-                                                        </div>
-                                                        <div class="form-check mb-2">
-                                                            <label class="form-check-label">
-                                                                <input name="cate[]" value="22" class="form-check-input filter_category" data-slug="water-heater" type="checkbox">
-                                                                Water Heater                                                    </label>
-                                                        </div>
-                                                        <div class="form-check mb-2">
-                                                            <label class="form-check-label">
-                                                                <input name="cate[]" value="23" class="form-check-input filter_category" data-slug="water-filtration-softening" type="checkbox">
-                                                                Water Filtration &amp; Softening                                                    </label>
-                                                        </div>
-                                                        <div class="form-check mb-2">
-                                                            <label class="form-check-label">
-                                                                <input name="cate[]" value="24" class="form-check-input filter_category" data-slug="outdoor-plumbing" type="checkbox">
-                                                                Outdoor Plumbing                                                    </label>
-                                                        </div>
-                                                        <div class="form-check mb-2">
-                                                            <label class="form-check-label">
-                                                                <input name="cate[]" value="25" class="form-check-input filter_category" data-slug="commercial-plumbing" type="checkbox">
-                                                                Commercial Plumbing                                                    </label>
-                                                        </div>
-                                                        <div class="form-check mb-2">
-                                                            <label class="form-check-label">
-                                                                <input name="cate[]" value="26" class="form-check-input filter_category" data-slug="toilet-faucet" type="checkbox">
-                                                                Toilet &amp; Faucet                                                    </label>
-                                                        </div>
-                                                        <div class="form-check mb-2">
-                                                            <label class="form-check-label">
-                                                                <input name="cate[]" value="27" class="form-check-input filter_category" data-slug="gas-line" type="checkbox">
-                                                                Gas Line                                                    </label>
-                                                        </div>
-                                                        <div class="form-check mb-2">
-                                                            <label class="form-check-label">
-                                                                <input name="cate[]" value="28" class="form-check-input filter_category" data-slug="leak-detection-repair" type="checkbox">
-                                                                Leak Detection &amp; Repair                                                    </label>
-                                                        </div>
-                                                        <div class="form-check mb-2">
-                                                            <label class="form-check-label">
-                                                                <input name="cate[]" value="29" class="form-check-input filter_category" data-slug="frozen-pipe-services" type="checkbox">
-                                                                Frozen Pipe Services                                                    </label>
-                                                        </div>
-                                                        <div class="form-check mb-2">
-                                                            <label class="form-check-label">
-                                                                <input name="cate[]" value="30" class="form-check-input filter_category" data-slug="backflow-preven" type="checkbox">
-                                                                Backflow Preven                                                    </label>
-                                                        </div>
-                                                        <div class="form-check mb-2">
-                                                            <label class="form-check-label">
-                                                                <input name="cate[]" value="31" class="form-check-input filter_category" data-slug="sump-pump" type="checkbox">
-                                                                Sump Pump                                                    </label>
-                                                        </div>
-                                                        <div class="form-check mb-2">
-                                                            <label class="form-check-label">
-                                                                <input name="cate[]" value="32" class="form-check-input filter_category" data-slug="renovation-plumbing" type="checkbox">
-                                                                Renovation Plumbing                                                    </label>
-                                                        </div>
-                                                        <div class="form-check mb-2">
-                                                            <label class="form-check-label">
-                                                                <input name="cate[]" value="33" class="form-check-input filter_category" data-slug="trenchless-pipe-repair" type="checkbox">
-                                                                Trenchless Pipe Repair                                                    </label>
-                                                        </div>
-                                                        <div class="form-check mb-2">
-                                                            <label class="form-check-label">
-                                                                <input name="cate[]" value="34" class="form-check-input filter_category" data-slug="hydro-jetting" type="checkbox">
-                                                                Hydro Jetting                                                    </label>
-                                                        </div>
-                                                        <div class="form-check mb-2">
-                                                            <label class="form-check-label">
-                                                                <input name="cate[]" value="35" class="form-check-input filter_category" data-slug="boiler" type="checkbox">
-                                                                Boiler                                                    </label>
-                                                        </div>
-                                                        <div class="form-check mb-2">
-                                                            <label class="form-check-label">
-                                                                <input name="cate[]" value="36" class="form-check-input filter_category" data-slug="smart-plumbing-installations" type="checkbox">
-                                                                Smart Plumbing Installations                                                    </label>
-                                                        </div>
-                                                        <div class="form-check mb-2">
-                                                            <label class="form-check-label">
-                                                                <input name="cate[]" value="37" class="form-check-input filter_category" data-slug="plumbing-maintenance-plan" type="checkbox">
-                                                                Plumbing Maintenance Plan                                                    </label>
-                                                        </div>
 
+                                                        {{-- Example categories --}}
+                                                        @foreach($categories as $category)
+                                                            <div class="form-check mb-2">
+                                                                <label class="form-check-label">
+                                                                    <input name="cate[]"
+                                                                           value="{{ $category->id }}"
+                                                                           class="form-check-input filter_category"
+                                                                           type="checkbox"
+                                                                            {{ in_array($category->id, request('cate', [])) ? 'checked' : '' }}>
+                                                                    {{ $category->name }}
+                                                                </label>
+                                                            </div>
+                                                        @endforeach
                                                     </div>
-                                                    <a href="javascript:void(0);" id="more" class="more-view text-primary fs-14">View more <i class="ti ti-chevron-down ms-1"></i></a>
+                                                    <a href="javascript:void(0);" id="more" class="more-view text-primary fs-14">
+                                                        View more <i class="ti ti-chevron-down ms-1"></i>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        {{-- 🔹 Location --}}
                                         <div class="accordion border-bottom mb-3">
                                             <div class="accordion-header" id="accordion-headingFive">
-                                                <div class="accordion-button p-0 mb-3" data-bs-toggle="collapse" data-bs-target="#accordion-collapseFive" aria-expanded="true" aria-controls="accordion-collapseFive" role="button">
+                                                <div class="accordion-button p-0 mb-3" data-bs-toggle="collapse"
+                                                     data-bs-target="#accordion-collapseFive"
+                                                     aria-expanded="true" aria-controls="accordion-collapseFive" role="button">
                                                     Location
                                                 </div>
                                             </div>
-                                            <div id="accordion-collapseFive" class="accordion-collapse collapse show" aria-labelledby="accordion-headingFive">
+                                            <div id="accordion-collapseFive" class="accordion-collapse collapse show">
                                                 <div class="mb-3">
                                                     <div class="position-relative">
-                                                        <select class="select select2-hidden-accessible" name="location" id="location" tabindex="-1" aria-hidden="true" data-select2-id="location">
-                                                            <option value="" selected="" data-select2-id="7">Select Location</option>
-                                                            <option value="46334">Dayton</option>
-                                                        </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="6" style="width: 132px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-location-container"><span class="select2-selection__rendered" id="select2-location-container" role="textbox" aria-readonly="true" title="Select Location">Select Location</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                                        <select class="form-select" name="location" id="location">
+                                                            <option value="">Select Location</option>
+                                                            @foreach($locations as $loc)
+                                                                <option value="{{ $loc->city }}"
+                                                                        {{ request('location') == $loc->name ? 'selected' : '' }}>
+                                                                    {{ $loc->city }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -212,23 +145,24 @@
 
                                         <button type="submit" class="btn btn-dark w-100" id="searchServiceBtn">Search</button>
                                     </form>
+
                                 </div>
                             </div><div class="resize-sensor" style="position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden;"><div class="resize-sensor-expand" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0px; top: 0px; transition: all; width: 340px; height: 631px;"></div></div><div class="resize-sensor-shrink" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%"></div></div></div></div></div>
                     <div class="col-xl-9 col-lg-8">
                         <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
                             <h4>Found <span class="text-primary">{{ $jobs->count() }} Leads</span></h4>
-                            <form action="javascript:" method="GET" id="sortform">
-                                <div class="d-flex align-items-center">
-                                    <span class="text-dark me-2">Sort</span>
-                                    <select class="select select2-hidden-accessible" name="sortprice" id="sortprice" onchange="this.form.submit()" data-select2-id="sortprice" tabindex="-1" aria-hidden="true">
-                                        <option value="" data-select2-id="4">Price Low to High</option>
-                                        <option value="highl">
-                                            Price High to Low
-                                        </option>
-                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="3" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-sortprice-container"><span class="select2-selection__rendered" id="select2-sortprice-container" role="textbox" aria-readonly="true" title="Price Low to High">Price Low to High</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                    <input type="hidden" name="category" value="">
-                                </div>
-                            </form>
+{{--                            <form action="javascript:" method="GET" id="sortform">--}}
+{{--                                <div class="d-flex align-items-center">--}}
+{{--                                    <span class="text-dark me-2">Sort</span>--}}
+{{--                                    <select class="select select2-hidden-accessible" name="sortprice" id="sortprice" onchange="this.form.submit()" data-select2-id="sortprice" tabindex="-1" aria-hidden="true">--}}
+{{--                                        <option value="" data-select2-id="4">Price Low to High</option>--}}
+{{--                                        <option value="highl">--}}
+{{--                                            Price High to Low--}}
+{{--                                        </option>--}}
+{{--                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="3" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-sortprice-container"><span class="select2-selection__rendered" id="select2-sortprice-container" role="textbox" aria-readonly="true" title="Price Low to High">Price Low to High</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>--}}
+{{--                                    <input type="hidden" name="category" value="">--}}
+{{--                                </div>--}}
+{{--                            </form>--}}
                         </div>
                         <div class="row align-items-center">
                             <style>

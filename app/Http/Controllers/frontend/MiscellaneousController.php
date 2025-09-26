@@ -5,11 +5,14 @@ namespace App\Http\Controllers\frontend;
 
 
 use App\Helpers\FakerURL;
+use App\Helpers\NotificationHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\ContactUs;
+use App\Models\Notification;
 use App\Models\Subscriber;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class MiscellaneousController extends Controller
@@ -26,7 +29,14 @@ class MiscellaneousController extends Controller
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        ContactUs::create($validator->validated());
+        $contact = ContactUs::create($validator->validated());
+
+        NotificationHelper::create(
+            1,
+            'contact_message',
+            "New contact message from {$contact->name}",
+            route('admin.contact.show', $contact->faker_id)
+        );
 
         return response()->json(['success' => 'Thank you for your message. We will contact you soon.']);
     }
@@ -110,5 +120,60 @@ class MiscellaneousController extends Controller
 
         return view('frontend.blog-detail', compact('blog', 'relatedBlogs'));
     }
+
+
+    public function notifications()
+    {
+        $user = Auth::user();
+        $notifications = NotificationHelper::all($user->id);
+        if ($user->user_type == 'admin'){
+            return view('admin.notification.index', compact('notifications'));
+
+        }elseif($user->user_type == 'provider'){
+
+            return view('frontend.provider.notification.index', compact('notifications'));
+        }elseif ($user->user_type == 'client'){
+            return view('frontend.user.notification.index', compact('notifications'));
+
+        }else{
+            return abort(404);
+        }
+    }
+
+    public function markAllNotifications()
+    {
+        $userId = Auth::id();
+        NotificationHelper::markAllAsRead($userId);
+        return redirect()->back()->with('success', 'All notifications marked as read.');
+    }
+
+
+    public function readNotification($id)
+    {
+        $notification = Notification::findOrFail($id);
+        NotificationHelper::markAsRead($notification->id);
+
+        if ($notification->url){
+
+            return redirect($notification->url ?? route('admin.dashboard'));
+        }else{
+            return redirect()->back();
+        }
+    }
+
+    public function NotificationDelete($id)
+    {
+        $notification = Notification::find($id);
+
+        if (!$notification) {
+            return redirect()->back()->with('error', 'Notification not found.');
+        }
+
+        $notification->delete();
+
+        return redirect()->back()->with('success', 'Notification deleted successfully.');
+    }
+
+
 
 }

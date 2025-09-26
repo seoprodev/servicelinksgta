@@ -12255,7 +12255,7 @@ html.menu-opened body {
 
 .provider-header {
     height: 48px;
-    z-index: 999;
+    z-index: 999999;
     background: #FFF;
     position: fixed;
     top: 0;
@@ -13404,8 +13404,8 @@ html.menu-opened body {
 }
 
 .provider-head-links a {
-    width: 32px;
-    height: 32px;
+    /*width: 32px;*/
+    /*height: 32px;*/
     border-radius: 50%;
     background: #F4F5F5;
 }
@@ -17279,7 +17279,7 @@ input[type=password]::-ms-clear {
 
 #fill-more {
     height: 150px;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .img-sec {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Events\MessageSent;
+use App\Helpers\NotificationHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Conversation;
 use App\Models\Message;
@@ -161,6 +162,19 @@ class ChatController extends Controller
 
         // realtime event
         broadcast(new MessageSent($message))->toOthers();
+        if ($authUser->user_type == 'client'){
+            $url = route('provider.chat.index');
+        }else{
+            $url = route('chat.index');
+        }
+
+        NotificationHelper::create(
+            $request->receiver_id,
+            'new_message',
+            "You received a new message from {$authUser->name}",
+            $url,
+            "New Message"
+        );
 
         return response()->json($message);
     }

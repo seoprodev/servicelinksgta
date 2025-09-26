@@ -50,7 +50,7 @@
 @endpush
 
 @section('provider-dashboard-content')
-    <div class="col-xl-9 col-lg-8">
+    <div class="col-xl-12 col-lg-12">
         <div class="row">
             <!-- LEFT SIDEBAR -->
             <div class="col-3 border-end" style="height: 80vh; overflow-y: auto;">
@@ -74,7 +74,8 @@
                             <a href="javascript:void(0)"
                                class="chat-link d-block text-decoration-none"
                                data-id="{{ $user->id }}"
-                               data-name="{{ $user->name }}">
+                               data-name="{{ $user->name }}"
+                               data-avatar="{{ $user->profile->avatar ? asset($user->profile->avatar) : asset('frontend-assets/img/default-avatar.png') }}">
                                 {{ $user->name }}
                             </a>
                         </li>
@@ -97,11 +98,11 @@
                 </div>
 
                 <!-- Chat Form -->
-                <form id="chat-form" class="border-top d-flex p-2" style="display:none;">
+                <form id="chat-form" class="border-top d-flex p-2" style="display:none !important;">
                     @csrf
                     <input type="hidden" id="receiver_id" name="receiver_id">
                     <input type="text" id="message" class="form-control me-2" placeholder="Type a message..." required>
-                    <button class="btn btn-primary">Send</button>
+                    <button type="submit" class="btn btn-primary">Send</button>
                 </form>
             </div>
         </div>
@@ -142,11 +143,21 @@
             scrollToBottom();
         }
 
-        function loadChat(userId, name) {
+        function loadChat(userId, name, avatarUrl) {
             activeUserId = userId;
             $("#receiver_id").val(userId);
             $("#chat-box").html("");
-            $("#chat-header").html(`<strong>${name}</strong>`);
+            $("#chat-header").html(`
+                <div class="d-flex align-items-center">
+                    <img src="${avatarUrl}"
+                         alt="${name}"
+                         class="rounded-circle me-2"
+                         style="width:40px; height:40px; object-fit:cover;">
+                    <strong>
+                            ${name}
+                    </strong>
+                </div>
+            `);
             $("#chat-form").show();
 
             $(".chat-link").removeClass("active");
@@ -157,14 +168,59 @@
             });
         }
 
-        // --- Event Handlers ---
-        $(document).on("click", ".chat-link, .start-chat", function(e) {
+        $(document).on("click", ".chat-link", function(e) {
             e.preventDefault();
-            loadChat($(this).data("id"), $(this).data("name"));
-            $("#search-results").html("");
-            $("#user-search").val("");
+            loadChat(
+                $(this).data("id"),
+                $(this).data("name"),
+                $(this).data("avatar")
+            );
         });
 
+        {{--$("#chat-form").on("submit", function(e) {--}}
+        {{--    e.preventDefault();--}}
+
+        {{--    let msg = $("#message").val().trim();--}}
+        {{--    if (!msg || !activeUserId) return;--}}
+
+        {{--    let $form = $(this);--}}
+
+        {{--    let $btn = $form.find("button[type='submit']");--}}
+        {{--    let $input = $("#message");--}}
+        {{--    $btn.prop("disabled", true).text("Sending...");--}}
+
+        {{--    // let oldHtml = $btn.html(); // button ka original text save--}}
+
+        {{--    $.ajax({--}}
+        {{--        url: "{{ route('chat.send') }}",--}}
+        {{--        type: "POST",--}}
+        {{--        data: {--}}
+        {{--            _token: csrfToken,--}}
+        {{--            message: msg,--}}
+        {{--            receiver_id: activeUserId--}}
+        {{--        },--}}
+        {{--        beforeSend: function() {--}}
+        {{--            $btn.prop("disabled", true).text("Sending...");--}}
+        {{--        },--}}
+        {{--        success: function(response) {--}}
+        {{--            // naya message chat box me append--}}
+        {{--            appendMessage({ user_id: loggedInUser, body: msg });--}}
+        {{--            $input.val("");--}}
+        {{--            $btn.prop("disabled", false).text("Send");--}}
+        {{--        },--}}
+        {{--        error: function(xhr) {--}}
+        {{--            $btn.prop("disabled", false).text("Send");--}}
+
+        {{--            alert("❌ Something went wrong. Please try again.");--}}
+        {{--            console.error(xhr.responseText);--}}
+        {{--        },--}}
+        {{--        complete: function() {--}}
+        {{--            // input aur button enable + restore--}}
+        {{--            $input.prop("disabled", false).focus();--}}
+        {{--            $btn.prop("disabled", false).text("Send");--}}
+        {{--        }--}}
+        {{--    });--}}
+        {{--});--}}
         $("#chat-form").on("submit", function(e) {
             e.preventDefault();
 
@@ -174,7 +230,6 @@
             let $form = $(this);
             let $btn = $form.find("button[type='submit']");
             let $input = $("#message");
-            let oldHtml = $btn.html(); // button ka original text save
 
             $.ajax({
                 url: "{{ route('chat.send') }}",
@@ -185,14 +240,10 @@
                     receiver_id: activeUserId
                 },
                 beforeSend: function() {
-                    // input aur button disable
+                    $btn.prop("disabled", true).text("Sending...");
                     $input.prop("disabled", true);
-                    $btn.prop("disabled", true).html(
-                        `<span class="btn-loader"></span> Sending...`
-                    );
                 },
                 success: function(response) {
-                    // naya message chat box me append
                     appendMessage({ user_id: loggedInUser, body: msg });
                     $input.val("");
                 },
@@ -201,12 +252,13 @@
                     console.error(xhr.responseText);
                 },
                 complete: function() {
-                    // input aur button enable + restore
+                    $btn.prop("disabled", false).text("Send");
                     $input.prop("disabled", false).focus();
-                    $btn.prop("disabled", false).html(oldHtml);
                 }
             });
         });
+
+
 
 
 

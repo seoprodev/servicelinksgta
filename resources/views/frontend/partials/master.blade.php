@@ -274,36 +274,94 @@
                         </li>
                     </ul>
                 </div>
-
-
+                @php
+                    use App\Helpers\NotificationHelper;
+                    $notifications = NotificationHelper::unread(auth()->id());
+                @endphp
                 @if(auth()->check())
-                    <div class="provider-head-links">
-                        {{-- 🔔 Notification Bell --}}
-                        <a href="#!" class="d-flex align-items-center justify-content-center me-2 notify-link"
-                           data-bs-toggle="dropdown" data-bs-auto-close="outside">
-                            <i class="feather-bell bellcount"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end notification-dropdown notify-users p-4">
-                            <div class="d-flex dropdown-body align-items-center justify-content-between border-bottom p-0 pb-3 mb-3 notify-header">
-                                <h6 class="notification-title">
-                                    Notifications <span class="fs-18 text-gray notificationcount"></span>
-                                </h6>
-                                <div class="d-flex align-items-center">
-                                    <a class="text-primary fs-15 me-3 lh-1 markallread" style="display: none;">Clear All</a>
+                        <div class="provider-head-links">
+                            <a href="javascript:void(0);"
+                               class="d-flex align-items-center justify-content-center me-2 notify-link"
+                               data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                                <i class="feather-bell bellcount"></i>
+                                <span class="badge bg-danger notificationcount">
+                                {{ $notifications->where('is_read', false)->count() }}
+                            </span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end notification-dropdown p-4 notify-users">
+                                <div class="d-flex dropdown-body align-items-center justify-content-between border-bottom p-0 pb-3 mb-3">
+                                    <h6 class="notification-title">
+                                        Notifications
+                                    </h6>
+                                    <div class="d-flex align-items-center">
+                                        @if(auth()->user()->user_type == 'client')
+                                            <a href="{{ route('client.notifications.markAll') }}"
+                                               class="text-primary fs-15 me-3 lh-1 markallread">
+                                                Mark All as Read
+                                            </a>
+                                        @elseif(auth()->user()->user_type == 'provider')
+                                            <a href="{{ route('provider.notifications.markAll') }}"
+                                               class="text-primary fs-15 me-3 lh-1 markallread">
+                                                Mark All as Read
+                                            </a>
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="noti-content">
-                                <div class="d-flex flex-column" id="notification-data" data-empty_info="No New Notification Found">
-                                    <div class="text-center">No New Notification Found</div><br>
+
+                                <div class="noti-content">
+                                    <div class="d-flex flex-column" id="notification-data"
+                                         data-empty_info="No New Notification Found">
+                                        @forelse($notifications as $notification)
+                                            @if(auth()->user()->user_type == 'client')
+                                                <div class="ml-2">
+                                                    <a href="{{ route('client.notifications.read', $notification->id) }}"
+                                                       class="dropdown-item d-flex align-items-start mb-2 {{ $notification->is_read ? '' : 'unread' }}">
+                                                    <span class="me-2">
+                                                        <i class="feather-bell text-primary"></i>
+                                                    </span>
+                                                        <div>
+                                                            <div class="fw-bold">{{ $notification->title }}</div>
+                                                            <small class="text-muted">{{ $notification->message }}</small>
+                                                            <div class="small text-gray">{{ $notification->created_at->diffForHumans() }}</div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            @elseif(auth()->user()->user_type == 'provider')
+                                                <div class="ml-2">
+                                                <a href="{{ route('provider.notifications.read', $notification->id) }}"
+                                                   class="dropdown-item d-flex align-items-start mb-2 {{ $notification->is_read ? '' : 'unread' }}">
+                                                    <span class="me-2">
+                                                        <i class="feather-bell text-primary"></i>
+                                                    </span>
+                                                    <div>
+                                                        <div class="fw-bold">{{ $notification->title }}</div>
+                                                        <small class="text-muted">{{ $notification->message }}</small>
+                                                        <div class="small text-gray">{{ $notification->created_at->diffForHumans() }}</div>
+                                                    </div>
+                                                </a>
+                                                </div>
+                                            @endif
+                                        @empty
+                                        @endforelse
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="d-flex p-0 notification-footer-btn">
-                                <a href="#" class="btn btn-light rounded me-2 cancel cancelnotify">Cancel</a>
-                                <a href="" class="btn btn-dark rounded viewall">View All</a>
+
+                                <div class="d-flex p-0 notification-footer-btn">
+                                    @if(auth()->user()->user_type == 'client')
+                                        <a href="{{ route('client.notifications.index')}}" class="btn btn-dark rounded viewall w-100">
+                                            View All
+                                        </a>
+                                    @elseif(auth()->user()->user_type == 'provider')
+                                        <a href="{{ route('provider.notifications.index')}}" class="btn btn-dark rounded viewall w-100">
+                                            View All
+                                        </a>
+                                    @endif
+
+
+                                </div>
                             </div>
                         </div>
-                    </div>
-
                     {{-- 👤 User Dropdown --}}
                     <div class="dropdown" style="position: relative;">
                         <a href="#!" data-bs-toggle="dropdown" aria-expanded="false">
@@ -382,7 +440,7 @@
 <script>
     $('.toggle--password').click(function() {
         var $button = $(this);
-        var $input = $button.siblings('.password--input'); // find input in the same group
+        var $input = $button.siblings('.password--input');
         var $icon = $button.find('.toggle--icon');
 
         if ($input.attr('type') === 'password') {
@@ -394,5 +452,61 @@
         }
     });
 </script>
+
+
+<script src="https://js.pusher.com/8.4.0/pusher.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/laravel-echo@1.11.3/dist/echo.iife.js"></script>
+<script>
+    $(document).ready(function() {
+        let userId = "{{ auth()->id() }}";
+        let userType = "{{ auth()->user()->user_type ?? 'client' }}";
+        let providerRoute = "{{ route('provider.notifications.read', ':id') }}";
+        let userRoute     = "{{ route('client.notifications.read', ':id') }}";
+
+        const pusher = new Pusher('{{ env("PUSHER_APP_KEY") }}', {
+            cluster: '{{ env("PUSHER_APP_CLUSTER") }}',
+            forceTLS: true
+        });
+
+        let channelName = 'notifications.' + userId;
+
+        if (pusher.channel(channelName)) {
+            pusher.unsubscribe(channelName);
+        }
+
+        const channel = pusher.subscribe(channelName);
+
+        channel.bind('notification-created', function(data) {
+            let $count = $(".notificationcount");
+            let current = parseInt($count.text()) || 0;
+            $count.text(current + 1);
+
+            let $list = $("#notification-data");
+            let url;
+            if (userType === 'provider') {
+                url = providerRoute.replace(':id', data.notification.id);
+            } else {
+                url = userRoute.replace(':id', data.notification.id);
+            }
+
+            let html = `
+                <a href="${url}"
+                   class="dropdown-item d-flex align-items-start mb-2 unread">
+                    <span class="me-2">
+                        <i class="feather-bell text-primary"></i>
+                    </span>
+                    <div>
+                        <div class="fw-bold">${data.notification.title}</div>
+                        <small class="text-muted">${data.notification.message}</small>
+                        <div class="small text-gray">Just now</div>
+                    </div>
+                </a>
+            `;
+            $list.prepend(html);
+        });
+    });
+</script>
+
+
 </body>
 </html>

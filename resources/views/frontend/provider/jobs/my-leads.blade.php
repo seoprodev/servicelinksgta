@@ -1,18 +1,18 @@
 @extends('frontend.provider.partials.master')
 
-@section('title', 'Provider Subscriptions')
+@section('title', 'My Leads')
 @section('provider-dashboard-content')
-    <div class="col-xl-10 col-lg-8">
+    <div class="col-xl-12 col-lg-12">
         <div class="breadcrumb-bar text-center">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-12">
-                        <h2 class="breadcrumb-title mb-2">Leads</h2>
+                        <h2 class="breadcrumb-title mb-2">My Leads</h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb justify-content-center mb-0">
                                 <li class="breadcrumb-item"><a href="javascript:"><i class="ti ti-home-2"></i></a></li>
                                 <li class="breadcrumb-item">Provider</li>
-                                <li class="breadcrumb-item active" aria-current="page">Leads</li>
+                                <li class="breadcrumb-item active" aria-current="page">My Leads</li>
                             </ol>
                         </nav>
                     </div>
@@ -24,7 +24,7 @@
             </div>
         </div>
 
-
+        <div class="container">
         @forelse($leads as $lead)
             <div class="card shadow-none booking-list border-left">
                 <div class="card-body d-md-flex align-items-center">
@@ -91,7 +91,7 @@
                 <p class="text-center text-muted">No jobs available right now.</p>
             </div>
         @endforelse
-
+        </div>
     </div>
 
 @endsection

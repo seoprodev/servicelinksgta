@@ -2,7 +2,7 @@
 
 @section('title', 'Provider Subscriptions')
 @section('provider-dashboard-content')
-    <div class="col-xl-10 col-lg-8">
+    <div class="col-xl-12 col-lg-12">
         <div class="breadcrumb-bar text-center">
             <div class="container">
                 <div class="row">
@@ -24,7 +24,7 @@
             </div>
         </div>
 
-
+    <div class="container">
         @forelse($jobs as $job)
             <div class="card shadow-none booking-list border-left">
                 <div class="card-body d-md-flex align-items-center">
@@ -91,6 +91,7 @@
                 <p class="text-center text-muted">No jobs available right now.</p>
             </div>
         @endforelse
+    </div>
 
     </div>
 

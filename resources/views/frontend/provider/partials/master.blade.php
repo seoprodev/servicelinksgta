@@ -32,6 +32,36 @@
             border-radius: 25px;
         }
     </style>
+    <style>
+        div#sidebar-menu {
+            position: fixed;
+        }
+        .sidebar {
+            width: 250px;
+            min-height: 100vh;
+            background: transparent !important;
+            color: white;
+            transition: all 0.3s ease;
+            position: relative !important;
+        }
+
+        .sidebar.collapsed {
+            margin-left: -250px;
+        }
+
+        #content {
+            margin-top: 3%;
+            flex-grow: 1;
+            padding: 20px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+
+        #main-layout {
+            display: flex;
+        }
+    </style>
 
     @stack('styles')
 
@@ -42,18 +72,18 @@
 <!-- /Header -->
 <div class="main-wrapper">
     <!-- Header -->
-@include('frontend.provider.partials.menu')
+@include('frontend.provider.partials.header')
 
-    <div class="page-wrapper">
-        <div class="content container-fluid pb-0">
-            <div class="row justify-content-center">
+    <div id="main-layout">
+    <!-- Sidebar -->
+    @include('frontend.provider.partials.sidebar')
 
-                @yield('provider-dashboard-content')
-            </div>
+
+        <!-- Content -->
+        <div id="content">
+            @yield('provider-dashboard-content')
         </div>
-
     </div>
-
 
 </div>
 
@@ -83,6 +113,96 @@
 <script src="{{ asset('frontend-assets/js/custom.js') }}"></script>
 <script src="{{ asset('frontend-assets/js/booking.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+
+{{----}}
+
+<script src="https://js.pusher.com/8.4.0/pusher.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/laravel-echo@1.11.3/dist/echo.iife.js"></script>
+<script>
+    $(document).ready(function() {
+        let userId = "{{ auth()->id() }}";
+        let userType = "{{ auth()->user()->user_type ?? 'client' }}";
+        let providerRoute = "{{ route('provider.notifications.read', ':id') }}";
+        let userRoute     = "{{ route('client.notifications.read', ':id') }}";
+
+        const pusher = new Pusher('{{ env("PUSHER_APP_KEY") }}', {
+            cluster: '{{ env("PUSHER_APP_CLUSTER") }}',
+            forceTLS: true
+        });
+
+        let channelName = 'notifications.' + userId;
+
+        if (pusher.channel(channelName)) {
+            pusher.unsubscribe(channelName);
+        }
+
+        const channel = pusher.subscribe(channelName);
+
+
+        channel.bind('notification-created', function(data) {
+            // 🔹 Increment badge
+            let $count = $(".notificationcount");
+            let current = parseInt($count.text()) || 0;
+            $count.text(current + 1);
+
+            // 🔹 Prepend new notification
+            let $list = $("#notification-data");
+            let url;
+            if (userType === 'provider') {
+                url = providerRoute.replace(':id', data.notification.id);
+            } else {
+                url = userRoute.replace(':id', data.notification.id);
+            }
+
+            let html = `
+                <a href="${url}"
+                   class="dropdown-item d-flex align-items-start mb-2 unread">
+                    <span class="me-2">
+                        <i class="feather-bell text-primary"></i>
+                    </span>
+                    <div>
+                        <div class="fw-bold">${data.notification.title}</div>
+                        <small class="text-muted">${data.notification.message}</small>
+                        <div class="small text-gray">Just now</div>
+                    </div>
+                </a>
+            `;
+            $list.prepend(html);
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $("#toggleSidebar").on("click", function () {
+            $("#sidebar").toggleClass("collapsed");
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @if(session('errors'))
     @php
         $validationErrors = session('errors')->all();

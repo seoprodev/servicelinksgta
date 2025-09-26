@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\SubscriptionPackage;
 use App\Models\UserSubscription;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
 
@@ -118,8 +119,24 @@ class SubscriptionController extends Controller
     }
 
 
-    public function cancel()
+    public function cancel(Request $request)
     {
-        return redirect()->route('provider.packages')->with('error', 'Payment cancelled.');
+        $user = Auth::user();
+
+        $subscription = UserSubscription::where('user_id', $user->id)
+            ->where('is_active', true)
+            ->latest()
+            ->first();
+
+        if (!$subscription) {
+            return redirect()->back()->with('error', 'No active subscription found.');
+        }
+        $subscription->update([
+            'is_active' => false,
+            'subscription_status' => 'cancelled',
+            'cancelled_at' => now(),
+        ]);
+
+        return redirect()->back()->with('success', 'Your subscription has been cancelled successfully.');
     }
 }

@@ -18,11 +18,9 @@ use App\Http\Controllers\frontend\MiscellaneousController;
 use App\Http\Controllers\frontend\ProviderController;
 use App\Http\Controllers\frontend\SubscriptionController;
 use App\Http\Controllers\frontend\TicketController;
-use App\Models\Message;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\Facades\Route;
-use Pusher\Pusher;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,45 +38,12 @@ Route::get('/', function () {
 });
 
 
-Route::post('/pusher/auth', [FrontAuthController::class, 'PusherAuth'])
-    ->middleware('auth');
-
-Route::get('/test-pusher', function () {
-    $options = [
-        'cluster' => config('broadcasting.connections.pusher.options.cluster'),
-        'useTLS' => true,
-    ];
-
-    $pusher = new Pusher(
-        config('broadcasting.connections.pusher.key'),
-        config('broadcasting.connections.pusher.secret'),
-        config('broadcasting.connections.pusher.app_id'),
-        $options
-    );
-
-    dd($pusher);
-});
-
-Route::get('/fire-event', function () {
-    $message = Message::create([
-        'user_id' => auth()->id() ?? 1,
-        'conversation_id' => 1,
-        'body' => "Test message from Laravel"
-    ]);
-
-    event(new MessageSent($message));
-
-    return "Event fired with real Message model!";
-});
-
 
 Broadcast::routes();
-
 
 Route::view('/', 'frontend.home')->name('front.home');
 Route::view('service-detail', 'frontend.service-detail')->name('front.service.detail');
 Route::view('about-us', 'frontend.about')->name('front.about');
-
 Route::view('contact-us', 'frontend.contact')->name('front.contact');
 Route::view('categories', 'frontend.service-categories')->name('front.categories');
 Route::view('privacy-policy', 'frontend.policy')->name('front.policy');
@@ -88,18 +53,8 @@ Route::view('post-a-job', 'frontend.post-a-job')->name('front.post.job');
 
 
 Route::get('service', [FrontJobController::class, 'index'])->name('front.service');
-
-
-
-Route::post('/selected-category', [JobStepsController::class, 'postJobCategory'])
-    ->name('front.post.job.submit');
-
-
+Route::post('/selected-category', [JobStepsController::class, 'postJobCategory'])->name('front.post.job.submit');
 Route::get('post-a-job/{slug}', [JobStepsController::class, 'postJob'])->name('front.post.job');
-//Route::view('post-a-job', 'frontend.post-a-job')->name('front.post.job');
-
-
-
 Route::prefix('job')->group(function () {
     Route::post('/validate-postal-code', [JobStepsController::class, 'validatePostalCode'])->name('front.validate.postal');
     Route::post('/get-subcategories', [JobStepsController::class, 'getSubcategories'])->name('front.get.subcategories');
@@ -109,50 +64,26 @@ Route::prefix('job')->group(function () {
     Route::post('/submit-job-form', [JobStepsController::class, 'submitJobFormData'])->name('submit.job.form.data');
 
 });
-
-
 Route::post('/contact-submit', [MiscellaneousController::class, 'contactSubmit'])->name('contact.submit');
-
 Route::post('/subscribe', [MiscellaneousController::class, 'storeSubscriber'])->name('subscriber.store');
-
 Route::get('blogs', [MiscellaneousController::class, 'frontendBlogIndex'])->name('front.blog');
 Route::get('blog-detail/{slug}', [MiscellaneousController::class, 'frontendBlogDetail'])->name('front.blog.detail');
-
-
-
-
-
-
-
-
-
-
-
 
 Route::get('verify/{token}', [FrontAuthController::class, 'showVerifyPage'])->name('verify.email');
 Route::post('verify', [FrontAuthController::class, 'verifyCode'])->name('verify.email.submit');
 Route::get('resend-code/{token}', [FrontAuthController::class, 'resendCode'])->name('resend.code');
-
 Route::post('user-login-process', [FrontAuthController::class, 'userLoginProcess'])->name('user.login.process');
 Route::post('user-logout', [FrontAuthController::class, 'userLogout'])->name('user.logout.process');
 Route::post('/forgot-password', [FrontAuthController::class, 'sendResetOtp'])->name('forgot.password');
 
 
-
 Route::prefix('user')->group(function () {
     Route::post('/register', [FrontAuthController::class, 'registerUser'])->name('user.register');
-
-
         Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
-
         Route::get('/chat/{conversationId}/messages', [ChatController::class, 'messages'])->name('chat.messages');
         Route::post('/chat/send', [ChatController::class, 'send'])->name('chat.send');
-
         Route::get('/chat-search-users', [ChatController::class, 'searchProvider'])->name('chat.search.users');
         Route::post('/chat/start', [ChatController::class, 'startConversation'])->name('chat.start');
-
-
-
 
     Route::middleware(['auth.user:client'])->group(function () {
         Route::view('dashboard', 'frontend.user.dashboard')->name('user.dashboard');
@@ -163,14 +94,29 @@ Route::prefix('user')->group(function () {
         Route::get('/post-jobs/get-subcategories/{id}', [ClientJobController::class, 'getSubcategories'])->name('get.subcategories');
         Route::post('/job/store', [ClientJobController::class, 'storeJob'])->name('user.job.store');
 
-
         Route::get('my-jobs', [ClientJobController::class, 'myJobs'])->name('client.jobs');
         Route::get('my-jobs-detail/{id}', [ClientJobController::class, 'myJobShow'])->name('user.job.detail');
+
+        Route::get('my-jobs/edit/{id}', [ClientJobController::class, 'editMyJob'])->name('user.job.edit');
+        Route::patch('my-jobs/{id}', [ClientJobController::class, 'updateMyJob'])->name('user.job.update');
+        Route::delete('my-jobs/{job}/attachments/{index}', [ClientJobController::class, 'deleteAttachment'])->name('user.job.attachment.delete');
+
+        Route::get('provider-profile/{id}', [ClientJobController::class, 'showProviderProfile'])->name('user.provider.detail');
+
+
+        //Notification Route Start
+        Route::get('notifications', [MiscellaneousController::class, 'notifications'])->name('client.notifications.index');
+        Route::get('notifications/mark-all', [MiscellaneousController::class, 'markAllNotifications'])->name('client.notifications.markAll');
+        Route::get('notifications/read/{id}', [MiscellaneousController::class, 'readNotification'])->name('client.notifications.read');
+        Route::get('notifications/delete/{id}', [MiscellaneousController::class, 'NotificationDelete'])->name('client.notifications.delete');
+
+
 
     });
 });
 
 Route::prefix('provider')->group(function () {
+    Route::post('/register', [FrontAuthController::class, 'registerProvider'])->name('provider.register');
     Route::middleware(['auth.user:provider'])->group(function () {
         Route::view('dashboard', 'frontend.provider.dashboard')->name('provider.dashboard');
         Route::get('subscription', [SubscriptionController::class, 'packageIndex'])->name('provider.packages');
@@ -200,56 +146,34 @@ Route::prefix('provider')->group(function () {
         Route::get('/chat-search-provider', [ChatController::class, 'searchClient'])->name('chat.search.provider');
         // Chat Routes Start
 
+        //Notification Route Start
+        Route::get('notifications', [MiscellaneousController::class, 'notifications'])->name('provider.notifications.index');
+        Route::get('notifications/mark-all', [MiscellaneousController::class, 'markAllNotifications'])->name('provider.notifications.markAll');
+        Route::get('notifications/read/{id}', [MiscellaneousController::class, 'readNotification'])->name('provider.notifications.read');
+        Route::get('notifications/delete/{id}', [MiscellaneousController::class, 'NotificationDelete'])->name('provider.notifications.delete');
+
     });
-
-    Route::post('/register', [FrontAuthController::class, 'registerProvider'])->name('provider.register');
-
-
-
-
-
 
 });
 
-
-
-
-
-
-
-
 foreach (['user', 'provider'] as $role) {
     Route::prefix($role)->middleware(["auth.user"])->group(function () use ($role) {
-
-
         // Ticket Routes
         Route::get('tickets', [TicketController::class, 'index'])->name("$role.tickets.index");
         Route::get('create-ticket', [TicketController::class, 'create'])->name("$role.create.ticket");
         Route::post('create-ticket', [TicketController::class, 'store'])->name("$role.store.ticket");
         Route::delete('tickets/{ticket}', [TicketController::class, 'destroy'])->name("$role.tickets.destroy");
-
-
     });
 }
-
-
-
 
 Route::get('/clear-optimize', function () {
     Artisan::call('optimize:clear');
     return "Optimize clear command executed!";
 });
 
-
-Route::get('make-hash', function (){
-    dd(\Illuminate\Support\Facades\Hash::make('12345678'));
-});
 Route::get('/admin', function(){
     return redirect()->route('admin.login');
 });
-
-
-
 
 Route::prefix('admin')->group(function () {
     Route::middleware(['UnauthenticAdmin'])->group(function (){
@@ -268,7 +192,6 @@ Route::prefix('admin')->group(function () {
         Route::get('create-user', [UserController::class, 'create'])->name('admin.create.user');
         Route::post('create-user', [UserController::class, 'store'])->name('admin.store.user');
 
-
         // Category Management
         Route::get('category-management', [CategoryController::class, 'index'])->name('admin.manage.category');
         Route::get('detail/{type}/{id}', [CategoryController::class, 'show'])->name('admin.show.category');
@@ -284,7 +207,6 @@ Route::prefix('admin')->group(function () {
         Route::post('property-type-store', [PropertyController::class, 'store'])->name('admin.property.store');
         Route::post('property-type-update/{id}', [PropertyController::class, 'update'])->name('admin.property.update');
         Route::delete('property-type-delete/{id}', [PropertyController::class, 'destroy'])->name('admin.property.delete');
-
 
         // Priority Management
         Route::get('job-priority-management', [PriorityController::class, 'index'])->name('admin.manage.priority');
@@ -316,7 +238,6 @@ Route::prefix('admin')->group(function () {
         Route::patch('update-ticket/{id}', [App\Http\Controllers\admin\TicketController::class, 'update'])->name('admin.update.ticket');
         Route::delete('delete-ticket/{id}', [App\Http\Controllers\admin\TicketController::class, 'destroy'])->name('admin.delete.ticket');
 
-
         //Job Management
         Route::get('job-management', [App\Http\Controllers\admin\JobController::class, 'index'])->name('admin.manage.job');
         Route::get('jobs/create', [App\Http\Controllers\admin\JobController::class, 'create'])->name('admin.create.job');
@@ -333,6 +254,7 @@ Route::prefix('admin')->group(function () {
         Route::get('contacts/{id}', [MiscellaneousController::class, 'contactShow'])->name('admin.contact.show');
         Route::get('contacts/{id}/delete', [MiscellaneousController::class, 'contactDestroy'])->name('admin.contact.delete');
 
+        //Subscriber Management
         Route::get('subscribers', [MiscellaneousController::class, 'indexSubscriber'])->name('admin.subscriber.index');
         Route::get('subscribers/{id}/delete', [MiscellaneousController::class, 'destroySubscriber'])->name('admin.subscriber.delete');
 
@@ -345,12 +267,13 @@ Route::prefix('admin')->group(function () {
         Route::patch('update-blog/{id}', [BlogController::class, 'update'])->name('admin.update.blog');
         Route::get('delete-blog/{id}', [BlogController::class, 'destroy'])->name('admin.delete.blog');
 
-
-
-
+        //Notification Route Start
+        Route::get('notifications', [MiscellaneousController::class, 'notifications'])->name('admin.notifications.index');
+        Route::get('notifications/mark-all', [MiscellaneousController::class, 'markAllNotifications'])->name('admin.notifications.markAll');
+        Route::get('notifications/read/{id}', [MiscellaneousController::class, 'readNotification'])->name('admin.notifications.read');
+        Route::get('notifications/delete/{id}', [MiscellaneousController::class, 'NotificationDelete'])->name('admin.notifications.delete');
 
     });
-
 
 });
 

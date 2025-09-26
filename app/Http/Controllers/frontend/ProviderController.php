@@ -235,6 +235,10 @@ class ProviderController extends Controller
             'job_status' => 'bought',
         ]);
 
+        $client = $job->user;
+        $client->providers()->syncWithoutDetaching([$provider->id]);
+
+
         return redirect()->route('provider.leads')->with('success', 'Lead purchased successfully!');
     }
 

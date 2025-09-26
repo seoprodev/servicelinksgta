@@ -75,6 +75,72 @@
 <script src="{{ asset('admin-assets/js/custom.js') }}"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>--}}
+<script src="https://js.pusher.com/8.4.0/pusher.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/laravel-echo@1.11.3/dist/echo.iife.js"></script>
+<script>
+    $(document).ready(function() {
+        Pusher.logToConsole = true;
+
+        let adminId = 1;
+
+        const pusher = new Pusher('{{ env("PUSHER_APP_KEY") }}', {
+            cluster: '{{ env("PUSHER_APP_CLUSTER") }}',
+            forceTLS: true
+        });
+
+        const channel = pusher.subscribe('notifications.' + adminId);
+        channel.bind('notification-created', function(data) {
+            var $counter = $(".notification-count");
+            if ($counter.length) {
+                var count = parseInt($counter.text()) || 0;
+                $counter.text(count + 1);
+            }
+            var $list = $(".dropdown-list-content");
+            if ($list.length) {
+                var html = `
+                    <a href="/admin/notifications/read/${data.notification.id}"
+                       class="dropdown-item dropdown-item-unread">
+                        <span class="dropdown-item-icon bg-primary text-white">
+                            <i class="fas fa-bell"></i>
+                        </span>
+                        <span class="dropdown-item-desc">
+                            ${data.notification.title} <br>
+                            <small>${data.notification.message}</small>
+                            <span class="time">Just now</span>
+                        </span>
+                    </a>
+                `;
+                $list.prepend(html);
+            }
+        });
+
+        $(document).on('click', '.mark-all-read', function(e){
+            e.preventDefault();
+            $.get("{{ route('admin.notifications.markAll') }}", function(){
+                $(".notification-count").text(0);
+                $(".dropdown-item-unread").removeClass("dropdown-item-unread");
+            });
+        });
+    });
+</script>
+
+
+
+
+
+
 @if(session('errors'))
     @php
         $validationErrors = session('errors')->all();
@@ -95,6 +161,13 @@
         alertify.error('{{ session('error') }}')
     </script>
 @endif
+
+
+
+
+
+
+
 
 @stack('scripts')
 

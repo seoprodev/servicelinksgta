@@ -41,7 +41,8 @@
                             <a href="javascript:void(0)"
                                class="chat-link d-block text-decoration-none"
                                data-id="{{ $user->id }}"
-                               data-name="{{ $user->name }}">
+                               data-name="{{ $user->name }}" data-profile="{{ route('user.provider.detail', $user->faker_id) }}"
+                               data-avatar="{{ $user->profile->avatar ? asset($user->profile->avatar) : asset('frontend-assets/img/default-avatar.png') }}">
                                 {{ $user->name }}
                             </a>
                         </li>
@@ -64,7 +65,7 @@
                 </div>
 
                 <!-- Chat Form -->
-                <form id="chat-form" class="border-top d-flex p-2" style="display:none;">
+                <form id="chat-form" class="border-top d-flex p-2" style="display:none !important;">
                     @csrf
                     <input type="hidden" id="receiver_id" name="receiver_id">
                     <input type="text" id="message" class="form-control me-2" placeholder="Type a message..." required>
@@ -78,141 +79,6 @@
 
 @push('scripts')
     <script src="https://js.pusher.com/8.4.0/pusher.min.js"></script>
-{{--    <script>--}}
-{{--        const csrfToken = "{{ csrf_token() }}";--}}
-{{--        const loggedInUser = "{{ auth()->id() }}";--}}
-{{--        // Pusher.logToConsole = true;--}}
-
-{{--        let activeUserId = null;--}}
-
-{{--        const pusher = new Pusher('{{ env("PUSHER_APP_KEY") }}', {--}}
-{{--            cluster: '{{ env("PUSHER_APP_CLUSTER") }}'--}}
-{{--        });--}}
-{{--        const personalChannel = pusher.subscribe('chat.'+ loggedInUser);--}}
-
-{{--        // append message--}}
-{{--        function appendMessage(message) {--}}
-{{--            let userId = message.user_id || (message.sender ? message.sender.id : null);--}}
-{{--            let msgClass = (userId == loggedInUser) ? 'text-end' : 'text-start';--}}
-{{--            let bubbleClass = (userId == loggedInUser) ? 'bg-primary text-white' : 'bg-light';--}}
-
-{{--            let msgHtml = `--}}
-{{--        <div class="mb-2 mt-3 ${msgClass}">--}}
-{{--            <span class="p-2 rounded ${bubbleClass}">${message.body}</span>--}}
-{{--        </div>`;--}}
-{{--            $("#chat-box").append(msgHtml);--}}
-{{--            $("#chat-box").scrollTop($("#chat-box")[0].scrollHeight);--}}
-{{--        }--}}
-
-{{--        // load chat with one user--}}
-{{--        function loadChat(userId, name) {--}}
-{{--            activeUserId = userId;--}}
-{{--            $("#receiver_id").val(userId);--}}
-{{--            $("#chat-box").html("");--}}
-{{--            $("#chat-header").html(`<strong>${name}</strong>`);--}}
-{{--            $("#chat-form").show();--}}
-
-{{--            $(".chat-link").removeClass("active");--}}
-{{--            $(`.chat-link[data-id="${userId}"]`).addClass("active");--}}
-
-{{--            $.get(`/user/chat/${userId}/messages`, function (response) {--}}
-{{--                response.forEach(msg => appendMessage(msg));--}}
-{{--            });--}}
-{{--        }--}}
-
-{{--        // when click on user from sidebar--}}
-{{--        $(document).on("click", ".chat-link", function(e) {--}}
-{{--            e.preventDefault();--}}
-{{--            let id = $(this).data("id");--}}
-{{--            let name = $(this).data("name");--}}
-{{--            loadChat(id, name);--}}
-{{--        });--}}
-
-{{--        // send message--}}
-{{--        $("#chat-form").on("submit", function(e) {--}}
-{{--            e.preventDefault();--}}
-{{--            let msg = $("#message").val();--}}
-{{--            if (!msg.trim() || !activeUserId) return;--}}
-
-
-
-{{--            $.ajax({--}}
-{{--                url: "{{ route('chat.send') }}",--}}
-{{--                method: "POST",--}}
-{{--                data: {--}}
-{{--                    _token: csrfToken,--}}
-{{--                    message: msg,--}}
-{{--                    receiver_id: activeUserId--}}
-{{--                },--}}
-{{--                success: function() {--}}
-{{--                    appendMessage({ user_id: loggedInUser, body: msg });--}}
-{{--                    $("#message").val("");--}}
-{{--                }--}}
-{{--            });--}}
-{{--        });--}}
-
-{{--        // listen realtime messages--}}
-{{--        personalChannel.bind('message-sent', function(data) {--}}
-{{--            // if (activeUserId == data.user_id || activeUserId == data.receiver_id) {--}}
-{{--                appendMessage(data.message);--}}
-
-{{--                console.log(data.message);--}}
-{{--            // }--}}
-{{--        });--}}
-
-{{--        // search users--}}
-{{--        $("#user-search").on("keyup", function() {--}}
-{{--            let q = $(this).val().trim();--}}
-{{--            if (q.length < 2) {--}}
-{{--                $("#search-results").html("");--}}
-{{--                $("#search-loader").hide();--}}
-{{--                return;--}}
-{{--            }--}}
-
-{{--            $("#search-loader").show();--}}
-{{--            $("#search-results").html("");--}}
-
-{{--            $.ajax({--}}
-{{--                url: "{{ route('chat.search.users') }}",--}}
-{{--                method: "GET",--}}
-{{--                data: { q: q },--}}
-{{--                success: function(data) {--}}
-{{--                    $("#search-loader").hide();--}}
-
-{{--                    if (data.length === 0) {--}}
-{{--                        $("#search-results").html(`<li class="list-group-item text-muted">No results found</li>`);--}}
-{{--                        return;--}}
-{{--                    }--}}
-
-{{--                    let html = "";--}}
-{{--                    data.forEach(user => {--}}
-{{--                        html += `<li class="list-group-item">--}}
-{{--                        <button class="btn btn-link p-0 start-chat"--}}
-{{--                                data-id="${user.id}"--}}
-{{--                                data-name="${user.name}">--}}
-{{--                            ${user.name}--}}
-{{--                        </button>--}}
-{{--                    </li>`;--}}
-{{--                    });--}}
-
-{{--                    $("#search-results").html(html);--}}
-{{--                }--}}
-{{--            });--}}
-{{--        });--}}
-
-{{--        // start new chat directly--}}
-{{--        $(document).on("click", ".start-chat", function(e) {--}}
-{{--            e.preventDefault();--}}
-{{--            let otherUserId = $(this).data("id");--}}
-{{--            let otherUserName = $(this).data("name");--}}
-{{--            loadChat(otherUserId, otherUserName);--}}
-{{--            $("#search-results").html("");--}}
-{{--            $("#user-search").val("");--}}
-{{--        });--}}
-
-{{--    </script>--}}
-
-
     <script>
         const csrfToken = "{{ csrf_token() }}";
         const loggedInUser = "{{ auth()->id() }}";
@@ -253,11 +119,24 @@
         /** ---------------------------
          *  CHAT HANDLERS
          * --------------------------- */
-        function loadChat(userId, name) {
+        function loadChat(userId, name, profileUrl, avatarUrl) {
             activeUserId = userId;
             $("#receiver_id").val(userId);
             $("#chat-box").html(`<div class="text-center text-muted mt-3">Loading...</div>`);
-            $("#chat-header").html(`<strong>${name}</strong>`);
+            // $("#chat-header").html(`<strong>${name}</strong>`);
+            $("#chat-header").html(`
+                <div class="d-flex align-items-center">
+                    <img src="${avatarUrl}"
+                         alt="${name}"
+                         class="rounded-circle me-2"
+                         style="width:40px; height:40px; object-fit:cover;">
+                    <strong>
+                        <a href="${profileUrl}" target="_blank" class="text-decoration-none">
+                            ${name}
+                        </a>
+                    </strong>
+                </div>
+            `);
             $("#chat-form").show();
 
             $(".chat-link").removeClass("active");
@@ -272,7 +151,12 @@
         // Sidebar user click
         $(document).on("click", ".chat-link", function(e) {
             e.preventDefault();
-            loadChat($(this).data("id"), $(this).data("name"));
+            loadChat(
+                $(this).data("id"),
+                $(this).data("name"),
+                $(this).data("profile"),
+                $(this).data("avatar")
+            );
         });
 
         // Send message
@@ -293,7 +177,6 @@
             });
         });
 
-        // Listen realtime messages
         personalChannel.bind("message-sent", function(data) {
             appendMessage(data.message);
             // TODO: agar sidebar me active nahi hai to "new message" badge show karo

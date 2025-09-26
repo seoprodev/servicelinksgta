@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Job;
 use App\Models\Priority;
 use App\Models\PropertyType;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ClientJobController extends Controller
@@ -17,14 +18,13 @@ class ClientJobController extends Controller
     public function myJobs()
     {
         $userJobs = Job::where('user_id', auth()->id())->latest()->get();
-        return view('frontend.user.client-jobs', compact('userJobs'));
+        return view('frontend.user.job.index', compact('userJobs'));
     }
 
     public function myJobShow($id)
     {
         $userJob = Job::with('user', 'category')->findOrFail(FakerURL::id_d($id));
-//        dd($userJob);
-        return view('frontend.user.job-detail', compact('userJob'));
+        return view('frontend.user.job.detail', compact('userJob'));
     }
 
     public function createJob()
@@ -34,7 +34,7 @@ class ClientJobController extends Controller
         $propertyType = PropertyType::get();
         $priority = Priority::get();
 
-        return view('frontend.user.create-job', compact('jobCategories', 'propertyType', 'priority'));
+        return view('frontend.user.job.create', compact('jobCategories', 'propertyType', 'priority'));
 
     }
 
@@ -107,5 +107,94 @@ class ClientJobController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'Job posted successfully!');
+    }
+
+    public function editMyJob($id)
+    {
+        $job = Job::findOrFail(FakerURL::id_d($id));
+
+        $jobCategories = Category::all();
+        $propertyType = PropertyType::all();
+        $priority = Priority::all();
+
+        // Load subcategories for the selected category
+        $subcategories = $job->category ? $job->category->subcategories : null;
+
+        return view('frontend.user.job.edit', compact(
+            'job', 'jobCategories', 'propertyType', 'priority', 'subcategories'
+        ));
+    }
+
+    public function updateMyJob(Request $request, $id)
+    {
+
+
+        $job = Job::findOrFail(FakerURL::id_d($id));
+
+        // Ensure only job owner can update
+
+        $data = $request->only([
+            'title', 'category_id', 'sub_category_id', 'status',
+            'property_type', 'priority', 'postal_code', 'description'
+        ]);
+
+        // Handle new file uploads
+        $files = [];
+        if ($request->hasFile('job_file')) {
+            foreach ($request->file('job_file') as $file) {
+                $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('uploads/job/files'), $filename);
+                $files[] = 'uploads/job/files/' . $filename;
+            }
+        }
+
+        $existingFiles = $job->job_files ?? [];
+        $data['job_files'] = array_merge($existingFiles, $files);
+
+        $job->fill($data);
+        $job->save();
+
+        return redirect()->route('user.job.detail', $job->faker_id)
+            ->with('success', 'Job updated successfully!');
+    }
+
+
+    public function deleteAttachment($jobId, $index)
+    {
+        $job = Job::where('id', $jobId)->where('user_id', auth()->id())->firstOrFail();
+
+        $files = $job->job_files ?? [];
+        if (isset($files[$index])) {
+            $filePath = public_path($files[$index]);
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
+            unset($files[$index]);
+            $job->job_files = array_values($files);
+            $job->save();
+        }
+
+        return back()->with('success', 'Attachment deleted successfully.');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function showProviderProfile($id)
+    {
+        $provider = User::with('profile')->findOrFail(FakerURL::id_d($id));
+//        dd($provider);
+
+        return view('frontend.user.provider.detail', compact('provider'));
     }
 }

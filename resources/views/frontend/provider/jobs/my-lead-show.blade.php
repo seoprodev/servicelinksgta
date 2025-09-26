@@ -2,7 +2,7 @@
 
 @section('title', 'Provider Subscriptions')
 @section('provider-dashboard-content')
-    <div class="col-xl-10 col-lg-8">
+    <div class="col-xl-12 col-lg-12">
         <div class="breadcrumb-bar text-center">
             <div class="container">
                 <div class="row">

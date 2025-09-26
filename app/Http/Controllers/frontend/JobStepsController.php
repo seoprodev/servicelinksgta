@@ -11,6 +11,7 @@ use App\Models\Priority;
 use App\Models\PropertyType;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -151,6 +152,7 @@ class JobStepsController extends Controller
                 [
                     'name'     => $fullName,
                     'password' => Hash::make($request->password),
+                    'is_active' => '1',
                 ]
             );
 
@@ -201,7 +203,7 @@ class JobStepsController extends Controller
             ]);
 
             DB::commit();
-
+            Auth::login($user);
             return response()->json([
                 'success' => true,
                 'message' => 'Job submitted successfully!',
