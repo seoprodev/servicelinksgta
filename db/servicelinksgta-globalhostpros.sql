@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 24, 2025 at 10:46 PM
+-- Generation Time: Sep 26, 2025 at 07:09 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.2.29
 
@@ -45,7 +45,7 @@ CREATE TABLE `blogs` (
 INSERT INTO `blogs` (`id`, `title`, `slug`, `content`, `image`, `is_active`, `created_at`, `updated_at`) VALUES
 (2, '5 Common Plumbing Problems You Should Never Ignore', '5-common-plumbing-problems-you-should-never-ignore', '<p data-start=\"296\" data-end=\"482\" style=\"outline: none; margin-bottom: 20px; color: rgb(101, 107, 118); font-family: Archivo, sans-serif;\">Plumbing issues may seem minor at first, but they can quickly escalate into costly repairs if left unattended. Here are five common plumbing problems that homeowners should never ignore:</p><h3 data-start=\"484\" data-end=\"511\" style=\"outline: none; margin-bottom: 0px; font-weight: 700; color: rgb(36, 43, 58); font-size: 28px; font-family: Archivo, sans-serif;\">1.&nbsp;<span data-start=\"491\" data-end=\"511\" style=\"outline: none;\">Dripping Faucets</span></h3><p data-start=\"512\" data-end=\"620\" style=\"outline: none; margin-bottom: 20px; color: rgb(101, 107, 118); font-family: Archivo, sans-serif;\">That constant drip isn\'t just annoying—it can waste gallons of water over time and increase your water bill.</p><h3 data-start=\"622\" data-end=\"644\" style=\"outline: none; margin-bottom: 0px; font-weight: 700; color: rgb(36, 43, 58); font-size: 28px; font-family: Archivo, sans-serif;\">2.&nbsp;<span data-start=\"629\" data-end=\"644\" style=\"outline: none;\">Slow Drains</span></h3><p data-start=\"645\" data-end=\"764\" style=\"outline: none; margin-bottom: 20px; color: rgb(101, 107, 118); font-family: Archivo, sans-serif;\">A slow drain often signals a clog forming deep inside your pipes. Ignoring it can lead to full blockage or pipe damage.</p><h3 data-start=\"766\" data-end=\"795\" style=\"outline: none; margin-bottom: 0px; font-weight: 700; color: rgb(36, 43, 58); font-size: 28px; font-family: Archivo, sans-serif;\">3.&nbsp;<span data-start=\"773\" data-end=\"795\" style=\"outline: none;\">Low Water Pressure</span></h3><p data-start=\"796\" data-end=\"903\" style=\"outline: none; margin-bottom: 20px; color: rgb(101, 107, 118); font-family: Archivo, sans-serif;\">Inconsistent water pressure may indicate hidden leaks, corroded pipes, or mineral buildup in your fixtures.</p><h3 data-start=\"905\" data-end=\"931\" style=\"outline: none; margin-bottom: 0px; font-weight: 700; color: rgb(36, 43, 58); font-size: 28px; font-family: Archivo, sans-serif;\">4.&nbsp;<span data-start=\"912\" data-end=\"931\" style=\"outline: none;\">Running Toilets</span></h3><p data-start=\"932\" data-end=\"1044\" style=\"outline: none; margin-bottom: 20px; color: rgb(101, 107, 118); font-family: Archivo, sans-serif;\">A running toilet can waste up to 200 gallons of water per day. It\'s usually an easy fix, so don’t delay repairs.</p><h3 data-start=\"1046\" data-end=\"1076\" style=\"outline: none; margin-bottom: 0px; font-weight: 700; color: rgb(36, 43, 58); font-size: 28px; font-family: Archivo, sans-serif;\">5.&nbsp;<span data-start=\"1053\" data-end=\"1076\" style=\"outline: none;\">Water Heater Issues</span></h3><p data-start=\"1077\" data-end=\"1185\" style=\"outline: none; margin-bottom: 20px; color: rgb(101, 107, 118); font-family: Archivo, sans-serif;\">If your shower suddenly runs cold or the water smells metallic, your heater may need service or replacement.</p><p data-start=\"1187\" data-end=\"1285\" style=\"outline: none; margin-bottom: 20px; color: rgb(101, 107, 118); font-family: Archivo, sans-serif;\">👉&nbsp;<em data-start=\"1190\" data-end=\"1285\" style=\"outline: none;\">Need quick plumbing help? Book a certified plumber through our platform in just a few clicks.</em></p>', 'uploads/blog/1758740570-68d4405ace3e9.jpg', 1, '2025-09-24 13:55:59', '2025-09-24 14:02:50'),
 (3, 'What is Lorem Ipsum?', 'what-is-lorem-ipsum', '<p><strong style=\"margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br><br></span></p><ul style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\"><ul><li style=\"margin: 0px; padding: 0px;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li><li style=\"margin: 0px; padding: 0px;\">Donec quis orci efficitur, suscipit odio sit amet, laoreet massa.</li><li style=\"margin: 0px; padding: 0px;\">Phasellus id augue auctor, maximus felis eget, accumsan nibh.</li><li style=\"margin: 0px; padding: 0px;\">Nam quis tortor porta, porta diam aliquam, egestas lorem.</li><li style=\"margin: 0px; padding: 0px;\">Maecenas sit amet justo ut est bibendum feugiat.</li><li style=\"margin: 0px; padding: 0px;\">Nam luctus purus id finibus hendrerit.</li></ul><ul><li style=\"margin: 0px; padding: 0px;\">Phasellus feugiat lectus a arcu mollis efficitur.</li><li style=\"margin: 0px; padding: 0px;\">In ut ex semper nulla varius placerat ut sed tellus.</li><li style=\"margin: 0px; padding: 0px;\">In nec quam nec ipsum condimentum sodales.</li></ul><ul><li style=\"margin: 0px; padding: 0px;\">Suspendisse nec massa vitae eros vehicula euismod vel et risus.</li><li style=\"margin: 0px; padding: 0px;\">Sed posuere turpis vel malesuada viverra.</li></ul></ul>', 'uploads/blog/1758741802_5ed9911a-6ac5-486c-9ecd-16c75fb10f76_1754009178.jpg', 1, '2025-09-24 14:23:22', '2025-09-24 14:23:22'),
-(4, 'What is Lorem Ipsum?????', 'what-is-lorem-ipsum', '<p><span style=\"font-weight: bolder; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</span><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br><br></span></p><ul style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\"><ul><li style=\"margin: 0px; padding: 0px;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li><li style=\"margin: 0px; padding: 0px;\">Donec quis orci efficitur, suscipit odio sit amet, laoreet massa.</li><li style=\"margin: 0px; padding: 0px;\">Phasellus id augue auctor, maximus felis eget, accumsan nibh.</li><li style=\"margin: 0px; padding: 0px;\">Nam quis tortor porta, porta diam aliquam, egestas lorem.</li><li style=\"margin: 0px; padding: 0px;\">Maecenas sit amet justo ut est bibendum feugiat.</li><li style=\"margin: 0px; padding: 0px;\">Nam luctus purus id finibus hendrerit.</li></ul><ul><li style=\"margin: 0px; padding: 0px;\">Phasellus feugiat lectus a arcu mollis efficitur.</li><li style=\"margin: 0px; padding: 0px;\">In ut ex semper nulla varius placerat ut sed tellus.</li><li style=\"margin: 0px; padding: 0px;\">In nec quam nec ipsum condimentum sodales.</li></ul><ul><li style=\"margin: 0px; padding: 0px;\">Suspendisse nec massa vitae eros vehicula euismod vel et risus.</li><li style=\"margin: 0px; padding: 0px;\">Sed posuere turpis vel malesuada viverra.</li></ul></ul>', 'uploads/blog/1758741870_754eec98-c816-4e56-b55e-45a074d2e6cd_1754009153.jpg', 1, '2025-09-24 14:24:30', '2025-09-24 14:36:58');
+(4, 'What is Lorem Ipsum?????', 'what-is-lorem-ipsum', '<p><span style=\"font-weight: bolder; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</span><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br><br></span></p><ul style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\"><ul><li style=\"margin: 0px; padding: 0px;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li><li style=\"margin: 0px; padding: 0px;\">Donec quis orci efficitur, suscipit odio sit amet, laoreet massa.</li><li style=\"margin: 0px; padding: 0px;\">Phasellus id augue auctor, maximus felis eget, accumsan nibh.</li><li style=\"margin: 0px; padding: 0px;\">Nam quis tortor porta, porta diam aliquam, egestas lorem.</li><li style=\"margin: 0px; padding: 0px;\">Maecenas sit amet justo ut est bibendum feugiat.</li><li style=\"margin: 0px; padding: 0px;\">Nam luctus purus id finibus hendrerit.</li></ul><ul><li style=\"margin: 0px; padding: 0px;\">Phasellus feugiat lectus a arcu mollis efficitur.</li><li style=\"margin: 0px; padding: 0px;\">In ut ex semper nulla varius placerat ut sed tellus.</li><li style=\"margin: 0px; padding: 0px;\">In nec quam nec ipsum condimentum sodales.</li></ul><ul><li style=\"margin: 0px; padding: 0px;\">Suspendisse nec massa vitae eros vehicula euismod vel et risus.</li><li style=\"margin: 0px; padding: 0px;\">Sed posuere turpis vel malesuada viverra.</li></ul></ul>', 'uploads/blog/1758741870_754eec98-c816-4e56-b55e-45a074d2e6cd_1754009153.jpg', 1, '2025-09-24 14:24:30', '2025-09-25 16:51:06');
 
 -- --------------------------------------------------------
 
@@ -115,7 +115,49 @@ CREATE TABLE `contact_us` (
 
 INSERT INTO `contact_us` (`id`, `name`, `email`, `phone_number`, `message`, `is_view`, `created_at`, `updated_at`) VALUES
 (1, 'Indigo Cole', 'sacikari@mailinator.com', '+1 (334) 535-6871', 'Quo expedita sint eda', 0, '2025-09-24 12:32:24', '2025-09-24 12:32:24'),
-(3, 'Keith Roy', 'wogur@mailinator.com', '+1 (259) 683-5241', 'Tempora repudiandae', 1, '2025-09-24 12:33:21', '2025-09-24 12:58:23');
+(3, 'Keith Roy', 'wogur@mailinator.com', '+1 (259) 683-5241', 'Tempora repudiandae', 1, '2025-09-24 12:33:21', '2025-09-24 12:58:23'),
+(8, 'Ralph Randall', 'pucuky@mailinator.com', '+1 (857) 299-1002', 'Vel ut veniam sed a', 0, '2025-09-24 17:52:24', '2025-09-24 17:52:24'),
+(9, 'Ivor Mueller', 'kysuqi@mailinator.com', '+1 (259) 197-4042', 'Quod qui Nam atque c', 0, '2025-09-24 18:15:46', '2025-09-24 18:15:46'),
+(10, 'Nell Mcfarland', 'vace@mailinator.com', '+1 (234) 101-2216', 'Et quis tempor esse', 1, '2025-09-24 18:16:21', '2025-09-25 11:54:49'),
+(11, 'Alisa Heath', 'bugisoh@mailinator.com', '+1 (785) 954-8641', 'Voluptates dolores v', 0, '2025-09-25 11:56:46', '2025-09-25 11:56:46'),
+(12, 'Alisa Heath', 'bugisoh@mailinator.com', '+1 (785) 954-8641', 'Voluptates dolores v', 0, '2025-09-25 11:56:57', '2025-09-25 11:56:57'),
+(13, 'Alisa Heath', 'bugisoh@mailinator.com', '+1 (785) 954-8641', 'Voluptates dolores v', 0, '2025-09-25 11:57:16', '2025-09-25 11:57:16'),
+(14, 'Galena Wallace', 'befivo@mailinator.com', '+1 (845) 103-6943', 'Quia illum eos veli', 1, '2025-09-25 12:09:28', '2025-09-25 12:09:40'),
+(15, 'Curran Payne', 'xumytut@mailinator.com', '+1 (665) 738-7703', 'In molestiae reprehe', 0, '2025-09-25 12:10:13', '2025-09-25 12:10:13'),
+(16, 'Neve Underwood', 'caquwe@mailinator.com', '+1 (496) 698-9759', 'Quidem officiis sit', 1, '2025-09-25 12:12:00', '2025-09-25 12:22:08'),
+(17, 'Blaine Rowe', 'xepube@mailinator.com', '+1 (175) 419-8867', 'Et culpa at commodi', 1, '2025-09-25 12:12:22', '2025-09-25 12:12:29'),
+(18, 'Xaviera Salinas', 'hijemu@mailinator.com', '+1 (633) 719-6777', 'Est in qui autem qu', 0, '2025-09-25 12:33:45', '2025-09-25 12:33:45'),
+(19, 'Azalia Cain', 'dypixytar@mailinator.com', '+1 (734) 714-5705', 'Voluptate ut mollit', 0, '2025-09-25 12:38:47', '2025-09-25 12:38:47'),
+(20, 'Griffith Mitchell', 'hyle@mailinator.com', '+1 (847) 407-4738', 'Porro magnam aut et', 0, '2025-09-25 12:42:49', '2025-09-25 12:42:49'),
+(21, 'Quinn Mccarthy', 'xazubajoz@mailinator.com', '+1 (344) 665-4087', 'Enim sunt consequat', 0, '2025-09-25 12:44:09', '2025-09-25 12:44:09'),
+(22, 'Halee Ayers', 'dufih@mailinator.com', '+1 (582) 792-8142', 'Irure quia soluta al', 0, '2025-09-25 12:47:24', '2025-09-25 12:47:24'),
+(23, 'Curran Wilkins', 'xigohyjo@mailinator.com', '+1 (512) 612-4515', 'Cum autem vitae temp', 0, '2025-09-25 12:48:17', '2025-09-25 12:48:17'),
+(24, 'Yetta Cooper', 'vygux@mailinator.com', '+1 (564) 645-3969', 'Excepturi eos odit n', 0, '2025-09-25 12:48:48', '2025-09-25 12:48:48'),
+(25, 'Yetta Cooper', 'vygux@mailinator.com', '+1 (564) 645-3969', 'Excepturi eos odit n', 0, '2025-09-25 12:48:48', '2025-09-25 12:48:48'),
+(26, 'Sigourney Carey', 'fygemy@mailinator.com', '+1 (248) 297-7568', 'Aut ex aut iste iust', 0, '2025-09-25 12:51:07', '2025-09-25 12:51:07'),
+(27, 'Vivian Cook', 'tucobowe@mailinator.com', '+1 (306) 854-8244', 'Autem eligendi offic', 0, '2025-09-25 12:52:37', '2025-09-25 12:52:37'),
+(28, 'Sopoline Keith', 'mupyzyp@mailinator.com', '+1 (215) 656-2849', 'Laboris recusandae', 0, '2025-09-25 12:54:25', '2025-09-25 12:54:25'),
+(29, 'Sopoline Keith', 'mupyzyp@mailinator.com', '+1 (215) 656-2849', 'Laboris recusandae', 0, '2025-09-25 12:54:29', '2025-09-25 12:54:29'),
+(30, 'Briar Kane', 'zahefoqudu@mailinator.com', '+1 (638) 967-8105', 'Facilis accusantium', 0, '2025-09-25 12:55:51', '2025-09-25 12:55:51'),
+(31, 'Carl Wood', 'liwubuc@mailinator.com', '+1 (184) 329-4602', 'Minima nulla ratione', 0, '2025-09-25 12:56:50', '2025-09-25 12:56:50'),
+(32, 'Yvette Stark', 'kunatalyxi@mailinator.com', '+1 (428) 541-7987', 'Et commodi blanditii', 0, '2025-09-25 12:57:17', '2025-09-25 12:57:17'),
+(33, 'test test test', 'jefobinyzo@mailinator.com', '+1 (606) 348-1192', 'Ex irure adipisci od', 1, '2025-09-25 12:57:32', '2025-09-25 12:57:36'),
+(34, 'Chandler Salazar', 'sakufalunu@mailinator.com', '+1 (137) 321-5659', 'Atque commodi qui et', 0, '2025-09-25 12:58:49', '2025-09-25 12:58:49'),
+(35, 'Eliana Cortez', 'wuguv@mailinator.com', '+1 (463) 635-2033', 'Est laboris cupidat', 1, '2025-09-25 13:00:20', '2025-09-25 13:00:25'),
+(36, 'Deirdre Whitney', 'qogymybo@mailinator.com', '+1 (586) 315-1442', 'Illo rerum qui offic', 1, '2025-09-25 13:07:11', '2025-09-25 13:18:32'),
+(37, 'Jenette Huber', 'sesoqet@mailinator.com', '+1 (222) 429-1576', 'Ut eos neque sequi', 1, '2025-09-25 13:19:30', '2025-09-25 13:28:06'),
+(38, 'Leroy Huffman', 'senuvigaqu@mailinator.com', '+1 (166) 111-2025', 'Cumque ad omnis est', 1, '2025-09-25 13:25:51', '2025-09-25 13:27:36'),
+(39, 'Paula Cotton', 'xydifihyso@mailinator.com', '+1 (507) 748-2678', 'Consectetur cupidata', 1, '2025-09-25 13:26:25', '2025-09-25 13:27:33'),
+(40, 'Zahir Wade', 'humypubedu@mailinator.com', '+1 (417) 162-9039', 'Soluta pariatur Sin', 1, '2025-09-25 13:26:35', '2025-09-25 13:27:23'),
+(41, 'Harding Holder', 'lece@mailinator.com', '+1 (974) 665-7342', 'Id rerum quia volup', 1, '2025-09-25 13:26:52', '2025-09-25 13:27:08'),
+(42, 'May Snider', 'rykynynepu@mailinator.com', '+1 (257) 254-3843', 'Consequatur blandit', 1, '2025-09-25 13:35:25', '2025-09-25 13:35:30'),
+(43, 'Gary Blankenship', 'duwusydoki@mailinator.com', '+1 (788) 585-2102', 'Corporis deserunt ut', 1, '2025-09-25 13:38:31', '2025-09-25 13:39:00'),
+(44, 'Xantha Pearson', 'vacusije@mailinator.com', '+1 (577) 739-1137', 'Eos cum repudiandae  this osadlfs a sam,d lkas', 1, '2025-09-25 13:38:48', '2025-09-25 13:38:54'),
+(45, 'Ferris Gutierrez', 'puhowax@mailinator.com', '+1 (233) 126-2991', 'Deleniti consectetur', 0, '2025-09-25 13:50:55', '2025-09-25 13:50:55'),
+(46, 'Ira Hanson', 'bazoticed@mailinator.com', '+1 (151) 401-1181', 'Laudantium velit s', 1, '2025-09-25 16:48:34', '2025-09-25 16:48:54'),
+(47, 'Kitra Potter', 'kabag@mailinator.com', '+1 (545) 136-9164', 'Facere laborum Sint', 1, '2025-09-25 16:49:01', '2025-09-25 16:49:14'),
+(48, 'Leo Hines', 'gixy@mailinator.com', '+1 (337) 348-1593', 'Laudantium aliquam', 1, '2025-09-25 16:49:27', '2025-09-25 16:49:40'),
+(49, 'Audra Molina', 'qoton@mailinator.com', '+1 (518) 621-2262', 'Nulla laborum Labor', 0, '2025-09-25 16:49:57', '2025-09-25 16:49:57');
 
 -- --------------------------------------------------------
 
@@ -147,7 +189,7 @@ CREATE TABLE `jobs` (
   `title` varchar(255) NOT NULL,
   `property_type` varchar(255) NOT NULL,
   `priority` varchar(255) NOT NULL,
-  `job_files` varchar(255) DEFAULT NULL,
+  `job_files` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   `description` longtext NOT NULL,
   `postal_code` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,
@@ -164,11 +206,14 @@ CREATE TABLE `jobs` (
 --
 
 INSERT INTO `jobs` (`id`, `user_id`, `category_id`, `sub_category_id`, `title`, `property_type`, `priority`, `job_files`, `description`, `postal_code`, `city`, `country`, `status`, `is_active`, `is_deleted`, `created_at`, `updated_at`) VALUES
-(1, 2, 6, NULL, 'Looking for General Plumbing services for my Office in Toronto', 'Office', 'To be discussed', '[\"uploads\\/job\\/files\\/1757700173_68c4604d1e76c.jpg\"]', 'We are looking for a reliable General Plumber for our office. The job includes installation, repair, and maintenance of plumbing systems, fixing leaks, pipes, and fixtures, and handling emergency plumbing issues when needed. Candidate should have basic plumbing experience, good problem-solving skills, and be physically fit to handle the work. Interested persons can contact us at [Your Phone/Email].', 'M5V3L9', 'Toronto', 'Canada', 'pending', 1, 0, '2025-09-12 22:06:14', '2025-09-12 22:06:14'),
+(1, 2, 6, NULL, 'Looking for General Plumbing services for my Office in Toronto', 'Office', 'To be discussed', '[\"uploads\\/job\\/files\\/1758908164_68d6cf04bf9f9.jpg\"]', 'We are looking for a reliable General Plumber for our office. The job includes installation, repair, and maintenance of plumbing systems, fixing leaks, pipes, and fixtures, and handling emergency plumbing issues when needed. Candidate should have basic plumbing experience, good problem-solving skills, and be physically fit to handle the work. Interested persons can contact us', 'M5V3L9', 'Toronto', 'Canada', 'pending', 1, 0, '2025-09-12 22:06:14', '2025-09-26 12:44:28'),
 (2, 2, 7, NULL, 'Looking for Bathroom Plumbing services for my Apartment building in Edmonton', 'Apartment building', 'Urgent', '[]', 'We are looking for a reliable General Plumber for our office. The job includes installation, repair, and maintenance of plumbing systems, fixing leaks, pipes, and fixtures, and handling emergency plumbing issues when needed. Candidate should have basic plumbing experience, good problem-solving skills, and be physically fit to handle the work', 'T5J3N5', 'Edmonton', 'Canada', 'pending', 1, 0, '2025-09-12 22:14:00', '2025-09-12 22:14:00'),
 (3, 41, 7, NULL, 'Looking for Bathroom Plumbing services for my Apartment building in Edmonton', 'Apartment building', 'Urgent', '[]', 'We are looking for a reliable General Plumber for our office. The job includes installation, repair, and maintenance of plumbing systems, fixing leaks, pipes, and fixtures, and handling emergency plumbing issues when needed. Candidate should have basic plumbing experience, good problem-solving skills, and be physically fit to handle the work', 'T5J3N5', 'Edmonton', 'Canada', 'pending', 1, 0, '2025-09-12 22:14:07', '2025-09-12 22:14:07'),
 (4, 2, 7, NULL, 'Looking for Bathroom Plumbing services for my Apartment building in Edmonton', 'Apartment building', 'Urgent', '[]', 'We are looking for a reliable General Plumber for our office. The job includes installation, repair, and maintenance of plumbing systems, fixing leaks, pipes, and fixtures, and handling emergency plumbing issues when needed. Candidate should have basic plumbing experience, good problem-solving skills, and be physically fit to handle the work', 'T5J3N5', 'Edmonton', 'Canada', 'pending', 1, 0, '2025-09-12 22:14:37', '2025-09-12 22:14:37'),
-(10, 42, 9, 11, 'Looking for Kitchen Plumbing services for my Apartment building in Toronto', 'Apartment building', 'Urgent', '[]', 'bjkkjbnk', 'M5V3L9', 'Toronto', 'Canada', 'pending', 1, 0, '2025-09-24 17:22:17', '2025-09-24 17:22:17');
+(10, 42, 9, 11, 'Looking for Kitchen Plumbing services for my Apartment building in Toronto', 'Apartment building', 'Urgent', '[]', 'bjkkjbnk', 'M5V3L9', 'Toronto', 'Canada', 'pending', 1, 0, '2025-09-24 17:22:17', '2025-09-24 17:22:17'),
+(11, 2, 9, NULL, 'Enim aut ea aliquid', 'Condo', 'Within 2 weeks', '[\"uploads\\/job\\/files\\/1758910014_68d6d63ec7510.jpg\"]', 'Nam a molestiae non', 'M5V3L9', 'Toronto', 'Canada', 'active', 1, 0, '2025-09-26 12:19:14', '2025-09-26 13:15:35'),
+(12, 47, 13, NULL, 'Looking for Outdoor Plumbing services for my Office in Toronto', 'Office', 'Within 2 weeks', '[\"uploads\\/job\\/files\\/1758912732_68d6e0dcc9cc1.jpg\"]', 'this is job description', 'M5V3L9', 'Toronto', 'Canada', 'pending', 1, 0, '2025-09-26 13:52:48', '2025-09-26 13:52:48'),
+(13, 47, 7, NULL, 'Looking for Bathroom Plumbing services for my Condo in Toronto', 'Condo', 'Within 2 weeks', '[\"uploads\\/job\\/files\\/1758912964_68d6e1c4c35b7.jpg\"]', 'thias asdasdnmsa asdsad', 'M5V3L9', 'Toronto', 'Canada', 'pending', 1, 0, '2025-09-26 13:56:33', '2025-09-26 13:56:33');
 
 -- --------------------------------------------------------
 
@@ -216,62 +261,9 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `user_id`, `receiver_id`, `body`, `read`, `created_at`, `updated_at`) VALUES
-(1, 2, 34, 'hello', 0, '2025-09-22 15:19:08', '2025-09-22 15:19:08'),
-(2, 2, 34, 'hello', 0, '2025-09-22 15:19:10', '2025-09-22 15:19:10'),
-(3, 34, 2, 'asd', 0, '2025-09-22 15:19:51', '2025-09-22 15:19:51'),
-(4, 34, 2, 'hello', 0, '2025-09-22 15:27:54', '2025-09-22 15:27:54'),
-(5, 34, 2, 'hello', 0, '2025-09-22 15:28:33', '2025-09-22 15:28:33'),
-(6, 34, 2, 'hello', 0, '2025-09-22 15:29:03', '2025-09-22 15:29:03'),
-(7, 34, 2, 'sdfsd', 0, '2025-09-22 15:31:47', '2025-09-22 15:31:47'),
-(8, 34, 2, 'asdasd', 0, '2025-09-22 15:32:19', '2025-09-22 15:32:19'),
-(9, 34, 2, 'sdas', 0, '2025-09-22 15:32:58', '2025-09-22 15:32:58'),
-(10, 34, 2, 'sadsa', 0, '2025-09-22 15:33:08', '2025-09-22 15:33:08'),
-(11, 34, 2, 'asdasasda', 0, '2025-09-22 15:34:29', '2025-09-22 15:34:29'),
-(12, 34, 2, 'asdasasdaasda', 0, '2025-09-22 15:34:42', '2025-09-22 15:34:42'),
-(13, 34, 2, 'asdsa', 0, '2025-09-22 15:36:16', '2025-09-22 15:36:16'),
-(14, 34, 2, 'asdas', 0, '2025-09-22 15:47:17', '2025-09-22 15:47:17'),
-(15, 2, 34, 'asdas', 0, '2025-09-22 15:47:20', '2025-09-22 15:47:20'),
-(16, 2, 34, 'new', 0, '2025-09-22 15:48:35', '2025-09-22 15:48:35'),
-(17, 2, 34, 'new', 0, '2025-09-22 15:48:50', '2025-09-22 15:48:50'),
-(18, 2, 34, 'aasdas', 0, '2025-09-22 15:50:41', '2025-09-22 15:50:41'),
-(19, 2, 34, 'sss', 0, '2025-09-22 15:51:19', '2025-09-22 15:51:19'),
-(20, 2, 34, 'sss', 0, '2025-09-22 15:51:58', '2025-09-22 15:51:58'),
-(21, 2, 34, 'hey', 0, '2025-09-22 15:53:10', '2025-09-22 15:53:10'),
-(22, 34, 2, 'hello', 0, '2025-09-22 15:54:47', '2025-09-22 15:54:47'),
-(23, 34, 2, 'hey', 0, '2025-09-22 15:55:44', '2025-09-22 15:55:44'),
-(24, 2, 34, 'hello', 0, '2025-09-22 16:01:00', '2025-09-22 16:01:00'),
-(25, 34, 2, 'hey', 0, '2025-09-22 16:01:06', '2025-09-22 16:01:06'),
-(26, 2, 34, 'this is first chat for client', 0, '2025-09-22 16:02:17', '2025-09-22 16:02:17'),
-(27, 34, 2, 'this is second chat for provider', 0, '2025-09-22 16:02:34', '2025-09-22 16:02:34'),
-(28, 34, 2, 'hello', 0, '2025-09-22 16:04:42', '2025-09-22 16:04:42'),
-(29, 34, 2, 'hello', 0, '2025-09-22 16:06:39', '2025-09-22 16:06:39'),
-(30, 34, 2, 'test new', 0, '2025-09-22 16:07:29', '2025-09-22 16:07:29'),
-(31, 34, 2, 'test new two', 0, '2025-09-22 16:07:39', '2025-09-22 16:07:39'),
-(32, 34, 2, '51321', 0, '2025-09-22 16:09:03', '2025-09-22 16:09:03'),
-(33, 2, 34, 'jvjh', 0, '2025-09-22 16:11:31', '2025-09-22 16:11:31'),
-(34, 2, 34, 'jvjh', 0, '2025-09-22 16:11:31', '2025-09-22 16:11:31'),
-(35, 2, 34, '1223', 0, '2025-09-22 16:11:38', '2025-09-22 16:11:38'),
-(36, 34, 2, 'test test', 0, '2025-09-22 16:14:54', '2025-09-22 16:14:54'),
-(37, 34, 2, 'asd', 0, '2025-09-22 16:15:15', '2025-09-22 16:15:15'),
-(38, 2, 34, 'asdas', 0, '2025-09-22 16:15:48', '2025-09-22 16:15:48'),
-(39, 2, 34, 'asdas', 0, '2025-09-22 16:16:10', '2025-09-22 16:16:10'),
-(40, 34, 2, 'hello', 0, '2025-09-22 16:19:03', '2025-09-22 16:19:03'),
-(41, 34, 2, 'asda', 0, '2025-09-22 16:20:07', '2025-09-22 16:20:07'),
-(42, 2, 34, 'asda', 0, '2025-09-22 16:24:03', '2025-09-22 16:24:03'),
-(43, 2, 34, 'asdas', 0, '2025-09-22 16:27:29', '2025-09-22 16:27:29'),
-(44, 2, 34, 'hello', 0, '2025-09-22 16:28:45', '2025-09-22 16:28:45'),
-(45, 2, 34, 'hello', 0, '2025-09-22 16:29:08', '2025-09-22 16:29:08'),
-(46, 2, 34, 'hello', 0, '2025-09-22 16:29:28', '2025-09-22 16:29:28'),
-(47, 2, 34, 'hello', 0, '2025-09-22 16:45:58', '2025-09-22 16:45:58'),
-(48, 34, 2, 'hey', 0, '2025-09-22 16:46:04', '2025-09-22 16:46:04'),
-(49, 34, 2, 'asd', 0, '2025-09-22 17:21:17', '2025-09-22 17:21:17'),
-(50, 34, 2, 'test test test', 0, '2025-09-22 17:24:25', '2025-09-22 17:24:25'),
-(51, 34, 2, 'hello  test 123', 0, '2025-09-22 17:29:01', '2025-09-22 17:29:01'),
-(52, 2, 34, 'hey', 0, '2025-09-22 17:29:22', '2025-09-22 17:29:22'),
-(53, 34, 2, 'now back to top', 0, '2025-09-22 17:29:34', '2025-09-22 17:29:34'),
-(54, 2, 34, 'ok now sending', 0, '2025-09-22 17:29:43', '2025-09-22 17:29:43'),
-(55, 2, 34, 'send attemp 2', 0, '2025-09-22 17:30:54', '2025-09-22 17:30:54'),
-(56, 2, 34, 'hello', 0, '2025-09-22 17:31:12', '2025-09-22 17:31:12');
+(1, 34, 2, 'test', 0, '2025-09-25 18:30:50', '2025-09-25 18:30:50'),
+(2, 2, 34, 'test client reply', 0, '2025-09-25 18:39:13', '2025-09-25 18:39:13'),
+(3, 34, 2, 'adsad', 0, '2025-09-25 19:48:41', '2025-09-25 19:48:41');
 
 -- --------------------------------------------------------
 
@@ -294,6 +286,24 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_reset_tokens_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `id` int NOT NULL,
+  `user_id` bigint NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `is_read` tinyint NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -502,7 +512,8 @@ CREATE TABLE `provider_client` (
 
 INSERT INTO `provider_client` (`id`, `provider_id`, `client_id`, `created_at`, `updated_at`) VALUES
 (1, 34, 2, '2025-09-18 17:18:31', '2025-09-18 17:18:55'),
-(2, 34, 41, '2025-09-18 19:37:17', '2025-09-18 19:37:17');
+(2, 34, 41, '2025-09-18 19:37:17', '2025-09-18 19:37:17'),
+(3, 34, 42, '2025-09-25 00:56:01', '2025-09-25 00:56:01');
 
 -- --------------------------------------------------------
 
@@ -535,7 +546,10 @@ CREATE TABLE `provider_leads` (
 
 INSERT INTO `provider_leads` (`id`, `provider_id`, `job_id`, `client_id`, `purchase_type`, `purchase_at`, `purchase_price`, `stripe_payment_intent_id`, `stripe_checkout_session_id`, `stripe_payment_method`, `payment_status`, `lead_status`, `is_active`, `is_deleted`, `created_at`, `updated_at`) VALUES
 (1, 34, 5, 2, 'subscription', '2025-09-18 12:17:20', '0', NULL, NULL, NULL, 'pending', 'pending', 1, 0, '2025-09-18 12:17:20', '2025-09-18 12:17:20'),
-(2, 34, 3, 41, 'subscription', '2025-09-18 14:37:17', '0', NULL, NULL, NULL, 'pending', 'pending', 1, 0, '2025-09-18 14:37:17', '2025-09-18 14:37:17');
+(2, 34, 3, 41, 'subscription', '2025-09-18 14:37:17', '0', NULL, NULL, NULL, 'pending', 'pending', 1, 0, '2025-09-18 14:37:17', '2025-09-18 14:37:17'),
+(3, 34, 10, 42, 'subscription', '2025-09-24 19:56:01', '0', NULL, NULL, NULL, 'pending', 'pending', 1, 0, '2025-09-24 19:56:01', '2025-09-24 19:56:01'),
+(4, 34, 2, 2, 'subscription', '2025-09-26 11:51:45', '0', NULL, NULL, NULL, 'pending', 'pending', 1, 0, '2025-09-26 11:51:45', '2025-09-26 11:51:45'),
+(5, 34, 1, 2, 'subscription', '2025-09-26 11:51:57', '0', NULL, NULL, NULL, 'pending', 'pending', 1, 0, '2025-09-26 11:51:57', '2025-09-26 11:51:57');
 
 -- --------------------------------------------------------
 
@@ -555,7 +569,12 @@ CREATE TABLE `subscribers` (
 --
 
 INSERT INTO `subscribers` (`id`, `email`, `created_at`, `updated_at`) VALUES
-(3, 'test@test.com', '2025-09-24 17:43:14', '2025-09-24 17:43:14');
+(3, 'test@test.com', '2025-09-24 17:43:14', '2025-09-24 17:43:14'),
+(4, 'cupo@mailinator.com', '2025-09-24 17:53:40', '2025-09-24 17:53:40'),
+(5, 'vuhabocep@mailinator.com', '2025-09-24 18:15:52', '2025-09-24 18:15:52'),
+(6, 'nuzimuqicu@mailinator.com', '2025-09-24 18:16:00', '2025-09-24 18:16:00'),
+(7, 'qazynalu@mailinator.com', '2025-09-24 18:16:14', '2025-09-24 18:16:14'),
+(8, 'bedome@mailinator.com', '2025-09-25 16:51:22', '2025-09-25 16:51:22');
 
 -- --------------------------------------------------------
 
@@ -638,7 +657,12 @@ CREATE TABLE `tickets` (
 --
 
 INSERT INTO `tickets` (`id`, `user_id`, `subject`, `priority`, `message`, `attachments`, `status`, `created_at`, `updated_at`) VALUES
-(21, 34, 'Test First Ticket', 'medium', 'this is ticket message', '\"[\\\"uploads\\\\\\/tickets\\\\\\/1758748653_68d45fed2253f.jpg\\\"]\"', 'complete', '2025-09-24 16:17:33', '2025-09-24 16:25:54');
+(21, 34, 'Test First Ticket', 'medium', 'this is ticket message', '\"[\\\"uploads\\\\\\/tickets\\\\\\/1758748653_68d45fed2253f.jpg\\\"]\"', 'complete', '2025-09-24 16:17:33', '2025-09-24 16:25:54'),
+(22, 2, 'Nisi cillum voluptat', 'medium', 'Aut itaque ea culpa', '\"[]\"', 'pending', '2025-09-25 13:46:18', '2025-09-25 13:46:18'),
+(23, 2, 'Dignissimos eum comm', 'high', 'Sunt dolor anim numq', '\"[]\"', 'pending', '2025-09-25 13:47:00', '2025-09-25 13:47:00'),
+(24, 2, 'Exercitationem magni', 'high', 'Dolorem hic id anim', '\"[]\"', 'pending', '2025-09-25 13:49:44', '2025-09-25 13:49:44'),
+(25, 2, 'Suscipit provident', 'medium', 'Officiis id magna co', '\"[]\"', 'pending', '2025-09-25 13:51:16', '2025-09-25 13:51:16'),
+(26, 2, 'Quibusdam corporis c', 'high', 'Sunt ut labore id e', '\"[]\"', 'pending', '2025-09-25 18:44:59', '2025-09-25 18:44:59');
 
 -- --------------------------------------------------------
 
@@ -670,7 +694,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `user_type`, `email_verified_at`, `p
 (34, 'duhuw', 'provider@provider.com', 'provider', NULL, '$2y$12$crdqYF8i86D7Qr.C.5TFLOS5olpZu.Iz1jRM0XX9zrSOKjNZlszlG', NULL, 1, 0, '2025-09-10 12:55:52', '2025-09-10 15:11:26'),
 (37, 'Roof Traders', 'provider@free.com', 'provider', NULL, '$2y$12$crdqYF8i86D7Qr.C.5TFLOS5olpZu.Iz1jRM0XX9zrSOKjNZlszlG', NULL, 1, 0, '2025-09-11 23:45:56', '2025-09-11 23:46:28'),
 (41, 'Zorita Leblanc', 'nasaxaje@mailinator.com', 'client', NULL, '$2y$12$aJG2SR.XCoy31c9oAXnfl.fK4igZco2lBugp1J6J3IefOCyfVFrOS', NULL, 1, 0, '2025-09-12 22:06:14', '2025-09-12 22:06:14'),
-(42, 'Adele Bean', 'zixybud@mailinator.com', 'client', NULL, '$2y$12$3BXjbsY9RUTbKvAdaDQh1OzAyOWcUqwmT03oU.//Vov9/H3JMNTs2', NULL, 0, 0, '2025-09-24 17:22:17', '2025-09-24 17:22:17');
+(42, 'Adele Bean', 'zixybud@mailinator.com', 'client', NULL, '$2y$12$3BXjbsY9RUTbKvAdaDQh1OzAyOWcUqwmT03oU.//Vov9/H3JMNTs2', NULL, 0, 0, '2025-09-24 17:22:17', '2025-09-24 17:22:17'),
+(47, 'Herrod Guerrero', 'wajito6770@mv6a.com', 'client', NULL, '$2y$12$nvdNAU1hHvhGZ1wYmF4yjOfvt6aPT2HRdG50yZZdsOET7w/Z//d8m', NULL, 0, 0, '2025-09-26 13:52:48', '2025-09-26 13:52:48');
 
 -- --------------------------------------------------------
 
@@ -710,10 +735,11 @@ CREATE TABLE `user_profiles` (
 
 INSERT INTO `user_profiles` (`id`, `user_id`, `first_name`, `last_name`, `username`, `avatar`, `bio`, `gender`, `dob`, `phone`, `address`, `country`, `state`, `city`, `postal_code`, `company_name`, `business_license`, `government_doc`, `accept_terms`, `is_verified`, `verification_code`, `created_at`, `updated_at`) VALUES
 (1, 2, 'Russell', 'Gomez', NULL, 'uploads/user/profile/1758753015_68d470f7ccca0.jpg', 'Sed sint sint modi o', 'female', '1994-11-09', '+1 (528) 485-5578', 'Deserunt ducimus qu', 'In officia consequat', 'Dolorem voluptas deb', 'Id voluptatibus comm', 'Ullamco enim iste qu', NULL, 'uploads/user/doc/1757112591_68bb690f3b909.jpg', 'uploads/user/doc/1757112701_68bb697da749f.jpg', NULL, 0, NULL, '2025-09-02 12:58:05', '2025-09-24 17:30:15'),
-(30, 34, 'duhuw', 'Ayala', NULL, NULL, 'This is my bio', 'male', '2016-02-09', '0300000000', 'test Address', 'us', 'alaska', 'hanes', '151515', 'Franklin Mcbride Inc', 'uploads/user/doc/1758752020_68d46d1493569.jpg', 'uploads/user/doc/1758752020_68d46d14939f9.jpg', 1, 0, 'email-verified', '2025-09-10 12:55:52', '2025-09-24 17:13:40'),
+(30, 34, 'duhuw', 'Ayala', NULL, 'uploads/user/profile/1758842884_68d5d004bd5f4.jpg', 'With over 8 years of hands-on experience in plumbing, I specialize in providing fast, reliable, and affordable solutions for all your residential and commercial plumbing needs. From fixing leaky faucets and clogged drains to installing water heaters and complete pipeline systems, I ensure every job is done with precision and care.\r\n\r\nCustomer satisfaction is my top priority — I believe in transparent pricing, quality workmanship, and long-term solutions that save you time and money. Whether it’s an emergency repair or a planned installation, I’m just one call away to make sure your plumbing runs smoothly.', 'male', '2016-02-09', '5616516513', 'test Address', 'us', 'alaska', 'hanes', '151515', 'Franklin Mcbride Inc', 'uploads/user/doc/1758752020_68d46d1493569.jpg', 'uploads/user/doc/1758752020_68d46d14939f9.jpg', 1, 0, 'email-verified', '2025-09-10 12:55:52', '2025-09-25 18:28:04'),
 (33, 37, 'Roof', 'Traders', NULL, NULL, NULL, NULL, NULL, '981465065198', NULL, NULL, NULL, NULL, NULL, 'Roof Traders', 'uploads/user/doc/1757619956_68c326f484295.jpg', 'uploads/user/doc/1757619956_68c326f488324.jpg', 1, 0, 'email-verified', '2025-09-11 23:45:56', '2025-09-11 23:46:28'),
 (37, 41, 'Zorita', 'Leblanc', NULL, NULL, NULL, NULL, NULL, '8751984965', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2025-09-12 22:06:14', '2025-09-12 22:14:00'),
-(38, 42, 'Adele', 'Bean', NULL, NULL, NULL, NULL, NULL, '464614894', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2025-09-24 17:22:17', '2025-09-24 17:22:17');
+(38, 42, 'Adele', 'Bean', NULL, NULL, NULL, NULL, NULL, '464614894', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2025-09-24 17:22:17', '2025-09-24 17:22:17'),
+(43, 47, 'Zorita', 'Leblanc', NULL, NULL, NULL, NULL, NULL, '8465165165', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2025-09-26 13:52:48', '2025-09-26 13:56:33');
 
 -- --------------------------------------------------------
 
@@ -748,7 +774,8 @@ CREATE TABLE `user_subscriptions` (
 --
 
 INSERT INTO `user_subscriptions` (`id`, `user_id`, `subscription_package_id`, `stripe_checkout_session_id`, `stripe_payment_intent_id`, `stripe_payment_method`, `start_date`, `end_date`, `renewed_at`, `cancelled_at`, `payment_status`, `subscription_status`, `remaining_connects`, `price`, `currency`, `is_active`, `is_deleted`, `created_at`, `updated_at`) VALUES
-(1, 34, 1, 'cs_test_a1vJAQRUnZxrLnjWeettJE8gZQgXmqGDyInmDwCFwVUggeuW66b9gUlSQL', 'pi_3S8lSAGfnb89HY8o1yfAwaOt', 'subscription', '2025-09-18', '2025-10-18', NULL, NULL, 'paid', 'active', '3', '100', 'usd', 1, 0, '2025-09-18 12:17:11', '2025-09-18 14:37:17');
+(1, 34, 1, 'cs_test_a1vJAQRUnZxrLnjWeettJE8gZQgXmqGDyInmDwCFwVUggeuW66b9gUlSQL', 'pi_3S8lSAGfnb89HY8o1yfAwaOt', 'subscription', '2025-09-18', '2025-10-18', NULL, '2025-09-26', 'paid', 'cancelled', '2', '100', 'usd', 0, 0, '2025-09-18 12:17:11', '2025-09-26 11:50:52'),
+(2, 34, 2, 'cs_test_a1o3kgxAgr7I3WwMb6lJeYOnavjRdkRn7xlmKogJEulTNWEmqLvOZdbswU', 'pi_3SBercGfnb89HY8o0IOYaiLn', 'subscription', '2025-09-26', '2025-10-26', NULL, NULL, 'paid', 'active', '8', '200', 'usd', 1, 0, '2025-09-26 11:51:25', '2025-09-26 11:51:57');
 
 --
 -- Indexes for dumped tables
@@ -802,6 +829,12 @@ ALTER TABLE `messages`
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -914,7 +947,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `contact_us`
 --
 ALTER TABLE `contact_us`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -926,7 +959,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `line_distances`
@@ -938,13 +971,19 @@ ALTER TABLE `line_distances`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -974,19 +1013,19 @@ ALTER TABLE `property_types`
 -- AUTO_INCREMENT for table `provider_client`
 --
 ALTER TABLE `provider_client`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `provider_leads`
 --
 ALTER TABLE `provider_leads`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `subscribers`
 --
 ALTER TABLE `subscribers`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `subscription_packages`
@@ -1004,25 +1043,25 @@ ALTER TABLE `sub_categories`
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `user_profiles`
 --
 ALTER TABLE `user_profiles`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `user_subscriptions`
 --
 ALTER TABLE `user_subscriptions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
