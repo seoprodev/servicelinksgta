@@ -181,6 +181,20 @@ class ChatController extends Controller
 
 
     // User search for starting new conversation
+//    public function searchProvider(Request $request)
+//    {
+//        $q = $request->input('q');
+//
+//        $client = auth()->user();
+//
+//        $users = $client->providers()
+//            ->where('users.name', 'like', "%$q%")
+//            ->limit(10)
+//            ->get(['users.id', 'users.name']);
+//
+//        return response()->json($users);
+//    }
+
     public function searchProvider(Request $request)
     {
         $q = $request->input('q');
@@ -189,11 +203,38 @@ class ChatController extends Controller
 
         $users = $client->providers()
             ->where('users.name', 'like', "%$q%")
+            ->with('profile') // profile relation bhi load kar lo
             ->limit(10)
-            ->get(['users.id', 'users.name']); // 👈 prefix added
+            ->get(['users.id', 'users.name']);
 
-        return response()->json($users);
+        // Response format bana lo
+        $data = $users->map(function ($user) {
+            return [
+                'id'     => $user->id,
+                'name'   => $user->name,
+                'avatar' => $user->profile && $user->profile->avatar
+                    ? asset($user->profile->avatar)
+                    : asset('frontend-assets/img/user-default.jpg'),
+            ];
+        });
+
+        return response()->json($data);
     }
+
+
+//    public function searchClient(Request $request)
+//    {
+//        $q = $request->input('q');
+//
+//        $provider = auth()->user();
+//
+//        $users = $provider->clients()
+//            ->where('users.name', 'like', "%$q%")
+//            ->limit(10)
+//            ->get(['users.id', 'users.name']);
+//
+//        return response()->json($users);
+//    }
 
     public function searchClient(Request $request)
     {
@@ -203,11 +244,23 @@ class ChatController extends Controller
 
         $users = $provider->clients()
             ->where('users.name', 'like', "%$q%")
+            ->with('profile') // profile relation load karo
             ->limit(10)
             ->get(['users.id', 'users.name']);
 
-        return response()->json($users);
+        $data = $users->map(function ($user) {
+            return [
+                'id'     => $user->id,
+                'name'   => $user->name,
+                'avatar' => $user->profile && $user->profile->avatar
+                    ? asset($user->profile->avatar)
+                    : asset('frontend-assets/img/user-default.jpg'),
+            ];
+        });
+
+        return response()->json($data);
     }
+
 
     // Start new conversation
     public function startConversation(Request $request)

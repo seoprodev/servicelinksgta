@@ -151,6 +151,7 @@ class JobStepsController extends Controller
                 ['email' => $request->email],
                 [
                     'name'     => $fullName,
+                    'user_type'     => 'client',
                     'password' => Hash::make($request->password),
                     'is_active' => '1',
                 ]

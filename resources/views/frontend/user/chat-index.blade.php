@@ -204,14 +204,28 @@
                         );
                     }
 
+                    // let html = data.map(user => `
+                    // <li class="list-group-item">
+                    //     <button class="btn btn-link p-0 start-chat"
+                    //             data-id="${user.id}"
+                    //             data-name="${user.name}">
+                    //         ${user.name}
+                    //     </button>
+                    // </li>`).join("");
                     let html = data.map(user => `
-                    <li class="list-group-item">
-                        <button class="btn btn-link p-0 start-chat"
-                                data-id="${user.id}"
-                                data-name="${user.name}">
-                            ${user.name}
-                        </button>
-                    </li>`).join("");
+                        <li class="list-group-item">
+                            <button class="btn btn-link p-0 start-chat"
+                                    data-id="${user.id}"
+                                    data-name="${user.name}"
+                                    data-avatar="${user.avatar}">
+                                <img src="${user.avatar}"
+                                     alt="avatar"
+                                     class="rounded-circle me-2"
+                                     style="width:30px; height:30px; object-fit:cover;">
+                                ${user.name}
+                            </button>
+                        </li>
+                    `).join("");
                     $("#search-results").html(html);
                 });
             }, 400); // debounce 400ms
@@ -220,7 +234,12 @@
         // Start new chat
         $(document).on("click", ".start-chat", function(e) {
             e.preventDefault();
-            loadChat($(this).data("id"), $(this).data("name"));
+            loadChat(
+                $(this).data("id"),
+                $(this).data("name"),
+                $(this).data("profile"),
+                $(this).data("avatar")
+            );
             $("#search-results").html("");
             $("#user-search").val("");
         });
