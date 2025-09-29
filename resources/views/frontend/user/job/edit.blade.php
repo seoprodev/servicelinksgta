@@ -88,6 +88,14 @@
                     <input type="text" class="form-control" name="postal_code" required
                            value="{{ old('postal_code', $job->postal_code) }}">
                 </div>
+                {{-- Budget --}}
+                <div class="col-md-6 mt-3">
+                    <label class="form-label">Estimated Budget (in USD) <span class="text-danger">*</span></label>
+                    <div class="input-group">
+                        <span class="input-group-text">$</span>
+                        <input type="number" class="form-control" name="budget" required value="{{ old('postal_code', $job->budget) }}" step="0.01" min="0">
+                    </div>
+                </div>
                 {{-- Status --}}
                 <div class="col-md-6 mt-3">
                     <label class="form-label">Job Status <span class="text-danger">*</span></label>

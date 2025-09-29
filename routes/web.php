@@ -4,6 +4,7 @@ use App\Events\MessageSent;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\BlogController;
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\LineDistanceController;
 use App\Http\Controllers\admin\PackageController;
 use App\Http\Controllers\admin\PriorityController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\admin\PropertyController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\frontend\ChatController;
 use App\Http\Controllers\frontend\ClientJobController;
+use App\Http\Controllers\frontend\ClientReviewController;
 use App\Http\Controllers\frontend\FrontAuthController;
 use App\Http\Controllers\frontend\FrontJobController;
 use App\Http\Controllers\frontend\JobStepsController;
@@ -86,7 +88,7 @@ Route::prefix('user')->group(function () {
         Route::post('/chat/start', [ChatController::class, 'startConversation'])->name('chat.start');
 
     Route::middleware(['auth.user:client'])->group(function () {
-        Route::view('dashboard', 'frontend.user.dashboard')->name('user.dashboard');
+        Route::get('dashboard', [ClientJobController::class, 'clientDashboardIndex'])->name('user.dashboard');
         Route::get('/profile', [FrontAuthController::class, 'profileShow'])->name('user.profile');
         Route::post('/update-profile', [FrontAuthController::class, 'userUpdateProfile'])->name('user.update.profile');
 
@@ -110,7 +112,10 @@ Route::prefix('user')->group(function () {
         Route::get('notifications/read/{id}', [MiscellaneousController::class, 'readNotification'])->name('client.notifications.read');
         Route::get('notifications/delete/{id}', [MiscellaneousController::class, 'NotificationDelete'])->name('client.notifications.delete');
 
-
+        //Review Route Start
+        Route::get('reviews', [ClientReviewController::class, 'index'])->name('client.review.index');
+        Route::get('review/create', [ClientReviewController::class, 'create'])->name('client.review.create');
+        Route::post('review', [ClientReviewController::class, 'store'])->name('client.review.store');
 
     });
 });
@@ -118,7 +123,7 @@ Route::prefix('user')->group(function () {
 Route::prefix('provider')->group(function () {
     Route::post('/register', [FrontAuthController::class, 'registerProvider'])->name('provider.register');
     Route::middleware(['auth.user:provider'])->group(function () {
-        Route::view('dashboard', 'frontend.provider.dashboard')->name('provider.dashboard');
+        Route::get('dashboard', [ProviderController::class, 'DashboardIndex'])->name('provider.dashboard');
         Route::get('subscription', [SubscriptionController::class, 'packageIndex'])->name('provider.packages');
         Route::get('/profile', [ProviderController::class, 'ProviderProfileShow'])->name('provider.profile');
         Route::post('/update-profile', [ProviderController::class, 'ProviderUpdateProfile'])->name('provider.update.profile');
@@ -152,6 +157,11 @@ Route::prefix('provider')->group(function () {
         Route::get('notifications/read/{id}', [MiscellaneousController::class, 'readNotification'])->name('provider.notifications.read');
         Route::get('notifications/delete/{id}', [MiscellaneousController::class, 'NotificationDelete'])->name('provider.notifications.delete');
 
+        //Review Route Start
+        Route::get('reviews', [ProviderController::class, 'reviewIndex'])->name('provider.review.index');
+        Route::get('review-show/{id}', [ProviderController::class, 'reviewShow'])->name('provider.review.create');
+
+
     });
 
 });
@@ -182,7 +192,7 @@ Route::prefix('admin')->group(function () {
     });
     Route::middleware(['AuthenticAdmin'])->group(function (){
         Route::get('logout', [AuthController::class, 'authLogout'])->name('admin.logout');
-        Route::view('dashboard', 'admin.dashboard')->name('admin.dashboard');
+        Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
         Route::get('user-management', [UserController::class, 'index'])->name('admin.manage.user');
         Route::get('user-detail/{id}', [UserController::class, 'show'])->name('admin.show.user');
@@ -272,6 +282,8 @@ Route::prefix('admin')->group(function () {
         Route::get('notifications/mark-all', [MiscellaneousController::class, 'markAllNotifications'])->name('admin.notifications.markAll');
         Route::get('notifications/read/{id}', [MiscellaneousController::class, 'readNotification'])->name('admin.notifications.read');
         Route::get('notifications/delete/{id}', [MiscellaneousController::class, 'NotificationDelete'])->name('admin.notifications.delete');
+
+        Route::get('subscriptions', [DashboardController::class, 'userSubscription'])->name('admin.subscription.index');
 
     });
 

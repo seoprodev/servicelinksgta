@@ -60,11 +60,6 @@ class User extends Authenticatable
     }
 
 
-    public function conversations()
-    {
-        return $this->belongsToMany(Conversation::class, 'conversation_user');
-    }
-
 
     public function clients()
     {
@@ -76,6 +71,12 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(User::class, 'provider_client', 'client_id', 'provider_id');
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'provider_id');
+    }
+
 
 
 

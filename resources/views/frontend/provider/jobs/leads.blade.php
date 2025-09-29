@@ -58,7 +58,7 @@
                                 <li class="d-flex align-items-center mb-2">
                                     <span class="book-item font-weight-bold">Client Budget</span>
                                     <small class="mx-2">:</small>
-                                    ${{ $job->budget ?? 'N/A' }} / {{ $job->payment_type ?? 'fixed' }}
+                                    $ {{ ($job->budget) ? $job->budget : '0.00'  }} / {{ $job->payment_type ?? 'fixed' }}
                                 </li>
 
                                 <li class="d-flex align-items-center flex-wrap">
@@ -81,9 +81,18 @@
                         </div>
                     </div>
 
-                    <a href="{{ route('provider.lead.show', $job->faker_id) }}"  class="btn btn-success payment">
-                        View Detail
-                    </a>
+{{--                    <a href="{{ route('provider.lead.show', $job->faker_id) }}"  class="btn btn-success payment">--}}
+{{--                        View Detail--}}
+{{--                    </a>--}}
+                    @if($job->leads->isNotEmpty())
+
+                        <a href="{{ route('provider.lead.show', $job->faker_id) }}" class="btn btn-primary payment">Already Bought</a>
+                    @else
+                        <a href="{{ route('provider.lead.show', $job->faker_id) }}" class="btn btn-success payment">
+                            View Detail
+                        </a>
+                    @endif
+
                 </div>
             </div>
         @empty

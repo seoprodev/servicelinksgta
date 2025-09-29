@@ -70,10 +70,22 @@
                 </div>
 
                 {{-- Postal Code --}}
-                <div class="col-md-12 mt-3">
-                    <label class="form-label">Postal code for the job <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="postal_code" required value="{{ old('postal_code') }}">
+                <div class="row">
+                    <div class="col-md-6 mt-3">
+                        <label class="form-label">Postal code for the job <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="postal_code" required value="{{ old('postal_code') }}">
+                    </div>
+
+                    {{-- Budget --}}
+                    <div class="col-md-6 mt-3">
+                        <label class="form-label">Estimated Budget (in USD) <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="number" class="form-control" name="budget" required value="{{ old('budget') }}" step="0.01" min="0">
+                        </div>
+                    </div>
                 </div>
+
 
                 {{-- Photos --}}
                 <div class="col-md-12 mt-3">

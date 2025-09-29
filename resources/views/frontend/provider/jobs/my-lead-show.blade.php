@@ -46,7 +46,7 @@
                         <div class="col-md-6 mb-2"><i class="bi bi-tools me-2 text-primary"></i> Category: <strong>{{ $lead->job->category->name ?? 'N/A' }}</strong></div>
                         <div class="col-md-6 mb-2"><i class="bi bi-building me-2 text-primary"></i> Property: <strong>{{ $lead->job->property_type }}</strong></div>
                         <div class="col-md-6 mb-2"><i class="bi bi-geo-alt me-2 text-primary"></i> Location: <strong>{{ $lead->job->city }}, {{ $lead->job->country }}</strong></div>
-                        <div class="col-md-6 mb-2"><i class="bi bi-cash me-2 text-primary"></i> Budget: <strong>$200 / Fixed</strong></div>
+                        <div class="col-md-6 mb-2"><i class="bi bi-cash me-2 text-primary"></i> Budget: <strong>$ {{ ($lead->job->budget) ? $lead->job->budget : '0.00'  }} / Fixed</strong></div>
                     </div>
 
                     <!-- Description -->

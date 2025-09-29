@@ -88,8 +88,14 @@ class SubscriptionController extends Controller
         }
 
         $package = SubscriptionPackage::findOrFail($packageId);
-        $endDate = $package->billing_cycle === 'monthly' ? now()->addMonth() : now()->addYear();
 
+        if ($package->billing_cycle === 'monthly') {
+            $endDate = now()->addMonth();
+        } elseif ($package->billing_cycle === 'quarterly') {
+            $endDate = now()->addMonths(3);
+        } else {
+            $endDate = now()->addYear();
+        }
 
         UserSubscription::where('user_id', auth()->id())
             ->where('is_active', 1)

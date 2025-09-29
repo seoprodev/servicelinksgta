@@ -46,7 +46,7 @@
                         <div class="col-md-6 mb-2"><i class="bi bi-tools me-2 text-primary"></i> Category: <strong>{{ $job->category->name ?? 'N/A' }}</strong></div>
                         <div class="col-md-6 mb-2"><i class="bi bi-building me-2 text-primary"></i> Property: <strong>{{ $job->property_type }}</strong></div>
                         <div class="col-md-6 mb-2"><i class="bi bi-geo-alt me-2 text-primary"></i> Location: <strong>{{ $job->city }}, {{ $job->country }}</strong></div>
-                        <div class="col-md-6 mb-2"><i class="bi bi-cash me-2 text-primary"></i> Budget: <strong>$200 / Fixed</strong></div>
+                        <div class="col-md-6 mb-2"><i class="bi bi-cash me-2 text-primary"></i> Budget: <strong>$ {{ ($job->budget) ? $job->budget : '0.00'  }} / Fixed</strong></div>
                     </div>
 
                     <!-- Description -->
@@ -79,17 +79,23 @@
 
                     <!-- Actions -->
                     <div class="text-end mt-4">
-                        @if($activeSubscription)
-                            <button class="btn btn-primary buy-lead" data-jobid="{{ $job->faker_id }}">
-                                <span class="btn-text">Buy Now</span>
-                                <span class="spinner-border spinner-border-sm d-none" role="status"></span>
-                            </button>
+                        @if($job->leads->isNotEmpty())
+                            <span class="btn btn-primary payment">Already Bought</span>
                         @else
-                            <button class="btn btn-warning buy-lead-btn" data-jobid="{{ $job->id }}">
-                                <span class="spinner-border spinner-border-sm d-none" role="status"></span>
-                                <span class="btn-text">Pay As You Go (${{ $job->category->lead_price ?? 0 }})</span>
-                            </button>
+                            @if($activeSubscription)
+                                <button class="btn btn-primary buy-lead" data-jobid="{{ $job->faker_id }}">
+                                    <span class="btn-text">Buy Now</span>
+                                    <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                                </button>
+                            @else
+                                <button class="btn btn-warning buy-lead-btn" data-jobid="{{ $job->id }}">
+                                    <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                                    <span class="btn-text">Pay As You Go (${{ $job->category->lead_price ?? 0 }})</span>
+                                </button>
+                            @endif
                         @endif
+
+
                     </div>
 
 
@@ -130,14 +136,14 @@
                             btnText.text('Purchased');
                             btn.prop('disabled', true);
                         } else {
-                            alertify.error(response.message || 'Something went wrong!');
+                            // alertify.error(response.error|| 'Something went wrong!');
                             btnText.text('Buy Now');
                             btn.prop('disabled', false);
                         }
                         spinner.addClass('d-none');
                     },
                     error: function(xhr) {
-                        var error = xhr.responseJSON?.message || 'Something went wrong!';
+                        var error = xhr.responseJSON?.error || 'Something went wrong!';
                         alertify.error(error);
                         spinner.addClass('d-none');
                         btnText.text('Buy Now');

@@ -17,6 +17,7 @@ class Job extends Model
         'property_type',
         'priority',
         'job_files',
+        'budget',
         'description',
         'postal_code',
         'city',
@@ -52,5 +53,10 @@ class Job extends Model
     public function getFakerIdAttribute()
     {
         return FakerURL::id_e($this->id);
+    }
+
+    public function leads()
+    {
+        return $this->hasMany(ProviderLead::class, 'job_id');
     }
 }

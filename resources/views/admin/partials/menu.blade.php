@@ -130,10 +130,10 @@
 {{--                </div>--}}
 {{--            </div>--}}
 {{--        </li>--}}
-@php
-use App\Helpers\NotificationHelper;
-$notifications = NotificationHelper::unread(1);
-@endphp
+        @php
+        use App\Helpers\NotificationHelper;
+        $notifications = NotificationHelper::unread(1);
+        @endphp
         <li class="dropdown dropdown-list-toggle">
 
             <a href="#" data-toggle="dropdown" class="message-toggle nav-link notification-toggle nav-link-lg">
@@ -263,6 +263,11 @@ $notifications = NotificationHelper::unread(1);
                     <li><a class="nav-link {{ request()->routeIs('admin.create.blog') ? 'active' : '' }}" href="{{ route('admin.create.blog') }}">Create New Blog</a></li>
                 </ul>
             </li>
+            <li class="{{ request()->routeIs('admin.subscription.index') ? 'active' : '' }}">
+                <a href="{{ route('admin.subscription.index') }}" class="nav-link">
+                    <i data-feather="user-plus"></i><span>User Subscription</span>
+                </a>
+            </li>
             <li class="{{ request()->routeIs('admin.notifications.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.notifications.index') }}" class="nav-link">
                     <i data-feather="bell"></i><span>Notifications</span>
@@ -312,6 +317,7 @@ $notifications = NotificationHelper::unread(1);
                     <i data-feather="mail"></i><span>Newsletters</span>
                 </a>
             </li>
+
 
         </ul>
     </aside>

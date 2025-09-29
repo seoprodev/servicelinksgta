@@ -26,7 +26,7 @@
 
                             <div class="p-3">
                                 <h5 class="mb-2">
-                                    <a href="">
+                                    <a href="{{ route('user.job.detail', $job->faker_id)}}">
                                         {{ $job->title ?? 'Untitled Job' }}
                                     </a>
                                 </h5>
@@ -42,7 +42,7 @@
                                         {{ $job->created_at->diffForHumans() }}
                                     </p>
 
-                                    <a href="{{ route('user.job.detail', \App\Helpers\FakerURL::id_e($job->id)) }}" class="btn bg-primary">View Detail</a>
+                                    <a href="{{ route('user.job.detail', $job->faker_id)}}" class="btn bg-primary">View Detail</a>
                                 </div>
                             </div>
                         </div>

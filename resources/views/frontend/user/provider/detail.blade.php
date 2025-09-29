@@ -22,6 +22,11 @@
         .info-value {
             color: #222;
         }
+        .reviews--container {
+            height: 800px;
+            overflow: auto;
+            padding-bottom: 20px;
+        }
     </style>
 @endpush
 
@@ -68,26 +73,84 @@
             </div>
 
             <hr>
+            <h5 class="mb-2">
+                Reviews ({{ $reviews->count() }})
+                @if($reviews->count() > 0)
+                    - Average Rating: {{ number_format($averageRating, 1) }}/5
+                    <span class="ms-2">
+                    @for($i = 1; $i <= 5; $i++)
+                            @if($i <= round($averageRating))
+                                <i class="text-warning fas fa-star"></i>
+                            @else
+                                <i class="text-muted fas fa-star"></i>
+                            @endif
+                        @endfor
+                </span>
+                @endif
+            </h5>
+            <div class="reviews--container">
+                @if($reviews->isEmpty())
+                    <p class="text-muted">No reviews yet.</p>
+                @else
+                    @foreach($reviews as $review)
+                        <div class="card mb-3 p-3 shadow-sm">
+                            <div class="d-flex align-items-center mb-2">
+                                <strong>{{ $review->client->name ?? 'Anonymous' }}</strong>
+                                <span class="ms-3">
+                    {{-- Star Rating --}}
+                                    @for($i = 1; $i <= 5; $i++)
+                                        @if($i <= $review->rating)
+                                            <i class="text-warning fas fa-star"></i>
+                                        @else
+                                            <i class="text-muted fas fa-star"></i>
+                                        @endif
+                                    @endfor
+                </span>
+                            </div>
+                            <p class="mb-1"><strong>{{ $review->title }}</strong></p>
+                            <p>{{ $review->message }}</p>
 
-            <h5>Verification Documents</h5>
-            <div class="row">
-                <div class="col-md-6">
-                    <p><span class="info-label">Business License:</span></p>
-                    @if($provider->profile->business_license)
-                        <a href="{{ asset($provider->profile->business_license) }}" target="_blank" class="btn btn-sm btn-outline-primary">View</a>
-                    @else
-                        <span class="text-muted">Not Uploaded</span>
-                    @endif
-                </div>
-                <div class="col-md-6">
-                    <p><span class="info-label">Government Document:</span></p>
-                    @if($provider->profile->government_doc)
-                        <a href="{{ asset($provider->profile->government_doc) }}" target="_blank" class="btn btn-sm btn-outline-primary">View</a>
-                    @else
-                        <span class="text-muted">Not Uploaded</span>
-                    @endif
-                </div>
+                            @if(!empty($review->attachments))
+                                @php
+                                    $attachments = is_string($review->attachments) ? json_decode($review->attachments, true) : $review->attachments;
+                                @endphp
+
+                                @if(!empty($attachments))
+                                    <div class="mb-2">
+                                        @foreach($attachments as $file)
+                                            <a href="{{ asset($file) }}" target="_blank" class="">
+                                                <img src="{{ asset($file) }}" width="50px" height="50px">
+                                            </a>
+                                        @endforeach
+                                    </div>
+                                @endif
+                            @endif
+
+                            <small class="text-muted">Reviewed on {{ $review->created_at->format('d M Y') }}</small>
+                        </div>
+                    @endforeach
+                @endif
             </div>
+
+{{--            <h5>Verification Documents</h5>--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-md-6">--}}
+{{--                    <p><span class="info-label">Business License:</span></p>--}}
+{{--                    @if($provider->profile->business_license)--}}
+{{--                        <a href="{{ asset($provider->profile->business_license) }}" target="_blank" class="btn btn-sm btn-outline-primary">View</a>--}}
+{{--                    @else--}}
+{{--                        <span class="text-muted">Not Uploaded</span>--}}
+{{--                    @endif--}}
+{{--                </div>--}}
+{{--                <div class="col-md-6">--}}
+{{--                    <p><span class="info-label">Government Document:</span></p>--}}
+{{--                    @if($provider->profile->government_doc)--}}
+{{--                        <a href="{{ asset($provider->profile->government_doc) }}" target="_blank" class="btn btn-sm btn-outline-primary">View</a>--}}
+{{--                    @else--}}
+{{--                        <span class="text-muted">Not Uploaded</span>--}}
+{{--                    @endif--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
 {{--            <div class="mt-4">--}}
 {{--                <a href="" class="btn btn-primary">--}}

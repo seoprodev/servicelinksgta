@@ -68,7 +68,7 @@
                     <div class="col-md-6 mb-2"><i class="bi bi-tools me-2 text-primary"></i> Category: <strong>{{ $userJob->category->name ?? 'N/A' }}</strong></div>
                     <div class="col-md-6 mb-2"><i class="bi bi-building me-2 text-primary"></i> Property: <strong>{{ $userJob->property_type }}</strong></div>
                     <div class="col-md-6 mb-2"><i class="bi bi-geo-alt me-2 text-primary"></i> Location: <strong>{{ $userJob->city }}, {{ $userJob->country }}</strong></div>
-                    <div class="col-md-6 mb-2"><i class="bi bi-cash me-2 text-primary"></i> Budget: <strong>$200 / Fixed</strong></div>
+                    <div class="col-md-6 mb-2"><i class="bi bi-cash me-2 text-primary"></i> Budget: <strong>${{ $userJob->budget }} / Fixed</strong></div>
                 </div>
 
                 <!-- Description -->

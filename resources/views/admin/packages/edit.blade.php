@@ -30,6 +30,7 @@
                                         <label>Billing Cycle</label>
                                         <select name="billing_cycle" class="form-control">
                                             <option value="monthly" {{ $package->billing_cycle == 'monthly' ? 'selected' : '' }}>Monthly</option>
+                                            <option value="quarterly" {{ $package->billing_cycle == 'quarterly' ? 'selected' : '' }}>Quarterly</option>
                                             <option value="yearly" {{ $package->billing_cycle == 'yearly' ? 'selected' : '' }}>Yearly</option>
                                         </select>
                                     </div>

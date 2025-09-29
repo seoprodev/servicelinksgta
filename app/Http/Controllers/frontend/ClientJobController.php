@@ -12,9 +12,35 @@ use App\Models\Priority;
 use App\Models\PropertyType;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClientJobController extends Controller
 {
+    public function clientDashboardIndex()
+    {
+        $user = Auth::user();
+
+        // Stats
+        $totalJobs = Job::where('user_id', $user->id)->count();
+        $activeJobs = Job::where('user_id', $user->id)->where('status', 'active')->count();
+        $completedJobs = Job::where('user_id', $user->id)->where('status', 'completed')->count();
+
+        // Recent Jobs
+        $recentJobs = Job::where('user_id', $user->id)
+            ->latest()
+            ->take(3)
+            ->get();
+
+        return view('frontend.user.dashboard', compact(
+            'user',
+            'totalJobs',
+            'activeJobs',
+            'completedJobs',
+            'recentJobs'
+        ));
+    }
+    
+    
     public function myJobs()
     {
         $userJobs = Job::where('user_id', auth()->id())->latest()->get();
@@ -57,6 +83,7 @@ class ClientJobController extends Controller
             'sub_category_id' => 'nullable|exists:categories,id',
             'property_type'   => 'required|string|max:100',
             'priority'        => 'nullable|string|max:100',
+            'budget'          => 'required|string|max:100',
             'postal_code'     => 'required|string',
             'description'     => 'nullable|string',
             'job_file.*'      => 'nullable|file|mimes:jpg,jpeg,png,pdf,doc,docx|max:4096',
@@ -135,10 +162,10 @@ class ClientJobController extends Controller
 
         $data = $request->only([
             'title', 'category_id', 'sub_category_id', 'status',
-            'property_type', 'priority', 'postal_code', 'description'
+            'property_type', 'priority', 'postal_code', 'description', 'budget'
         ]);
 
-        // Handle new file uploads
+
         $files = [];
         if ($request->hasFile('job_file')) {
             foreach ($request->file('job_file') as $file) {
@@ -177,24 +204,12 @@ class ClientJobController extends Controller
         return back()->with('success', 'Attachment deleted successfully.');
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function showProviderProfile($id)
     {
-        $provider = User::with('profile')->findOrFail(FakerURL::id_d($id));
-//        dd($provider);
+        $provider = User::with(['profile', 'reviews.client'])->findOrFail(FakerURL::id_d($id));
+        $reviews = $provider->reviews()->with('client')->latest()->get();
+        $averageRating = $reviews->avg('rating');
 
-        return view('frontend.user.provider.detail', compact('provider'));
+        return view('frontend.user.provider.detail', compact('provider', 'reviews', 'averageRating'));
     }
 }

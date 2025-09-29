@@ -38,7 +38,7 @@
                     </a>
                 </li>
                 <li  class="">
-                    <a href=""><i class="ti ti-star"></i><span>Reviews</span></a>
+                    <a href="{{ route('provider.review.index') }}"><i class="ti ti-star"></i><span>Reviews</span></a>
                 </li>
 
 

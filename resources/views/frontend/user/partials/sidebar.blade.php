@@ -73,6 +73,12 @@
                         </a>
                     </li>
                     <li class="mb-4">
+                        <a href="{{ route('client.review.index') }}" class="d-flex align-items-center {{ request()->routeIs('client.review.index') ? 'active' : '' }}">
+                            <i class="ti ti-file-like me-2"></i>
+                            Reviews
+                        </a>
+                    </li>
+                    <li class="mb-4">
                         <a href="{{ route('user.tickets.index') }}"
                            class="d-flex align-items-center {{ request()->routeIs('user.tickets.index') ? 'active' : '' }}">
                             <i class="ti ti-ticket me-2"></i>

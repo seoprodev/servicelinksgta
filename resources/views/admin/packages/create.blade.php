@@ -32,6 +32,7 @@
                                             <label for="billing_cycle">Billing Cycle</label>
                                             <select name="billing_cycle" id="billing_cycle" class="form-control" required>
                                                 <option value="monthly">Monthly</option>
+                                                <option value="quarterly">Quarterly</option>
                                                 <option value="yearly">Yearly</option>
                                             </select>
                                         </div>

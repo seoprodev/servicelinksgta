@@ -65,11 +65,6 @@
                                 </td>
                             </tr>
                         @empty
-                            <tr>
-                                <td colspan="6" class="text-center text-muted">
-                                    No Notifications Found
-                                </td>
-                            </tr>
                         @endforelse
                         </tbody>
                     </table>
