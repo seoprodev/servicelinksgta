@@ -385,6 +385,10 @@
                                     <a class="dropdown-item d-flex align-items-center" href="{{ route('user.dashboard') }}">
                                         <i class="ti ti-layout-grid me-1"></i>Dashboard
                                     </a>
+                                @elseif(auth()->user()->user_type === 'admin')
+                                    <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.dashboard') }}">
+                                        <i class="ti ti-layout-grid me-1"></i>Dashboard
+                                    </a>
                                 @endif
                             </li>
                             <li>
