@@ -4,6 +4,7 @@ use App\Events\MessageSent;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\BlogController;
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\CountryController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\LineDistanceController;
 use App\Http\Controllers\admin\PackageController;
@@ -57,6 +58,7 @@ Route::view('post-a-job', 'frontend.post-a-job')->name('front.post.job');
 Route::get('service', [FrontJobController::class, 'index'])->name('front.service');
 Route::post('/selected-category', [JobStepsController::class, 'postJobCategory'])->name('front.post.job.submit');
 Route::get('post-a-job/{slug}', [JobStepsController::class, 'postJob'])->name('front.post.job');
+
 Route::prefix('job')->group(function () {
     Route::post('/validate-postal-code', [JobStepsController::class, 'validatePostalCode'])->name('front.validate.postal');
     Route::post('/get-subcategories', [JobStepsController::class, 'getSubcategories'])->name('front.get.subcategories');
@@ -66,6 +68,7 @@ Route::prefix('job')->group(function () {
     Route::post('/submit-job-form', [JobStepsController::class, 'submitJobFormData'])->name('submit.job.form.data');
 
 });
+
 Route::post('/contact-submit', [MiscellaneousController::class, 'contactSubmit'])->name('contact.submit');
 Route::post('/subscribe', [MiscellaneousController::class, 'storeSubscriber'])->name('subscriber.store');
 Route::get('blogs', [MiscellaneousController::class, 'frontendBlogIndex'])->name('front.blog');
@@ -231,6 +234,15 @@ Route::prefix('admin')->group(function () {
         Route::post('line-distance-store', [LineDistanceController::class, 'store'])->name('admin.linedistance.store');
         Route::post('line-distance-update/{id}', [LineDistanceController::class, 'update'])->name('admin.linedistance.update');
         Route::delete('line-distance-delete/{id}', [LineDistanceController::class, 'destroy'])->name('admin.linedistance.delete');
+
+
+        // Country Management Routes
+        Route::get('country-management', [CountryController::class, 'index'])->name('admin.manage.country');
+        Route::get('country-data', [CountryController::class, 'data'])->name('admin.country.data');
+        Route::post('country-store', [CountryController::class, 'store'])->name('admin.country.store');
+        Route::post('country-update/{id}', [CountryController::class, 'update'])->name('admin.country.update');
+        Route::delete('country-delete/{id}', [CountryController::class, 'destroy'])->name('admin.country.delete');
+
 
         //Package Management
         Route::get('package-management', [PackageController::class, 'index'])->name('admin.manage.package');

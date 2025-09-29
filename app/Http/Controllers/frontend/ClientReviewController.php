@@ -44,7 +44,6 @@ class ClientReviewController extends Controller
 
         $client = auth()->user();
 
-        // File upload handle
         $attachments = [];
         if ($request->hasFile('attachments')) {
             foreach ($request->file('attachments') as $file) {
@@ -54,7 +53,6 @@ class ClientReviewController extends Controller
             }
         }
 
-        // Save review
         $review = Review::create([
             'client_id'   => $client->id,
             'provider_id' => $request->provider_id,

@@ -73,7 +73,6 @@ class MiscellaneousController extends Controller
     {
         $contact = ContactUs::findOrFail(FakerURL::id_d($id));
 
-        // Mark as viewed if not already
         if (!$contact->is_view) {
             $contact->is_view = 1;
             $contact->save();

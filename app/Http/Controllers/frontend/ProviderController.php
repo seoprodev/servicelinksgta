@@ -100,7 +100,6 @@ class ProviderController extends Controller
     {
         $user = auth()->user();
 
-        // Check for active subscription
         $activeSubscription = UserSubscription::where('user_id', $user->id)
             ->where('is_active', 1)
             ->where('subscription_status', 'active')
@@ -112,7 +111,6 @@ class ProviderController extends Controller
             ->with(['category', 'subCategory', 'leads']);
 
         if (!$activeSubscription) {
-            // Non-subscriber → sirf old/limited jobs
             $query->where('created_at', '<=', now()->subHours(6));
         }
 
@@ -156,7 +154,6 @@ class ProviderController extends Controller
         }
 
 
-        // Get user's active subscription
         $activeSubscription = UserSubscription::where('user_id', $provider->id)
             ->where('is_active', 1)
             ->where('subscription_status', 'active')
@@ -165,14 +162,12 @@ class ProviderController extends Controller
             ->first();
 
         if ($activeSubscription) {
-            // Subscription purchase type
             if ($activeSubscription->remaining_connects < 1) {
                 return response()->json([
                     'error' => 'You have no remaining connects in your subscription.'
                 ], 400);
             }
 
-            // Deduct connect
             $activeSubscription->decrement('remaining_connects');
 
             ProviderLead::create([
@@ -205,14 +200,11 @@ class ProviderController extends Controller
     {
         $provider = auth()->user();
 
-        // Get all leads purchased by the provider
         $leads = ProviderLead::where('provider_id', $provider->id)
             ->whereHas('job')
             ->with(['job', 'job.user'])
             ->latest()
             ->get();
-
-
 
         return view('frontend.provider.jobs.my-leads', compact('leads'));
     }
@@ -226,15 +218,12 @@ class ProviderController extends Controller
     }
 
 
-    //
-
     public function checkout(Request $request)
     {
         $provider = Auth::user();
         $jobId = $request->job_id;
         $job = Job::findOrFail($jobId);
 
-        // Already purchased?
         $alreadyBought = ProviderLead::where('provider_id', $provider->id)
             ->where('job_id', $job->id)
             ->first();
@@ -285,7 +274,6 @@ class ProviderController extends Controller
 
         $job = Job::findOrFail($jobId);
 
-        // Already purchased? Double check
         $alreadyBought = ProviderLead::where('provider_id', $provider->id)
             ->where('job_id', $job->id)
             ->first();
@@ -324,8 +312,6 @@ class ProviderController extends Controller
         return redirect()->route('provider.leads')->with('error', 'Payment was cancelled.');
     }
 
-
-
     public function ProviderProfileShow()
     {
         $user = Auth::user();
@@ -354,13 +340,11 @@ class ProviderController extends Controller
         try {
             $user = User::findOrFail($request->id);
 
-            // update user table
             $user->update([
                 'name'  => $request->name,
                 'email' => $user->email, // readonly
             ]);
 
-            // profile fetch or create
             $profile = $user->profile ?? new UserProfile(['user_id' => $user->id]);
 
             $profile->first_name  = $request->first_name;
@@ -375,7 +359,6 @@ class ProviderController extends Controller
             $profile->city        = $request->city;
             $profile->postal_code = $request->postal_code;
 
-            // file uploads in public/
             if ($request->hasFile('avatar')) {
                 $avatarName = time() . '_' . uniqid() . '.' . $request->file('avatar')->getClientOriginalExtension();
                 $request->file('avatar')->move(public_path('uploads/user/profile/'), $avatarName);

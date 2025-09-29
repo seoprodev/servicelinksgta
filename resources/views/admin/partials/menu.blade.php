@@ -280,6 +280,13 @@
                 </a>
             </li>
 
+            {{-- Location Management--}}
+            <li class="{{ request()->routeIs('admin.manage.country') ? 'active' : '' }}">
+                <a href="{{ route('admin.manage.country') }}" class="nav-link">
+                    <i data-feather="map"></i><span>Manage Location</span>
+                </a>
+            </li>
+
             {{-- Job Priority --}}
             <li class="{{ request()->routeIs('admin.manage.priority') ? 'active' : '' }}">
                 <a href="{{ route('admin.manage.priority') }}" class="nav-link">

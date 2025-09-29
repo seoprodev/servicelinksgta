@@ -108,27 +108,27 @@
                 </div>
                 <div class="mobile-header d-flex flex-column justify-content-between h-100">
                     <ul class="main-nav align-items-lg-center list-menus">
-                        <li class="d-none d-lg-block">
-                            <div>
-                                <div class="dropdown">
-                                    <a href="#!" class="dropdown-toggle bg-light-300 fw-medium"
-                                       data-bs-toggle="dropdown">
-                                        <i class="ti ti-layout-grid me-1"></i>Categories
-                                    </a>
-                                    <ul class="dropdown-menu home-category-scroll">
-                                        @foreach($frontCategories as $category)
-                                            <li>
-                                                <a href="javascript:void(0);"
-                                                   class="dropdown-item select-category"
-                                                   data-id="{{ $category->id }}">
-                                                    {{ $category->name }}
-                                                </a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
+{{--                        <li class="d-none d-lg-block">--}}
+{{--                            <div>--}}
+{{--                                <div class="dropdown">--}}
+{{--                                    <a href="#!" class="dropdown-toggle bg-light-300 fw-medium"--}}
+{{--                                       data-bs-toggle="dropdown">--}}
+{{--                                        <i class="ti ti-layout-grid me-1"></i>Categories--}}
+{{--                                    </a>--}}
+{{--                                    <ul class="dropdown-menu home-category-scroll">--}}
+{{--                                        @foreach($frontCategories as $category)--}}
+{{--                                            <li>--}}
+{{--                                                <a href="javascript:void(0);"--}}
+{{--                                                   class="dropdown-item select-category"--}}
+{{--                                                   data-id="{{ $category->id }}">--}}
+{{--                                                    {{ $category->name }}--}}
+{{--                                                </a>--}}
+{{--                                            </li>--}}
+{{--                                        @endforeach--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </li>--}}
                         <li class="{{ request()->routeIs('front.home') ? 'active' : '' }}">
                             <a href="{{ route('front.home') }}"
                                target="_self">

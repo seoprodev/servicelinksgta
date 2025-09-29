@@ -19,7 +19,6 @@ class SubCategory extends Model
         'is_deleted',
     ];
 
-    // SubCategory → Category (Many To One)
     public function category()
     {
         return $this->belongsTo(Category::class);

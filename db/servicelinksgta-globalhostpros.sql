@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 26, 2025 at 07:09 PM
+-- Generation Time: Sep 29, 2025 at 11:13 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.2.29
 
@@ -190,6 +190,7 @@ CREATE TABLE `jobs` (
   `property_type` varchar(255) NOT NULL,
   `priority` varchar(255) NOT NULL,
   `job_files` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `budget` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '0.00',
   `description` longtext NOT NULL,
   `postal_code` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,
@@ -205,15 +206,19 @@ CREATE TABLE `jobs` (
 -- Dumping data for table `jobs`
 --
 
-INSERT INTO `jobs` (`id`, `user_id`, `category_id`, `sub_category_id`, `title`, `property_type`, `priority`, `job_files`, `description`, `postal_code`, `city`, `country`, `status`, `is_active`, `is_deleted`, `created_at`, `updated_at`) VALUES
-(1, 2, 6, NULL, 'Looking for General Plumbing services for my Office in Toronto', 'Office', 'To be discussed', '[\"uploads\\/job\\/files\\/1758908164_68d6cf04bf9f9.jpg\"]', 'We are looking for a reliable General Plumber for our office. The job includes installation, repair, and maintenance of plumbing systems, fixing leaks, pipes, and fixtures, and handling emergency plumbing issues when needed. Candidate should have basic plumbing experience, good problem-solving skills, and be physically fit to handle the work. Interested persons can contact us', 'M5V3L9', 'Toronto', 'Canada', 'pending', 1, 0, '2025-09-12 22:06:14', '2025-09-26 12:44:28'),
-(2, 2, 7, NULL, 'Looking for Bathroom Plumbing services for my Apartment building in Edmonton', 'Apartment building', 'Urgent', '[]', 'We are looking for a reliable General Plumber for our office. The job includes installation, repair, and maintenance of plumbing systems, fixing leaks, pipes, and fixtures, and handling emergency plumbing issues when needed. Candidate should have basic plumbing experience, good problem-solving skills, and be physically fit to handle the work', 'T5J3N5', 'Edmonton', 'Canada', 'pending', 1, 0, '2025-09-12 22:14:00', '2025-09-12 22:14:00'),
-(3, 41, 7, NULL, 'Looking for Bathroom Plumbing services for my Apartment building in Edmonton', 'Apartment building', 'Urgent', '[]', 'We are looking for a reliable General Plumber for our office. The job includes installation, repair, and maintenance of plumbing systems, fixing leaks, pipes, and fixtures, and handling emergency plumbing issues when needed. Candidate should have basic plumbing experience, good problem-solving skills, and be physically fit to handle the work', 'T5J3N5', 'Edmonton', 'Canada', 'pending', 1, 0, '2025-09-12 22:14:07', '2025-09-12 22:14:07'),
-(4, 2, 7, NULL, 'Looking for Bathroom Plumbing services for my Apartment building in Edmonton', 'Apartment building', 'Urgent', '[]', 'We are looking for a reliable General Plumber for our office. The job includes installation, repair, and maintenance of plumbing systems, fixing leaks, pipes, and fixtures, and handling emergency plumbing issues when needed. Candidate should have basic plumbing experience, good problem-solving skills, and be physically fit to handle the work', 'T5J3N5', 'Edmonton', 'Canada', 'pending', 1, 0, '2025-09-12 22:14:37', '2025-09-12 22:14:37'),
-(10, 42, 9, 11, 'Looking for Kitchen Plumbing services for my Apartment building in Toronto', 'Apartment building', 'Urgent', '[]', 'bjkkjbnk', 'M5V3L9', 'Toronto', 'Canada', 'pending', 1, 0, '2025-09-24 17:22:17', '2025-09-24 17:22:17'),
-(11, 2, 9, NULL, 'Enim aut ea aliquid', 'Condo', 'Within 2 weeks', '[\"uploads\\/job\\/files\\/1758910014_68d6d63ec7510.jpg\"]', 'Nam a molestiae non', 'M5V3L9', 'Toronto', 'Canada', 'active', 1, 0, '2025-09-26 12:19:14', '2025-09-26 13:15:35'),
-(12, 47, 13, NULL, 'Looking for Outdoor Plumbing services for my Office in Toronto', 'Office', 'Within 2 weeks', '[\"uploads\\/job\\/files\\/1758912732_68d6e0dcc9cc1.jpg\"]', 'this is job description', 'M5V3L9', 'Toronto', 'Canada', 'pending', 1, 0, '2025-09-26 13:52:48', '2025-09-26 13:52:48'),
-(13, 47, 7, NULL, 'Looking for Bathroom Plumbing services for my Condo in Toronto', 'Condo', 'Within 2 weeks', '[\"uploads\\/job\\/files\\/1758912964_68d6e1c4c35b7.jpg\"]', 'thias asdasdnmsa asdsad', 'M5V3L9', 'Toronto', 'Canada', 'pending', 1, 0, '2025-09-26 13:56:33', '2025-09-26 13:56:33');
+INSERT INTO `jobs` (`id`, `user_id`, `category_id`, `sub_category_id`, `title`, `property_type`, `priority`, `job_files`, `budget`, `description`, `postal_code`, `city`, `country`, `status`, `is_active`, `is_deleted`, `created_at`, `updated_at`) VALUES
+(1, 2, 6, NULL, 'Looking for General Plumbing services for my Office in Toronto', 'Office', 'To be discussed', '[\"uploads\\/job\\/files\\/1758908164_68d6cf04bf9f9.jpg\"]', '500', 'We are looking for a reliable General Plumber for our office. The job includes installation, repair, and maintenance of plumbing systems, fixing leaks, pipes, and fixtures, and handling emergency plumbing issues when needed. Candidate should have basic plumbing experience, good problem-solving skills, and be physically fit to handle the work. Interested persons can contact us', 'M5V3L9', 'Toronto', 'Canada', 'pending', 1, 0, '2025-09-12 22:06:14', '2025-09-29 13:03:15'),
+(2, 2, 7, NULL, 'Looking for Bathroom Plumbing services for my Apartment building in Edmonton', 'Apartment building', 'Urgent', '[]', '100', 'We are looking for a reliable General Plumber for our office. The job includes installation, repair, and maintenance of plumbing systems, fixing leaks, pipes, and fixtures, and handling emergency plumbing issues when needed. Candidate should have basic plumbing experience, good problem-solving skills, and be physically fit to handle the work', 'T5J3N5', 'Edmonton', 'Canada', 'pending', 1, 0, '2025-09-12 22:14:00', '2025-09-29 13:02:57'),
+(3, 41, 7, NULL, 'Looking for Bathroom Plumbing services for my Apartment building in Edmonton', 'Apartment building', 'Urgent', '[]', '', 'We are looking for a reliable General Plumber for our office. The job includes installation, repair, and maintenance of plumbing systems, fixing leaks, pipes, and fixtures, and handling emergency plumbing issues when needed. Candidate should have basic plumbing experience, good problem-solving skills, and be physically fit to handle the work', 'T5J3N5', 'Edmonton', 'Canada', 'pending', 1, 0, '2025-09-12 22:14:07', '2025-09-12 22:14:07'),
+(4, 2, 7, NULL, 'Looking for Bathroom Plumbing services for my Apartment building in Edmonton', 'Apartment building', 'Urgent', '[]', '200', 'We are looking for a reliable General Plumber for our office. The job includes installation, repair, and maintenance of plumbing systems, fixing leaks, pipes, and fixtures, and handling emergency plumbing issues when needed. Candidate should have basic plumbing experience, good problem-solving skills, and be physically fit to handle the work', 'T5J3N5', 'Edmonton', 'Canada', 'pending', 1, 0, '2025-09-12 22:14:37', '2025-09-29 13:02:42'),
+(10, 42, 9, 11, 'Looking for Kitchen Plumbing services for my Apartment building in Toronto', 'Apartment building', 'Urgent', '[]', '', 'bjkkjbnk', 'M5V3L9', 'Toronto', 'Canada', 'pending', 1, 0, '2025-09-24 17:22:17', '2025-09-24 17:22:17'),
+(11, 2, 9, NULL, 'Looking for Kitchen Plumbing services for my Condo in Toronto', 'Condo', 'Within 2 weeks', '[\"uploads\\/job\\/files\\/1758910014_68d6d63ec7510.jpg\"]', '100', 'Nam a molestiae non', 'M5V3L9', 'Toronto', 'Canada', 'completed', 1, 0, '2025-09-26 12:19:14', '2025-09-29 13:52:42'),
+(12, 47, 13, NULL, 'Looking for Outdoor Plumbing services for my Office in Toronto', 'Office', 'Within 2 weeks', '[\"uploads\\/job\\/files\\/1758912732_68d6e0dcc9cc1.jpg\"]', '', 'this is job description', 'M5V3L9', 'Toronto', 'Canada', 'pending', 1, 0, '2025-09-26 13:52:48', '2025-09-26 13:52:48'),
+(13, 47, 7, NULL, 'Looking for Bathroom Plumbing services for my Condo in Toronto', 'Condo', 'Within 2 weeks', '[\"uploads\\/job\\/files\\/1758912964_68d6e1c4c35b7.jpg\"]', '', 'thias asdasdnmsa asdsad', 'M5V3L9', 'Toronto', 'Canada', 'pending', 1, 0, '2025-09-26 13:56:33', '2025-09-26 13:56:33'),
+(14, 48, 7, NULL, 'Looking for Bathroom Plumbing services for my Townhouse in Toronto', 'Townhouse', 'Urgent', '[]', '', 'this is job description test', 'M5V3L9', 'Toronto', 'Canada', 'pending', 1, 0, '2025-09-26 14:40:35', '2025-09-26 14:40:35'),
+(15, 2, 20, NULL, 'Looking for Sump Pump Plumber', 'Detached house', 'To be discussed', '[]', '0.00', 'Amet aliqua Ut dic', 'M5V3L9', 'Toronto', 'Canada', 'active', 1, 0, '2025-09-29 13:09:43', '2025-09-29 13:46:59'),
+(16, 49, 16, NULL, 'Looking for Gas Line services for my Office in Toronto', 'Office', 'Within 1 month', '[]', '1000', 'jhbjhbjh', 'M5V3L9', 'Toronto', 'Canada', 'active', 1, 0, '2025-09-29 13:32:48', '2025-09-29 13:43:38'),
+(17, 50, 14, NULL, 'Looking for Commercial Plumbing services for my Office in St. John\'s', 'Office', 'Within 1 month', '[]', '0.00', 'asdas', 'A0A 0A0', 'St. John\'s', 'Canada', 'active', 1, 0, '2025-09-29 17:42:51', '2025-09-29 17:42:51');
 
 -- --------------------------------------------------------
 
@@ -261,9 +266,8 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `user_id`, `receiver_id`, `body`, `read`, `created_at`, `updated_at`) VALUES
-(1, 34, 2, 'test', 0, '2025-09-25 18:30:50', '2025-09-25 18:30:50'),
-(2, 2, 34, 'test client reply', 0, '2025-09-25 18:39:13', '2025-09-25 18:39:13'),
-(3, 34, 2, 'adsad', 0, '2025-09-25 19:48:41', '2025-09-25 19:48:41');
+(1, 2, 34, 'ads', 0, '2025-09-26 18:04:54', '2025-09-26 18:04:54'),
+(2, 34, 42, 'hello', 0, '2025-09-29 14:52:45', '2025-09-29 14:52:45');
 
 -- --------------------------------------------------------
 
@@ -304,6 +308,18 @@ CREATE TABLE `notifications` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`id`, `user_id`, `type`, `title`, `message`, `url`, `is_read`, `created_at`, `updated_at`) VALUES
+(1, 47, 'new_message', 'New Message', 'You received a new message from duhuw', 'http://servicelinksgta.test/user/chat', 0, '2025-09-26 14:33:22', '2025-09-26 14:33:22'),
+(2, 48, 'new_message', 'New Message', 'You received a new message from duhuw', 'http://servicelinksgta.test/user/chat', 1, '2025-09-26 14:41:40', '2025-09-26 14:41:45'),
+(3, 48, 'new_message', 'New Message', 'You received a new message from duhuw', 'http://servicelinksgta.test/user/chat', 1, '2025-09-26 14:54:11', '2025-09-26 14:54:19'),
+(4, 34, 'new_message', 'New Message', 'You received a new message from Macon Keller', 'http://servicelinksgta.test/provider/chat', 1, '2025-09-26 14:54:27', '2025-09-29 14:10:17'),
+(5, 34, 'new_message', 'New Message', 'You received a new message from Russell Gomez', 'http://servicelinksgta.test/provider/chat', 1, '2025-09-26 18:05:00', '2025-09-26 18:05:08'),
+(6, 42, 'new_message', 'New Message', 'You received a new message from duhuw', 'http://servicelinksgta.test/user/chat', 0, '2025-09-29 14:52:52', '2025-09-29 14:52:52');
 
 -- --------------------------------------------------------
 
@@ -358,88 +374,11 @@ CREATE TABLE `postal_codes` (
 --
 
 INSERT INTO `postal_codes` (`id`, `postal_code`, `city`, `state`, `country`, `is_active`, `created_at`, `updated_at`) VALUES
-(1, 'A0A 0A0', 'St. John\'s', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:05:57', '2025-09-24 00:05:57'),
-(2, 'A1A 1A1', 'St. John\'s', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:05:57', '2025-09-24 00:05:57'),
-(3, 'A2A 2A2', 'Gander', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:05:57', '2025-09-24 00:05:57'),
-(4, 'A3A 3A3', 'Corner Brook', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:05:57', '2025-09-24 00:05:57'),
-(5, 'A4A 4A4', 'Grand Falls-Windsor', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:05:57', '2025-09-24 00:05:57'),
-(6, 'A5A 5A5', 'Stephenville', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:05:57', '2025-09-24 00:05:57'),
-(7, 'A6A 6A6', 'Bay Roberts', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:05:57', '2025-09-24 00:05:57'),
-(8, 'A7A 7A7', 'Clarenville', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:05:57', '2025-09-24 00:05:57'),
-(9, 'A8A 8A8', 'Deer Lake', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:05:57', '2025-09-24 00:05:57'),
-(10, 'A9A 9A9', 'Happy Valley-Goose Bay', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:05:57', '2025-09-24 00:05:57'),
-(11, 'A0A 0A0', 'St. John\'s', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(12, 'A1A 1A1', 'St. John\'s', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(13, 'A2A 2A2', 'Gander', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(14, 'A3A 3A3', 'Corner Brook', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(15, 'A4A 4A4', 'Grand Falls-Windsor', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(16, 'A5A 5A5', 'Stephenville', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(17, 'A6A 6A6', 'Bay Roberts', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(18, 'A7A 7A7', 'Clarenville', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(19, 'A8A 8A8', 'Deer Lake', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(20, 'A9A 9A9', 'Happy Valley-Goose Bay', 'Newfoundland and Labrador', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(21, 'B0A 0A0', 'Antigonish', 'Nova Scotia', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(22, 'B1A 1A1', 'Sydney', 'Nova Scotia', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(23, 'B2A 2A2', 'New Glasgow', 'Nova Scotia', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(24, 'B3A 3A3', 'Truro', 'Nova Scotia', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(25, 'B4A 4A4', 'Bridgewater', 'Nova Scotia', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(26, 'B5A 5A5', 'Yarmouth', 'Nova Scotia', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(27, 'B6A 6A6', 'Amherst', 'Nova Scotia', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(28, 'B7A 7A7', 'Stellarton', 'Nova Scotia', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(29, 'B8A 8A8', 'Glace Bay', 'Nova Scotia', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(30, 'B9A 9A9', 'North Sydney', 'Nova Scotia', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(31, 'C0A 0A0', 'Charlottetown', 'Prince Edward Island', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(32, 'C1A 1A1', 'Charlottetown', 'Prince Edward Island', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(33, 'C2A 2A2', 'Summerside', 'Prince Edward Island', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(34, 'C3A 3A3', 'Montague', 'Prince Edward Island', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(35, 'C4A 4A4', 'Souris', 'Prince Edward Island', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(36, 'C5A 5A5', 'Georgetown', 'Prince Edward Island', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(37, 'C6A 6A6', 'Kensington', 'Prince Edward Island', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(38, 'C7A 7A7', 'Cornwall', 'Prince Edward Island', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(39, 'C8A 8A8', 'Alberton', 'Prince Edward Island', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(40, 'C9A 9A9', 'Borden-Carleton', 'Prince Edward Island', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(41, 'E0A 0A0', 'Bathurst', 'New Brunswick', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(42, 'E1A 1A1', 'Moncton', 'New Brunswick', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(43, 'E2A 2A2', 'Saint John', 'New Brunswick', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(44, 'E3A 3A3', 'Fredericton', 'New Brunswick', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(45, 'E4A 4A4', 'Oromocto', 'New Brunswick', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(46, 'E5A 5A5', 'Sussex', 'New Brunswick', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(47, 'E6A 6A6', 'Woodstock', 'New Brunswick', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(48, 'E7A 7A7', 'Perth-Andover', 'New Brunswick', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(49, 'E8A 8A8', 'Campbellton', 'New Brunswick', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(50, 'E9A 9A9', 'Dalhousie', 'New Brunswick', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(51, 'G0A 0A0', 'Quebec City', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(52, 'G1A 0A0', 'Quebec City', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(53, 'G2A 0A0', 'Quebec City', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(54, 'G3A 0A0', 'Quebec City', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(55, 'G4A 0A0', 'Quebec City', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(56, 'G5A 0A0', 'Quebec City', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(57, 'G6A 0A0', 'Quebec City', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(58, 'G7A 0A0', 'Quebec City', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(59, 'G8A 0A0', 'Quebec City', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(60, 'G9A 0A0', 'Quebec City', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(61, 'H0A 0A0', 'Montreal', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(62, 'H1A 0A0', 'Montreal', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(63, 'H2A 0A0', 'Montreal', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(64, 'H3A 0A0', 'Montreal', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(65, 'H4A 0A0', 'Montreal', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(66, 'H5A 0A0', 'Montreal', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(67, 'H6A 0A0', 'Montreal', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(68, 'H7A 0A0', 'Montreal', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(69, 'H8A 0A0', 'Montreal', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(70, 'H9A 0A0', 'Montreal', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(71, 'M5V3L9', 'Quebec City', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(72, 'J1A 0A0', 'Sherbrooke', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(73, 'J2A 0A0', 'Sherbrooke', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(74, 'J3A 0A0', 'Sherbrooke', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(75, 'J4A 0A0', 'Sherbrooke', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(76, 'J5A 0A0', 'Sherbrooke', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(77, 'J6A 0A0', 'Sherbrooke', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(78, 'J7A 0A0', 'Sherbrooke', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(79, 'J8A 0A0', 'Sherbrooke', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(80, 'J9A 0A0', 'Sherbrooke', 'Quebec', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(81, 'K0A 0A0', 'Ottawa', 'Ontario', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48'),
-(82, 'K1A 0A0', 'Ottawa', 'Ontario', 'Canada', 1, '2025-09-24 00:07:48', '2025-09-24 00:07:48');
+(1, 'M5V3L9', 'Toronto', 'Ontario', 'Canada', 1, '2025-09-29 17:50:48', '2025-09-29 17:50:48'),
+(2, 'H3A1B9', 'Montreal', 'Quebec', 'Canada', 1, '2025-09-29 17:51:41', '2025-09-29 17:51:41'),
+(3, 'V6B3K9', 'Vancouver', 'British Columbia', 'Canada', 1, '2025-09-29 17:52:42', '2025-09-29 17:52:42'),
+(4, 'T5J3N5', 'Edmonton', 'Alberta', 'Canada', 1, '2025-09-29 17:53:13', '2025-09-29 17:53:13'),
+(5, 'R3C4T3', 'Winnipeg', 'Manitoba', 'Canada', 1, '2025-09-29 17:54:06', '2025-09-29 17:54:06');
 
 -- --------------------------------------------------------
 
@@ -511,9 +450,11 @@ CREATE TABLE `provider_client` (
 --
 
 INSERT INTO `provider_client` (`id`, `provider_id`, `client_id`, `created_at`, `updated_at`) VALUES
-(1, 34, 2, '2025-09-18 17:18:31', '2025-09-18 17:18:55'),
-(2, 34, 41, '2025-09-18 19:37:17', '2025-09-18 19:37:17'),
-(3, 34, 42, '2025-09-25 00:56:01', '2025-09-25 00:56:01');
+(1, 34, 48, '2025-09-26 22:26:11', '2025-09-26 22:26:11'),
+(2, 34, 47, '2025-09-26 22:26:19', '2025-09-26 22:26:19'),
+(3, 34, 2, '2025-09-26 22:26:35', '2025-09-26 22:26:35'),
+(4, 34, 49, '2025-09-29 19:48:53', '2025-09-29 19:48:53'),
+(5, 34, 42, '2025-09-29 19:52:25', '2025-09-29 19:52:25');
 
 -- --------------------------------------------------------
 
@@ -545,11 +486,43 @@ CREATE TABLE `provider_leads` (
 --
 
 INSERT INTO `provider_leads` (`id`, `provider_id`, `job_id`, `client_id`, `purchase_type`, `purchase_at`, `purchase_price`, `stripe_payment_intent_id`, `stripe_checkout_session_id`, `stripe_payment_method`, `payment_status`, `lead_status`, `is_active`, `is_deleted`, `created_at`, `updated_at`) VALUES
-(1, 34, 5, 2, 'subscription', '2025-09-18 12:17:20', '0', NULL, NULL, NULL, 'pending', 'pending', 1, 0, '2025-09-18 12:17:20', '2025-09-18 12:17:20'),
-(2, 34, 3, 41, 'subscription', '2025-09-18 14:37:17', '0', NULL, NULL, NULL, 'pending', 'pending', 1, 0, '2025-09-18 14:37:17', '2025-09-18 14:37:17'),
-(3, 34, 10, 42, 'subscription', '2025-09-24 19:56:01', '0', NULL, NULL, NULL, 'pending', 'pending', 1, 0, '2025-09-24 19:56:01', '2025-09-24 19:56:01'),
-(4, 34, 2, 2, 'subscription', '2025-09-26 11:51:45', '0', NULL, NULL, NULL, 'pending', 'pending', 1, 0, '2025-09-26 11:51:45', '2025-09-26 11:51:45'),
-(5, 34, 1, 2, 'subscription', '2025-09-26 11:51:57', '0', NULL, NULL, NULL, 'pending', 'pending', 1, 0, '2025-09-26 11:51:57', '2025-09-26 11:51:57');
+(1, 34, 14, 48, 'subscription', '2025-09-26 17:26:11', '0', NULL, NULL, NULL, 'pending', 'pending', 1, 0, '2025-09-26 17:26:11', '2025-09-26 17:26:11'),
+(2, 34, 13, 47, 'subscription', '2025-09-26 17:26:19', '0', NULL, NULL, NULL, 'pending', 'pending', 1, 0, '2025-09-26 17:26:19', '2025-09-26 17:26:19'),
+(3, 34, 12, 47, 'subscription', '2025-09-26 17:26:26', '0', NULL, NULL, NULL, 'pending', 'pending', 1, 0, '2025-09-26 17:26:26', '2025-09-26 17:26:26'),
+(4, 34, 11, 2, 'subscription', '2025-09-26 17:26:35', '0', NULL, NULL, NULL, 'pending', 'pending', 1, 0, '2025-09-26 17:26:35', '2025-09-26 17:26:35'),
+(5, 34, 15, 2, 'subscription', '2025-09-29 14:42:53', '0', NULL, NULL, NULL, 'pending', 'pending', 1, 0, '2025-09-29 14:42:53', '2025-09-29 14:42:53'),
+(6, 34, 16, 49, 'subscription', '2025-09-29 14:48:52', '0', NULL, NULL, NULL, 'pending', 'pending', 1, 0, '2025-09-29 14:48:52', '2025-09-29 14:48:52'),
+(7, 34, 10, 42, 'pay_per_lead', '2025-09-29 14:52:25', '10', 'pi_3SCn7QGfnb89HY8o0OqzUkRv', 'cs_test_a1RjQcSfr3oXyRJvAcaiNbLQ3Kj72ot18n6WHHwUsgAEac2AaECjhFraSB', 'card', 'paid', 'pending', 1, 0, '2025-09-29 14:52:25', '2025-09-29 14:52:25');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `id` int NOT NULL,
+  `client_id` bigint NOT NULL,
+  `provider_id` bigint NOT NULL,
+  `rating` decimal(10,0) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `attachments` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `is_active` tinyint DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`id`, `client_id`, `provider_id`, `rating`, `title`, `message`, `attachments`, `is_active`, `created_at`, `updated_at`) VALUES
+(1, 2, 34, '5', 'Great and Quick Service', 'The plumber arrived on time, fixed the leaking pipe within an hour, and even cleaned the area after finishing. Very professional and friendly. Highly recommended!', NULL, 1, '2025-09-26 19:43:04', '2025-09-26 19:43:04'),
+(2, 2, 34, '4', 'Affordable and Reliable', 'Got my kitchen sink unclogged. The work was neat and charges were reasonable. Only had to wait 30 minutes longer than scheduled, but overall a good experience.', NULL, 1, '2025-09-26 19:43:35', '2025-09-26 19:43:35'),
+(3, 2, 34, '5', 'Emergency Leak Fixed', 'I had a burst pipe late at night and this provider came within 40 minutes. Saved me from a huge mess. Couldn’t be happier with the service!', NULL, 1, '2025-09-26 19:44:58', '2025-09-26 19:44:58'),
+(4, 2, 34, '3', 'Satisfactory Work', 'The plumber did the job but took longer than expected. The issue is resolved but communication could have been better. Average service.', NULL, 1, '2025-09-26 19:45:37', '2025-09-26 19:45:37'),
+(5, 2, 34, '4', 'Professional Team', 'They installed a new water heater for me. The team explained everything clearly, tested the system, and left the place spotless. Excellent service, would use again.', NULL, 1, '2025-09-26 19:46:04', '2025-09-26 19:46:04');
 
 -- --------------------------------------------------------
 
@@ -587,7 +560,7 @@ CREATE TABLE `subscription_packages` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci,
   `price` decimal(10,2) NOT NULL DEFAULT '0.00',
-  `billing_cycle` enum('monthly','yearly') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'monthly',
+  `billing_cycle` enum('monthly','yearly','quarterly') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'monthly',
   `connects` int DEFAULT NULL,
   `features` json DEFAULT NULL,
   `is_featured` tinyint(1) NOT NULL DEFAULT '0',
@@ -603,8 +576,8 @@ CREATE TABLE `subscription_packages` (
 
 INSERT INTO `subscription_packages` (`id`, `name`, `description`, `price`, `billing_cycle`, `connects`, `features`, `is_featured`, `is_active`, `is_deleted`, `created_at`, `updated_at`) VALUES
 (1, 'Basic Plan', 'this is plan description', '100.00', 'monthly', 5, '[\"This is first feature\", \"This is Second feature\", \"This is third feature\"]', 0, 1, 0, '2025-09-10 13:15:18', '2025-09-10 18:31:30'),
-(2, 'Premium Plan', 'This is plan Description', '200.00', 'monthly', 10, '[\"This is first feature\", \"This is Second feature\", \"This is Third feature\"]', 1, 1, 0, '2025-09-10 13:18:18', '2025-09-10 13:22:14'),
-(3, 'Gold Plan', 'This is gold plan description', '300.00', 'monthly', 100, '[\"This is first feature\", \"This is Second feature\", \"This is Third feature\"]', 1, 1, 0, '2025-09-10 13:25:00', '2025-09-10 18:40:34');
+(2, 'Premium Plan', 'This is plan Description', '200.00', 'quarterly', 10, '[\"This is first feature\", \"This is Second feature\", \"This is Third feature\"]', 1, 1, 0, '2025-09-10 13:18:18', '2025-09-29 15:21:47'),
+(3, 'Gold Plan', 'This is gold plan description', '300.00', 'monthly', 100, '[\"This is first feature\", \"This is Second feature\", \"This is Third feature\"]', 1, 1, 0, '2025-09-10 13:25:00', '2025-09-29 15:19:43');
 
 -- --------------------------------------------------------
 
@@ -695,7 +668,10 @@ INSERT INTO `users` (`id`, `name`, `email`, `user_type`, `email_verified_at`, `p
 (37, 'Roof Traders', 'provider@free.com', 'provider', NULL, '$2y$12$crdqYF8i86D7Qr.C.5TFLOS5olpZu.Iz1jRM0XX9zrSOKjNZlszlG', NULL, 1, 0, '2025-09-11 23:45:56', '2025-09-11 23:46:28'),
 (41, 'Zorita Leblanc', 'nasaxaje@mailinator.com', 'client', NULL, '$2y$12$aJG2SR.XCoy31c9oAXnfl.fK4igZco2lBugp1J6J3IefOCyfVFrOS', NULL, 1, 0, '2025-09-12 22:06:14', '2025-09-12 22:06:14'),
 (42, 'Adele Bean', 'zixybud@mailinator.com', 'client', NULL, '$2y$12$3BXjbsY9RUTbKvAdaDQh1OzAyOWcUqwmT03oU.//Vov9/H3JMNTs2', NULL, 0, 0, '2025-09-24 17:22:17', '2025-09-24 17:22:17'),
-(47, 'Herrod Guerrero', 'wajito6770@mv6a.com', 'client', NULL, '$2y$12$nvdNAU1hHvhGZ1wYmF4yjOfvt6aPT2HRdG50yZZdsOET7w/Z//d8m', NULL, 0, 0, '2025-09-26 13:52:48', '2025-09-26 13:52:48');
+(47, 'Herrod Guerrero', 'wajito6770@mv6a.com', 'client', NULL, '$2y$12$nvdNAU1hHvhGZ1wYmF4yjOfvt6aPT2HRdG50yZZdsOET7w/Z//d8m', NULL, 0, 0, '2025-09-26 13:52:48', '2025-09-26 13:52:48'),
+(48, 'Macon Keller', 'niloy14712@gddcorp.com', 'client', NULL, '$2y$12$SVkoyLYCRzki74npFQn3Nu7Fd4n8zr6JzFiKFODdIROUgKAw8heb.', NULL, 1, 0, '2025-09-26 14:40:35', '2025-09-26 14:40:35'),
+(49, 'Dahlia French', 'nodov@mailinator.com', 'client', NULL, '$2y$12$gIVorhL.NsFxuGZVUtf0Eu6Vhi7g5nH.h9ex8f.51WWXt2iFeRPDm', NULL, 1, 0, '2025-09-29 13:32:48', '2025-09-29 13:32:48'),
+(50, 'Jada Watts', 'wizowimo@mailinator.com', 'client', NULL, '$2y$12$z7X0QStIdIoFmGA5VPPD9uVdJdjfHwspCpkD4k6VyGohoVbQK1N5W', NULL, 1, 0, '2025-09-29 17:42:51', '2025-09-29 17:42:51');
 
 -- --------------------------------------------------------
 
@@ -735,11 +711,14 @@ CREATE TABLE `user_profiles` (
 
 INSERT INTO `user_profiles` (`id`, `user_id`, `first_name`, `last_name`, `username`, `avatar`, `bio`, `gender`, `dob`, `phone`, `address`, `country`, `state`, `city`, `postal_code`, `company_name`, `business_license`, `government_doc`, `accept_terms`, `is_verified`, `verification_code`, `created_at`, `updated_at`) VALUES
 (1, 2, 'Russell', 'Gomez', NULL, 'uploads/user/profile/1758753015_68d470f7ccca0.jpg', 'Sed sint sint modi o', 'female', '1994-11-09', '+1 (528) 485-5578', 'Deserunt ducimus qu', 'In officia consequat', 'Dolorem voluptas deb', 'Id voluptatibus comm', 'Ullamco enim iste qu', NULL, 'uploads/user/doc/1757112591_68bb690f3b909.jpg', 'uploads/user/doc/1757112701_68bb697da749f.jpg', NULL, 0, NULL, '2025-09-02 12:58:05', '2025-09-24 17:30:15'),
-(30, 34, 'duhuw', 'Ayala', NULL, 'uploads/user/profile/1758842884_68d5d004bd5f4.jpg', 'With over 8 years of hands-on experience in plumbing, I specialize in providing fast, reliable, and affordable solutions for all your residential and commercial plumbing needs. From fixing leaky faucets and clogged drains to installing water heaters and complete pipeline systems, I ensure every job is done with precision and care.\r\n\r\nCustomer satisfaction is my top priority — I believe in transparent pricing, quality workmanship, and long-term solutions that save you time and money. Whether it’s an emergency repair or a planned installation, I’m just one call away to make sure your plumbing runs smoothly.', 'male', '2016-02-09', '5616516513', 'test Address', 'us', 'alaska', 'hanes', '151515', 'Franklin Mcbride Inc', 'uploads/user/doc/1758752020_68d46d1493569.jpg', 'uploads/user/doc/1758752020_68d46d14939f9.jpg', 1, 0, 'email-verified', '2025-09-10 12:55:52', '2025-09-25 18:28:04'),
+(30, 34, 'duhuw', 'Ayala', NULL, 'uploads/user/profile/1758925904_68d71450a7bc1.jpg', 'With over 8 years of hands-on experience in plumbing, I specialize in providing fast, reliable, and affordable solutions for all your residential and commercial plumbing needs. From fixing leaky faucets and clogged drains to installing water heaters and complete pipeline systems, I ensure every job is done with precision and care.\r\n\r\nCustomer satisfaction is my top priority — I believe in transparent pricing, quality workmanship, and long-term solutions that save you time and money. Whether it’s an emergency repair or a planned installation, I’m just one call away to make sure your plumbing runs smoothly.', 'male', '2016-02-09', '5616516513', 'test Address', 'us', 'alaska', 'hanes', '151515', 'Franklin Mcbride Inc', 'uploads/user/doc/1758752020_68d46d1493569.jpg', 'uploads/user/doc/1758752020_68d46d14939f9.jpg', 1, 0, 'email-verified', '2025-09-10 12:55:52', '2025-09-26 17:31:44'),
 (33, 37, 'Roof', 'Traders', NULL, NULL, NULL, NULL, NULL, '981465065198', NULL, NULL, NULL, NULL, NULL, 'Roof Traders', 'uploads/user/doc/1757619956_68c326f484295.jpg', 'uploads/user/doc/1757619956_68c326f488324.jpg', 1, 0, 'email-verified', '2025-09-11 23:45:56', '2025-09-11 23:46:28'),
 (37, 41, 'Zorita', 'Leblanc', NULL, NULL, NULL, NULL, NULL, '8751984965', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2025-09-12 22:06:14', '2025-09-12 22:14:00'),
 (38, 42, 'Adele', 'Bean', NULL, NULL, NULL, NULL, NULL, '464614894', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2025-09-24 17:22:17', '2025-09-24 17:22:17'),
-(43, 47, 'Zorita', 'Leblanc', NULL, NULL, NULL, NULL, NULL, '8465165165', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2025-09-26 13:52:48', '2025-09-26 13:56:33');
+(43, 47, 'Zorita', 'Leblanc', NULL, NULL, NULL, NULL, NULL, '8465165165', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2025-09-26 13:52:48', '2025-09-26 13:56:33'),
+(44, 48, 'Macon', 'Keller', NULL, NULL, NULL, NULL, NULL, '+1 (808) 692-1174', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2025-09-26 14:40:35', '2025-09-26 14:40:35'),
+(45, 49, 'Dahlia', 'French', NULL, NULL, NULL, NULL, NULL, '41651465198', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2025-09-29 13:32:48', '2025-09-29 13:32:48'),
+(46, 50, 'Jada', 'Watts', NULL, NULL, NULL, NULL, NULL, '+1 (822) 314-1291', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2025-09-29 17:42:51', '2025-09-29 17:42:51');
 
 -- --------------------------------------------------------
 
@@ -774,8 +753,11 @@ CREATE TABLE `user_subscriptions` (
 --
 
 INSERT INTO `user_subscriptions` (`id`, `user_id`, `subscription_package_id`, `stripe_checkout_session_id`, `stripe_payment_intent_id`, `stripe_payment_method`, `start_date`, `end_date`, `renewed_at`, `cancelled_at`, `payment_status`, `subscription_status`, `remaining_connects`, `price`, `currency`, `is_active`, `is_deleted`, `created_at`, `updated_at`) VALUES
-(1, 34, 1, 'cs_test_a1vJAQRUnZxrLnjWeettJE8gZQgXmqGDyInmDwCFwVUggeuW66b9gUlSQL', 'pi_3S8lSAGfnb89HY8o1yfAwaOt', 'subscription', '2025-09-18', '2025-10-18', NULL, '2025-09-26', 'paid', 'cancelled', '2', '100', 'usd', 0, 0, '2025-09-18 12:17:11', '2025-09-26 11:50:52'),
-(2, 34, 2, 'cs_test_a1o3kgxAgr7I3WwMb6lJeYOnavjRdkRn7xlmKogJEulTNWEmqLvOZdbswU', 'pi_3SBercGfnb89HY8o0IOYaiLn', 'subscription', '2025-09-26', '2025-10-26', NULL, NULL, 'paid', 'active', '8', '200', 'usd', 1, 0, '2025-09-26 11:51:25', '2025-09-26 11:51:57');
+(1, 34, 1, 'cs_test_a1vJAQRUnZxrLnjWeettJE8gZQgXmqGDyInmDwCFwVUggeuW66b9gUlSQL', 'pi_3S8lSAGfnb89HY8o1yfAwaOt', 'subscription', '2025-09-18', '2025-10-18', NULL, '2025-09-26', 'paid', 'cancelled', '2', '8000', 'usd', 0, 0, '2025-08-07 12:17:11', '2025-09-26 11:50:52'),
+(2, 34, 2, 'cs_test_a1o3kgxAgr7I3WwMb6lJeYOnavjRdkRn7xlmKogJEulTNWEmqLvOZdbswU', 'pi_3SBercGfnb89HY8o0IOYaiLn', 'subscription', '2025-09-26', '2025-10-26', NULL, '2025-09-26', 'paid', 'cancelled', '6', '200', 'usd', 0, 0, '2025-09-26 11:51:25', '2025-09-26 14:54:47'),
+(3, 34, 1, 'cs_test_a1iZL4mQHwPCJlwu4YUKWuzqYn4xcjlDTCr4Qnn0TxXDTAt0KZVaFviNsF', 'pi_3SBjq7Gfnb89HY8o0EFHeNCN', 'subscription', '2025-09-26', '2025-09-26', NULL, NULL, 'paid', 'expired', '0', '100', 'usd', 0, 0, '2025-09-26 17:10:10', '2025-09-26 17:54:06'),
+(4, 34, 2, 'cs_test_a1YJtFKnmllmprhoOKss8l1j88e35upMyi5yrfJcJPmwOaYTZA64smJOBK', 'pi_3SBkWcGfnb89HY8o0VJQ4uyF', 'subscription', '2025-09-26', '2025-10-26', NULL, '2025-09-29', 'paid', 'cancelled', '8', '200', 'usd', 0, 0, '2025-09-26 17:54:06', '2025-09-29 14:50:27'),
+(5, 34, 2, 'cs_test_a198TYSfGY3llVIIfav7fRS3yzcKhJmRZoHFzUtOlvVOwRqgvFtxzHTjBY', 'pi_3SCnaaGfnb89HY8o1KG83ma7', 'subscription', '2025-09-29', '2025-12-29', NULL, NULL, 'paid', 'active', '10', '200', 'usd', 1, 0, '2025-09-29 15:22:33', '2025-09-29 15:22:33');
 
 --
 -- Indexes for dumped tables
@@ -882,6 +864,12 @@ ALTER TABLE `provider_leads`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `subscribers`
 --
 ALTER TABLE `subscribers`
@@ -959,7 +947,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `line_distances`
@@ -971,7 +959,7 @@ ALTER TABLE `line_distances`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -983,7 +971,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -995,7 +983,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `postal_codes`
 --
 ALTER TABLE `postal_codes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `priorities`
@@ -1013,12 +1001,18 @@ ALTER TABLE `property_types`
 -- AUTO_INCREMENT for table `provider_client`
 --
 ALTER TABLE `provider_client`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `provider_leads`
 --
 ALTER TABLE `provider_leads`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `reviews`
+--
+ALTER TABLE `reviews`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
@@ -1049,19 +1043,19 @@ ALTER TABLE `tickets`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `user_profiles`
 --
 ALTER TABLE `user_profiles`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `user_subscriptions`
 --
 ALTER TABLE `user_subscriptions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

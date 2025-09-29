@@ -47,7 +47,6 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-
     public function profile()
     {
         return $this->hasOne(UserProfile::class, 'user_id');
@@ -60,12 +59,10 @@ class User extends Authenticatable
     }
 
 
-
     public function clients()
     {
         return $this->belongsToMany(User::class, 'provider_client', 'provider_id', 'client_id');
     }
-
 
     public function providers()
     {

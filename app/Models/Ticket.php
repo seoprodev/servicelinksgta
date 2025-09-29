@@ -19,11 +19,9 @@ class Ticket extends Model
       'status'
     ];
 
-
     protected $casts = [
         'attachments' => 'array',
     ];
-
 
     public function getFakerIdAttribute()
     {

@@ -7,6 +7,7 @@ namespace App\Http\Controllers\frontend;
 use App\Helpers\FakerURL;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Country;
 use App\Models\Job;
 use App\Models\Priority;
 use App\Models\PropertyType;
@@ -20,12 +21,10 @@ class ClientJobController extends Controller
     {
         $user = Auth::user();
 
-        // Stats
         $totalJobs = Job::where('user_id', $user->id)->count();
         $activeJobs = Job::where('user_id', $user->id)->where('status', 'active')->count();
         $completedJobs = Job::where('user_id', $user->id)->where('status', 'completed')->count();
 
-        // Recent Jobs
         $recentJobs = Job::where('user_id', $user->id)
             ->latest()
             ->take(3)
@@ -66,12 +65,8 @@ class ClientJobController extends Controller
 
     public function getSubcategories($id)
     {
-
         $category = Category::where('id', $id)->first();
-
         $subcategories = $category->subcategories()->select('id', 'name')->get();
-
-
         return response()->json($subcategories);
     }
 
@@ -89,24 +84,16 @@ class ClientJobController extends Controller
             'job_file.*'      => 'nullable|file|mimes:jpg,jpeg,png,pdf,doc,docx|max:4096',
         ]);
 
-        // Postal Code Mapping
-        $validPostalCodes = [
-            'M5V3L9' => ['city' => 'Toronto', 'country' => 'Canada'],
-            'H3A1B9' => ['city' => 'Montreal', 'country' => 'Canada'],
-            'V6B3K9' => ['city' => 'Vancouver', 'country' => 'Canada'],
-            'T5J3N5' => ['city' => 'Edmonton', 'country' => 'Canada'],
-            'R3C4T3' => ['city' => 'Winnipeg', 'country' => 'Canada'],
-        ];
-
         $postalCode = strtoupper(str_replace(' ', '', $request->postal_code));
-        $city = $validPostalCodes[$postalCode]['city'] ?? null;
-        $country = $validPostalCodes[$postalCode]['country'] ?? null;
+        $countryData = Country::whereRaw("REPLACE(UPPER(postal_code), ' ', '') = ?", [$postalCode])->first();
 
-        if (!$city || !$country) {
+        if (!$countryData) {
             return back()->withErrors(['postal_code' => 'Invalid postal code'])->withInput();
         }
 
-        // Upload files
+        $city    = $countryData->city;
+        $country = $countryData->country;
+
         $files = [];
         if ($request->hasFile('job_file')) {
             foreach ($request->file('job_file') as $file) {
@@ -116,7 +103,6 @@ class ClientJobController extends Controller
             }
         }
 
-        // Save Job
         Job::create([
             'user_id'         => auth()->id(),
             'title'           => $request->title,
@@ -144,7 +130,6 @@ class ClientJobController extends Controller
         $propertyType = PropertyType::all();
         $priority = Priority::all();
 
-        // Load subcategories for the selected category
         $subcategories = $job->category ? $job->category->subcategories : null;
 
         return view('frontend.user.job.edit', compact(
@@ -154,17 +139,11 @@ class ClientJobController extends Controller
 
     public function updateMyJob(Request $request, $id)
     {
-
-
         $job = Job::findOrFail(FakerURL::id_d($id));
-
-        // Ensure only job owner can update
-
         $data = $request->only([
             'title', 'category_id', 'sub_category_id', 'status',
             'property_type', 'priority', 'postal_code', 'description', 'budget'
         ]);
-
 
         $files = [];
         if ($request->hasFile('job_file')) {

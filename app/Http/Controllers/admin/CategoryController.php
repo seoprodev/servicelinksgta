@@ -149,5 +149,4 @@ class CategoryController extends Controller
             ->with('success', 'Deleted successfully!');
     }
 
-
 }

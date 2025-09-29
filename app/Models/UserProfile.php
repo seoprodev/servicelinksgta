@@ -33,6 +33,6 @@ class UserProfile extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);  // One user can have one profile
+        return $this->belongsTo(User::class);
     }
 }

@@ -56,11 +56,9 @@ class FrontAuthController extends Controller
             mkdir($uploadPath, 0777, true);
         }
 
-        // file paths
         $businessLicensePath = null;
         $governmentDocPath   = null;
 
-        // Business License Upload
         if ($request->hasFile('business_license_file')) {
             $businessFile = $request->file('business_license_file');
             $businessName = time().'_'.uniqid().'.'.$businessFile->getClientOriginalExtension();
@@ -68,7 +66,6 @@ class FrontAuthController extends Controller
             $businessLicensePath = 'uploads/user/doc/'.$businessName;
         }
 
-        // Government Doc Upload
         if ($request->hasFile('government_doc')) {
             $govFile = $request->file('government_doc');
             $govName = time().'_'.uniqid().'.'.$govFile->getClientOriginalExtension();
@@ -83,7 +80,7 @@ class FrontAuthController extends Controller
             $nameParts = explode(' ', $fullName, 2); // 2 parts max
             $firstName = $nameParts[0] ?? '';
             $lastName  = $nameParts[1] ?? '';
-            // Create User
+
             $user = User::create([
                 'name'      => $request->username,
                 'email'     => $request->email,
@@ -92,10 +89,8 @@ class FrontAuthController extends Controller
                 'is_active' => 0,
             ]);
 
-            // Verification code
             $verificationCode = rand(100000, 999999);
 
-            // Create Profile
             UserProfile::create([
                 'user_id'               => $user->id,
                 'first_name'            => $firstName,
@@ -109,11 +104,8 @@ class FrontAuthController extends Controller
                 'verification_code'     => $verificationCode,
             ]);
 
-            // Send Verification Email
             Mail::to($user->email)->send(new EmailVerificationMail($user, $verificationCode));
-
             DB::commit();
-
 
             return response()->json([
                 'success' => true,
@@ -124,7 +116,6 @@ class FrontAuthController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
 
-            // optional: agar file upload hui thi to delete bhi kar sakte ho rollback pe
             if ($businessLicensePath && file_exists(public_path($businessLicensePath))) {
                 unlink(public_path($businessLicensePath));
             }
@@ -203,7 +194,6 @@ class FrontAuthController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = Auth::user();
 
-            // check active or not
             if ($user->is_active == 0) {
                 Auth::logout();
                 return response()->json([
@@ -265,18 +255,14 @@ class FrontAuthController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        // generate OTP
         $otp = rand(100000, 999999);
 
-        // store OTP in DB (users table ya alag password_resets table)
         $user->update([
             'reset_otp' => $otp,
             'reset_otp_expires_at' => now()->addMinutes(15),
         ]);
 
-        // send email
         Mail::to($user->email)->send(new SendOtpMail($user, $otp));
-
         return response()->json([
             'success' => true,
             'message' => 'OTP sent successfully! Please check your email.',
@@ -343,7 +329,6 @@ class FrontAuthController extends Controller
             return redirect()->back()->withErrors(['profile' => 'User profile not found.']);
         }
 
-        // Naya code generate karo
         $newCode = rand(100000, 999999);
         $profile->verification_code = $newCode;
         $profile->save();
@@ -361,7 +346,6 @@ class FrontAuthController extends Controller
 
     public function userUpdateProfile(Request $request)
     {
-//        dd($request->all());
         $request->validate([
             'first_name'   => 'required|string|max:255',
             'last_name'    => 'required|string|max:255',
@@ -381,13 +365,11 @@ class FrontAuthController extends Controller
         try {
             $user = User::findOrFail($request->id);
 
-            // update user table
             $user->update([
                 'name'  => $request->name,
                 'email' => $user->email, // readonly
             ]);
 
-            // profile fetch or create
             $profile = $user->profile ?? new UserProfile(['user_id' => $user->id]);
 
             $profile->first_name  = $request->first_name;
@@ -402,7 +384,6 @@ class FrontAuthController extends Controller
             $profile->city        = $request->city;
             $profile->postal_code = $request->postal_code;
 
-            // file uploads in public/
             if ($request->hasFile('avatar')) {
                 $avatarName = time() . '_' . uniqid() . '.' . $request->file('avatar')->getClientOriginalExtension();
                 $request->file('avatar')->move(public_path('uploads/user/profile/'), $avatarName);

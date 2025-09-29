@@ -34,7 +34,6 @@ class JobController extends Controller
 
     public function store(Request $request)
     {
-        // Validate request
         $request->validate([
             'title' => 'required|string|max:255',
             'category_id' => 'required|exists:categories,id',
@@ -48,10 +47,8 @@ class JobController extends Controller
 
 //        dd($request->all());
 
-        // Space-safe postal code
         $postalCodeInput = str_replace(' ', '', $request->postal_code);
 
-        // Verify postal code
         $postal = DB::table('postal_codes')
             ->whereRaw("REPLACE(postal_code, ' ', '') = ?", [$postalCodeInput])
             ->where('is_active', 1)
@@ -65,7 +62,6 @@ class JobController extends Controller
         $city = $postal->city;
         $country = $postal->country;
 
-        // Handle uploaded files
         $files = [];
         if ($request->hasFile('job_file')) {
             foreach ($request->file('job_file') as $file) {
@@ -75,7 +71,6 @@ class JobController extends Controller
             }
         }
 
-        // Save Job
         Job::create([
             'user_id'         => $request->user_id,
             'title'           => $request->title,
@@ -105,7 +100,7 @@ class JobController extends Controller
 
     public function getPostalCode(Request $request)
     {
-        $postalCode = str_replace(' ', '', $request->postal_code); // remove all spaces
+        $postalCode = str_replace(' ', '', $request->postal_code);
 
         $postal = DB::table('postal_codes')
             ->whereRaw("REPLACE(postal_code, ' ', '') = ?", [$postalCode])
@@ -174,7 +169,6 @@ class JobController extends Controller
             }
         }
 
-        // Update Job
         $job->update([
             'user_id' => $request->user_id,
             'title' => $request->title,
@@ -206,7 +200,6 @@ class JobController extends Controller
     public function show($id)
     {
         $job = Job::with(['user', 'category', 'subcategory'])->findOrFail(FakerURL::id_d($id));
-
         return view('admin.jobs.show', compact('job'));
     }
 

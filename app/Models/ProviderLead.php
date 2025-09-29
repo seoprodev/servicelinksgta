@@ -30,7 +30,6 @@ class ProviderLead extends Model
         return $this->belongsTo(User::class, 'provider_id');
     }
 
-    // Job relation
     public function job()
     {
         return $this->belongsTo(Job::class, 'job_id');

@@ -39,7 +39,6 @@ class PackageController extends Controller
             'description'   => 'nullable|string',
             'price'         => 'required|numeric|min:0',
             'billing_cycle' => 'required|in:monthly,quarterly,yearly',
-//            'job_post_limit'=> 'nullable|integer|min:0',
             'connects'      => 'nullable|integer|min:0',
             'features'      => 'nullable|array',
             'is_featured'   => 'nullable|boolean',

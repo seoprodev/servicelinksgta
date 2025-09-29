@@ -41,7 +41,6 @@ class FrontJobController extends Controller
          *  Filters
          * -------------------------- */
 
-        // 🔹 Keyword Search (title, description)
         if ($request->filled('keywords')) {
             $keyword = $request->keywords;
             $query->where(function ($q) use ($keyword) {
@@ -50,12 +49,10 @@ class FrontJobController extends Controller
             });
         }
 
-        // 🔹 Categories
         if ($request->filled('cate')) {
             $query->whereIn('category_id', $request->cate);
         }
 
-        // 🔹 Location (city or country)
         if ($request->filled('location')) {
             $query->where(function ($q) use ($request) {
                 $q->where('city', 'like', "%{$request->location}%")
@@ -63,7 +60,6 @@ class FrontJobController extends Controller
             });
         }
 
-        // 🔹 Sorting
         if ($request->filled('sortprice')) {
             if ($request->sortprice === 'highl') {
                 $query->orderBy('budget', 'desc');
@@ -76,14 +72,10 @@ class FrontJobController extends Controller
 
         $jobs = $query->get();
 
-        // 🔹 Extra data for filter form
         $categories = Category::all();
         $locations = Job::select('city')->distinct()->get();
 
-//        dd($locations);
-
         return view('frontend.service', compact('jobs', 'categories', 'locations'));
-
     }
 
 

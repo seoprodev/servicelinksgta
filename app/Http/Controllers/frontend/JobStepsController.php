@@ -6,6 +6,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Country;
 use App\Models\Job;
 use App\Models\Priority;
 use App\Models\PropertyType;
@@ -35,34 +36,60 @@ class JobStepsController extends Controller
         return view('frontend.post-a-job', compact('category'));
     }
 
+//    public function validatePostalCode(Request $request)
+//    {
+//        $request->validate([
+//            'postal_code' => 'required|string|max:10'
+//        ]);
+//
+//        // Canada ke test postal codes (sample)
+//        $validPostalCodes = [
+//            'M5V3L9' => ['city' => 'Toronto', 'country' => 'Canada'],
+//            'H3A1B9' => ['city' => 'Montreal', 'country' => 'Canada'],
+//            'V6B3K9' => ['city' => 'Vancouver', 'country' => 'Canada'],
+//            'T5J3N5' => ['city' => 'Edmonton', 'country' => 'Canada'],
+//            'R3C4T3' => ['city' => 'Winnipeg', 'country' => 'Canada'],
+//        ];
+//
+//        $postal = strtoupper(str_replace(' ', '', $request->postal_code)); // normalize (remove spaces, uppercase)
+//
+//        if (array_key_exists($postal, $validPostalCodes)) {
+//            return response()->json([
+//                'success' => true,
+//                'city'    => $validPostalCodes[$postal]['city'],
+//                'country' => $validPostalCodes[$postal]['country'],
+//            ]);
+//        }
+//
+//        return response()->json([
+//            'success' => false,
+//            'message' => 'Invalid Canadian postal code.'
+//        ]);
+//    }
+
+
     public function validatePostalCode(Request $request)
     {
         $request->validate([
             'postal_code' => 'required|string|max:10'
         ]);
 
-        // Canada ke test postal codes (sample)
-        $validPostalCodes = [
-            'M5V3L9' => ['city' => 'Toronto', 'country' => 'Canada'],
-            'H3A1B9' => ['city' => 'Montreal', 'country' => 'Canada'],
-            'V6B3K9' => ['city' => 'Vancouver', 'country' => 'Canada'],
-            'T5J3N5' => ['city' => 'Edmonton', 'country' => 'Canada'],
-            'R3C4T3' => ['city' => 'Winnipeg', 'country' => 'Canada'],
-        ];
+        $postal = strtoupper(str_replace(' ', '', $request->postal_code));
 
-        $postal = strtoupper(str_replace(' ', '', $request->postal_code)); // normalize (remove spaces, uppercase)
+        $country = Country::whereRaw("REPLACE(UPPER(postal_code), ' ', '') = ?", [$postal])->first();
 
-        if (array_key_exists($postal, $validPostalCodes)) {
+        if ($country) {
             return response()->json([
                 'success' => true,
-                'city'    => $validPostalCodes[$postal]['city'],
-                'country' => $validPostalCodes[$postal]['country'],
+                'city'    => $country->city,
+                'state'   => $country->state,
+                'country' => $country->country,
             ]);
         }
 
         return response()->json([
             'success' => false,
-            'message' => 'Invalid Canadian postal code.'
+            'message' => 'Postal code not found in our database.'
         ]);
     }
 
@@ -168,22 +195,26 @@ class JobStepsController extends Controller
 
 
             // Postal codes (Canada only)
-            $validPostalCodes = [
-                'M5V3L9' => ['city' => 'Toronto', 'country' => 'Canada'],
-                'H3A1B9' => ['city' => 'Montreal', 'country' => 'Canada'],
-                'V6B3K9' => ['city' => 'Vancouver', 'country' => 'Canada'],
-                'T5J3N5' => ['city' => 'Edmonton', 'country' => 'Canada'],
-                'R3C4T3' => ['city' => 'Winnipeg', 'country' => 'Canada'],
-            ];
+//            $validPostalCodes = [
+//                'M5V3L9' => ['city' => 'Toronto', 'country' => 'Canada'],
+//                'H3A1B9' => ['city' => 'Montreal', 'country' => 'Canada'],
+//                'V6B3K9' => ['city' => 'Vancouver', 'country' => 'Canada'],
+//                'T5J3N5' => ['city' => 'Edmonton', 'country' => 'Canada'],
+//                'R3C4T3' => ['city' => 'Winnipeg', 'country' => 'Canada'],
+//            ];
 
-            $city = $validPostalCodes[$request->postal_code]['city'] ?? null;
-            $country = $validPostalCodes[$request->postal_code]['country'] ?? null;
+//            $city = $validPostalCodes[$request->postal_code]['city'] ?? null;
+//            $country = $validPostalCodes[$request->postal_code]['country'] ?? null;
 
-            // Category id resolve karo slug se
+
+            $postal = strtoupper(str_replace(' ', '', $request->postal_code));
+            $countryData = Country::whereRaw("REPLACE(UPPER(postal_code), ' ', '') = ?", [$postal])->first();
+            $city    = $countryData->city    ?? null;
+            $country = $countryData->country ?? null;
+
             $category = Category::where('slug', $request->job_category)->first();
             $propertyType = PropertyType::findOrFail($request->property);
             $jobPriority = Priority::findOrFail($request->priority);
-            // Job create
 
             $title = "Looking for {$category->name} services for my {$propertyType->name} in {$city}";
 
@@ -199,7 +230,7 @@ class JobStepsController extends Controller
                 'description'    => $request->description,
                 'city'           => $city,
                 'country'        => $country,
-                'status'         => 'pending',
+                'status'         => 'active',
                 'is_active'      => 1,
             ]);
 
