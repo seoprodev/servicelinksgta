@@ -55,7 +55,7 @@ Route::view('provider-list', 'frontend.provider-list')->name('front.providers');
 Route::view('post-a-job', 'frontend.post-a-job')->name('front.post.job');
 
 
-Route::get('service', [FrontJobController::class, 'index'])->name('front.service');
+Route::get('jobs', [FrontJobController::class, 'index'])->name('front.service');
 Route::post('/selected-category', [JobStepsController::class, 'postJobCategory'])->name('front.post.job.submit');
 Route::get('post-a-job/{slug}', [JobStepsController::class, 'postJob'])->name('front.post.job');
 

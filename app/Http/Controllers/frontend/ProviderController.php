@@ -108,7 +108,7 @@ class ProviderController extends Controller
             ->first();
 
         $query = Job::where('is_active', 1)
-            ->with(['category', 'subCategory', 'leads']);
+            ->with(['category', 'subCategory', 'leads'])->whereNotIn('status', ['completed', 'cancelled']);
 
         if (!$activeSubscription) {
             $query->where('created_at', '<=', now()->subHours(6));

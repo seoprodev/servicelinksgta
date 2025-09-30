@@ -282,7 +282,52 @@
 
 
 
+<!-- Sign up choose Modal -->
+<div class="modal fade" id="show--sign--up--model" tabindex="-1" data-bs-backdrop="static" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header d-flex align-items-center justify-content-end pb-0 border-0">
+                <a href="#!" data-bs-dismiss="modal" aria-label="Close"><i
+                            class="ti ti-circle-x-filled fs-20"></i></a>
+            </div>
+            <div class="modal-body p-4">
+                <form action="#" class="digit-group">
+                    <div class="text-center mb-3">
+                        <h3 class="mb-2">Join Our Platform</h3>
+                        <p id="otp-prov-reg-sms-message" class="fs-14">Select your account type to get started quickly</p>
+                    </div>
+                    <div class="text-center otp-input">
+                        <div class="d-flex justify-content-center gap-3">
+                            <button type="button" class="btn btn-lg btn-linear-primary w-50" data-bs-toggle="modal" data-bs-target="#cleint-sign-up">Sign Up as Client</button>
+                            <button type="button" class="btn btn-lg btn-linear-primary w-50" data-bs-toggle="modal" data-bs-target="#provider-sign-up">Sign Up as Professional</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
 
+        </div>
+    </div>
+</div>
+
+{{--<div class="modal fade" id="show--sign--up--model" tabindex="-1" data-bs-backdrop="static" aria-hidden="true">--}}
+{{--    <div class="modal-dialog modal-dialog-centered">--}}
+{{--        <div class="modal-content p-4 text-center">--}}
+{{--            <div class="modal-header border-0 justify-content-center">--}}
+{{--                <h5 class="modal-title">Sign Up</h5>--}}
+{{--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--}}
+{{--            </div>--}}
+{{--            <div class="modal-body">--}}
+{{--                <p class="mb-4">Please choose how you want to sign up:</p>--}}
+{{--                <div class="d-flex justify-content-center gap-3">--}}
+{{--                    <a href="" class="btn btn-lg btn-linear-primary w-100">Sign Up as Client</a>--}}
+{{--                    <a href="" class="btn btn-lg btn-linear-primary w-100">Sign Up as Professional</a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}
+
+<!-- /Phone otp Modal -->
 
 
 

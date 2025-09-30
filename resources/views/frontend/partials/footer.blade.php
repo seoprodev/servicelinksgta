@@ -6,7 +6,7 @@
                     <div class="footer-widget">
                         <h5 class="mb-4">Useful links</h5>
                         <ul class="footer-menu">
-                            <li><a href="{{ route('front.service') }}">Leads</a></li>
+                            <li><a href="{{ route('front.service') }}">Jobs</a></li>
 {{--                            <li><a href="{{ route('front.categories') }}">Category</a></li>--}}
 {{--                            <li><a href="{{ route('front.providers') }}">Providers</a></li>--}}
                         </ul>

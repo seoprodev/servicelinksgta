@@ -138,7 +138,7 @@
                         <li class="{{ request()->routeIs('front.service') ? 'active' : '' }}">
                             <a href="{{ route('front.service') }}"
                                target="_self">
-                                Leads
+                                Jobs
                             </a>
                         </li>
                         <li class="{{ request()->routeIs('front.about') ? 'active' : '' }}">
@@ -154,12 +154,20 @@
                             </a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#!" data-bs-toggle="modal"
-                               data-bs-target="#cleint-sign-up">
-                                Post A Job
-                            </a>
-                        </li>
+                        @if(!auth()->check())
+                            <li class="nav-item">
+                                <a class="nav-link" href="#!" data-bs-toggle="modal" data-bs-target="#cleint-sign-up">
+                                    Post A Job
+                                </a>
+                            </li>
+                        @elseif(auth()->user()->user_type == 'client')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('user.dashboard') }}">
+                                    Post A Job
+                                </a>
+                            </li>
+                        @endif
+
                         {{--
                         <li class="d-none d-lg-block">
                             <div class="dropdown">
@@ -341,6 +349,20 @@
                                                     </div>
                                                 </a>
                                                 </div>
+                                            @elseif(auth()->user()->user_type == 'admin')
+                                                <div class="ml-2">
+                                                    <a href="{{ route('admin.notifications.read', $notification->id) }}"
+                                                       class="dropdown-item d-flex align-items-start mb-2 {{ $notification->is_read ? '' : 'unread' }}">
+                                                    <span class="me-2">
+                                                        <i class="feather-bell text-primary"></i>
+                                                    </span>
+                                                        <div>
+                                                            <div class="fw-bold">{{ $notification->title }}</div>
+                                                            <small class="text-muted">{{ $notification->message }}</small>
+                                                            <div class="small text-gray">{{ $notification->created_at->diffForHumans() }}</div>
+                                                        </div>
+                                                    </a>
+                                                </div>
                                             @endif
                                         @empty
                                         @endforelse
@@ -430,10 +452,6 @@
                         </li>
                     </ul>
             @endif
-
-
-
-
         </nav>
     </div>
 </header>

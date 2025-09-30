@@ -31,11 +31,11 @@
 {{--                                    <i class="bi bi-chat-dots me-2"></i> Contact Client--}}
 {{--                                </a>--}}
 {{--                            </li>--}}
-                            <li>
-                                <a class="dropdown-item text-danger" href="#" onclick="return confirm('Are you sure you want to delete this job?');">
-                                    <i class="bi bi-trash me-2"></i> Delete Job
-                                </a>
-                            </li>
+{{--                            <li>--}}
+{{--                                <a class="dropdown-item text-danger" href="#" onclick="return confirm('Are you sure you want to delete this job?');">--}}
+{{--                                    <i class="bi bi-trash me-2"></i> Delete Job--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
                         </ul>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 @extends('frontend.partials.master')
-@section('title', 'Home')
+@section('title', 'Jobs')
 @push('styles')
 @endpush
 
@@ -9,11 +9,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-12">
-                    <h2 class="breadcrumb-title mb-2">Leads</h2>
+                    <h2 class="breadcrumb-title mb-2">Jobs</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center mb-0">
                             <li class="breadcrumb-item"><a href="index.html"><i class="ti ti-home-2"></i></a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Leads</li>
+                            <li class="breadcrumb-item active" aria-current="page">Jobs</li>
                         </ol>
                     </nav>
                 </div>
@@ -30,23 +30,23 @@
     <div class="page-wrapper">
         <div class="content">
 
-            @if(!auth()->check())
+{{--            @if(!auth()->check())--}}
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 text-center d-flex">
-                        <ul class="nav header-navbar-rht m-auto">
-                            <li class="nav-item pe-1">
-                                <a class="nav-link btn btn-light" href="#" data-bs-toggle="modal" data-bs-target="#all-login-modal"><i class="ti ti-lock me-2"></i>Sign in</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link btn btn-linear-primary" href="#" data-bs-toggle="modal" data-bs-target="#cleint-sign-up"><i class="ti ti-user-filled me-2"></i>Join us</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-@else
+{{--            <div class="container">--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-12 text-center d-flex">--}}
+{{--                        <ul class="nav header-navbar-rht m-auto">--}}
+{{--                            <li class="nav-item pe-1">--}}
+{{--                                <a class="nav-link btn btn-light" href="#" data-bs-toggle="modal" data-bs-target="#all-login-modal"><i class="ti ti-lock me-2"></i>Sign in</a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link btn btn-linear-primary" href="#" data-bs-toggle="modal" data-bs-target="#cleint-sign-up"><i class="ti ti-user-filled me-2"></i>Join us</a>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--@else--}}
 
 
 {{-- if else codition--}}
@@ -150,7 +150,7 @@
                             </div><div class="resize-sensor" style="position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden;"><div class="resize-sensor-expand" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0px; top: 0px; transition: all; width: 340px; height: 631px;"></div></div><div class="resize-sensor-shrink" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%"></div></div></div></div></div>
                     <div class="col-xl-9 col-lg-8">
                         <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
-                            <h4>Found <span class="text-primary">{{ $jobs->count() }} Leads</span></h4>
+                            <h4>Found <span class="text-primary">{{ $jobs->count() }} Jobs</span></h4>
 {{--                            <form action="javascript:" method="GET" id="sortform">--}}
 {{--                                <div class="d-flex align-items-center">--}}
 {{--                                    <span class="text-dark me-2">Sort</span>--}}
@@ -227,9 +227,11 @@
                                             </div>
                                         </div>
 
-                                        <button type="button" class="btn btn-success payment">
-                                            Contact Now
-                                        </button>
+                                        @if(!auth()->check())
+                                            <button type="button" class="btn btn-linear-primary" data-bs-toggle="modal" data-bs-target="#show--sign--up--model">
+                                                View More
+                                            </button>
+                                        @endif
                                     </div>
                                 </div>
                             @empty
@@ -242,7 +244,7 @@
                 </div>
             </div>
 {{-- if else codition--}}
-@endif
+{{--@endif--}}
         </div>
 
     </div>

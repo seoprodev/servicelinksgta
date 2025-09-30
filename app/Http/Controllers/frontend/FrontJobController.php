@@ -18,7 +18,7 @@ class FrontJobController extends Controller
         $activeSubscription = null;
 
         $query = Job::with(['category', 'subCategory'])
-            ->where('is_active', 1);
+            ->where('is_active', 1)->whereNotIn('status', ['completed', 'cancelled']);
 
         if (auth()->check()) {
             $user = auth()->user();
