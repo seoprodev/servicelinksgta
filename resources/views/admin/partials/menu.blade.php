@@ -179,9 +179,8 @@
                                                                                                  class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
                 <div class="dropdown-title">Hello {{ auth()->user()->name }}</div>
-{{--                <a href="profile.html" class="dropdown-item has-icon"> <i class="far--}}
-{{--										fa-user"></i> Profile--}}
-{{--                </a>--}}
+                <a href="{{ route('clear.cache') }}" class="dropdown-item has-icon"> <i class="fas fa-cog"></i> Clear Cache
+                </a>
 {{--                <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>--}}
 {{--                    Activities--}}
 {{--                </a>--}}
@@ -268,9 +267,19 @@
                     <i data-feather="user-plus"></i><span>User Subscription</span>
                 </a>
             </li>
+            <li class="{{ request()->routeIs('admin.pay.per.lead.index') ? 'active' : '' }}">
+                <a href="{{ route('admin.pay.per.lead.index') }}" class="nav-link">
+                    <i data-feather="user-plus"></i><span>Pay-Per-Lead Purchases</span>
+                </a>
+            </li>
             <li class="{{ request()->routeIs('admin.notifications.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.notifications.index') }}" class="nav-link">
                     <i data-feather="bell"></i><span>Notifications</span>
+                </a>
+            </li>
+            <li class="{{ request()->routeIs('admin.chat.index') ? 'active' : '' }}">
+                <a href="{{ route('admin.chat.index') }}" class="nav-link">
+                    <i data-feather="message-square"></i><span>Chat</span>
                 </a>
             </li>
             {{-- Property Type --}}
@@ -324,6 +333,7 @@
                     <i data-feather="mail"></i><span>Newsletters</span>
                 </a>
             </li>
+
 
 
         </ul>

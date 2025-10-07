@@ -79,27 +79,25 @@
   <script src="{{ asset('admin-assets/js/scripts.js') }}"></script>
   <script src="{{ asset('admin-assets/js/custom.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-  @if(session('errors'))
-    @php
-      $validationErrors = session('errors')->all();
-    @endphp
-    <script>
-      @foreach($validationErrors as $error)
-      alertify.error('{{$error}}');
-      @endforeach
-    </script>
-  @endif
-  @if(session()->has('success'))
-    <script>
-      alertify.success('{{ session('success') }}')
-    </script>
-  @endif
-  @if(session()->has('error'))
-    <script>
-      alertify.error('{{ session('error') }}')
-    </script>
-  @endif
-
-
+@if(session('errors'))
+  @php
+    $validationErrors = session('errors')->all();
+  @endphp
+  <script>
+    @foreach($validationErrors as $error)
+    alertify.error('{{$error}}');
+    @endforeach
+  </script>
+@endif
+@if(session()->has('success'))
+  <script>
+    alertify.success('{{ session('success') }}')
+  </script>
+@endif
+@if(session()->has('error'))
+  <script>
+    alertify.error('{{ session('error') }}')
+  </script>
+@endif
 </body>
 </html>

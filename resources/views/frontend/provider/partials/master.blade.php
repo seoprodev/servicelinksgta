@@ -80,7 +80,7 @@
 
 
         <!-- Content -->
-        <div id="content">
+        <div id="content" class="container-fluid">
             @yield('provider-dashboard-content')
         </div>
     </div>

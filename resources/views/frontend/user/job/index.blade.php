@@ -44,7 +44,9 @@
 
                                     <a href="{{ route('user.job.detail', $job->faker_id)}}" class="btn bg-primary">View Detail</a>
                                 </div>
+
                             </div>
+
                         </div>
                     </div>
         </div>

@@ -68,6 +68,35 @@
                                     <span class="badge badge-danger">Inactive</span>
                                 @endif
                             </div>
+
+                            @if($user->user_type == 'provider')
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label>Business License</label><br>
+                                        <a href="{{ $user->profile->business_license ? asset($user->profile->business_license) : asset('admin-assets/img/no-image-found.png') }}" target="_blank">
+                                            <img
+                                                    src="{{ $user->profile->business_license ? asset($user->profile->business_license) : asset('admin-assets/img/no-image-found.png') }}"
+                                                    alt="Business License"
+                                                    class="img-fluid rounded border mt-2"
+                                                    style="max-height: 200px; object-fit: cover;"
+                                            >
+                                        </a>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <label>Government Document</label><br>
+                                        <a href="{{ $user->profile->government_doc ? asset($user->profile->government_doc) : asset('admin-assets/img/no-image-found.png') }}" target="_blank">
+                                            <img src="{{ $user->profile->government_doc ? asset($user->profile->government_doc) : asset('admin-assets/img/no-image-found.png') }}"
+                                                    alt="Government Document"
+                                                    class="img-fluid rounded border mt-2"
+                                                    style="max-height: 200px; object-fit: cover;">
+                                        </a>
+                                    </div>
+                                </div>
+                            @endif
+
+
+
                             <div class="card-footer">
                                 <a href="{{ url()->previous() }}" class="btn btn-dark" ><- Back To List</a>
                             </div>

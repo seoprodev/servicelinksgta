@@ -152,7 +152,7 @@ Route::prefix('provider')->group(function () {
         // Chat Routes Start
         Route::get('/chat', [ChatController::class, 'index'])->name('provider.chat.index');
         Route::get('/chat-search-provider', [ChatController::class, 'searchClient'])->name('chat.search.provider');
-        // Chat Routes Start
+        // Chat Routes End
 
         //Notification Route Start
         Route::get('notifications', [MiscellaneousController::class, 'notifications'])->name('provider.notifications.index');
@@ -179,10 +179,10 @@ foreach (['user', 'provider'] as $role) {
     });
 }
 
-Route::get('/clear-optimize', function () {
+Route::get('admin/optimize-clear', function () {
     Artisan::call('optimize:clear');
-    return "Optimize clear command executed!";
-});
+    return redirect()->back()->with('success', 'Clear Cache Successfully!');
+})->name('clear.cache');
 
 Route::get('/admin', function(){
     return redirect()->route('admin.login');
@@ -296,6 +296,17 @@ Route::prefix('admin')->group(function () {
         Route::get('notifications/delete/{id}', [MiscellaneousController::class, 'NotificationDelete'])->name('admin.notifications.delete');
 
         Route::get('subscriptions', [DashboardController::class, 'userSubscription'])->name('admin.subscription.index');
+        Route::get('pay-as-you-go', [DashboardController::class, 'payAsYouGoIndex'])->name('admin.pay.per.lead.index');
+
+
+        // Chat Routes Start
+        Route::get('/chat', [ChatController::class, 'index'])->name('admin.chat.index');
+        Route::get('/chat-search-provider', [ChatController::class, 'adminSearchUser'])->name('admin.search.chat');
+        // Chat Routes End
+
+
+
+
 
     });
 

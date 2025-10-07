@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Frontend;
 use App\Events\MessageSent;
 use App\Helpers\NotificationHelper;
 use App\Http\Controllers\Controller;
-use App\Models\Conversation;
 use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -39,8 +38,10 @@ class ChatController extends Controller
         if ($authUser->user_type === 'client'){
             return view('frontend.user.chat-index', compact('chatUsers'));
 
-        }else{
+        }elseif($authUser->user_type === 'provider'){
             return view('frontend.provider.chat', compact('chatUsers'));
+        }elseif($authUser->user_type === 'admin'){
+            return view('admin.chat.index', compact('chatUsers'));
         }
 
     }
@@ -81,6 +82,24 @@ class ChatController extends Controller
 
         $authUser = $request->user();
 
+        $abusiveWords = config('abusive_words.list');
+
+        $lowerMessage = strtolower($request->message);
+        foreach ($abusiveWords as $word) {
+//            if (str_contains($lowerMessage, $word)) {
+//                return response()->json([
+//                    'error' => 'Your message contains inappropriate language.'
+//                ], 422);
+//            }
+
+            if (preg_match("/\b" . preg_quote($word, '/') . "\b/i", $lowerMessage)) {
+                return response()->json([
+                    'error' => "Your message contains inappropriate language."
+                ], 422);
+            }
+
+        }
+
         $message = Message::create([
             'user_id'     => $authUser->id,
             'receiver_id' => $request->receiver_id,
@@ -88,12 +107,19 @@ class ChatController extends Controller
             'read'        => false,
         ]);
 
-
         broadcast(new MessageSent($message))->toOthers();
-        if ($authUser->user_type == 'client'){
+
+
+
+
+        $receiver = User::findOrFail($request->receiver_id);
+
+        if ($receiver->user_type == 'provider') {
             $url = route('provider.chat.index');
-        }else{
+        } elseif($receiver->user_type == 'client') {
             $url = route('chat.index');
+        }elseif($receiver->user_type == 'admin'){
+            $url = route('admin.chat.index');
         }
 
         NotificationHelper::create(
@@ -106,6 +132,7 @@ class ChatController extends Controller
 
         return response()->json($message);
     }
+
 
     public function searchProvider(Request $request)
     {
@@ -156,6 +183,34 @@ class ChatController extends Controller
 
         return response()->json($data);
     }
+
+    public function adminSearchUser(Request $request)
+    {
+        $q = trim($request->input('q'));
+
+        $query = User::query()
+            ->where('name', 'like', "%{$q}%")
+            ->with('profile')
+            ->limit(10);
+
+        $users = $query->get(['id', 'name', 'user_type']);
+
+        $data = $users->map(function ($user) {
+            return [
+                'id'       => $user->id,
+                'name'     => $user->name,
+                'type'     => ucfirst($user->user_type),
+                'avatar'   => $user->profile && $user->profile->avatar
+                    ? asset($user->profile->avatar)
+                    : asset('frontend-assets/img/user-default.jpg'),
+            ];
+        });
+
+        return response()->json($data);
+    }
+
+
+
 
 
 //    public function startConversation(Request $request)

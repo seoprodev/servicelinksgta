@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Job;
+use App\Models\ProviderLead;
 use App\Models\Ticket;
 use App\Models\User;
 use App\Models\UserSubscription;
@@ -38,9 +39,23 @@ class DashboardController extends Controller
                 return $item;
             });
 
+        $payPerLeadRevenue = ProviderLead::where('purchase_type', 'pay_per_lead')->sum('purchase_price');
+
+        $payPerLeadStats = ProviderLead::selectRaw('MONTH(created_at) as month, SUM(purchase_price) as total')
+            ->where('purchase_type', 'pay_per_lead')
+            ->groupBy('month')
+            ->orderBy('month', 'asc')
+            ->get()
+            ->map(function($item){
+                $item->total = (float) $item->total;
+                return $item;
+            });
+
+
+
         return view('admin.dashboard', compact(
             'newJobs', 'customers', 'tickets', 'revenue',
-            'jobStats', 'subscriptionStats', 'revenueStats'
+            'jobStats', 'subscriptionStats', 'revenueStats', 'payPerLeadRevenue', 'payPerLeadStats'
         ));
     }
 
@@ -52,5 +67,16 @@ class DashboardController extends Controller
 
         return view('admin.subscription.index', compact('subscriptions'));
     }
+
+    public function payAsYouGoIndex()
+    {
+        $payLeads = ProviderLead::with(['provider', 'client', 'job'])
+            ->where('purchase_type', 'pay_per_lead')
+            ->latest()
+            ->get();
+
+        return view('admin.pay-per-lead.index', compact('payLeads'));
+    }
+
 
 }

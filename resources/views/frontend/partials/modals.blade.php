@@ -91,8 +91,6 @@
     </div>
 </div>
 
-
-
 <div class="modal fade" id="cleint-sign-up" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
@@ -242,8 +240,6 @@
     </div>
 </div>
 
-
-
 <div class="modal fade" id="forgot-password-modal" tabindex="-1" data-bs-backdrop="static" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -279,9 +275,6 @@
     </div>
 </div>
 
-
-
-
 <!-- Sign up choose Modal -->
 <div class="modal fade" id="show--sign--up--model" tabindex="-1" data-bs-backdrop="static" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -298,7 +291,7 @@
                     </div>
                     <div class="text-center otp-input">
                         <div class="d-flex justify-content-center gap-3">
-                            <button type="button" class="btn btn-lg btn-linear-primary w-50" data-bs-toggle="modal" data-bs-target="#cleint-sign-up">Sign Up as Client</button>
+                            <button type="button" class="btn btn-lg btn-linear-primary w-50" data-bs-toggle="modal" data-bs-target="#cleint-sign-up">Post a Job</button>
                             <button type="button" class="btn btn-lg btn-linear-primary w-50" data-bs-toggle="modal" data-bs-target="#provider-sign-up">Sign Up as Professional</button>
                         </div>
                     </div>
@@ -308,32 +301,6 @@
         </div>
     </div>
 </div>
-
-{{--<div class="modal fade" id="show--sign--up--model" tabindex="-1" data-bs-backdrop="static" aria-hidden="true">--}}
-{{--    <div class="modal-dialog modal-dialog-centered">--}}
-{{--        <div class="modal-content p-4 text-center">--}}
-{{--            <div class="modal-header border-0 justify-content-center">--}}
-{{--                <h5 class="modal-title">Sign Up</h5>--}}
-{{--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--}}
-{{--            </div>--}}
-{{--            <div class="modal-body">--}}
-{{--                <p class="mb-4">Please choose how you want to sign up:</p>--}}
-{{--                <div class="d-flex justify-content-center gap-3">--}}
-{{--                    <a href="" class="btn btn-lg btn-linear-primary w-100">Sign Up as Client</a>--}}
-{{--                    <a href="" class="btn btn-lg btn-linear-primary w-100">Sign Up as Professional</a>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</div>--}}
-
-<!-- /Phone otp Modal -->
-
-
-
-
-
-
 
 {{--Jhon dev End--}}
 

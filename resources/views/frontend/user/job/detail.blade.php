@@ -16,6 +16,7 @@
 
             <div class="card-header bg-gradient text-white p-4" style="background: linear-gradient(90deg, #4e73df, #224abe);">
                 <div class="text-end">
+
                     <div class="dropdown d-inline-block">
                         <button class="btn btn-lg btn-secondary shadow-sm dropdown-toggle" type="button" id="jobActionsMenu" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-three-dots"></i>
@@ -44,6 +45,7 @@
                         <span class="badge bg-primary px-3 py-2 ">{{ $userJob->priority  }}</span>
                         <h3 class="mb-1">{{ $userJob->title ?? 'Untitled Job' }}</h3>
                         <small class="text-primary"><i class="bi bi-clock me-1"></i> Posted {{ $userJob->created_at->diffForHumans() }}</small>
+                        <p class="text-warning" style="padding: 10px 0 0px 0px;">Upon Hiring please change status to  Hired.</p>
                     </div>
                     @php
                         use function Symfony\Component\String\match;$status = $userJob->status ?? 'pending';
@@ -56,7 +58,7 @@
                     @endphp
                     <span class="badge {{ $badgeClass }} px-3 py-2 text-capitalize">
                     {{ $status === 'completed' ? 'Hired' : ($status === 'cancelled' ? 'Do Not Call' : ucfirst($status)) }}
-                </span>
+                    </span>
                 </div>
             </div>
 

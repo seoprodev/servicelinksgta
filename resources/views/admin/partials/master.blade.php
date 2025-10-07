@@ -73,6 +73,8 @@
 <script src="{{ asset('admin-assets/js/scripts.js') }}"></script>
 <!-- Custom JS File -->
 <script src="{{ asset('admin-assets/js/custom.js') }}"></script>
+<script src="{{ asset('admin-assets/bundles/apexcharts/apexcharts.min.js') }}"></script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 

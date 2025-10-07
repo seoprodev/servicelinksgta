@@ -11,6 +11,49 @@
             background: #003b57 !important;
             color: #ffff !important;
         }
+
+        #chat-box {
+            padding: 15px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .chat-message {
+            display: flex;
+            margin: 8px 0;
+        }
+
+        .chat-message.mine {
+            justify-content: flex-end;
+        }
+
+        .chat-message.theirs {
+            justify-content: flex-start;
+        }
+
+        .message-bubble {
+            max-width: 70%;
+            padding: 10px 14px;
+            border-radius: 18px;
+            word-wrap: break-word;
+            line-height: 1.4;
+            font-size: 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .chat-message.mine .message-bubble {
+            background-color: #007bff;
+            color: #fff;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-message.theirs .message-bubble {
+            background-color: #f1f1f1;
+            color: #333;
+            border-bottom-left-radius: 4px;
+            border: 1px solid #c9c0c0;
+        }
+
     </style>
 @endpush
 
@@ -42,7 +85,11 @@
                                class="chat-link d-block text-decoration-none"
                                data-id="{{ $user->id }}"
                                data-name="{{ $user->name }}" data-profile="{{ route('user.provider.detail', $user->faker_id) }}"
-                               data-avatar="{{ $user->profile->avatar ? asset($user->profile->avatar) : asset('frontend-assets/img/default-avatar.png') }}">
+                               @if($user->profile)
+                               data-avatar="{{ $user->profile->avatar ? asset($user->profile->avatar) : asset('frontend-assets/img/user-default.jpg') }}"
+                               @else
+                               data-avatar="{{ asset('frontend-assets/img/user-default.jpg') }}"
+                               @endif>
                                 {{ $user->name }}
                             </a>
                         </li>
@@ -52,19 +99,16 @@
                 </ul>
             </div>
 
-            <!-- RIGHT CHAT AREA -->
             <div class="col-9 d-flex flex-column" style="height: 80vh;">
                 <!-- Chat Header -->
                 <div id="chat-header" class="border-bottom p-3 text-muted">
                     Select a chat
                 </div>
 
-                <!-- Chat Messages -->
                 <div id="chat-box" class="flex-grow-1 p-3"
                      style="overflow-y: auto; background: #f8f9fa;">
                 </div>
 
-                <!-- Chat Form -->
                 <form id="chat-form" class="border-top d-flex p-2" style="display:none !important;">
                     @csrf
                     <input type="hidden" id="receiver_id" name="receiver_id">
@@ -90,35 +134,51 @@
         });
         const personalChannel = pusher.subscribe('chat.' + loggedInUser);
 
-        /** ---------------------------
-         *  UTILITIES
-         * --------------------------- */
-        const ajaxCall = (url, method = "GET", data = {}, onSuccess = () => {}) => {
+        const ajaxCall = (url, method = "GET", data = {}, onSuccess = () => {}, onError = () => {}) => {
             $.ajax({
-                url, method, data,
+                url,
+                method,
+                data,
                 headers: { "X-CSRF-TOKEN": csrfToken },
                 success: onSuccess,
-                error: (xhr) => console.error("Error:", xhr.responseText)
+                error: onError
             });
         };
 
-        const appendMessage = (message) => {
-            let userId = message.user_id || (message.sender?.id ?? null);
-            let isMine = (userId == loggedInUser);
+        // const appendMessage = (message) => {
+        //     let userId = message.user_id || (message.sender?.id ?? null);
+        //     let isMine = (userId == loggedInUser);
+        //
+        //     let msgHtml = `
+        //     <div class="mb-2 mt-3 ${isMine ? 'text-end' : 'text-start'}">
+        //         <span class="p-2 rounded ${isMine ? 'bg-primary text-white' : 'bg-light'}">
+        //             ${message.body}
+        //         </span>
+        //     </div>`;
+        //
+        //     $("#chat-box").append(msgHtml).scrollTop($("#chat-box")[0].scrollHeight);
+        // };
 
-            let msgHtml = `
-            <div class="mb-2 mt-3 ${isMine ? 'text-end' : 'text-start'}">
-                <span class="p-2 rounded ${isMine ? 'bg-primary text-white' : 'bg-light'}">
+        function appendMessage(message) {
+            const userId = message.user_id || (message.sender ? message.sender.id : null);
+            const isMine = (userId == loggedInUser);
+            const time = message.created_at
+                ? new Date(message.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+                : new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            const msgHtml = `<div class="chat-message ${isMine ? 'mine' : 'theirs'}">
+                <div class="message-bubble">
                     ${message.body}
-                </span>
+                    <div class="message-time small text-muted ${isMine ? 'text-end text-white' : 'text-start'}">
+                        ${time}
+                    </div>
+                </div>
             </div>`;
 
-            $("#chat-box").append(msgHtml).scrollTop($("#chat-box")[0].scrollHeight);
-        };
+                $("#chat-box").append(msgHtml).scrollTop($("#chat-box")[0].scrollHeight);
 
-        /** ---------------------------
-         *  CHAT HANDLERS
-         * --------------------------- */
+        }
+
         function loadChat(userId, name, profileUrl, avatarUrl) {
             activeUserId = userId;
             $("#receiver_id").val(userId);
@@ -160,31 +220,70 @@
         });
 
         // Send message
-        $("#chat-form").on("submit", function(e) {
+        {{--$("#chat-form").on("submit", function(e) {--}}
+        {{--    e.preventDefault();--}}
+        {{--    let $btn = $(this).find("button");--}}
+        {{--    let msg = $("#message").val().trim();--}}
+        {{--    if (!msg || !activeUserId) return;--}}
+
+        {{--    $btn.prop("disabled", true).text("Sending...");--}}
+
+        {{--    ajaxCall("{{ route('chat.send') }}", "POST", {--}}
+        {{--        message: msg, receiver_id: activeUserId--}}
+        {{--    }, () => {--}}
+        {{--        appendMessage({ user_id: loggedInUser, body: msg });--}}
+        {{--        $("#message").val("");--}}
+        {{--        $btn.prop("disabled", false).text("Send");--}}
+        {{--    });--}}
+        {{--});--}}
+
+        $("#chat-form").on("submit", function (e) {
             e.preventDefault();
-            let $btn = $(this).find("button");
-            let msg = $("#message").val().trim();
+
+            let $form = $(this);
+            let $btn = $form.find("button");
+            let $input = $("#message");
+            let msg = $input.val().trim();
+
             if (!msg || !activeUserId) return;
 
             $btn.prop("disabled", true).text("Sending...");
 
-            ajaxCall("{{ route('chat.send') }}", "POST", {
-                message: msg, receiver_id: activeUserId
-            }, () => {
-                appendMessage({ user_id: loggedInUser, body: msg });
-                $("#message").val("");
-                $btn.prop("disabled", false).text("Send");
-            });
+            ajaxCall(
+                "{{ route('chat.send') }}",
+                "POST",
+                { message: msg, receiver_id: activeUserId },
+                () => {
+                    appendMessage({ user_id: loggedInUser, body: msg });
+                    $input.val("").css({ border: "", boxShadow: "" });
+                    $btn.prop("disabled", false).text("Send");
+                },
+                (xhr) => {
+                    $btn.prop("disabled", false).text("Send");
+                    $input.prop("disabled", false).focus();
+
+                    if (xhr.status === 422 && xhr.responseJSON?.error) {
+                        alertify.error(xhr.responseJSON.error);
+                        $input.css({
+                            border: "2px solid #e74c3c",
+                            boxShadow: "0 0 5px rgba(231,76,60,0.5)"
+                        });
+                        $input.one("input", function () {
+                            $(this).css({ border: "", boxShadow: "" });
+                        });
+                    } else {
+                        alertify.error("Something went wrong. Please try again.");
+                    }
+                    console.error("Error:", xhr.responseText);
+                }
+            );
         });
+
 
         personalChannel.bind("message-sent", function(data) {
             appendMessage(data.message);
-            // TODO: agar sidebar me active nahi hai to "new message" badge show karo
         });
 
-        /** ---------------------------
-         *  USER SEARCH
-         * --------------------------- */
         let debounceTimer;
         $("#user-search").on("keyup", function() {
             clearTimeout(debounceTimer);
@@ -203,15 +302,6 @@
                             `<li class="list-group-item text-muted">No results found</li>`
                         );
                     }
-
-                    // let html = data.map(user => `
-                    // <li class="list-group-item">
-                    //     <button class="btn btn-link p-0 start-chat"
-                    //             data-id="${user.id}"
-                    //             data-name="${user.name}">
-                    //         ${user.name}
-                    //     </button>
-                    // </li>`).join("");
                     let html = data.map(user => `
                         <li class="list-group-item">
                             <button class="btn btn-link p-0 start-chat"
@@ -228,10 +318,8 @@
                     `).join("");
                     $("#search-results").html(html);
                 });
-            }, 400); // debounce 400ms
+            }, 400);
         });
-
-        // Start new chat
         $(document).on("click", ".start-chat", function(e) {
             e.preventDefault();
             loadChat(

@@ -1,14 +1,14 @@
 @extends('admin.partials.master')
 
 @push('styles')
-  @endpush
+@endpush
 
 @section('main-content')
   <div class="main-content">
     <section class="section">
       <div class="row ">
         <!-- New Jobs -->
-        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
           <div class="card">
             <div class="card-statistic-4">
               <div class="align-items-center justify-content-between">
@@ -32,7 +32,7 @@
         </div>
 
         <!-- Customers -->
-        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
           <div class="card">
             <div class="card-statistic-4">
               <div class="align-items-center justify-content-between">
@@ -55,7 +55,7 @@
         </div>
 
         <!-- Tickets -->
-        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
           <div class="card">
             <div class="card-statistic-4">
               <div class="align-items-center justify-content-between">
@@ -78,7 +78,7 @@
         </div>
 
         <!-- Revenue -->
-        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
           <div class="card">
             <div class="card-statistic-4">
               <div class="align-items-center justify-content-between">
@@ -99,11 +99,34 @@
             </div>
           </div>
         </div>
+
+        <!-- Pay-Per-Lead Revenue -->
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <div class="card">
+            <div class="card-statistic-4">
+              <div class="align-items-center justify-content-between">
+                <div class="row ">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                    <div class="card-content">
+                      <h5 class="font-15">Pay-Per-Lead Revenue</h5>
+                      <h2 class="mb-3 font-18">${{ number_format($payPerLeadRevenue, 2) }}</h2>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
+                    <div class="banner-img">
+                      <img src="{{ asset('admin-assets/img/banner/4.png') }}" alt="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Charts -->
       <div class="row">
-        <div class="col-12 col-sm-12 col-lg-4">
+        <div class="col-12 col-sm-12 col-lg-6">
           <div class="card">
             <div class="card-header">
               <h4>Job Chart</h4>
@@ -114,7 +137,7 @@
           </div>
         </div>
 
-        <div class="col-12 col-sm-12 col-lg-4">
+        <div class="col-12 col-sm-12 col-lg-6">
           <div class="card">
             <div class="card-header">
               <h4>Subscription Chart</h4>
@@ -125,13 +148,24 @@
           </div>
         </div>
 
-        <div class="col-12 col-sm-12 col-lg-4">
+        <div class="col-12 col-sm-12 col-lg-6">
           <div class="card">
             <div class="card-header">
               <h4>Revenue Chart</h4>
             </div>
             <div class="card-body">
               <div id="revenue-chart" class="chartsh"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-lg-6">
+          <div class="card">
+            <div class="card-header">
+              <h4>Pay-Per-Lead Revenue Chart</h4>
+            </div>
+            <div class="card-body">
+              <div id="paylead-revenue-chart" class="chartsh"></div>
             </div>
           </div>
         </div>
@@ -147,6 +181,8 @@
       const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
       return months[num - 1];
     }
+
+    // Job Chart
     var jobStats = @json($jobStats);
     new ApexCharts(document.querySelector("#job-chart"), {
       chart: { type: 'area', height: 250 },
@@ -154,6 +190,7 @@
       xaxis: { categories: jobStats.map(d => d.date) }
     }).render();
 
+    // Subscription Chart
     var subscriptionStats = @json($subscriptionStats);
     new ApexCharts(document.querySelector("#subscription-chart"), {
       chart: { type: 'bar', height: 250 },
@@ -161,13 +198,21 @@
       xaxis: { categories: subscriptionStats.map(d => monthName(d.month)) }
     }).render();
 
+    // Revenue Chart
     var revenueStats = @json($revenueStats);
-
-    console.log(revenueStats);
+    console.log('revenueStats ' . revenueStats);
     new ApexCharts(document.querySelector("#revenue-chart"), {
       chart: { type: 'area', height: 250 },
       series: [{ name: 'Total Revenue', data: revenueStats.map(d => d.total) }],
-      xaxis: { categories: revenueStats.map(d => d.total) }
+      xaxis: { categories: revenueStats.map(d => monthName(d.month)) }
+    }).render();
+
+    // Pay Per Lead Revenue Chart
+    var payPerLeadStats = @json($payPerLeadStats);
+    new ApexCharts(document.querySelector("#paylead-revenue-chart"), {
+      chart: { type: 'area', height: 250 },
+      series: [{ name: 'Total Revenue', data: payPerLeadStats.map(d => d.total) }],
+      xaxis: { categories: payPerLeadStats.map(d => monthName(d.month)) }
     }).render();
   </script>
 @endpush

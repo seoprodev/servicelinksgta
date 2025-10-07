@@ -1,8 +1,9 @@
-@extends('frontend.provider.partials.master')
+@extends('admin.partials.master')
 
 @section('title', 'My Chats')
 
 @push('styles')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css"/>
     <style>
         a.chat-link {
             background: grey;
@@ -42,6 +43,7 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
 
         #chat-box {
             padding: 15px;
@@ -84,6 +86,7 @@
             border-bottom-left-radius: 4px;
             border: 1px solid #c9c0c0;
         }
+
         .message-time {
             font-size: 11px;
             margin-top: 2px;
@@ -91,8 +94,8 @@
     </style>
 @endpush
 
-@section('provider-dashboard-content')
-    <div class="col-xl-12 col-lg-12">
+@section('main-content')
+    <div class="main-content">
         <div class="row">
             <!-- LEFT SIDEBAR -->
             <div class="col-3 border-end" style="height: 80vh; overflow-y: auto;">
@@ -117,11 +120,9 @@
                                class="chat-link d-block text-decoration-none"
                                data-id="{{ $user->id }}"
                                data-name="{{ $user->name }}"
-                               @if($user->profile)
-                               data-avatar="{{ $user->profile->avatar ? asset($user->profile->avatar) : asset('frontend-assets/img/user-default.jpg') }}"
-                               @else
-                               data-avatar="{{ asset('frontend-assets/img/user-default.jpg') }}"
-                               @endif>{{ $user->name }}</a>
+                               data-avatar="{{ $user->profile->avatar ? asset($user->profile->avatar) : asset('frontend-assets/img/user-default.jpg') }}">
+                                {{ $user->name }}
+                            </a>
                         </li>
                     @empty
                         <li class="list-group-item text-muted">No chats yet.</li>
@@ -155,13 +156,13 @@
 
 @push('scripts')
     <script src="https://js.pusher.com/8.4.0/pusher.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.min.js"></script>
     <script>
         const csrfToken = "{{ csrf_token() }}";
         const loggedInUser = "{{ auth()->id() }}";
 
         let activeUserId = null;
 
-        // --- Initialize Pusher ---
         Pusher.logToConsole = false;
         const pusher = new Pusher('{{ env("PUSHER_APP_KEY") }}', {
             cluster: '{{ env("PUSHER_APP_CLUSTER") }}'
@@ -178,33 +179,15 @@
         //     const isMine = (userId == loggedInUser);
         //
         //     const msgHtml = `
-        //     <div class="mb-2 mt-3 ${isMine ? 'text-end' : 'text-start'}">
-        //         <span class="p-2 rounded ${isMine ? 'bg-primary text-white' : 'bg-light'}">
-        //             ${message.body}
-        //         </span>
-        //     </div>`;
-        //     $("#chat-box").append(msgHtml);
-        //     scrollToBottom();
-        // }
-
-        // function appendMessage(message) {
-        //     const userId = message.user_id || (message.sender ? message.sender.id : null);
-        //     const isMine = (userId == loggedInUser);
-        //     const time = message.created_at
-        //         ? new Date(message.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-        //         : new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        //
-        //     const msgHtml = `<div class="chat-message ${isMine ? 'mine' : 'theirs'}">
+        //     <div class="chat-message ${isMine ? 'mine' : 'theirs'}">
         //         <div class="message-bubble">
         //             ${message.body}
-        //             <div class="message-time small text-muted ${isMine ? 'text-end text-white' : 'text-start'}">
-        //                 ${time}
-        //             </div>
         //         </div>
-        //     </div>`;
+        //     </div>
+        // `;
         //
         //     $("#chat-box").append(msgHtml);
-        //     // scrollToBottom();
+        //     scrollToBottom();
         // }
 
         function appendMessage(message) {
@@ -214,17 +197,18 @@
                 ? new Date(message.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
                 : new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
+
             const msgHtml = `<div class="chat-message ${isMine ? 'mine' : 'theirs'}">
                 <div class="message-bubble">
                     ${message.body}
-                    <div class="message-time small text-muted ${isMine ? 'text-end text-white' : 'text-start'}">
+                    <div class="message-time small  ${isMine ? 'text-end text-white' : 'text-muted text-start'}">
                         ${time}
                     </div>
                 </div>
             </div>`;
 
-            $("#chat-box").append(msgHtml).scrollTop($("#chat-box")[0].scrollHeight);
-
+            $("#chat-box").append(msgHtml);
+            scrollToBottom();
         }
 
         function loadChat(userId, name, avatarUrl) {
@@ -334,15 +318,17 @@
                 $("#search-loader").hide();
                 return;
             }
+
             $("#search-loader").show();
             $("#search-results").html("");
 
-            $.get("{{ route('chat.search.provider') }}", { q }, function(data) {
+            $.get("{{ route('admin.search.chat') }}", { q }, function(data) {
                 $("#search-loader").hide();
                 if (data.length === 0) {
                     $("#search-results").html(`<li class="list-group-item text-muted">No results found</li>`);
                     return;
                 }
+
                 let html = data.map(user => `
                     <li class="list-group-item">
                         <button class="btn btn-link p-0 start-chat"
