@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 07, 2025 at 01:08 AM
+-- Generation Time: Oct 08, 2025 at 12:39 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.2.29
 
@@ -320,13 +320,13 @@ INSERT INTO `notifications` (`id`, `user_id`, `type`, `title`, `message`, `url`,
 (1, 34, 'subscription_expiry', 'Subscription Expiry Reminder', 'Your subscription for Basic Plan will expire on October 13, 2025.', 'http://servicelinksgta.test/provider/subscription', 1, '2025-10-06 15:15:06', '2025-10-06 18:21:46'),
 (2, 1, 'subscription_expiry_alert', 'User Subscription Expiry Alert', 'User duhuw (provider@provider.com)\'s subscription for Basic Plan will expire on October 13, 2025.', 'http://servicelinksgta.test/admin/subscriptions', 1, '2025-10-06 15:15:07', '2025-10-06 15:15:50'),
 (3, 34, 'subscription_expiry', 'Subscription Expiry Reminder', 'Your subscription for Basic Plan will expire on October 13, 2025.', 'http://servicelinksgta.test/provider/subscription', 1, '2025-10-06 15:16:15', '2025-10-06 18:21:46'),
-(4, 1, 'subscription_expiry_alert', 'User Subscription Expiry Alert', 'User duhuw (provider@provider.com)\'s subscription for Basic Plan will expire on October 13, 2025.', 'http://servicelinksgta.test/admin/subscriptions', 0, '2025-10-06 15:16:15', '2025-10-06 15:16:15'),
-(5, 2, 'new_message', 'New Message', 'You received a new message from Super Admin', 'http://servicelinksgta.test/user/chat', 0, '2025-10-06 15:17:04', '2025-10-06 15:17:04'),
+(4, 1, 'subscription_expiry_alert', 'User Subscription Expiry Alert', 'User duhuw (provider@provider.com)\'s subscription for Basic Plan will expire on October 13, 2025.', 'http://servicelinksgta.test/admin/subscriptions', 1, '2025-10-06 15:16:15', '2025-10-07 16:06:56'),
+(5, 2, 'new_message', 'New Message', 'You received a new message from Super Admin', 'http://servicelinksgta.test/user/chat', 1, '2025-10-06 15:17:04', '2025-10-07 19:38:57'),
 (6, 34, 'new_message', 'New Message', 'You received a new message from Super Admin', 'http://servicelinksgta.test/provider/chat', 1, '2025-10-06 15:17:19', '2025-10-06 18:21:46'),
 (7, 42, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 0, '2025-10-06 15:25:39', '2025-10-06 15:25:39'),
 (8, 1, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/admin/chat', 0, '2025-10-06 15:25:50', '2025-10-06 15:25:50'),
 (9, 34, 'new_message', 'New Message', 'You received a new message from Russell Gomez', 'https://servicelinksgta.test/provider/chat', 1, '2025-10-06 17:31:21', '2025-10-06 18:21:46'),
-(10, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 0, '2025-10-06 17:32:04', '2025-10-06 17:32:04'),
+(10, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 1, '2025-10-06 17:32:04', '2025-10-07 19:38:57'),
 (11, 34, 'new_message', 'New Message', 'You received a new message from Russell Gomez', 'https://servicelinksgta.test/provider/chat', 1, '2025-10-06 17:32:08', '2025-10-06 18:21:46'),
 (12, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 1, '2025-10-06 17:32:12', '2025-10-06 17:36:07'),
 (13, 34, 'new_message', 'New Message', 'You received a new message from Russell Gomez', 'https://servicelinksgta.test/provider/chat', 1, '2025-10-06 17:32:16', '2025-10-06 18:21:46'),
@@ -336,18 +336,18 @@ INSERT INTO `notifications` (`id`, `user_id`, `type`, `title`, `message`, `url`,
 (17, 34, 'new_message', 'New Message', 'You received a new message from Russell Gomez', 'https://servicelinksgta.test/provider/chat', 1, '2025-10-06 17:32:27', '2025-10-06 18:21:46'),
 (18, 34, 'new_message', 'New Message', 'You received a new message from Russell Gomez', 'https://servicelinksgta.test/provider/chat', 1, '2025-10-06 17:32:31', '2025-10-06 18:21:46'),
 (19, 34, 'new_message', 'New Message', 'You received a new message from Russell Gomez', 'https://servicelinksgta.test/provider/chat', 1, '2025-10-06 17:32:35', '2025-10-06 18:21:46'),
-(20, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 0, '2025-10-06 17:32:38', '2025-10-06 17:32:38'),
-(21, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 0, '2025-10-06 17:32:42', '2025-10-06 17:32:42'),
-(22, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 0, '2025-10-06 17:32:45', '2025-10-06 17:32:45'),
-(23, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 0, '2025-10-06 17:32:48', '2025-10-06 17:32:48'),
-(24, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 0, '2025-10-06 17:32:52', '2025-10-06 17:32:52'),
-(25, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 0, '2025-10-06 17:32:56', '2025-10-06 17:32:56'),
-(26, 2, 'new_message', 'New Message', 'You received a new message from Super Admin', 'https://servicelinksgta.test/user/chat', 0, '2025-10-06 17:36:05', '2025-10-06 17:36:05'),
+(20, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 1, '2025-10-06 17:32:38', '2025-10-07 19:38:57'),
+(21, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 1, '2025-10-06 17:32:42', '2025-10-07 19:38:57'),
+(22, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 1, '2025-10-06 17:32:45', '2025-10-07 19:38:57'),
+(23, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 1, '2025-10-06 17:32:48', '2025-10-07 19:38:57'),
+(24, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 1, '2025-10-06 17:32:52', '2025-10-07 19:38:57'),
+(25, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 1, '2025-10-06 17:32:56', '2025-10-07 19:38:57'),
+(26, 2, 'new_message', 'New Message', 'You received a new message from Super Admin', 'https://servicelinksgta.test/user/chat', 1, '2025-10-06 17:36:05', '2025-10-07 19:38:57'),
 (27, 1, 'new_message', 'New Message', 'You received a new message from Russell Gomez', 'https://servicelinksgta.test/admin/chat', 0, '2025-10-06 17:36:16', '2025-10-06 17:36:16'),
-(28, 2, 'new_message', 'New Message', 'You received a new message from Super Admin', 'https://servicelinksgta.test/user/chat', 0, '2025-10-06 17:36:24', '2025-10-06 17:36:24'),
+(28, 2, 'new_message', 'New Message', 'You received a new message from Super Admin', 'https://servicelinksgta.test/user/chat', 1, '2025-10-06 17:36:24', '2025-10-07 19:38:57'),
 (29, 1, 'new_message', 'New Message', 'You received a new message from Russell Gomez', 'https://servicelinksgta.test/admin/chat', 0, '2025-10-06 17:36:29', '2025-10-06 17:36:29'),
-(30, 2, 'new_message', 'New Message', 'You received a new message from Super Admin', 'https://servicelinksgta.test/user/chat', 0, '2025-10-06 17:36:36', '2025-10-06 17:36:36'),
-(31, 2, 'new_message', 'New Message', 'You received a new message from Super Admin', 'https://servicelinksgta.test/user/chat', 0, '2025-10-06 17:36:59', '2025-10-06 17:36:59'),
+(30, 2, 'new_message', 'New Message', 'You received a new message from Super Admin', 'https://servicelinksgta.test/user/chat', 1, '2025-10-06 17:36:36', '2025-10-07 19:38:57'),
+(31, 2, 'new_message', 'New Message', 'You received a new message from Super Admin', 'https://servicelinksgta.test/user/chat', 1, '2025-10-06 17:36:59', '2025-10-07 19:38:57'),
 (32, 1, 'new_message', 'New Message', 'You received a new message from Russell Gomez', 'https://servicelinksgta.test/admin/chat', 0, '2025-10-06 17:37:07', '2025-10-06 17:37:07'),
 (33, 34, 'new_message', 'New Message', 'You received a new message from Super Admin', 'https://servicelinksgta.test/provider/chat', 1, '2025-10-06 17:40:16', '2025-10-06 18:21:46'),
 (34, 34, 'new_message', 'New Message', 'You received a new message from Super Admin', 'https://servicelinksgta.test/provider/chat', 1, '2025-10-06 17:41:29', '2025-10-06 18:21:46'),
@@ -360,15 +360,15 @@ INSERT INTO `notifications` (`id`, `user_id`, `type`, `title`, `message`, `url`,
 (41, 1, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/admin/chat', 0, '2025-10-06 18:02:16', '2025-10-06 18:02:16'),
 (42, 1, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/admin/chat', 0, '2025-10-06 18:02:56', '2025-10-06 18:02:56'),
 (43, 42, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 0, '2025-10-06 18:04:05', '2025-10-06 18:04:05'),
-(44, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 0, '2025-10-06 18:06:23', '2025-10-06 18:06:23'),
+(44, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 1, '2025-10-06 18:06:23', '2025-10-07 19:38:57'),
 (45, 34, 'new_message', 'New Message', 'You received a new message from Russell Gomez', 'https://servicelinksgta.test/provider/chat', 1, '2025-10-06 18:06:38', '2025-10-06 18:21:46'),
-(46, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 0, '2025-10-06 18:06:42', '2025-10-06 18:06:42'),
+(46, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 1, '2025-10-06 18:06:42', '2025-10-07 19:38:57'),
 (47, 34, 'new_message', 'New Message', 'You received a new message from Russell Gomez', 'https://servicelinksgta.test/provider/chat', 1, '2025-10-06 18:06:46', '2025-10-06 18:21:46'),
 (48, 34, 'new_message', 'New Message', 'You received a new message from Russell Gomez', 'https://servicelinksgta.test/provider/chat', 1, '2025-10-06 18:06:48', '2025-10-06 18:21:46'),
 (49, 34, 'new_message', 'New Message', 'You received a new message from Russell Gomez', 'https://servicelinksgta.test/provider/chat', 1, '2025-10-06 18:06:51', '2025-10-06 18:21:46'),
 (50, 34, 'new_message', 'New Message', 'You received a new message from Russell Gomez', 'https://servicelinksgta.test/provider/chat', 1, '2025-10-06 18:06:58', '2025-10-06 18:21:46'),
-(51, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 0, '2025-10-06 18:07:04', '2025-10-06 18:07:04'),
-(52, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 0, '2025-10-06 18:07:13', '2025-10-06 18:07:13'),
+(51, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 1, '2025-10-06 18:07:04', '2025-10-07 19:38:57'),
+(52, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/user/chat', 1, '2025-10-06 18:07:13', '2025-10-07 19:38:57'),
 (53, 34, 'new_message', 'New Message', 'You received a new message from Russell Gomez', 'https://servicelinksgta.test/provider/chat', 1, '2025-10-06 18:07:22', '2025-10-06 18:21:46'),
 (54, 34, 'new_message', 'New Message', 'You received a new message from Super Admin', 'https://servicelinksgta.test/provider/chat', 0, '2025-10-06 18:53:45', '2025-10-06 18:53:45'),
 (55, 34, 'new_message', 'New Message', 'You received a new message from Super Admin', 'https://servicelinksgta.test/provider/chat', 0, '2025-10-06 18:55:33', '2025-10-06 18:55:33'),
@@ -382,10 +382,10 @@ INSERT INTO `notifications` (`id`, `user_id`, `type`, `title`, `message`, `url`,
 (63, 1, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/admin/chat', 0, '2025-10-06 19:36:46', '2025-10-06 19:36:46'),
 (64, 1, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/admin/chat', 0, '2025-10-06 19:36:58', '2025-10-06 19:36:58'),
 (65, 1, 'new_message', 'New Message', 'You received a new message from duhuw', 'https://servicelinksgta.test/admin/chat', 0, '2025-10-06 19:42:12', '2025-10-06 19:42:12'),
-(66, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'http://servicelinksgta.test/user/chat', 0, '2025-10-06 19:54:55', '2025-10-06 19:54:55'),
+(66, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'http://servicelinksgta.test/user/chat', 1, '2025-10-06 19:54:55', '2025-10-07 19:38:57'),
 (67, 34, 'new_message', 'New Message', 'You received a new message from Russell Gomez', 'http://servicelinksgta.test/provider/chat', 0, '2025-10-06 19:55:18', '2025-10-06 19:55:18'),
-(68, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'http://servicelinksgta.test/user/chat', 0, '2025-10-06 19:57:28', '2025-10-06 19:57:28'),
-(69, 2, 'new_message', 'New Message', 'You received a new message from Super Admin', 'http://servicelinksgta.test/user/chat', 0, '2025-10-06 20:05:59', '2025-10-06 20:05:59'),
+(68, 2, 'new_message', 'New Message', 'You received a new message from duhuw', 'http://servicelinksgta.test/user/chat', 1, '2025-10-06 19:57:28', '2025-10-07 19:38:57'),
+(69, 2, 'new_message', 'New Message', 'You received a new message from Super Admin', 'http://servicelinksgta.test/user/chat', 1, '2025-10-06 20:05:59', '2025-10-07 19:38:57'),
 (70, 1, 'new_message', 'New Message', 'You received a new message from Russell Gomez', 'http://servicelinksgta.test/admin/chat', 0, '2025-10-06 20:07:03', '2025-10-06 20:07:03');
 
 -- --------------------------------------------------------
@@ -618,7 +618,9 @@ INSERT INTO `subscribers` (`id`, `email`, `created_at`, `updated_at`) VALUES
 (5, 'vuhabocep@mailinator.com', '2025-09-24 18:15:52', '2025-09-24 18:15:52'),
 (6, 'nuzimuqicu@mailinator.com', '2025-09-24 18:16:00', '2025-09-24 18:16:00'),
 (7, 'qazynalu@mailinator.com', '2025-09-24 18:16:14', '2025-09-24 18:16:14'),
-(8, 'bedome@mailinator.com', '2025-09-25 16:51:22', '2025-09-25 16:51:22');
+(8, 'bedome@mailinator.com', '2025-09-25 16:51:22', '2025-09-25 16:51:22'),
+(9, 'test123@test.com', '2025-10-07 18:45:02', '2025-10-07 18:45:02'),
+(10, 'test123@test.com', '2025-10-07 18:45:05', '2025-10-07 18:45:05');
 
 -- --------------------------------------------------------
 
@@ -734,8 +736,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `user_type`, `email_verified_at`, `password`, `remember_token`, `is_active`, `is_deleted`, `created_at`, `updated_at`) VALUES
 (1, 'Super Admin', 'admin@admin.com', 'admin', NULL, '$2y$12$nHrbqukSc2tTT1BrFWffxOA7L2p.2aCLYMLxasOcX1j9aLbZID0ga', NULL, 1, 0, '2025-09-01 23:14:41', '2025-09-01 23:14:41'),
-(2, 'Russell Gomez', 'client@client.com', 'client', NULL, '$2y$12$crdqYF8i86D7Qr.C.5TFLOS5olpZu.Iz1jRM0XX9zrSOKjNZlszlG', NULL, 1, 0, '2025-09-02 12:58:05', '2025-09-05 19:10:12'),
-(34, 'duhuw', 'provider@provider.com', 'provider', NULL, '$2y$12$crdqYF8i86D7Qr.C.5TFLOS5olpZu.Iz1jRM0XX9zrSOKjNZlszlG', NULL, 1, 0, '2025-09-10 12:55:52', '2025-09-10 15:11:26'),
+(2, 'Russell Gomez', 'client@client.com', 'client', NULL, '$2y$12$bAeZyjtDPJ3xY7SD9k5rSOM9dclNbjNuqkAPoUbLMamsyaK3/29Zm', NULL, 1, 0, '2025-09-02 12:58:05', '2025-10-07 19:28:25'),
+(34, 'duhuw', 'provider@provider.com', 'provider', NULL, '$2y$12$ev7c3Cue7NY0Z/S7x1jfWuPj1YeMpFtar00uETG0qv5QjxivqUZCK', NULL, 1, 0, '2025-09-10 12:55:52', '2025-10-07 19:18:26'),
 (37, 'Roof Traders', 'provider@free.com', 'provider', NULL, '$2y$12$crdqYF8i86D7Qr.C.5TFLOS5olpZu.Iz1jRM0XX9zrSOKjNZlszlG', NULL, 1, 0, '2025-09-11 23:45:56', '2025-09-11 23:46:28'),
 (41, 'Zorita Leblanc', 'nasaxaje@mailinator.com', 'client', NULL, '$2y$12$aJG2SR.XCoy31c9oAXnfl.fK4igZco2lBugp1J6J3IefOCyfVFrOS', NULL, 1, 0, '2025-09-12 22:06:14', '2025-09-12 22:06:14'),
 (42, 'Adele Bean', 'zixybud@mailinator.com', 'client', NULL, '$2y$12$3BXjbsY9RUTbKvAdaDQh1OzAyOWcUqwmT03oU.//Vov9/H3JMNTs2', NULL, 0, 0, '2025-09-24 17:22:17', '2025-09-24 17:22:17'),
@@ -771,6 +773,7 @@ CREATE TABLE `user_profiles` (
   `government_doc` varchar(255) DEFAULT NULL,
   `accept_terms` tinyint DEFAULT NULL,
   `is_verified` tinyint NOT NULL DEFAULT '0',
+  `phone_verified_at` timestamp NULL DEFAULT NULL,
   `verification_code` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
@@ -780,16 +783,16 @@ CREATE TABLE `user_profiles` (
 -- Dumping data for table `user_profiles`
 --
 
-INSERT INTO `user_profiles` (`id`, `user_id`, `first_name`, `last_name`, `username`, `avatar`, `bio`, `gender`, `dob`, `phone`, `address`, `country`, `state`, `city`, `postal_code`, `company_name`, `business_license`, `government_doc`, `accept_terms`, `is_verified`, `verification_code`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Russell', 'Gomez', NULL, 'uploads/user/profile/1758753015_68d470f7ccca0.jpg', 'Sed sint sint modi o', 'female', '1994-11-09', '+1 (528) 485-5578', 'Deserunt ducimus qu', 'In officia consequat', 'Dolorem voluptas deb', 'Id voluptatibus comm', 'Ullamco enim iste qu', NULL, 'uploads/user/doc/1757112591_68bb690f3b909.jpg', 'uploads/user/doc/1757112701_68bb697da749f.jpg', NULL, 0, NULL, '2025-09-02 12:58:05', '2025-09-24 17:30:15'),
-(30, 34, 'duhuw', 'Ayala', NULL, 'uploads/user/profile/1758925904_68d71450a7bc1.jpg', 'With over 8 years of hands-on experience in plumbing, I specialize in providing fast, reliable, and affordable solutions for all your residential and commercial plumbing needs. From fixing leaky faucets and clogged drains to installing water heaters and complete pipeline systems, I ensure every job is done with precision and care.\r\n\r\nCustomer satisfaction is my top priority — I believe in transparent pricing, quality workmanship, and long-term solutions that save you time and money. Whether it’s an emergency repair or a planned installation, I’m just one call away to make sure your plumbing runs smoothly.', 'male', '2016-02-09', '5616516513', 'test Address', 'us', 'alaska', 'hanes', '151515', 'Franklin Mcbride Inc', 'uploads/user/doc/1759773045_68e401754549b.jpg', 'uploads/user/doc/1759773045_68e4017545980.jpg', 1, 0, 'email-verified', '2025-09-10 12:55:52', '2025-10-06 12:50:45'),
-(33, 37, 'Roof', 'Traders', NULL, NULL, NULL, NULL, NULL, '981465065198', NULL, NULL, NULL, NULL, NULL, 'Roof Traders', 'uploads/user/doc/1757619956_68c326f484295.jpg', 'uploads/user/doc/1757619956_68c326f488324.jpg', 1, 0, 'email-verified', '2025-09-11 23:45:56', '2025-09-11 23:46:28'),
-(37, 41, 'Zorita', 'Leblanc', NULL, NULL, NULL, NULL, NULL, '8751984965', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2025-09-12 22:06:14', '2025-09-12 22:14:00'),
-(38, 42, 'Adele', 'Bean', NULL, NULL, NULL, NULL, NULL, '464614894', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2025-09-24 17:22:17', '2025-09-24 17:22:17'),
-(43, 47, 'Zorita', 'Leblanc', NULL, NULL, NULL, NULL, NULL, '8465165165', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2025-09-26 13:52:48', '2025-09-26 13:56:33'),
-(44, 48, 'Macon', 'Keller', NULL, NULL, NULL, NULL, NULL, '+1 (808) 692-1174', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2025-09-26 14:40:35', '2025-09-26 14:40:35'),
-(45, 49, 'Dahlia', 'French', NULL, NULL, NULL, NULL, NULL, '41651465198', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2025-09-29 13:32:48', '2025-09-29 13:32:48'),
-(46, 50, 'Jada', 'Watts', NULL, NULL, NULL, NULL, NULL, '+1 (822) 314-1291', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2025-09-29 17:42:51', '2025-09-29 17:42:51');
+INSERT INTO `user_profiles` (`id`, `user_id`, `first_name`, `last_name`, `username`, `avatar`, `bio`, `gender`, `dob`, `phone`, `address`, `country`, `state`, `city`, `postal_code`, `company_name`, `business_license`, `government_doc`, `accept_terms`, `is_verified`, `phone_verified_at`, `verification_code`, `created_at`, `updated_at`) VALUES
+(1, 2, 'Russell', 'Gomez', NULL, 'uploads/user/profile/1758753015_68d470f7ccca0.jpg', 'Sed sint sint modi o', 'female', '1994-11-09', '+19707101062', 'Deserunt ducimus qu', 'In officia consequat', 'Dolorem voluptas deb', 'Id voluptatibus comm', 'Ullamco enim iste qu', NULL, 'uploads/user/doc/1757112591_68bb690f3b909.jpg', 'uploads/user/doc/1757112701_68bb697da749f.jpg', NULL, 0, '2025-10-07 19:09:38', NULL, '2025-09-02 12:58:05', '2025-10-07 19:09:38'),
+(30, 34, 'duhuw', 'Ayala', NULL, 'uploads/user/profile/1758925904_68d71450a7bc1.jpg', 'With over 8 years of hands-on experience in plumbing, I specialize in providing fast, reliable, and affordable solutions for all your residential and commercial plumbing needs. From fixing leaky faucets and clogged drains to installing water heaters and complete pipeline systems, I ensure every job is done with precision and care.\r\n\r\nCustomer satisfaction is my top priority — I believe in transparent pricing, quality workmanship, and long-term solutions that save you time and money. Whether it’s an emergency repair or a planned installation, I’m just one call away to make sure your plumbing runs smoothly.', 'male', '2016-02-09', '+19707101062', 'test Address', 'us', 'alaska', 'hanes', '151515', 'Franklin Mcbride Inc', 'uploads/user/doc/1759773045_68e401754549b.jpg', 'uploads/user/doc/1759773045_68e4017545980.jpg', 1, 0, '2025-10-07 19:10:01', 'email-verified', '2025-09-10 12:55:52', '2025-10-07 19:10:01'),
+(33, 37, 'Roof', 'Traders', NULL, NULL, NULL, NULL, NULL, '981465065198', NULL, NULL, NULL, NULL, NULL, 'Roof Traders', 'uploads/user/doc/1757619956_68c326f484295.jpg', 'uploads/user/doc/1757619956_68c326f488324.jpg', 1, 0, NULL, 'email-verified', '2025-09-11 23:45:56', '2025-09-11 23:46:28'),
+(37, 41, 'Zorita', 'Leblanc', NULL, NULL, NULL, NULL, NULL, '8751984965', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, '2025-09-12 22:06:14', '2025-09-12 22:14:00'),
+(38, 42, 'Adele', 'Bean', NULL, NULL, NULL, NULL, NULL, '464614894', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, '2025-09-24 17:22:17', '2025-09-24 17:22:17'),
+(43, 47, 'Zorita', 'Leblanc', NULL, NULL, NULL, NULL, NULL, '8465165165', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, '2025-09-26 13:52:48', '2025-09-26 13:56:33'),
+(44, 48, 'Macon', 'Keller', NULL, NULL, NULL, NULL, NULL, '+1 (808) 692-1174', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, '2025-09-26 14:40:35', '2025-09-26 14:40:35'),
+(45, 49, 'Dahlia', 'French', NULL, NULL, NULL, NULL, NULL, '41651465198', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, '2025-09-29 13:32:48', '2025-09-29 13:32:48'),
+(46, 50, 'Jada', 'Watts', NULL, NULL, NULL, NULL, NULL, '+1 (822) 314-1291', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, '2025-09-29 17:42:51', '2025-09-29 17:42:51');
 
 -- --------------------------------------------------------
 
@@ -1091,7 +1094,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `subscribers`
 --
 ALTER TABLE `subscribers`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `subscription_packages`

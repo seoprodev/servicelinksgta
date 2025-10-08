@@ -31,10 +31,7 @@
                     <div class="booking-widget d-sm-flex align-items-center row-gap-3 flex-fill mb-3 mb-md-0">
                         <div class="booking-det-info">
                             <h6 class="mb-3">
-                                <a href="#"
-                                   data-bs-toggle="modal"
-                                   data-bs-target="#booking_details"
-                                   data-booking-details-id="{{ $job->id }}">
+                                <a href="{{ route('provider.lead.show', $job->faker_id) }}">
                                     <span>{{ $job->title ?? 'Untitled Job' }}</span>
                                 </a>
                                 @if($job->priority)
@@ -74,8 +71,19 @@
                                     <p>
                                         <i class="ti ti-phone-filled fs-10 text-muted me-2"></i>
                                         +XXX-XXXXXXX
-
+                                        @if($job->user && $job->user->profile)
+                                            @if($job->user->profile->phone_verified_at)
+                                                <span class="badge bg-success ms-2">
+                                                <i class="ti ti-check me-1"></i> Verified
+                                            </span>
+                                            @else
+                                                <span class="badge bg-danger ms-2">
+                                                <i class="ti ti-alert-circle me-1"></i> Unverified
+                                            </span>
+                                            @endif
+                                        @endif
                                     </p>
+
                                 </li>
                             </ul>
                         </div>

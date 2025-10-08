@@ -5,33 +5,61 @@
         <div class="card user-sidebar mb-4 mb-lg-0">
             <div class="card-header user-sidebar-header mb-4">
 
-                @if(isset($authUser))
-                    <div class="d-flex justify-content-center align-items-center flex-column">
-                            <span class="user rounded-circle avatar avatar-xxl mb-2">
-                               <img
-                                       src="{{ $authUser->profile && $authUser->profile->avatar
-                                        ? asset($authUser->profile->avatar)
-                                        : asset('frontend-assets/img/profile-default.png') }}"
-                                       alt="Profile Image"
-                                       class="img-fluid rounded-circle headerProfileImg">
-                            </span>
-                        <h6 class="mb-2 headerName">{{ $authUser->profile->first_name . ' ' . $authUser->profile->last_name }} </h6>
-                        <p class="fs-14">Member Since {{ $authUser->created_at->format('M, Y') }}</p>
-                    </div>
-                @else
-                    <div class="d-flex justify-content-center align-items-center flex-column">
-                            <span class="user rounded-circle avatar avatar-xxl mb-2">
-                               <img
-                                       src="{{ auth()->user()->profile && auth()->user()->profile->avatar
-                                        ? asset(auth()->user()->profile->avatar)
-                                        : asset('frontend-assets/img/profile-default.png') }}"
-                                       alt="Profile Image"
-                                       class="img-fluid rounded-circle headerProfileImg">
-                            </span>
-                        <h6 class="mb-2 headerName">{{ auth()->user()->profile->first_name . ' ' . auth()->user()->profile->last_name }} </h6>
-                        <p class="fs-14">Member Since {{ auth()->user()->created_at->format('M, Y') }}</p>
-                    </div>
+{{--                @if(isset($authUser))--}}
+{{--                    <div class="d-flex justify-content-center align-items-center flex-column">--}}
+{{--                            <span class="user rounded-circle avatar avatar-xxl mb-2">--}}
+{{--                               <img--}}
+{{--                                       src="{{ $authUser->profile && $authUser->profile->avatar--}}
+{{--                                        ? asset($authUser->profile->avatar)--}}
+{{--                                        : asset('frontend-assets/img/profile-default.png') }}"--}}
+{{--                                       alt="Profile Image"--}}
+{{--                                       class="img-fluid rounded-circle headerProfileImg">--}}
+{{--                            </span>--}}
+{{--                        <h6 class="mb-2 headerName">{{ $authUser->profile->first_name . ' ' . $authUser->profile->last_name }} </h6>--}}
+{{--                        <p class="fs-14">Member Since {{ $authUser->created_at->format('M, Y') }}</p>--}}
+{{--                    </div>--}}
+{{--                @else--}}
+{{--                    <div class="d-flex justify-content-center align-items-center flex-column">--}}
+{{--                            <span class="user rounded-circle avatar avatar-xxl mb-2">--}}
+{{--                               <img--}}
+{{--                                       src="{{ auth()->user()->profile && auth()->user()->profile->avatar--}}
+{{--                                        ? asset(auth()->user()->profile->avatar)--}}
+{{--                                        : asset('frontend-assets/img/profile-default.png') }}"--}}
+{{--                                       alt="Profile Image"--}}
+{{--                                       class="img-fluid rounded-circle headerProfileImg">--}}
+{{--                            </span>--}}
+{{--                        <h6 class="mb-2 headerName">{{ auth()->user()->profile->first_name . ' ' . auth()->user()->profile->last_name }} </h6>--}}
+{{--                        <p class="fs-14">Member Since {{ auth()->user()->created_at->format('M, Y') }}</p>--}}
+{{--                    </div>--}}
+{{--                    @endif--}}
+
+                <div class="d-flex justify-content-center align-items-center flex-column">
+    <span class="user rounded-circle avatar avatar-xxl mb-2">
+        <img
+                src="{{ auth()->user()->profile && auth()->user()->profile->avatar
+                ? asset(auth()->user()->profile->avatar)
+                : asset('frontend-assets/img/profile-default.png') }}"
+                alt="Profile Image"
+                class="img-fluid rounded-circle headerProfileImg">
+    </span>
+
+                    <h6 class="mb-2 headerName">
+                        {{ auth()->user()->profile->first_name . ' ' . auth()->user()->profile->last_name }}
+                    </h6>
+                    <p class="fs-14 mb-1">Member Since {{ auth()->user()->created_at->format('M, Y') }}</p>
+
+                    {{-- ✅ Verification Badge --}}
+                    @if(auth()->user()->profile && auth()->user()->profile->phone_verified_at)
+                        <span class="badge bg-success rounded-pill px-3 py-2 mt-1">
+            <i class="fa-solid fa-check-circle me-1"></i> Verified
+        </span>
+                    @else
+                        <span class="badge bg-danger rounded-pill px-3 py-2 mt-1">
+            <i class="fa-solid fa-xmark-circle me-1"></i> Unverified
+        </span>
                     @endif
+                </div>
+
 
 
 
@@ -118,6 +146,11 @@
                                 <a href="{{ route('user.profile') }}"
                                    class="fs-14 d-inline-flex align-items-center {{ request()->routeIs('user.profile') ? 'active' : '' }}"><i
                                             class="ti ti-chevrons-right me-2"></i>Profile Settings</a>
+                            </li>
+                            <li class="mb-3">
+                                <a href="{{ route('user.reset.password') }}"
+                                   class="fs-14 d-inline-flex align-items-center {{ request()->routeIs('user.reset.password') ? 'active' : '' }}"><i
+                                            class="ti ti-chevrons-right me-2"></i>Reset Password</a>
                             </li>
                             {{--                            <li class="mb-3">--}}
                             {{--                                <a href="" class="fs-14 d-inline-flex align-items-center "><i class="ti ti-chevrons-right me-2"></i>Security Settings</a>--}}

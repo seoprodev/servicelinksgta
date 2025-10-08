@@ -160,23 +160,19 @@
                                     <div class="col-8 m-auto d-flex">
                                         <div class="work-item text-center flex-fill">
                                             <div class="img-container">
-                                                <img src="{{ asset('frontend-assets') }}/img/icons/work-01.svg" alt="img">
+                                                <img src="{{ asset('frontend-assets') }}/img/icons/work-02.svg" alt="img">
                                             </div>
-                                            <h6 class="text-white mb-2">1. Post a Service</h6>
-                                            <p>After you post a job, our matching system identifies and alerts relevant
-                                                Provider, who
-                                                can then express interest in your job.</p>
+                                            <h6 class="text-dark mb-2">1. Plan Your Job</h6>
+                                            <p>Tell us what you need done and select a date and time that works for you.</p>
                                         </div>
                                     </div>
                                     <div class="col-8 m-auto d-flex">
                                         <div class="work-item text-center flex-fill">
                                             <div class="img-container">
-                                                <img src="{{ asset('frontend-assets') }}/img/icons/work-02.svg" alt="img">
+                                                <img src="{{ asset('frontend-assets') }}/img/icons/work-01.svg" alt="img">
                                             </div>
-                                            <h6 class="text-white mb-2">2. Getting Booked &amp; Job done</h6>
-                                            <p>After you post a job, our matching system identifies and alerts relevant
-                                                Provider, who
-                                                can then express interest in your job.</p>
+                                            <h6 class="text-dark mb-2">2. Get Matched Quickly</h6>
+                                            <p>Submit your job request and get matched with a ServiceLinkGTA Pro in minutes!</p>
                                         </div>
                                     </div>
                                     <div class="col-8 m-auto d-flex">
@@ -184,10 +180,8 @@
                                             <div class="img-container">
                                                 <img src="{{ asset('frontend-assets') }}/img/icons/work-03.svg" alt="img">
                                             </div>
-                                            <h6 class="text-white mb-2">3. Get Reviewd &amp; Get Leads</h6>
-                                            <p>After you post a job, our matching system identifies and alerts relevant
-                                                Provider, who
-                                                can then express interest in your job.</p>
+                                            <h6 class="text-dark mb-2">3. Discuss Details with Your Pro</h6>
+                                            <p>Chat with your Pro to discuss and futher details before the job is set to begin.</p>
                                         </div>
                                     </div>
                                 </div>

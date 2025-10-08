@@ -51,6 +51,7 @@ Route::view('contact-us', 'frontend.contact')->name('front.contact');
 Route::view('categories', 'frontend.service-categories')->name('front.categories');
 Route::view('privacy-policy', 'frontend.policy')->name('front.policy');
 Route::view('terms-conditions', 'frontend.terms')->name('front.terms');
+Route::view('independent-contractor-agreement', 'frontend.independent-contractor-agreement')->name('front.independent.contract');
 Route::view('provider-list', 'frontend.provider-list')->name('front.providers');
 Route::view('post-a-job', 'frontend.post-a-job')->name('front.post.job');
 
@@ -81,6 +82,9 @@ Route::post('user-login-process', [FrontAuthController::class, 'userLoginProcess
 Route::post('user-logout', [FrontAuthController::class, 'userLogout'])->name('user.logout.process');
 Route::post('/forgot-password', [FrontAuthController::class, 'sendResetOtp'])->name('forgot.password');
 
+Route::get('/verify-phone/{id}', [FrontAuthController::class, 'verifyPhone'])->name('user.verify.phone');
+Route::post('/phone-verified', [FrontAuthController::class, 'phoneVerified'])->name('user.phone.verified');
+
 
 Route::prefix('user')->group(function () {
     Route::post('/register', [FrontAuthController::class, 'registerUser'])->name('user.register');
@@ -94,6 +98,8 @@ Route::prefix('user')->group(function () {
         Route::get('dashboard', [ClientJobController::class, 'clientDashboardIndex'])->name('user.dashboard');
         Route::get('/profile', [FrontAuthController::class, 'profileShow'])->name('user.profile');
         Route::post('/update-profile', [FrontAuthController::class, 'userUpdateProfile'])->name('user.update.profile');
+        Route::get('/reset-password', [FrontAuthController::class, 'ResetPasswordShow'])->name('user.reset.password');
+        Route::post('/update-password', [FrontAuthController::class, 'updatePassword'])->name('user.update.password');
 
         Route::get('post-jobs', [ClientJobController::class, 'createJob'])->name('client.create.job');
         Route::get('/post-jobs/get-subcategories/{id}', [ClientJobController::class, 'getSubcategories'])->name('get.subcategories');
@@ -129,6 +135,9 @@ Route::prefix('provider')->group(function () {
         Route::get('dashboard', [ProviderController::class, 'DashboardIndex'])->name('provider.dashboard');
         Route::get('subscription', [SubscriptionController::class, 'packageIndex'])->name('provider.packages');
         Route::get('/profile', [ProviderController::class, 'ProviderProfileShow'])->name('provider.profile');
+        Route::get('/reset-password', [ProviderController::class, 'ProviderResetPasswordShow'])->name('provider.reset.password');
+        Route::post('/update-password', [ProviderController::class, 'updatePassword'])->name('provider.update.password');
+
         Route::post('/update-profile', [ProviderController::class, 'ProviderUpdateProfile'])->name('provider.update.profile');
 
         Route::get('leads', [ProviderController::class, 'leadIndex'])->name('provider.leads');

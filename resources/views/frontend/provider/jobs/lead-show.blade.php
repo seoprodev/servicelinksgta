@@ -70,12 +70,26 @@
                         </div>
                 @endif
                 <!-- Client Info -->
-                    <h5 class="mt-4 mb-3 border-bottom pb-2"><i class="bi bi-person-badge me-2 text-primary"></i>Client Information</h5>
+                    <h5 class="mt-4 mb-3 border-bottom pb-2 d-flex align-items-center justify-content-between">
+                        <span><i class="bi bi-person-badge me-2 text-primary"></i>Client Information</span>
+
+                        @if(optional($job->user->profile)->phone_verified_at)
+                            <span class="badge bg-success ms-2">
+                                <i class="ti ti-check"></i> Verified
+                            </span>
+                        @else
+                            <span class="badge bg-danger ms-2">
+                                <i class="ti ti-x"></i> Unverified
+                            </span>
+                        @endif
+                    </h5>
+
                     <div class="card p-3 border-0 shadow-sm">
-                        <p class="mb-2"><strong>Name:</strong>  **********</p>
-                        <p class="mb-2"><strong>Email:</strong>  **********</p>
-                        <p class="mb-0"><strong>Phone:</strong>  **********</p>
+                        <p class="mb-2"><strong>Name:</strong> **********</p>
+                        <p class="mb-2"><strong>Email:</strong> **********</p>
+                        <p class="mb-0"><strong>Phone:</strong> **********</p>
                     </div>
+
 
                     <!-- Actions -->
                     <div class="text-end mt-4">

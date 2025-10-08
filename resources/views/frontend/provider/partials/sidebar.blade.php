@@ -53,10 +53,10 @@
                         <li class="">
                             <a href="{{ route('provider.profile') }}" class=""><i class="ti ti-chevrons-right me-2"></i>Profile Settings</a>
                         </li>
-                        {{--                        <li class="">--}}
-                        {{--                            <a href="" class=""><i--}}
-                        {{--                                        class="ti ti-chevrons-right me-2"></i>Security Settings</a>--}}
-                        {{--                        </li>--}}
+                                                <li class="">
+                                                    <a href="{{ route('provider.reset.password') }}" class=""><i
+                                                                class="ti ti-chevrons-right me-2"></i>Reset Password</a>
+                                                </li>
                         {{--                        <li class="">--}}
                         {{--                            <a href="" class=""><i--}}
                         {{--                                        class="ti ti-chevrons-right me-2"></i>Plan &amp; Billings</a>--}}

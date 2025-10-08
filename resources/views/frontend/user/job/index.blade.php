@@ -25,10 +25,12 @@
                             </div>
 
                             <div class="p-3">
+
                                 <h5 class="mb-2">
                                     <a href="{{ route('user.job.detail', $job->faker_id)}}">
                                         {{ $job->title ?? 'Untitled Job' }}
                                     </a>
+
                                 </h5>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <p class="fs-14 mb-0">

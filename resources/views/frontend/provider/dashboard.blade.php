@@ -4,7 +4,17 @@
 
 @section('provider-dashboard-content')
     <div class="col-xl-12 col-lg-12">
-
+        @if(auth()->user()->profile && auth()->user()->profile->phone_verified_at == null)
+            <div class="alert alert-warning d-flex justify-content-between align-items-center shadow-sm" role="alert">
+                <div>
+                    <i class="fa fa-exclamation-triangle me-2"></i>
+                    <strong>Phone Verification Required:</strong> Please verify your phone number to access all features.
+                </div>
+                <a href="{{ route('provider.profile') }}" class="btn btn-sm btn-primary">
+                    Verify Now
+                </a>
+            </div>
+        @endif
         <!-- Page Header -->
         <div class="breadcrumb-bar text-center mb-4">
             <div class="container">

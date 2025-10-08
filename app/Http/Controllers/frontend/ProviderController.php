@@ -16,6 +16,7 @@ use App\Models\UserSubscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
 
@@ -333,6 +334,7 @@ class ProviderController extends Controller
             'state'        => 'required|string|max:100',
             'city'         => 'required|string|max:100',
             'postal_code'  => 'required|string|max:20',
+            'company_name'  => 'required|string|max:100',
         ]);
 
         DB::beginTransaction();
@@ -358,6 +360,7 @@ class ProviderController extends Controller
             $profile->state       = $request->state;
             $profile->city        = $request->city;
             $profile->postal_code = $request->postal_code;
+            $profile->company_name = $request->company_name;
 
             if ($request->hasFile('avatar')) {
                 $avatarName = time() . '_' . uniqid() . '.' . $request->file('avatar')->getClientOriginalExtension();
@@ -402,6 +405,31 @@ class ProviderController extends Controller
 
         return view('frontend.provider.reviews.index', compact('reviews', 'averageRating', 'totalReviews'));
     }
+
+    public function ProviderResetPasswordShow()
+    {
+        $user = Auth::user();
+        return view('frontend.provider.reset-password', compact('user'));
+    }
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|min:6|confirmed',
+        ]);
+
+        $user = auth()->user();
+
+        if (!Hash::check($request->current_password, $user->password)) {
+            return back()->withErrors(['current_password' => 'Current password does not match']);
+        }
+
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return back()->with('success', 'Password updated successfully!');
+    }
+
 
 
 

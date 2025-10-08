@@ -63,18 +63,39 @@
                                 <label class="form-label">Last Name<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="last_name" value="{{ $user->profile->last_name }}">
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <label class="form-label">Email<span class="text-danger">*</span></label>
                                 <input type="email" class="form-control" name="email" value="{{ $user->email }}" readonly>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Company Name<span class="text-danger"></span></label>
+                                <input type="text" class="form-control" name="company_name" value="{{ $user->profile->company_name }}">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">User Name<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="name" value="{{ $user->name }}">
                             </div>
+{{--                            <div class="col-md-6">--}}
+{{--                                <label class="form-label">Phone Number<span class="text-danger">*</span></label>--}}
+{{--                                <input type="text" class="form-control" name="phone" value="{{ $user->profile->phone }}">--}}
+{{--                            </div>--}}
+
                             <div class="col-md-6">
-                                <label class="form-label">Phone Number<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="phone" value="{{ $user->profile->phone }}">
+                                <label class="form-label">Phone Number <span class="text-danger">*</span></label>
+                                <div class="d-flex">
+                                    <input type="text" class="form-control" id="phone-number" name="phone" value="{{ $user->profile->phone }}" placeholder="+92XXXXXXXXXX" {{ $user->profile->phone_verified_at ? 'readonly' : '' }}>
+                                    @if(is_null($user->profile->phone_verified_at))
+                                        <button type="button" class="btn btn-outline-primary ms-2" id="sendCode">
+                                            Verify
+                                        </button>
+                                    @else
+                                        <span class="badge bg-success ms-2" style="height: 20px;"><i class="fa-solid fa-check-circle me-1"></i>Verified</span>
+                                    @endif
+                                </div>
+                                <div id="recaptcha-container" class="mt-2"></div>
                             </div>
+
+
                             <div class="col-md-6">
                                 <label class="form-label">Gender<span class="text-danger">*</span></label>
                                 <select class="form-control" name="gender">
@@ -154,53 +175,75 @@
 @endsection
 
 @push('scripts')
-    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
     <script>
-        const stripe = Stripe("{{ env('STRIPE_KEY') }}");
+        const firebaseConfig = {
+            apiKey: "AIzaSyBkWpcwX9YB3I72vtw5-YR8rYjWz-4pPaU",
+            authDomain: "servicelink-5b28b.firebaseapp.com",
+            projectId: "servicelink-5b28b",
+            storageBucket: "servicelink-5b28b.firebasestorage.app",
+            messagingSenderId: "1096010013243",
+            appId: "1:1096010013243:web:6f6bd1435a97e011371a1e",
+            measurementId: "G-VEQ0KRM3RS"
+        };
 
-        document.querySelectorAll('.subscribe').forEach(btn => {
-            btn.addEventListener('click', function () {
-                const packageId = this.dataset.planid;
+        firebase.initializeApp(firebaseConfig);
 
-                const spinner = this.querySelector('.spinner-border');
-                const btnText = this.querySelector('.btn-text');
+        // reCAPTCHA
+        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+            size: 'normal',
+            callback: function(response) {
+                console.log("reCAPTCHA verified ✅");
+            }
+        });
 
-                // Show loader
-                spinner.classList.remove('d-none');
-                btnText.textContent = 'Processing...';
-                this.disabled = true;
+        // Send OTP
+        document.getElementById('sendCode').addEventListener('click', function() {
+            const phoneNumber = document.getElementById('phone-number').value.trim();
 
-                fetch("{{ route('subscriptions.checkout') }}", {
-                    method: "POST",
-                    headers: {
-                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        package_id: packageId
-                    })
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.id) {
-                            stripe.redirectToCheckout({ sessionId: data.id });
-                        } else {
-                            throw new Error(data.error || "Something went wrong!");
+            if (!phoneNumber.startsWith('+')) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Invalid Phone Number',
+                    text: 'Please include your country code (e.g. +92XXXXXXXXXX)',
+                    confirmButtonText: 'OK'
+                });
+                return;
+            }
+
+            const appVerifier = window.recaptchaVerifier;
+
+            firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+                .then(function(confirmationResult) {
+                    // Save verification ID (not the whole object)
+                    sessionStorage.setItem('verificationId', confirmationResult.verificationId);
+                    sessionStorage.setItem('phoneNumber', phoneNumber);
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'OTP Sent!',
+                        text: `A verification code has been sent to ${phoneNumber}.`,
+                        confirmButtonText: 'OK',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "{{ route('user.verify.phone', $user->faker_id) }}";
                         }
-                    })
-                    .catch(err => {
-                        alertify.error(err.message);
-                        // Reset button state
-                        spinner.classList.add('d-none');
-                        btnText.textContent = 'Subscribe';
-                        this.disabled = false;
                     });
 
-            });
+                    // Redirect to verification page
+                    {{--window.location.href = "{{ route('user.verify.phone', $user->id) }}";--}}
+                })
+                .catch(function(error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: error.message,
+                        confirmButtonText: 'OK'
+                    });
+                    console.error(error);
+                });
         });
     </script>
-
-
-
-
 @endpush

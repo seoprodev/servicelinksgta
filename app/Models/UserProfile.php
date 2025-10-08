@@ -28,6 +28,7 @@ class UserProfile extends Model
     'government_doc',
     'accept_terms',
     'verification_code',
+    'phone_verified_at',
     'is_verified',
 ];
 

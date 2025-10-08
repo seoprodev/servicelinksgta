@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\frontend;
 
 
+use App\Helpers\FakerURL;
 use App\Http\Controllers\Controller;
 use App\Mail\EmailVerificationMail;
 use App\Mail\SendOtpMail;
@@ -412,5 +413,51 @@ class FrontAuthController extends Controller
             return redirect()->back()->with('error', 'Something went wrong: ' . $e->getMessage());
         }
     }
+
+
+    public function verifyPhone($id, Request $request)
+    {
+        $user = User::findOrFail(FakerURL::id_d($id));
+        $phone = $request->query('phone');
+        return view('frontend.verify-phone', compact('user', 'phone'));
+    }
+
+    public function phoneVerified(Request $request)
+    {
+
+        $user = User::findOrFail(FakerURL::id_d($request->id));
+        $user->profile->phone = $request->phone;
+        $user->profile->phone_verified_at = now();
+        $user->profile->save();
+
+        return response()->json(['success' => true]);
+    }
+
+    public function ResetPasswordShow()
+    {
+        $user = Auth::user();
+        return view('frontend.user.reset-password', compact('user'));
+    }
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|min:6|confirmed',
+        ]);
+
+        $user = auth()->user();
+
+        if (!Hash::check($request->current_password, $user->password)) {
+            return back()->withErrors(['current_password' => 'Current password does not match']);
+        }
+
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return back()->with('success', 'Password updated successfully!');
+    }
+
+
+
 
 }
