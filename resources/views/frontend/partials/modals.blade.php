@@ -70,8 +70,8 @@
                         <div class="form-check">
                             <input class="form-check-input" name="terms_policy" type="checkbox" value="1" id="terms_policy">
                             <label class="form-check-label" for="terms_policy">
-                                I agree to <a href="terms-conditions.html" class="text-primary text-decoration-underline">Terms and Conditions</a>
-                                & <a href="privacy-policy.html" class="text-primary text-decoration-underline">Privacy Policy</a>
+                                I agree to <a href="{{ route('front.terms') }}" class="text-primary text-decoration-underline" target="_blank">Terms and Conditions</a>
+                                & <a href="{{ route('front.policy') }}" class="text-primary text-decoration-underline" target="_blank">Privacy Policy</a> & <a href="{{ route('front.independent.contract') }}" target="_blank" class="text-primary text-decoration-underline">Independent Contractor Agreement</a>
                             </label>
                             <div class="invalid-feedback" id="terms_policy_error"></div>
                         </div>

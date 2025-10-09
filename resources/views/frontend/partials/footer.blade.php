@@ -104,7 +104,7 @@
                         <h5 class="mb-4">Press</h5>
                         <ul class="footer-menu">
                             <li>
-                                <a href="{{ route('front.independent.contract') }}">Legal</a>
+                                <a href="javascript:">Legal</a>
                             </li>
                         </ul>
                     </div>
