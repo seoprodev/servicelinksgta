@@ -242,21 +242,21 @@ Email:
                 <h3>IN WITNESS WHEREOF</h3>
                 <p>The Parties have executed this Agreement as of the Effective Date.</p>
 
-                <div class="signature-block">
-                    <p><strong>For ServiceLinksGTA (Company):</strong></p>
-                    <p>Name: _________________________<br>
-                        Title: _________________________<br>
-                        Signature: _____________________<br>
-                        Date: _________________________</p>
-                </div>
+{{--                <div class="signature-block">--}}
+{{--                    <p><strong>For ServiceLinksGTA (Company):</strong></p>--}}
+{{--                    <p>Name: _________________________<br>--}}
+{{--                        Title: _________________________<br>--}}
+{{--                        Signature: _____________________<br>--}}
+{{--                        Date: _________________________</p>--}}
+{{--                </div>--}}
 
-                <div class="signature-block">
-                    <p><strong>For Contractor (Pro):</strong></p>
-                    <p>Name: _________________________<br>
-                        Business Name: __________________<br>
-                        Signature: _____________________<br>
-                        Date: _________________________</p>
-                </div>
+{{--                <div class="signature-block">--}}
+{{--                    <p><strong>For Contractor (Pro):</strong></p>--}}
+{{--                    <p>Name: _________________________<br>--}}
+{{--                        Business Name: __________________<br>--}}
+{{--                        Signature: _____________________<br>--}}
+{{--                        Date: _________________________</p>--}}
+{{--                </div>--}}
 
             </div>
         </div>
