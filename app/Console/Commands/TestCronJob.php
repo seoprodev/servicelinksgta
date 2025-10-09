@@ -31,7 +31,7 @@ class TestCronJob extends Command
 
         // Optional: test mail
          Mail::raw('Test cron ran at '.now(), function($msg) {
-             $msg->to('goweya9391@fintehs.com')->subject('Cron Test');
+             $msg->to('michaelwilliamdev254@gmail.com')->subject('Cron Test');
          });
 
         $this->info('Test Cron Job executed successfully!');

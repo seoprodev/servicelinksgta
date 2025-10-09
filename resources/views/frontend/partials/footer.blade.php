@@ -91,7 +91,7 @@
                                 <a href="{{ route('front.terms') }}">Terms & Conditions</a>
                             </li>
                             <li>
-                                <a href="{{ asset('uploads/doc/Independent_Contractor_Agreement.pdf') }}" target="_blank">Homeowner Protection Promise</a>
+                                <a href="{{ route('front.independent.contract') }}" >Homeowner Protection Promise</a>
                             </li>
                             <li>
                                 <a href="{{ route('front.policy') }}">Privacy Policy</a>
