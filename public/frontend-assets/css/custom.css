@@ -1,0 +1,9 @@
+.hero-section .banner-form {
+    width: 60% !important;
+
+    /* Gradient border */
+    border: 2px solid transparent !important;
+    border-radius: 6px;
+    background: linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(90deg, #00C0D3 0%, #003B57 100%) border-box;
+}
