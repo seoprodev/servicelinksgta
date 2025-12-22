@@ -45,6 +45,8 @@ class ChatController extends Controller
         }
 
     }
+    
+    
 
     public function show($userId)
     {

@@ -226,7 +226,11 @@
             $("#chat-box").append(msgHtml).scrollTop($("#chat-box")[0].scrollHeight);
 
         }
-
+        
+        @if(request()->input("open_chat_id") != null)  
+            loadChat({{ request()->input("open_chat_id"); }},"{{ request()->input('open_chat_name'); }}","https://placehold.co/600x400/EEE/31343C")
+        @endif
+        
         function loadChat(userId, name, avatarUrl) {
             activeUserId = userId;
             $("#receiver_id").val(userId);

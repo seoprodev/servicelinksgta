@@ -2,6 +2,7 @@
 
 @section('title', 'Provider Subscriptions')
 @section('provider-dashboard-content')
+
     <div class="col-xl-12 col-lg-12">
         <div class="breadcrumb-bar text-center">
             <div class="container">
@@ -34,6 +35,8 @@
                             <h3 class="mb-1">{{ $lead->job->title ?? 'Untitled Job' }}</h3>
                             <small class="text-primary"><i class="bi bi-clock me-1"></i> Posted {{ $lead->job->created_at->diffForHumans() }}</small>
                         </div>
+                        
+                         
                         <span class="badge bg-primary px-3 py-2 ">Urgent</span>
                     </div>
                 </div>
@@ -72,6 +75,7 @@
                 <!-- Client Info -->
                     <h5 class="mt-4 mb-3 border-bottom pb-2"><i class="bi bi-person-badge me-2 text-primary"></i>Client Information</h5>
                     <div class="card p-3 border-0 shadow-sm">
+                        <a href="{{ route('provider.chat.index') }}/?open_chat_id={{ $lead->job->user->id }}&open_chat_name={{ $lead->job->user->name }}"><span class="badge bg-primary px-3 py-2 ">Chat</span></a>
                         <p class="mb-2"><strong>Name:</strong>  {{ $lead->job->user->name }}</p>
                         <p class="mb-2"><strong>Email:</strong>  {{ $lead->job->user->email }}</p>
                         <p class="mb-0"><strong>Phone:</strong>  {{ $lead->job->user->profile->phone }}</p>

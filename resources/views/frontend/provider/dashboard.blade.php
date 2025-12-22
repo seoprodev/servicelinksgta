@@ -32,14 +32,16 @@
         <!-- Stats Cards -->
         <div class="row">
             <div class="col-md-3 col-sm-6 mb-4">
-                <div class="card shadow-sm text-center p-3">
+                <a href="{{ route('provider.my.lead') }}"><div class="card shadow-sm text-center p-3">
                     <h6 class="text-muted">My Leads</h6>
                     <h3 class="fw-bold">{{ $leadsCount }}</h3>
                     <p class="mb-0 text-success">+{{ $todayLeads }} Today</p>
                 </div>
+                </a>
             </div>
             <div class="col-md-3 col-sm-6 mb-4">
-                <div class="card shadow-sm text-center p-3">
+                <a href="{{ route('provider.packages') }}">
+                    <div class="card shadow-sm text-center p-3">
                     <h6 class="text-muted">Subscription</h6>
                     <h3 class="fw-bold">{{ $planName }}</h3>
                     <p class="mb-0 text-info">Valid till: {{ $validTill }}</p>
@@ -51,20 +53,25 @@
                     </p>
                     <p class="mb-0 small">Connects Left: {{ $remainingConnects }}</p>
                 </div>
+                </a>
             </div>
             <div class="col-md-3 col-sm-6 mb-4">
+                <a href="{{ \Illuminate\Support\Facades\URL::to('/provider/tickets') }}">
                 <div class="card shadow-sm text-center p-3">
                     <h6 class="text-muted">Tickets</h6>
                     <h3 class="fw-bold">{{ $ticketsCount }}</h3>
                     <p class="mb-0 text-warning">{{ $pendingTickets }} Pending</p>
                 </div>
+                </a>
             </div>
             <div class="col-md-3 col-sm-6 mb-4">
+                <a href="{{ route('client.review.index') }}">
                 <div class="card shadow-sm text-center p-3">
                     <h6 class="text-muted">Reviews</h6>
                     <h3 class="fw-bold">{{ $averageRating }} ⭐</h3>
                     <p class="mb-0 text-primary">{{ $reviewsCount }} Reviews</p>
                 </div>
+                </a>
             </div>
         </div>
 

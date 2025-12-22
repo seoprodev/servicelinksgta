@@ -21,7 +21,7 @@
                                         <div class="input-group mb-2">
                                             <span class="input-group-text px-1"><i class="ti ti-pin"></i></span>
                                             <select class="form-control" id="categoryDropdown" name="categoryId" required>
-                                                <option value="" selected disabled>Search for Service</option>
+                                                <option value="" selected disabled>Select a Services to post a job</option>
                                                 @foreach($frontCategories as $category)
                                                     <option value="{{ $category->id }}" data-slug="{{ $category->slug }}">
                                                         {{ $category->name }}

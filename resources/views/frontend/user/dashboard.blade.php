@@ -13,29 +13,35 @@
         <div class="row">
             <div class="col-md-4 mb-4">
                 <div class="card shadow-sm border-0 h-100">
-                    <div class="card-body text-center">
+                    <a href="{{ route('client.jobs') }}">
+                      <div class="card-body text-center">
                         <i class="ti ti-world fs-30 text-primary mb-3"></i>
                         <h5 class="fw-bold mb-1">{{ $totalJobs }}</h5>
                         <p class="mb-0 text-muted">Jobs Posted</p>
                     </div>
+                    </a>
                 </div>
             </div>
             <div class="col-md-4 mb-4">
-                <div class="card shadow-sm border-0 h-100">
+                <div class="card shadow-sm border-0 h-100">'
+                <a href="{{ route('client.jobs') }}">
                     <div class="card-body text-center">
                         <i class="ti ti-calendar-time fs-30 text-warning mb-3"></i>
                         <h5 class="fw-bold mb-1">{{ $activeJobs }}</h5>
                         <p class="mb-0 text-muted">Active Jobs</p>
                     </div>
+                </a>    
                 </div>
             </div>
             <div class="col-md-4 mb-4">
                 <div class="card shadow-sm border-0 h-100">
+                    <a href="{{ route('client.jobs') }}">
                     <div class="card-body text-center">
                         <i class="ti ti-check fs-30 text-success mb-3"></i>
                         <h5 class="fw-bold mb-1">{{ $completedJobs }}</h5>
                         <p class="mb-0 text-muted">Completed Jobs</p>
                     </div>
+                    </a>
                 </div>
             </div>
         </div>

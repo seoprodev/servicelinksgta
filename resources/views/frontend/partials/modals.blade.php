@@ -113,7 +113,33 @@
                             class="ti ti-circle-x-filled fs-20"></i></a>
             </div>
             <div class="form-container">
-                    <form id="cleint-sign-up-form" autocomplete="off">
+                
+                <div class="modal-body pb-1">
+                  <form id="post-a-job" action="{{ route('front.post.job.submit') }}" method="POST">
+                    @csrf
+                    <div class="d-md-flex align-items-center">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text px-1"><i class="ti ti-pin"></i></span>
+                            <select class="form-control" id="categoryDropdown" name="categoryId" required>
+                                <option value="" selected disabled>Select a Services to post a job</option>
+                                @foreach($frontCategories as $category)
+                                    <option value="{{ $category->id }}" data-slug="{{ $category->slug }}">
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-2">
+                            <button type="submit"
+                                    class="btn btn-linear-primary d-inline-flex align-items-center w-100">
+                                <i class="ti ti-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                </div>
+                
+                    <!--<form id="cleint-sign-up-form" autocomplete="off">
                         @csrf
                         <div class="modal-body pb-1">
                             <div class="mb-3">
@@ -206,7 +232,7 @@
                         <div class="modal-footer text-end">
                             <button class="btn btn-linear-primary" type="submit">Get Started</button>
                         </div>
-                    </form>
+                    </form> -->
 
 
             </div>

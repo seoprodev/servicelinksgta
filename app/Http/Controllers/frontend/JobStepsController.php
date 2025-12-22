@@ -73,18 +73,47 @@ class JobStepsController extends Controller
         $request->validate([
             'postal_code' => 'required|string|max:10'
         ]);
-
+        
+        
+        $canadianRegex = '/^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z]\d[ABCEGHJ-NPRSTV-Z]\d$/i';
         $postal = strtoupper(str_replace(' ', '', $request->postal_code));
-
         $country = Country::whereRaw("REPLACE(UPPER(postal_code), ' ', '') = ?", [$postal])->first();
+        
+        
+         if (!preg_match($canadianRegex,$postal)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Postal code not found in our database.'
+            ]);
+        }
+        
 
-        if ($country) {
+        if (!$country) {
+            
+             $postal = Country::create([
+                'postal_code' => $postal,
+                'city'        => 'Unknown',
+                'state'       => 'Unknown',
+                'country'     => 'Canada',
+                'is_active'   => 1,
+            ]);
+            
+            return response()->json([
+                'success' => true,
+                'city'    => $postal->city,
+                'state'   => $postal->state,
+                'country' => $postal->country,
+            ]);
+            
+        }else{
+            
             return response()->json([
                 'success' => true,
                 'city'    => $country->city,
                 'state'   => $country->state,
                 'country' => $country->country,
             ]);
+            
         }
 
         return response()->json([

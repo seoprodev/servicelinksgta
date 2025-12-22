@@ -7,3 +7,9 @@
     background: linear-gradient(#fff, #fff) padding-box,
     linear-gradient(90deg, #00C0D3 0%, #003B57 100%) border-box;
 }
+
+
+
+.form-check-input[type=checkbox]{
+    border: 1px solid black;
+}
