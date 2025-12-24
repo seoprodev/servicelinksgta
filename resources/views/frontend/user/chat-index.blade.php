@@ -1,5 +1,6 @@
 @extends('frontend.user.partials.master')
 @push('styles')
+    
     <style>
         a.chat-link.d-block.text-decoration-none {
             background: grey;
@@ -11,6 +12,7 @@
             background: #003b57 !important;
             color: #ffff !important;
         }
+
 
         #chat-box {
             padding: 15px;
@@ -178,6 +180,10 @@
                 $("#chat-box").append(msgHtml).scrollTop($("#chat-box")[0].scrollHeight);
 
         }
+
+        @if(request()->input("open_chat_id") != null)
+        loadChat({{ request()->input("open_chat_id"); }},"{{ request()->input('open_chat_name'); }}","https://placehold.co/600x400/EEE/31343C")
+        @endif
 
         function loadChat(userId, name, profileUrl, avatarUrl) {
             activeUserId = userId;

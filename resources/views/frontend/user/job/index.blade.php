@@ -41,7 +41,10 @@
                                         {{ $job->city }}, {{ $job->country }} &nbsp;&nbsp;&nbsp;
 
                                         <i class="ti ti-clock me-2"></i>
-                                        {{ $job->created_at->diffForHumans() }}
+                                        {{ $job->created_at->diffForHumans() }} &nbsp;&nbsp;&nbsp;
+
+                                        <i class="ti ti-progress-check me-2"></i>
+                                        <span class="badge badge-danger">{{ $job->leads->count() }}</span>
                                     </p>
 
                                     <a href="{{ route('user.job.detail', $job->faker_id)}}" class="btn bg-primary">View Detail</a>

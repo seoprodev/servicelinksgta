@@ -37708,3 +37708,8 @@ header p {
   overflow-y: auto;
   padding-right: 4px;
 }
+
+
+#chat-form .form-control:focus{
+  border-color: #000000;
+}

@@ -35,12 +35,12 @@
 
                     <div class="mb-3">
                         <label class="form-label">Phone Number</label>
-                        <input class="form-control" id="phone" name="phone" maxlength="12" type="tel" placeholder="Enter Phone Number" autocomplete="tel">
+                        <input class="form-control" id="phone" name="phone" maxlength="12" type="text" placeholder="Enter Phone Number." autocomplete="tel">
                         <div class="invalid-feedback" id="phone_error"></div>
                     </div>
                     
                     <script>
-                    document.getElementById('phone').addEventListener('input', function () {
+                    /*document.getElementById('phone').addEventListener('input', function () {
                         let value = this.value.replace(/[^0-9+]/g, '');
                     
                         // Ensure it starts with +
@@ -49,7 +49,7 @@
                         }
                     
                         this.value = value;
-                    });
+                    });*/
                     </script>
 
                     <div class="mb-3">

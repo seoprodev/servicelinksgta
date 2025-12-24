@@ -116,11 +116,87 @@
                     <p class="mb-0"><strong>Phone:</strong>  {{ $userJob->user->profile->phone ?? 'N/A' }}</p>
                 </div>
 
-
-
-
             </div>
         </div>
+
+        <div class="container my-4">
+            <div class="row g-4">
+
+                @if(count($leads) > 0)
+                    @foreach($leads as $lead)
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card shadow-sm h-100 border-0 upwork-card">
+                                <div class="card-body">
+
+                                    {{-- Header --}}
+                                    <div class="d-flex align-items-center mb-3">
+                                        <img src="{{ $lead->provider->avatar ?? 'https://via.placeholder.com/50' }}"
+                                             class="rounded-circle me-3"
+                                             width="50" height="50">
+
+                                        <div>
+                                            <h6 class="mb-0 fw-bold">
+                                                {{ $lead->provider->name ?? 'Client' }}
+                                            </h6>
+                                            <small class="text-muted">
+                                                {{ $lead->purchase_type }}
+                                            </small>
+                                        </div>
+                                    </div>
+
+                                    {{-- Job Title --}}
+                                    <h6 class="fw-semibold mb-1">
+                                        {{ $lead->job->title ?? 'Job Title' }}
+                                    </h6>
+
+
+                                    <a href="{{ route('chat.index') }}/?open_chat_id={{ $lead->provider->id }}&open_chat_name={{ $lead->provider->name }}"><span class="badge bg-primary px-3 py-2 ">Chat</span></a>
+
+                                    {{-- Rating (optional) --}}
+                                    <div class="mb-2 text-warning">
+
+                                        @php
+                                            $averageRating = $lead->provider->reviews->avg('rating');
+                                            $totalReviews = $lead->provider->reviews->count();
+
+                                        @endphp
+                                        @if($totalReviews > 0)
+                                            @for($i = 1; $i <= 5; $i++)
+                                                @if($i <= round($averageRating))
+                                                    <i class="text-warning fas fa-star"></i>
+                                                @else
+                                                    <i class="text-muted fas fa-star"></i>
+                                                @endif
+                                            @endfor
+
+                                        @endif
+                                        <small class="text-muted">({{ number_format($averageRating,2) }})</small>
+                                    </div>
+
+                                    {{-- Status --}}
+                                    <span class="badge bg-success mb-2">
+                                        {{ ucfirst($lead->lead_status) }}
+                                    </span>
+
+
+                                    <a href="{{ route('user.provider.detail',App\Helpers\FakerURL::id_e($lead->provider_id)) }}"
+                                       class="btn btn-outline-primary btn-sm mt-3 w-100">
+                                        View Details
+                                    </a>
+                                    {{-- View Button --}}
+                                    <?php /* <a href="{{ route('leads.show', $lead->faker_id) }}"
+                                       class="btn btn-outline-primary btn-sm mt-3 w-100">
+                                        View Details
+                                    </a> */ ?>
+
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+
     </div>
 @endsection
 

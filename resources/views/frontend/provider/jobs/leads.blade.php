@@ -25,6 +25,19 @@
         </div>
 
     <div class="container">
+
+        @php
+            $priorityBadges = [
+                'Within a couple of months' => 'bg-secondary',
+                'Within 1 month'           => 'bg-info',
+                'Within 2 weeks'           => 'bg-warning',
+                'To be discussed'          => 'badge-dark',
+                'Urgent'                   => 'bg-danger',
+            ];
+
+
+        @endphp
+
         @forelse($jobs as $job)
             <div class="card shadow-none booking-list border-left">
                 <div class="card-body d-md-flex align-items-center">
@@ -34,12 +47,16 @@
                                 <a href="{{ route('provider.lead.show', $job->faker_id) }}">
                                     <span>{{ $job->title ?? 'Untitled Job' }}</span>
                                 </a>
-                                @if($job->priority)
-                                    <span class="booking-status badge badge-primary-transparent ms-2">
-                                                            {{ $job->priority }}
-                                                        </span>
-                                @endif
                             </h6>
+
+                            @php
+                                $badgeClass = $priorityBadges[$job->priority] ?? 'bg-secondary';
+                            @endphp
+
+                            @if($job->priority)
+                              <p><span class="booking-status badge {{ $badgeClass }} ms-2">{{ $job->priority }} </span></p>
+                            @endif
+
                             <ul class="booking-details">
                                 <li class="d-flex align-items-center mb-2">
                                     <i class="ti ti-tool me-2"></i>

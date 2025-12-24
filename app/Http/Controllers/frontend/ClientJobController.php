@@ -11,6 +11,7 @@ use App\Models\Country;
 use App\Models\Job;
 use App\Models\Priority;
 use App\Models\PropertyType;
+use App\Models\ProviderLead;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,8 +49,17 @@ class ClientJobController extends Controller
 
     public function myJobShow($id)
     {
+
+        $realId = FakerURL::id_d($id);
+        $leads = ProviderLead::with(['provider', 'client', 'job'])
+            ->where('job_id', $realId)
+            ->where('is_deleted', 0)
+            //->where('payment_status', 'paid')
+            ->latest('purchase_at')
+            ->get();
+
         $userJob = Job::with('user', 'category')->findOrFail(FakerURL::id_d($id));
-        return view('frontend.user.job.detail', compact('userJob'));
+        return view('frontend.user.job.detail', compact('userJob','leads'));
     }
 
     public function createJob()
