@@ -13,6 +13,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        
         $newJobs    = Job::whereDate('created_at', today())->count();
         $customers = User::whereIn('user_type', ['provider', 'client'])->count();
         $tickets    = Ticket::count();

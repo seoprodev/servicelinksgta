@@ -136,7 +136,102 @@
                             </button>
                         </div>
                     </div>
-                </form>
+                </form> 
+                
+                <!--<form id="cleint-sign-up-form" autocomplete="off">
+                        @csrf
+                        <div class="modal-body pb-1">
+                            <div class="mb-3">
+                                <div class="text-center mb-3">
+                                    <h3 class="mb-2">Registration</h3>
+                                    <p>Enter your credentials to access your account</p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">First Name</label>
+                                            <input type="text" name="client_first_name" id="client_first_name"
+                                                   class="form-control" placeholder="Enter First Name">
+                                            <div class="invalid-feedback" id="provider_first_name_error"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Last Name</label>
+                                            <input type="text" name="client_last_name" id="client_last_name"
+                                                   class="form-control" placeholder="Enter Last Name">
+                                            <div class="invalid-feedback" id="provider_last_name_error"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">User Name</label>
+                                            <input type="text" name="client_username" id="client_username"
+                                                   class="form-control" placeholder="Enter Name">
+                                            <div class="invalid-feedback" id="provider_name_error"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Email</label>
+                                            <input type="email" name="client_email" id="client_email"
+                                                   class="form-control" placeholder="Enter Email">
+                                            <div class="invalid-feedback" id="provider_email_error"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Phone Number.</label>
+                                            <input class="form-control" id="client_phone"
+                                                   name="client_phone" maxlength="12" type="text"
+                                                   placeholder="Enter Phone Number" autocomplete="tel">
+                                            <div class="invalid-feedback" id="provider_phone_number_error"></div>
+                                        </div>
+                                        
+                                        <script>
+                                            document.getElementById('client_phone').addEventListener('input', function () {
+                                                let value = this.value.replace(/[^0-9+]/g, '');
+                                            
+                                                // Ensure it starts with +
+                                                if (!value.startsWith('+')) {
+                                                    value = '+' + value.replace(/\+/g, '');
+                                                }
+                                            
+                                                this.value = value;
+                                            });
+                                            </script>
+                                        
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <div class="d-flex align-items-center justify-content-between flex-wrap">
+                                                <label class="form-label">Password</label>
+                                            </div>
+                                            <div class="input-group">
+                                                <input type="password" name="client_password" id="client_password"
+                                                       class="password--input form-control" placeholder="Enter Password"
+                                                       autocomplete="current-password">
+                                                <button class="btn btn-outline-dark toggle--password" type="button"
+                                                        tabindex="-1">
+                                                    <i class="fas fa-eye toggle--icon"></i>
+                                                </button>
+                                            </div>
+                                            <div class="invalid-feedback" id="provider_password_error"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer text-end">
+                            <button class="btn btn-linear-primary" type="submit">Get Started</button>
+                        </div>
+                    </form> -->
+                
                 </div>
                 
                     <!--<form id="cleint-sign-up-form" autocomplete="off">

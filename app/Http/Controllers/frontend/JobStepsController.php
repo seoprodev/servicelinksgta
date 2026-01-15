@@ -11,10 +11,15 @@ use App\Models\Job;
 use App\Models\Priority;
 use App\Models\PropertyType;
 use App\Models\User;
+use App\Mail\EmailVerificationMail;
+use App\Mail\SendOtpMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Crypt;
+
 
 class JobStepsController extends Controller
 {
@@ -201,7 +206,7 @@ class JobStepsController extends Controller
             $firstName = $nameParts[0] ?? '';
             $lastName  = $nameParts[1] ?? '';
 
-
+            $verificationCode = rand(100000, 999999);
 
             $user = User::firstOrCreate(
                 ['email' => $request->email],
@@ -210,6 +215,7 @@ class JobStepsController extends Controller
                     'user_type'     => 'client',
                     'password' => Hash::make($request->password),
                     'is_active' => '1',
+                    
                 ]
             );
 
@@ -219,6 +225,7 @@ class JobStepsController extends Controller
                     'phone'      => $request->phone,
                     'first_name' => $firstName,
                     'last_name'  => $lastName,
+                    'verification_code'=> $verificationCode,
                 ]
             );
 
@@ -262,13 +269,22 @@ class JobStepsController extends Controller
                 'status'         => 'active',
                 'is_active'      => 1,
             ]);
+            
+           
 
+            Mail::to($user->email)->send(new EmailVerificationMail($user, $verificationCode));
             DB::commit();
-            Auth::login($user);
-            return response()->json([
+            //Auth::login($user);
+            /*return response()->json([
                 'success' => true,
                 'message' => 'Job submitted successfully!',
                 'redirect_url' => route('front.home')
+            ]);*/
+            
+            return response()->json([
+                'success' => true,
+                'message' => 'Registration successful! Please check your email for verification code.',
+                'redirect_url' => route('verify.email', ['token' => Crypt::encryptString($user->email)])
             ]);
 
         } catch (\Exception $e) {

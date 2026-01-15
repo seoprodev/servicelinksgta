@@ -20,6 +20,7 @@ class ClientJobController extends Controller
 {
     public function clientDashboardIndex()
     {
+        die();
         $user = Auth::user();
 
         $totalJobs = Job::where('user_id', $user->id)->count();

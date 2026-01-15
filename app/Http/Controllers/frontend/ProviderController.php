@@ -261,6 +261,7 @@ class ProviderController extends Controller
             ]],
             'mode' => 'payment',
             'success_url' => route('provider.pay-lead.success') . '?job_id=' . $job->faker_id . '&session_id={CHECKOUT_SESSION_ID}',
+            //'success_url' => "https://servicelinksgta.ca/provider/lead-show/8l",
             'cancel_url' => route('provider.pay-lead.cancel'),
         ]);
 
@@ -305,7 +306,8 @@ class ProviderController extends Controller
         $client->providers()->syncWithoutDetaching([$provider->id]);
 
 
-        return redirect()->route('provider.leads')->with('success', 'Lead purchased successfully!');
+        //return redirect()->route('provider.leads')->with('success', 'Lead purchased successfully!');
+        return redirect()->route('provider.lead.show',["id"=>$request->query('job_id')])->with('success', 'Lead purchased successfully!');
     }
 
     public function cancel()

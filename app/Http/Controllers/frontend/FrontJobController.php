@@ -15,6 +15,7 @@ class FrontJobController extends Controller
 
     public function index(Request $request)
     {
+        die();
         $activeSubscription = null;
 
         $query = Job::with(['category', 'subCategory'])
